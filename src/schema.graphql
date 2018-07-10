@@ -7,36 +7,42 @@ type Query {
 		limit: Int
 		orderBy: CharacterOrderBy
 	): [Character!]
+	getCharacter(where: CharacterWhereInput): Character
 	comics(
 		where: ComicWhereInput
 		orderBy: ComicOrderBy
 		offset: Int
 		limit: Int
 	): [Comic!]
+	getComic(where: ComicWhereInput): Comic
 	creators(
 		where: CreatorWhereInput
 		orderBy: CreatorOrderBy
 		offset: Int
 		limit: Int
 	): [Creator!]
+	getCreator(where: CreatorWhereInput): Creator
 	events(
 		where: EventsWhereInput
 		orderBy: EventsOrderBy
 		offset: Int
 		limit: Int
 	): [Event!]
+	getEvent(where: EventsWhereInput): Event
 	series(
 		where: SeriesWhereInput
 		orderBy: SeriesOrderBy
 		offset: Int
 		limit: Int
 	): [Series!]
+	getSeries(where: SeriesWhereInput): Series
 	stories(
 		where: StoriesWhereInput
 		orderBy: StoriesOrderBy
 		offset: Int
 		limit: Int
 	): [Story!]
+	getStory(where: StoriesWhereInput): Story
 }
 
 input CharacterWhereInput {
