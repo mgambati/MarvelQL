@@ -1,0 +1,366 @@
+# import User from "./generated/prisma.graphql"
+
+type Query {
+	characters(
+		where: CharacterWhereInput
+		offset: Int
+		limit: Int
+		orderBy: CharacterOrderBy
+	): [Character!]
+	comics(
+		where: ComicWhereInput
+		orderBy: ComicOrderBy
+		offset: Int
+		limit: Int
+	): [Comic!]
+	creators(
+		where: CreatorWhereInput
+		orderBy: CreatorOrderBy
+		offset: Int
+		limit: Int
+	): [Creator!]
+	events(
+		where: EventsWhereInput
+		orderBy: EventsOrderBy
+		offset: Int
+		limit: Int
+	): [Event!]
+	series(
+		where: SeriesWhereInput
+		orderBy: SeriesOrderBy
+		offset: Int
+		limit: Int
+	): [Series!]
+	stories(
+		where: StoriesWhereInput
+		orderBy: StoriesOrderBy
+		offset: Int
+		limit: Int
+	): [Story!]
+}
+
+input CharacterWhereInput {
+	id: Int
+	name: String
+	nameStartsWith: String
+	modifiedSince: String
+	comics: [ID!]
+	series: [ID!]
+	events: [ID!]
+	stories: [ID!]
+}
+
+enum CharacterOrderBy {
+	name_asc
+	name_desc
+	modified_asc
+	modified_desc
+}
+
+enum SeriesType {
+	collection
+	one_shot
+	limited
+	ongoing
+}
+
+enum ComicFormat {
+	magazine
+	trade_paperback
+	hardcover
+	digest
+	graphic_novel
+	comic
+	digital_comic
+	infinite_comic
+}
+
+enum ComicFormatType {
+	comic
+	collection
+}
+
+enum DateDescriptor {
+	lastWeek
+	thisWeek
+	nextWeek
+	thisMonth
+}
+
+input ComicWhereInput {
+	format: ComicFormat
+	formatType: ComicFormatType
+	noVariants: Boolean
+	dateDescriptor: DateDescriptor
+	dateRange: Int
+	diamondCode: String
+	digitalId: Int
+	upc: String
+	isbn: String
+	ean: String
+	issn: String
+	hasDigitalIssue: Boolean
+	modifiedSince: DateTime
+	creators: [ID!]
+	characters: [ID!]
+	series: [ID!]
+	stories: [ID!]
+	sharedAppearances: [ID!]
+	collaborators: [ID!]
+}
+
+enum ComicOrderBy {
+	focDate_asc
+	onSaleDate_asc
+	title_asc
+	issueNumber_asc
+	modified_asc
+	focDate_desc
+	onSaleDate_desc
+	title_desc
+	issueNumber_desc
+	modified_desc
+}
+
+input CreatorWhereInput {
+	firstName: String
+	middleName: String
+	lastName: String
+	suffix: String
+	nameStartsWith: String
+	firstNameStartsWith: String
+	middleNameStartsWith: String
+	lastNameStartsWith: String
+	modifiedSince: DateTime
+	comics: [ID!]
+	series: [ID!]
+	events: [ID!]
+	stories: [ID!]
+}
+
+enum CreatorOrderBy {
+	lastName_asc
+	firstName_asc
+	middleName_asc
+	suffix_asc
+	modified_asc
+	lastName_desc
+	firstName_desc
+	middleName_desc
+	suffix_desc
+	modified_desc
+}
+
+input EventsWhereInput {
+	name: String
+	nameStartsWith: String
+	modifiedSince: DateTime
+	creators: [ID!]
+	characters: [ID!]
+	series: [ID!]
+	comics: [ID!]
+}
+
+enum EventsOrderBy {
+	name_asc
+	startDate_asc
+	modified_asc
+	name_desc
+	startDate_desc
+	modified_desc
+}
+
+input SeriesWhereInput {
+	title: String
+	titleStartsWith: String
+	startYear: Int
+	modifiedSince: DateTime
+	contains: ComicFormat
+	seriesType: SeriesType
+	comics: [ID!]
+	stories: [ID!]
+	events: [ID!]
+	creators: [ID!]
+	characters: [ID!]
+}
+
+enum SeriesOrderBy {
+	title_asc
+	modified_asc
+	startYear_asc
+	title_desc
+	modified_desc
+	startYear_desc
+}
+
+input StoriesWhereInput {
+	modifiedSince: DateTime
+	comics: [ID!]
+	series: [ID!]
+	events: [ID!]
+	creators: [ID!]
+	characters: [ID!]
+}
+
+enum StoriesOrderBy {
+	id_asc
+	id_desc
+	modified_asc
+	modified_desc
+}
+
+interface MarvelNode {
+	id: ID
+	resourceURI: String
+	thumbnail: String
+	modified: String
+}
+
+type Summary {
+	resourceURI: String
+	name: String
+	role: String
+	type: String
+}
+
+type Character implements MarvelNode {
+	id: ID
+	name: String
+	thumbnail: String
+	description: String
+	modified: String
+	resourceURI: String
+	urls: [MarvelUrl!]
+	comics: [Summary!]
+	series: [Summary!]
+	events: [Summary!]
+	stories: [Summary!]
+}
+type Comic implements MarvelNode {
+	id: ID
+	digitalId: Int
+	title: String
+	issueNumber: Int
+	variantDescription: String
+	description: String
+	modified: String
+	isbn: String
+	upc: String
+	diamondCode: String
+	ean: String
+	issn: String
+	format: String
+	textObjects: [TextObject!]
+	resourceURI: String
+	urls: [MarvelUrl!]
+	series: Summary
+	variants: [Summary!]
+	collections: [Summary!]
+	collectedIssues: [Summary!]
+	dates: [ComicDate!]
+	prices: [ComicPrice!]
+	thumbnail: String
+	images: [ComicImage!]
+	characters: [Summary!]
+	events: [Summary!]
+	stories: [Summary!]
+	creators: [Summary!]
+}
+
+type Creator implements MarvelNode {
+	id: ID
+	firstName: String
+	middleName: String
+	lastName: String
+	suffix: String
+	fullName: String
+	modified: String
+	resourceURI: String
+	urls: [MarvelUrl!]
+	thumbnail: String
+	series: [Summary!]
+	stories: [Summary!]
+	comics: [Summary!]
+	events: [Summary!]
+}
+
+type Event implements MarvelNode {
+	id: ID
+	title: String
+	description: String
+	resourceURI: String
+	urls: [MarvelUrl!]
+	modified: String
+	start: String
+	end: String
+	thumbnail: String
+	series: [Summary!]
+	stories: [Summary!]
+	comics: [Summary!]
+	characters: [Summary!]
+	creators: [Summary!]
+	next: Summary
+	previous: Summary
+}
+
+type Series implements MarvelNode {
+	id: ID
+	title: String
+	description: String
+	resourceURI: String
+	urls: [MarvelUrl!]
+	startYear: Int
+	endYear: Int
+	rating: String
+	modified: String
+	thumbnail: String
+	comics: [Summary!]
+	stories: [Summary!]
+	events: [Summary!]
+	characters: [Summary!]
+	creators: [Summary!]
+	next: Summary
+	previous: Summary
+}
+
+type Story implements MarvelNode {
+	id: ID
+	title: String
+	description: String
+	resourceURI: String
+	type: String
+	modified: String
+	thumbnail: String
+	comics: [Summary!]
+	events: [Summary!]
+	characters: [Summary!]
+	creators: [Summary!]
+	series: [Summary!]
+	originalIssue: Summary
+}
+
+type ComicImage {
+	path: String
+	extension: String
+}
+
+type ComicDate {
+	type: String
+	date: String
+}
+
+type ComicPrice {
+	type: String
+	price: Int
+}
+
+type TextObject {
+	type: String
+	language: String
+	text: String
+}
+
+type MarvelUrl {
+	type: String
+	url: String
+}
