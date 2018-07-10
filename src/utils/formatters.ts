@@ -81,29 +81,41 @@ export const formatThumbnail = (thumbnail) => {
 
 export const getSummary = {
 	comics: async (c) =>
-		c.comics.items.map((comic) => ({
-			...comic
-		})),
+		optionalChaining(() => c.comics)
+			? c.comics.items.map((comic) => ({
+					...comic
+			  }))
+			: null,
 	series: async (c) =>
-		c.series.items.map((s) => ({
-			...s
-		})),
+		optionalChaining(() => c.series)
+			? c.series.items.map((s) => ({
+					...s
+			  }))
+			: null,
 	events: async (c) =>
-		c.events.items.map((event) => ({
-			...event
-		})),
+		optionalChaining(() => c.events)
+			? c.events.items.map((event) => ({
+					...event
+			  }))
+			: null,
 	stories: async (c) =>
-		c.stories.items.map((story) => ({
-			...story
-		})),
+		optionalChaining(() => c.stories)
+			? c.stories.items.map((story) => ({
+					...story
+			  }))
+			: null,
 	characters: async (c) =>
-		c.characters.items.map((ch) => ({
-			...ch
-		})),
+		optionalChaining(() => c.characters)
+			? c.characters.items.map((ch) => ({
+					...ch
+			  }))
+			: null,
 	creators: async (c) =>
-		c.creators.items.map((creator) => ({
-			...creator
-		}))
+		optionalChaining(() => c.creators)
+			? c.creators.items.map((creator) => ({
+					...creator
+			  }))
+			: null
 };
 
 export const orderByDirectory = {
