@@ -61,7 +61,7 @@ export default class MarvelApiModel {
         limit
       });
 
-      const response = await marvel.get(`/characters?${params}`);
+      const response = await this.marvel.get(`/characters?${params}`);
       return await formatConnection["characters"](response.data.data.results);
     } catch (error) {
       console.error(error);
@@ -94,7 +94,7 @@ export default class MarvelApiModel {
         offset,
         limit
       });
-      const response = await marvel.get(`/comics?${params}`);
+      const response = await this.marvel.get(`/comics?${params}`);
       return await formatConnection["comics"](response.data.data.results);
     } catch (error) {
       console.error(error);
@@ -114,7 +114,7 @@ export default class MarvelApiModel {
         offset,
         limit
       });
-      const response = await marvel.get(`/creators?${params}`);
+      const response = await this.marvel.get(`/creators?${params}`);
       return await formatConnection["creators"](response.data.data.results);
     } catch (error) {
       console.error(error);
@@ -134,7 +134,7 @@ export default class MarvelApiModel {
         offset,
         limit
       });
-      const response = await marvel.get(`/events?${params}`);
+      const response = await this.marvel.get(`/events?${params}`);
       return await formatConnection["events"](response.data.data.results);
     } catch (error) {
       console.error(error);
@@ -167,7 +167,7 @@ export default class MarvelApiModel {
         offset,
         limit
       });
-      const response = await marvel.get(`/series?${params}`);
+      const response = await this.marvel.get(`/series?${params}`);
       return await formatConnection["series"](response.data.data.results);
     } catch (error) {
       console.error(error);
@@ -187,7 +187,7 @@ export default class MarvelApiModel {
         offset,
         limit
       });
-      const response = await marvel.get(`/stories?${params}`);
+      const response = await this.marvel.get(`/stories?${params}`);
       return await formatConnection["stories"](response.data.data.results);
     } catch (error) {
       console.error(error);
