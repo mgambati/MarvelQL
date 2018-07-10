@@ -1,6 +1,6 @@
 
 for var in $(printenv); do
-    if [[ $var == * ]] ;
+    if [[ $var == PRISMA_* ]] ;
     then
         echo "$var" >> .env
     fi
