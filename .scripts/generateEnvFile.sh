@@ -1,6 +1,6 @@
 
 for var in $(printenv); do
-    if [[ $var == GRAPHQL_* ]] ;
+    if [[ $var == * ]] ;
     then
         echo "$var" >> .env
     fi
