@@ -1,0 +1,48 @@
+image: node:9.8.0-alpine
+
+.staging_variables: &staging_variables
+  NOW_ALIAS: marvel-graphql-staging.now.sh
+
+.production_variables: &production_variables
+  NOW_ALIAS: marvel-graphql.now.sh
+
+.deploy_now_sh_template: &deploy_now_sh
+  image: node:7.9.0
+  script:
+    - yarn install
+    - bash ./.scripts/generateEnvFile.sh
+    - bash ./.scripts/deploy-now.sh
+
+variables:
+  NOW_TEAM: novvum
+  NOW_PROJECT: marvel-graphql
+
+.deploy_up_main_branches_only_template: &deploy_main_branches_only
+  only:
+    - master
+
+.deploy_up_branches_except_template: &deploy_up_branches_except
+  except:
+    - master
+
+stages:
+  - deploy
+
+# staging-now:
+#   stage: deploy
+#   variables:
+#     <<: *staging_variables
+#   <<: *deploy_now_sh
+#   environment:
+#     name: staging
+#   when: manual
+
+production-now:
+  stage: deploy
+  variables:
+    <<: *production_variables
+  <<: *deploy_now_sh
+  environment:
+    name: production
+  # when: manual
+  <<: *deploy_main_branches_only

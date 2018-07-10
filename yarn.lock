@@ -3568,6 +3568,10 @@ normalize-path@^2.0.0, normalize-path@^2.0.1, normalize-path@^2.1.1:
   dependencies:
     remove-trailing-separator "^1.0.1"
 
+now@^11.2.8:
+  version "11.2.8"
+  resolved "https://registry.npmjs.org/now/-/now-11.2.8.tgz#bad9617cd065a2ce7e24e99fed8e88f28f40c327"
+
 npm-bundled@^1.0.1:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/npm-bundled/-/npm-bundled-1.0.3.tgz#7e71703d973af3370a9591bafe3a63aca0be2308"
