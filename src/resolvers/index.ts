@@ -7,7 +7,6 @@ import { importSchema } from 'graphql-import';
 import * as path from 'path';
 import * as favorites from '../resolvers/MarvelFavorite';
 import Mutation from '../resolvers/Mutation';
-// import { Subscription } from './Subscription'
 import { AuthPayload } from './AuthPayload';
 
 const resolvers = {
