@@ -7,7 +7,7 @@ image: node:9.8.0-alpine
   NOW_ALIAS: marvel-graphql.now.sh
   PRISMA_MARVEL_PRIVATE_KEY: 140a52c97a8ef92f028d89a543e83d711f9e80a0
   PRISMA_MARVEL_API_KEY: ba0613cb148841f5091cb0075b5076d2
-  PRISMA_ENDPOINT: https://us1.prisma.sh/raj-singh/marvel-api/dev
+  PRISMA_ENDPOINT: https://us1.prisma.sh/raj-singh/marvel-api/production
   PRISMA_SECRET: mysecret123
   APP_SECRET: thanoswasntwrong
 
