@@ -1,4 +1,4 @@
-import { Context } from "../utils/getContext";
+import { Context } from '../utils/getContext';
 
 export const Query = {
 	async characters(_, args, ctx: Context, info) {
@@ -66,6 +66,18 @@ export const Query = {
 	},
 	async getStory(_, args, ctx: Context, info) {
 		return await ctx.storiesModel.getOne(args.where);
+	},
+	user(_, args, ctx: Context, info) {
+		return ctx.db.query.user(args, info);
+	},
+	users(_, args, ctx: Context, info) {
+		return ctx.db.query.users(args, info);
+	},
+	favorite(_, args, ctx: Context, info) {
+		return ctx.db.query.favorite(args, info);
+	},
+	favorites(_, args, ctx: Context, info) {
+		return ctx.db.query.favorites(args, info);
 	}
 	// me(parent, args, ctx: Context, info) {
 	// 	const id = getUserId(ctx);

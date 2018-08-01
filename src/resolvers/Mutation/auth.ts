@@ -1,6 +1,6 @@
-import * as bcrypt from "bcryptjs";
-import * as jwt from "jsonwebtoken";
-import { Context } from "../../utils/getContext";
+import * as bcrypt from 'bcryptjs';
+import * as jwt from 'jsonwebtoken';
+import { Context } from '../../utils/getContext';
 
 export const auth = {
 	async signup(parent, args, ctx: Context, info) {
@@ -23,7 +23,7 @@ export const auth = {
 
 		const valid = await bcrypt.compare(password, user.password);
 		if (!valid) {
-			throw new Error("Invalid password");
+			throw new Error('Invalid password');
 		}
 
 		return {

@@ -1,7 +1,7 @@
-import axios from "axios";
-const qs = require("qs");
-import { baseURL, hash, ts, apikey } from "../utils";
-import { orderByDirectory, formatEnum } from "../utils/formatters";
+import axios from 'axios';
+const qs = require('qs');
+import { baseURL, hash, ts, apikey } from '../utils';
+import { orderByDirectory, formatEnum } from '../utils/formatters';
 
 export default class MarvelApiModel {
 	marvel;
@@ -10,7 +10,7 @@ export default class MarvelApiModel {
 			baseURL
 		});
 	}
-	async createParams(args: any) {
+	async createParams(args?: any) {
 		return await qs.stringify({ ...args, hash, ts, apikey });
 	}
 	getFormattedEnum(arg) {

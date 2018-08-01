@@ -1,6 +1,6 @@
-import MarvelApiModel from "./MarvelApiModel";
-import { CreatorWhereInput, CreatorOrderBy, optionalChaining } from "../utils";
-import { formatThumbnail, getSummary } from "../utils/formatters";
+import MarvelApiModel from './MarvelApiModel';
+import { CreatorWhereInput, CreatorOrderBy, optionalChaining } from '../utils';
+import { formatThumbnail, getSummary } from '../utils/formatters';
 
 export default class CreatorModel extends MarvelApiModel {
 	constructor() {
@@ -18,6 +18,16 @@ export default class CreatorModel extends MarvelApiModel {
 			throw new Error(error);
 		}
 	}
+	async getById(id: any) {
+		try {
+			const params = await this.createParams();
+			const response = await this.marvel.get(`/creators/${id}?${params}`);
+			return this.formatApiData(response.data.data.results[0]);
+		} catch (error) {
+			console.error(error);
+			throw new Error(error);
+		}
+	}
 	async getMany(
 		where: CreatorWhereInput,
 		orderBy: CreatorOrderBy,
@@ -27,7 +37,7 @@ export default class CreatorModel extends MarvelApiModel {
 		try {
 			const params = await this.createParams({
 				...where,
-				orderBy: this.getOrderBy(orderBy, "creators"),
+				orderBy: this.getOrderBy(orderBy, 'creators'),
 				offset,
 				limit
 			});
@@ -44,10 +54,10 @@ export default class CreatorModel extends MarvelApiModel {
 		return {
 			...item,
 			thumbnail: formatThumbnail(item.thumbnail),
-			series: getSummary["series"](item),
-			comics: getSummary["comics"](item),
-			stories: getSummary["stories"](item),
-			events: getSummary["events"](item)
+			series: getSummary['series'](item),
+			comics: getSummary['comics'](item),
+			stories: getSummary['stories'](item),
+			events: getSummary['events'](item)
 		};
 	}
 }

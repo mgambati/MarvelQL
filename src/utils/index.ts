@@ -24,7 +24,7 @@ export const hash = crypto
 	.digest("hex");
 
 export type CharacterWhereInput = {
-	id?: number;
+	id?: any;
 	name?: string;
 	nameStartsWith?: string;
 	modifiedSince?: DateTime;

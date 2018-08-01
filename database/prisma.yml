@@ -2,7 +2,10 @@
 endpoint: ${env:PRISMA_ENDPOINT}
 
 # The file containing the definition of your data model.
-datamodel: datamodel.graphql
+datamodel:
+  - datamodel/types.graphql
+  - datamodel/enums.graphql
+
 
 # Seed your service with initial data based on `seed.graphql`.
 seed:
@@ -21,4 +24,5 @@ hooks:
 # If specified, the `secret` must be used to generate a JWT which is attached
 # to the `Authorization` header of HTTP requests made against the Prisma API.
 # Info: https://www.prisma.io/docs/reference/prisma-api/concepts-utee3eiquo#authentication
-# secret: ${env:PRISMA_SECRET}
+secret: ${env:PRISMA_SECRET}
+
