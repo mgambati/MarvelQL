@@ -9,7 +9,7 @@ image: node:9.8.0-alpine
   PRISMA_MARVEL_API_KEY: ba0613cb148841f5091cb0075b5076d2
   PRISMA_ENDPOINT: https://us1.prisma.sh/public-spiralswisher-673/my-app/dev
   PRISMA_SECRET: mysecret123
-  APP_SECRET: jwtsecret123
+  APP_SECRET: thanoswasntwrong
 
 .deploy_now_sh_template: &deploy_now_sh
   image: node:7.9.0
