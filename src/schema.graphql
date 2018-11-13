@@ -1,10 +1,4 @@
-# import *, User from "./generated/prisma.graphql"
-type Mutation {
-	signup(email: String!, password: String!, name: String!): AuthPayload!
-	login(email: String!, password: String!): AuthPayload!
-	favorite(input: FavoriteCreateInput!): Favorite!
-	unfavorite(id: ID!): Favorite!
-}
+# import * from "./generated/prisma.graphql"
 
 type Query {
 	characters(
@@ -375,9 +369,4 @@ type TextObject {
 type MarvelUrl {
 	type: String
 	url: String
-}
-
-type AuthPayload {
-	token: String!
-	user: User!
 }
