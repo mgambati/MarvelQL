@@ -2,17 +2,17 @@ type User {
 	id: ID! @unique
 	createdAt: DateTime!
 	updatedAt: DateTime!
-	email: String! @unique
-	password: String!
+	# email: String! @unique
+	# password: String!
 	name: String!
-	favorites: [Favorite!]! @relation(name: "UserFavorites", onDelete: CASCADE)
+	# favorites: [Favorite!]! @relation(name: "UserFavorites", onDelete: CASCADE)
 }
 
-type Favorite {
-	id: ID! @unique
-	marvelId: ID
-	user: User @relation(name: "UserFavorites", onDelete: SET_NULL)
-	createdAt: DateTime!
-	updatedAt: DateTime!
-	type: FavoriteMarvelType!
-}
+# type Favorite {
+# 	id: ID! @unique
+# 	marvelId: ID
+# 	user: User @relation(name: "UserFavorites", onDelete: SET_NULL)
+# 	createdAt: DateTime!
+# 	updatedAt: DateTime!
+# 	type: FavoriteMarvelType!
+# }

@@ -1,5 +1,4 @@
 import { GraphQLServer } from 'graphql-yoga';
-import { Prisma } from './generated/prisma';
 import MarvelApiModel from './models/MarvelApiModel';
 import { schema, fragmentReplacements } from './resolvers';
 import CharacterModel from './models/CharacterModel';
@@ -14,12 +13,6 @@ const server = new GraphQLServer({
 	schema,
 	context: (req) => ({
 		...req,
-		db: new Prisma({
-			endpoint: process.env.PRISMA_ENDPOINT, // the endpoint of the Prisma API (value set in `.env`)
-			debug: true, // log all GraphQL queries & mutations sent to the Prisma API
-			secret: process.env.PRISMA_SECRET, // only needed if specified in `database/prisma.yml` (value set in `.env`)
-			fragmentReplacements
-		}),
 		api: new MarvelApiModel(),
 		charactersModel: new CharacterModel(),
 		comicsModel: new ComicModel(),
