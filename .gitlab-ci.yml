@@ -17,6 +17,7 @@ image: node:9.8.0-alpine
     - yarn install
     - bash ./.scripts/generateEnvFile.sh
     - bash ./.scripts/deploy-now.sh
+    - yarn apollo:publish
 
 variables:
   NOW_TEAM: novvum
