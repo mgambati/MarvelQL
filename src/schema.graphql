@@ -118,6 +118,9 @@ type Query {
 }
 
 input CharacterWhereInput {
+	"""
+	Returns only characters matching the specified id
+	"""
 	id: Int
 	"""
 	Returns only characters matching the specified full character name (e.g. Spider-Man).
@@ -323,13 +326,28 @@ enum StoriesOrderBy {
 }
 
 interface MarvelNode {
+	"""
+	A unique ID to a particular marvel resource.
+	"""
 	id: ID
+	"""
+	The canonical URL identifier for a resource.
+	"""
 	resourceURI: String
+	"""
+	The url path for a canonical photo to the resource
+	"""
 	thumbnail: String
+	"""
+	A date for which the resource has been modified
+	"""
 	modified: String
 }
 
 type Summary {
+	"""
+	The canonical URL identifier for this summary resource.
+	"""
 	resourceURI: String
 	name: String
 	role: String
@@ -337,107 +355,315 @@ type Summary {
 }
 
 type Character implements MarvelNode {
+	"""
+	The unique ID of the character resource.
+	"""
 	id: ID
+	"""
+	The name of the character.
+	"""
 	name: String
+	"""
+	The url path of to the image related to the character.
+	"""
 	thumbnail: String
+	"""
+	A short bio or description of the character.
+	"""
 	description: String
+	"""
+	The date the resource was most recently modified.
+	"""
 	modified: String
+	"""
+	The canonical URL identifier for this resource.
+	"""
 	resourceURI: String
+	"""
+	A set of public web site URLs for the resource.
+	"""
 	urls: [MarvelUrl!]
 	"""
-	Fetches lists of comics filtered by a character id.
+	Lists of comics filtered by a character id.
 	"""
 	comics: [Summary!]
 	"""
-	Fetches lists of series filtered by a character id.
+	Lists of series filtered by a character id.
 	"""
 	series: [Summary!]
 	"""
-	Fetches lists of events filtered by a character id.
+	Lists of events filtered by a character id.
 	"""
 	events: [Summary!]
 	"""
-	Fetches lists of stories filtered by a character id.
+	Lists of stories filtered by a character id.
 	"""
 	stories: [Summary!]
 }
 type Comic implements MarvelNode {
+	"""
+	The unique ID of the comic resource.
+	"""
 	id: ID
+	"""
+	The ID of the digital comic representation of this comic. Will be 0 if the comic is not available digitally.
+	"""
 	digitalId: Int
+	"""
+	The canonical title of the comic.
+	"""
 	title: String
+	"""
+	The number of the issue in the series (will generally be 0 for collection formats).
+	"""
 	issueNumber: Int
+	"""
+	If the issue is a variant (e.g. an alternate cover, second printing, or director’s cut), a text description of the variant.
+	"""
 	variantDescription: String
+	"""
+	The preferred description of the comic.
+	"""
 	description: String
+	"""
+	The date the resource was most recently modified.
+	"""
 	modified: String
+	"""
+	The ISBN for the comic (generally only populated for collection formats).
+	"""
 	isbn: String
+	"""
+	The UPC barcode number for the comic (generally only populated for periodical formats)
+	"""
 	upc: String
+	"""
+	The Diamond code for the comic.
+	"""
 	diamondCode: String
+	"""
+	The EAN barcode for the comic.
+	"""
 	ean: String
+	"""
+	The ISSN barcode for the comic.
+	"""
 	issn: String
+	"""
+	The publication format of the comic e.g. comic, hardcover, trade paperback.
+	"""
 	format: String
+	"""
+	A set of descriptive text blurbs for the comic.
+	"""
 	textObjects: [TextObject!]
+	"""
+	The canonical URL identifier for this resource.
+	"""
 	resourceURI: String
+	"""
+	A set of public web site URLs for the resource.
+	"""
 	urls: [MarvelUrl!]
+	"""
+	A list of series (Summary Types) to this comic
+	"""
 	series: Summary
+	"""
+	A list of variant issues for this comic (includes the "original" issue if the current issue is a variant)
+	"""
 	variants: [Summary!]
+	"""
+	A list of collections which include this comic (will generally be empty if the comic's format is a collection).
+	"""
 	collections: [Summary!]
+	"""
+	A list of issues collected in this comic (will generally be empty for periodical formats such as "comic" or magazine").
+	"""
 	collectedIssues: [Summary!]
+	"""
+	A list of key dates for this comic.
+	"""
 	dates: [ComicDate!]
+	"""
+	A list of prices for this comic.
+	"""
 	prices: [ComicPrice!]
+	"""
+	The url path of to the image related to the comic.
+	"""
 	thumbnail: String
+	"""
+	A list of promotional images associated with this comic.
+	"""
 	images: [ComicImage!]
+	"""
+	A list of characters (Summary Types) to this comic
+	"""
 	characters: [Summary!]
+	"""
+	A list of events (Summary Types) related to this comic
+	"""
 	events: [Summary!]
+	"""
+	A list of stories (Summary Types) related to this comic
+	"""
 	stories: [Summary!]
+	"""
+	A list of creators (Summary Types) related to this comic
+	"""
 	creators: [Summary!]
 }
 
 type Creator implements MarvelNode {
+	"""
+	The unique ID of the creator resource.
+	"""
 	id: ID
+	"""
+	The first name of the creator
+	"""
 	firstName: String
+	"""
+	The middle name of the creator
+	"""
 	middleName: String
+	"""
+	The last name of the creator
+	"""
 	lastName: String
+	"""
+	The suffix of the creator
+	"""
 	suffix: String
+	"""
+	The full name of the creator
+	"""
 	fullName: String
+	"""
+	The date for which the creator resource was last modified
+	"""
 	modified: String
+	"""
+	The canonical URL identifier for this resource.
+	"""
 	resourceURI: String
+	"""
+	A set of public web site URLs for the resource.
+	"""
 	urls: [MarvelUrl!]
+	"""
+	The url path of to the image related to the creator.
+	"""
 	thumbnail: String
+	"""
+	A list of series (Summary Types) related to this creator
+	"""
 	series: [Summary!]
+	"""
+	A list of stories (Summary Types) related to this creator
+	"""
 	stories: [Summary!]
+	"""
+	A list of comics (Summary Types) related to this creator
+	"""
 	comics: [Summary!]
+	"""
+	A list of events (Summary Types) related to this creator
+	"""
 	events: [Summary!]
 }
 
 type Event implements MarvelNode {
+	"""
+	The unique ID of the event resource.
+	"""
 	id: ID
+	"""
+	The title of the event.
+	"""
 	title: String
+	"""
+	A description of the event.
+	"""
 	description: String
+	"""
+	The canonical URL identifier for this resource.
+	"""
 	resourceURI: String
+	"""
+	A set of public web site URLs for the resource.
+	"""
 	urls: [MarvelUrl!]
+	"""
+	The date the resource was most recently modified.
+	"""
 	modified: String
+	"""
+	The date of publication of the first issue in this event.
+	"""
 	start: String
+	"""
+	The date of publication of the last issue in this event.
+	"""
 	end: String
+	"""
+	The url path of to the image related to the comic.
+	"""
 	thumbnail: String
+	"""
+	A list of series (Summary Types) related to this event
+	"""
 	series: [Summary!]
+	"""
+	A list of stories (Summary Types) related to this event
+	"""
 	stories: [Summary!]
+	"""
+	A list of comics (Summary Types) related to this event
+	"""
 	comics: [Summary!]
+	"""
+	A list of characters (Summary Types) related to this event
+	"""
 	characters: [Summary!]
+	"""
+	A list of creators (Summary Types) related to this event
+	"""
 	creators: [Summary!]
+	"""
+	The next event (Summary Type) following this event
+	"""
 	next: Summary
+	"""
+	The previous event (Summary Type) leading up to this event
+	"""
 	previous: Summary
 }
 
 type Series implements MarvelNode {
+	"""
+	The unique ID of the series resource.
+	"""
 	id: ID
+
 	title: String
 	description: String
+	"""
+	The canonical URL identifier for this resource.
+	"""
 	resourceURI: String
+	"""
+	A set of public web site URLs for the resource.
+	"""
 	urls: [MarvelUrl!]
 	startYear: Int
 	endYear: Int
 	rating: String
 	modified: String
+	"""
+	The url path of to the image related to the comic.
+	"""
 	thumbnail: String
 	comics: [Summary!]
 	stories: [Summary!]
@@ -449,12 +675,21 @@ type Series implements MarvelNode {
 }
 
 type Story implements MarvelNode {
+	"""
+	The unique ID of the story resource.
+	"""
 	id: ID
 	title: String
 	description: String
+	"""
+	The canonical URL identifier for this resource.
+	"""
 	resourceURI: String
 	type: String
 	modified: String
+	"""
+	The url path of to the image related to the comic.
+	"""
 	thumbnail: String
 	comics: [Summary!]
 	events: [Summary!]
