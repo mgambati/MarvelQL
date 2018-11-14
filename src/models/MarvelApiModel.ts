@@ -23,6 +23,6 @@ export default class MarvelApiModel {
 		if (!arg) {
 			return null;
 		}
-		return orderByDirectory[type[arg]];
+		return orderByDirectory[type][arg];
 	}
 }

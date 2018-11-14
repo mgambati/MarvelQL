@@ -1,6 +1,6 @@
 import { GraphQLServer } from 'graphql-yoga';
 import MarvelApiModel from './models/MarvelApiModel';
-import { schema, fragmentReplacements } from './resolvers';
+import { schema } from './resolvers';
 import CharacterModel from './models/CharacterModel';
 import ComicModel from './models/ComicModel';
 import CreatorModel from './models/CreatorModel';

@@ -1,65 +1,172 @@
 # import * from "./generated/prisma.graphql"
 
 type Query {
+	"""
+	Fetches a list of characters.
+	"""
 	characters(
 		where: CharacterWhereInput
+		"""
+		Skips the specified number of resources in the result set.
+		"""
 		offset: Int
+		"""
+		Limit the result set to the specified number of resources.
+		"""
 		limit: Int
 		orderBy: CharacterOrderBy
 	): [Character!]
+	"""
+	Fetches a single character by id.
+	"""
 	getCharacter(where: CharacterWhereInput): Character
+	"""
+	Fetches a list of comics.
+	"""
 	comics(
 		where: ComicWhereInput
 		orderBy: ComicOrderBy
+		"""
+		Skips the specified number of resources in the result set.
+		"""
 		offset: Int
+		"""
+		Limit the result set to the specified number of resources.
+		"""
 		limit: Int
 	): [Comic!]
+	"""
+	Fetches a single comic by id.
+	"""
 	getComic(where: ComicWhereInput): Comic
+	"""
+	Fetches a list of creators.
+	"""
 	creators(
 		where: CreatorWhereInput
 		orderBy: CreatorOrderBy
+		"""
+		Skips the specified number of resources in the result set.
+		"""
 		offset: Int
+		"""
+		Limit the result set to the specified number of resources.
+		"""
 		limit: Int
 	): [Creator!]
+	"""
+	Fetches a single creator by id.
+	"""
 	getCreator(where: CreatorWhereInput): Creator
+	"""
+	Fetches a list of events.
+	"""
 	events(
 		where: EventsWhereInput
 		orderBy: EventsOrderBy
+		"""
+		Skips the specified number of resources in the result set.
+		"""
 		offset: Int
+		"""
+		Limit the result set to the specified number of resources.
+		"""
 		limit: Int
 	): [Event!]
+	"""
+	Fetches a single event by id.
+	"""
 	getEvent(where: EventsWhereInput): Event
+	"""
+	Fetches a list of series.
+	"""
 	series(
 		where: SeriesWhereInput
 		orderBy: SeriesOrderBy
+		"""
+		Skips the specified number of resources in the result set.
+		"""
 		offset: Int
+		"""
+		Limit the result set to the specified number of resources.
+		"""
 		limit: Int
 	): [Series!]
+	"""
+	Fetches a single series by id.
+	"""
 	getSeries(where: SeriesWhereInput): Series
+	"""
+	Fetches a list of stories.
+	"""
 	stories(
 		where: StoriesWhereInput
 		orderBy: StoriesOrderBy
+		"""
+		Skips the specified number of resources in the result set.
+		"""
 		offset: Int
+		"""
+		Limit the result set to the specified number of resources.
+		"""
 		limit: Int
 	): [Story!]
+	"""
+	Fetches a single story by id.
+	"""
 	getStory(where: StoriesWhereInput): Story
 }
 
 input CharacterWhereInput {
 	id: Int
+	"""
+	Returns only characters matching the specified full character name (e.g. Spider-Man).
+	"""
 	name: String
+	"""
+	Returns characters with names that begin with the specified string (e.g. Sp).
+	"""
 	nameStartsWith: String
+	"""
+	Returns only characters which have been modified since the specified date.
+	"""
 	modifiedSince: String
+	"""
+	Returns only characters which appear in the specified comics (accepts a comma-separated list of ids).
+	"""
 	comics: [ID!]
+	"""
+	Returns only characters which appear the specified series (accepts a comma-separated list of ids).
+	"""
 	series: [ID!]
+	"""
+	Returns only characters which appear in the specified events (accepts a comma-separated list of ids).
+	"""
 	events: [ID!]
+	"""
+	Returns only characters which appear the specified stories (accepts a comma-separated list of ids).
+	"""
 	stories: [ID!]
 }
-
+"""
+Orders the result set by a field or fields. Multiple values are given priority in the order in which they are passed.
+"""
 enum CharacterOrderBy {
+	"""
+	Returns character in A-Z order (i.e 3-D Man, A-Bomb (HAS), A.I.M, etc...)
+	"""
 	name_asc
+	"""
+	Returns character in Z-A order (i.e , etc...)
+	"""
 	name_desc
+	"""
+	Returns character's modification date in ascending order
+	"""
 	modified_asc
+	"""
+	Returns character's modification date in descending order
+	"""
 	modified_desc
 }
 
@@ -237,9 +344,21 @@ type Character implements MarvelNode {
 	modified: String
 	resourceURI: String
 	urls: [MarvelUrl!]
+	"""
+	Fetches lists of comics filtered by a character id.
+	"""
 	comics: [Summary!]
+	"""
+	Fetches lists of series filtered by a character id.
+	"""
 	series: [Summary!]
+	"""
+	Fetches lists of events filtered by a character id.
+	"""
 	events: [Summary!]
+	"""
+	Fetches lists of stories filtered by a character id.
+	"""
 	stories: [Summary!]
 }
 type Comic implements MarvelNode {
