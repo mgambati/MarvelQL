@@ -116,7 +116,9 @@ type Query {
 	"""
 	getStory(where: StoriesWhereInput): Story
 }
-
+"""
+Optional filters for characters. See notes on individual inputs below.
+"""
 input CharacterWhereInput {
 	"""
 	Returns only characters matching the specified id
@@ -172,30 +174,76 @@ enum CharacterOrderBy {
 	"""
 	modified_desc
 }
-
+"""
+Filter the series by publication frequency type.
+"""
 enum SeriesType {
+	"""
+	Filter the series with a collection publication frequency.
+	"""
 	collection
+	"""
+	Filter the series with a one shot publication frequency.
+	"""
 	one_shot
+	"""
+	Filter the series with a limited publication frequency.
+	"""
 	limited
+	"""
+	Filter the series with a ongoing publication frequency.
+	"""
 	ongoing
 }
-
+"""
+Return only series containing one or more comics with the specified format.
+"""
 enum ComicFormat {
+	"""
+	Return only series containing one or more comics with the specified format of a magazine.
+	"""
 	magazine
+	"""
+	Return only series containing one or more comics with the specified format of a trade paperback.
+	"""
 	trade_paperback
+	"""
+	Return only series containing one or more comics with the specified format of a hardcover.
+	"""
 	hardcover
+	"""
+	Return only series containing one or more comics with the specified format of a digest.
+	"""
 	digest
+	"""
+	Return only series containing one or more comics with the specified format of a graphic novel.
+	"""
 	graphic_novel
+	"""
+	Return only series containing one or more comics with the specified format of a comic.
+	"""
 	comic
+	"""
+	Return only series containing one or more comics with the specified format of a digital comic.
+	"""
 	digital_comic
+	"""
+	Return only series containing one or more comics with the specified format of an infinite comic.
+	"""
 	infinite_comic
 }
 
+"""
+Filter by the issue format type (comic or collection).
+"""
 enum ComicFormatType {
 	comic
 	collection
 }
 
+"""
+Returns a resource within a predefined date range.
+"""
 enum DateDescriptor {
 	lastWeek
 	thisWeek
@@ -203,28 +251,94 @@ enum DateDescriptor {
 	thisMonth
 }
 
+"""
+Optional filters for comics. See notes on individual inputs below.
+"""
 input ComicWhereInput {
+	"""
+	Filter by the issue format (e.g. comic, digital comic, hardcover).
+	"""
 	format: ComicFormat
+	"""
+	Filter by the issue format type (comic or collection).
+	"""
 	formatType: ComicFormatType
+	"""
+	Exclude variants (alternate covers, secondary printings, director's cuts, etc.) from the result set.
+	"""
 	noVariants: Boolean
+	"""
+	Return comics within a predefined date range.
+	"""
 	dateDescriptor: DateDescriptor
+	"""
+	Returns comics within a predefined date range. Dates must be specified as date1,date2 (e.g. 2013-01-01,2013-01-02). Dates are preferably formatted as YYYY-MM-DD but may be sent as any common date format.
+	"""
 	dateRange: Int
+	"""
+	Filter by diamond code.
+	"""
 	diamondCode: String
+	"""
+	Filter by digital comic id.
+	"""
 	digitalId: Int
+	"""
+	Filter by UPC.
+	"""
 	upc: String
+	"""
+	Filter by ISBN.
+	"""
 	isbn: String
+	"""
+	Filter by EAN.
+	"""
 	ean: String
+	"""
+	Filter by ISSN.
+	"""
 	issn: String
+	"""
+	Include only results which are available digitally.
+	"""
 	hasDigitalIssue: Boolean
+	"""
+	Return only comics which have been modified since the specified date.
+	"""
 	modifiedSince: DateTime
+	"""
+	Return only comics which feature work by the specified creators (accepts a comma-separated list of ids).
+	"""
 	creators: [ID!]
+	"""
+	Return only comics which feature the specified characters (accepts a comma-separated list of ids).
+	"""
 	characters: [ID!]
+	"""
+	Return only comics which are part of the specified series (accepts a comma-separated list of ids).
+	"""
 	series: [ID!]
+	"""
+	Return only comics which take place in the specified events (accepts a comma-separated list of ids).
+	"""
+	events: [ID!]
+	"""
+	Return only comics which contain the specified stories (accepts a comma-separated list of ids).
+	"""
 	stories: [ID!]
+	"""
+	Return only comics in which the specified characters appear together (for example in which BOTH Spider-Man and Wolverine appear). Accepts a comma-separated list of ids.
+	"""
 	sharedAppearances: [ID!]
+	"""
+	Return only comics in which the specified creators worked together (for example in which BOTH Stan Lee and Jack Kirby did work). Accepts a comma-separated list of ids.
+	"""
 	collaborators: [ID!]
 }
-
+"""
+Order the result set by a field or fields. Multiple values are given priority in the order in which they are passed.
+"""
 enum ComicOrderBy {
 	focDate_asc
 	onSaleDate_asc
@@ -238,22 +352,67 @@ enum ComicOrderBy {
 	modified_desc
 }
 
+"""
+Optional filters for creators. See notes on individual inputs below.
+"""
 input CreatorWhereInput {
+	"""
+	Filter by creator first name (e.g. Brian).
+	"""
 	firstName: String
+	"""
+	Filter by creator middle name (e.g. Michael).
+	"""
 	middleName: String
+	"""
+	Filter by creator last name (e.g. Bendis).
+	"""
 	lastName: String
+	"""
+	Filter by suffix or honorific (e.g. Jr., Sr.).
+	"""
 	suffix: String
+	"""
+	Filter by creator names that match critera (e.g. B, St L).
+	"""
 	nameStartsWith: String
+	"""
+	Filter by creator first names that match critera (e.g. B, St L).
+	"""
 	firstNameStartsWith: String
+	"""
+	Filter by creator middle names that match critera (e.g. Mi).
+	"""
 	middleNameStartsWith: String
+	"""
+	Filter by creator last names that match critera (e.g. Ben).
+	"""
 	lastNameStartsWith: String
+	"""
+	Return only creators which have been modified since the specified date.
+	"""
 	modifiedSince: DateTime
+	"""
+	Return only creators who worked on in the specified comics (accepts a comma-separated list of ids).
+	"""
 	comics: [ID!]
+	"""
+	Return only creators who worked on the specified series (accepts a comma-separated list of ids).
+	"""
 	series: [ID!]
+	"""
+	Return only creators who worked on comics that took place in the specified events (accepts a comma-separated list of ids).
+	"""
 	events: [ID!]
+	"""
+	Return only creators who worked on the specified stories (accepts a comma-separated list of ids).
+	"""
 	stories: [ID!]
 }
 
+"""
+Order the result set by a field or fields. Multiple values are given priority in the order in which they are passed.
+"""
 enum CreatorOrderBy {
 	lastName_asc
 	firstName_asc
@@ -267,16 +426,42 @@ enum CreatorOrderBy {
 	modified_desc
 }
 
+"""
+Optional filters for events. See notes on individual inputs below.
+"""
 input EventsWhereInput {
+	"""
+	Return only events which match the specified name.
+	"""
 	name: String
+	"""
+	Return events with names that begin with the specified string (e.g. Sp).
+	"""
 	nameStartsWith: String
+	"""
+	Return only events which have been modified since the specified date.
+	"""
 	modifiedSince: DateTime
+	"""
+	Return only events which feature work by the specified creators (accepts a comma-separated list of ids).
+	"""
 	creators: [ID!]
+	"""
+	Return only events which feature the specified characters (accepts a comma-separated list of ids).
+	"""
 	characters: [ID!]
+	"""
+	Return only events which are part of the specified series (accepts a comma-separated list of ids).
+	"""
 	series: [ID!]
+	"""
+	Return only events which take place in the specified comics (accepts a comma-separated list of ids).
+	"""
 	comics: [ID!]
 }
-
+"""
+Order the result set by a field or fields. Multiple values are given priority in the order in which they are passed.
+"""
 enum EventsOrderBy {
 	name_asc
 	startDate_asc
@@ -286,20 +471,59 @@ enum EventsOrderBy {
 	modified_desc
 }
 
+"""
+Optional filters for series. See notes on individual inputs below.
+"""
 input SeriesWhereInput {
+	"""
+	Return only series matching the specified title.
+	"""
 	title: String
+	"""
+	Return series with titles that begin with the specified string (e.g. Sp).
+	"""
 	titleStartsWith: String
+	"""
+	Return only series matching the specified start year.
+	"""
 	startYear: Int
+	"""
+	Return only series which have been modified since the specified date.
+	"""
 	modifiedSince: DateTime
+	"""
+	Return only series containing one or more comics with the specified format.
+	"""
 	contains: ComicFormat
+	"""
+	Filter the series by publication frequency type.
+	"""
 	seriesType: SeriesType
+	"""
+	Return only series which contain the specified comics (accepts a comma-separated list of ids).
+	"""
 	comics: [ID!]
+	"""
+	Return only series which contain the specified stories (accepts a comma-separated list of ids).
+	"""
 	stories: [ID!]
+	"""
+	Return only series which have comics that take place during the specified events (accepts a comma-separated list of ids).
+	"""
 	events: [ID!]
+	"""
+	Return only series which feature work by the specified creators (accepts a comma-separated list of ids).
+	"""
 	creators: [ID!]
+	"""
+	Return only series which feature the specified characters (accepts a comma-separated list of ids).
+	"""
 	characters: [ID!]
 }
 
+"""
+Order the result set by a field or fields. Multiple values are given priority in the order in which they are passed.
+"""
 enum SeriesOrderBy {
 	title_asc
 	modified_asc
@@ -309,6 +533,9 @@ enum SeriesOrderBy {
 	startYear_desc
 }
 
+"""
+Optional filters for stories. See notes on individual inputs below.
+"""
 input StoriesWhereInput {
 	modifiedSince: DateTime
 	comics: [ID!]
@@ -318,6 +545,9 @@ input StoriesWhereInput {
 	characters: [ID!]
 }
 
+"""
+Order the result set by a field or fields. Multiple values are given priority in the order in which they are passed.
+"""
 enum StoriesOrderBy {
 	id_asc
 	id_desc
@@ -325,6 +555,9 @@ enum StoriesOrderBy {
 	modified_desc
 }
 
+"""
+An interface for common patterns found from the Marvel API
+"""
 interface MarvelNode {
 	"""
 	A unique ID to a particular marvel resource.
@@ -344,6 +577,9 @@ interface MarvelNode {
 	modified: String
 }
 
+"""
+Marvel Summary types for displaying relational types (i.e characters featured within a comic )
+"""
 type Summary {
 	"""
 	The canonical URL identifier for this summary resource.
@@ -354,6 +590,9 @@ type Summary {
 	type: String
 }
 
+"""
+A character resource in the Marvel universe
+"""
 type Character implements MarvelNode {
 	"""
 	The unique ID of the character resource.
@@ -400,6 +639,10 @@ type Character implements MarvelNode {
 	"""
 	stories: [Summary!]
 }
+
+"""
+A comic resource within the Marvel Universe
+"""
 type Comic implements MarvelNode {
 	"""
 	The unique ID of the comic resource.
@@ -515,6 +758,9 @@ type Comic implements MarvelNode {
 	creators: [Summary!]
 }
 
+"""
+A creator resource within the Marvel Universe
+"""
 type Creator implements MarvelNode {
 	"""
 	The unique ID of the creator resource.
@@ -573,7 +819,9 @@ type Creator implements MarvelNode {
 	"""
 	events: [Summary!]
 }
-
+"""
+An event resource within the Marvel Universe
+"""
 type Event implements MarvelNode {
 	"""
 	The unique ID of the event resource.
@@ -632,22 +880,30 @@ type Event implements MarvelNode {
 	"""
 	creators: [Summary!]
 	"""
-	The next event (Summary Type) following this event
+	The next event (Summary Type) in relation to this event
 	"""
 	next: Summary
 	"""
-	The previous event (Summary Type) leading up to this event
+	The previous event (Summary Type) in relation to this event
 	"""
 	previous: Summary
 }
 
+"""
+A series resource within the Marvel Universe
+"""
 type Series implements MarvelNode {
 	"""
 	The unique ID of the series resource.
 	"""
 	id: ID
-
+	"""
+	The canonical title of the series.
+	"""
 	title: String
+	"""
+	A description of the series.
+	"""
 	description: String
 	"""
 	The canonical URL identifier for this resource.
@@ -657,70 +913,184 @@ type Series implements MarvelNode {
 	A set of public web site URLs for the resource.
 	"""
 	urls: [MarvelUrl!]
+	"""
+	The first year of publication for the series.
+	"""
 	startYear: Int
+	"""
+	The last year of publication for the series (conventionally, 2099 for ongoing series) .
+	"""
 	endYear: Int
+	"""
+	The age-appropriateness rating for the series.
+	"""
 	rating: String
+	"""
+	The date the resource was most recently modified.
+	"""
 	modified: String
 	"""
 	The url path of to the image related to the comic.
 	"""
 	thumbnail: String
+	"""
+	A list of comics (Summary Types) related to this series
+	"""
 	comics: [Summary!]
+	"""
+	A list of stories (Summary Types) related to this series
+	"""
 	stories: [Summary!]
+	"""
+	A list of events (Summary Types) related to this series
+	"""
 	events: [Summary!]
+	"""
+	A list of characters (Summary Types) related to this series
+	"""
 	characters: [Summary!]
+	"""
+	A list of creators (Summary Types) related to this series
+	"""
 	creators: [Summary!]
+	"""
+	A list of previous series (Summary Types) in relation to this series
+	"""
 	next: Summary
+	"""
+	A list of previous series (Summary Types) in relation to this series
+	"""
 	previous: Summary
 }
 
+"""
+A stories resource within the Marvel Universe
+"""
 type Story implements MarvelNode {
 	"""
 	The unique ID of the story resource.
 	"""
 	id: ID
+	"""
+	The story title.
+	"""
 	title: String
+	"""
+	A short description of the story.
+	"""
 	description: String
 	"""
 	The canonical URL identifier for this resource.
 	"""
 	resourceURI: String
+	"""
+	The story type e.g. interior story, cover, text story.
+	"""
 	type: String
+	"""
+	The date the resource was most recently modified.
+	"""
 	modified: String
 	"""
 	The url path of to the image related to the comic.
 	"""
 	thumbnail: String
+	"""
+	A list of comics (Summary Types) related to this story
+	"""
 	comics: [Summary!]
+	"""
+	A list of events (Summary Types) related to this story
+	"""
 	events: [Summary!]
+	"""
+	A list of characters (Summary Types) related to this story
+	"""
 	characters: [Summary!]
+	"""
+	A list of creators (Summary Types) related to this story
+	"""
 	creators: [Summary!]
+	"""
+	A list of series (Summary Types) related to this story
+	"""
 	series: [Summary!]
+	"""
+	The original comic (Summary Type) with this story
+	"""
 	originalIssue: Summary
 }
 
+"""
+An object representing a comic's image.
+"""
 type ComicImage {
+	"""
+	A file path to the resources image
+	"""
 	path: String
+	"""
+	The file extension for the resource image
+	"""
 	extension: String
 }
 
+"""
+An object representing a comic's date.
+"""
 type ComicDate {
+	"""
+	A description of the date (e.g. onsale date, FOC date).
+	"""
 	type: String
+	"""
+	The date
+	"""
 	date: String
 }
 
+"""
+An object representing a comic's price
+"""
 type ComicPrice {
+	"""
+	A description of the price (e.g. print price, digital price).
+	"""
 	type: String
+	"""
+	The price of the comic resource
+	"""
 	price: Int
 }
 
+"""
+An object representing metadata for a resource commonly found within Marvel's Api
+"""
 type TextObject {
+	"""
+	The canonical type of the text object (e.g. solicit text, preview text, etc.).
+	"""
 	type: String
+	"""
+	The IETF language tag denoting the language the text object is written in.
+	"""
 	language: String
+	"""
+	The text.
+	"""
 	text: String
 }
 
+"""
+An object representing a url resource commonly found within Marvel's Api
+"""
 type MarvelUrl {
+	"""
+	A text identifier for the URL.
+	"""
 	type: String
+	"""
+	A full URL (including scheme, domain, and path).
+	"""
 	url: String
 }
