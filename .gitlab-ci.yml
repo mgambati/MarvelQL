@@ -1,4 +1,4 @@
-image: node:9.8.0-alpine
+image: node:8-alpine
 
 # .staging_variables: &staging_variables
 #   NOW_ALIAS: marvel-graphql-staging.now.sh
