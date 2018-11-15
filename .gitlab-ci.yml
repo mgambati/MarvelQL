@@ -12,7 +12,7 @@ image: node:9.8.0-alpine
   APP_SECRET: thanoswasntwrong
 
 .deploy_now_sh_template: &deploy_now_sh
-  image: node:9.8.0-alpine
+  image: node:9.8.0
   script:
     - yarn install
     #  && yarn global add apollo

@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "@types/bcryptjs": "2.4.1",
+    "apollo": "^2.1.1",
     "dotenv-cli": "1.4.0",
     "graphql-cli": "2.16.4",
     "nodemon": "1.17.5",
