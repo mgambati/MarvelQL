@@ -392,7 +392,7 @@
     "@types/express-serve-static-core" "*"
     "@types/mime" "*"
 
-"@types/ws@6.0.1", "@types/ws@^6.0.0":
+"@types/ws@^6.0.0":
   version "6.0.1"
   resolved "https://registry.npmjs.org/@types/ws/-/ws-6.0.1.tgz#ca7a3f3756aa12f62a0a62145ed14c6db25d5a28"
   dependencies:
