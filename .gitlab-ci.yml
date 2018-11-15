@@ -15,7 +15,6 @@ image: node:9.8.0-alpine
   image: node:9.8.0
   script:
     - yarn install
-    #  && yarn global add apollo
     - bash ./.scripts/generateEnvFile.sh
     - bash ./.scripts/deploy-now.sh
     - yarn apollo:publish
