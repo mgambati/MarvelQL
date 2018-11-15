@@ -1,4 +1,4 @@
-image: node:9.8.0
+image: node:9.8.0-alpine
 
 # .staging_variables: &staging_variables
 #   NOW_ALIAS: marvel-graphql-staging.now.sh
@@ -14,7 +14,7 @@ image: node:9.8.0
 .deploy_now_sh_template: &deploy_now_sh
   image: node:7.9.0
   script:
-    - yarn install
+    - yarn install && yarn global add apollo
     - bash ./.scripts/generateEnvFile.sh
     - bash ./.scripts/deploy-now.sh
     - yarn apollo:publish
