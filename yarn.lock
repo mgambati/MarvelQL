@@ -3018,6 +3018,10 @@ graphql-import@^0.5.2:
   dependencies:
     lodash "^4.17.4"
 
+graphql-iso-date@^3.6.1:
+  version "3.6.1"
+  resolved "https://registry.yarnpkg.com/graphql-iso-date/-/graphql-iso-date-3.6.1.tgz#bd2d0dc886e0f954cbbbc496bbf1d480b57ffa96"
+
 graphql-playground-html@1.5.5:
   version "1.5.5"
   resolved "http://registry.npmjs.org/graphql-playground-html/-/graphql-playground-html-1.5.5.tgz#e2aca543eb66b435ead495b45244b2604d6b2d48"

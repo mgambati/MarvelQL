@@ -1,9 +1,9 @@
-import { DateTime } from "../generated/prisma";
-
-const crypto = require("crypto");
+import { GraphQLDateTime } from 'graphql-iso-date';
+type DateTime = GraphQLDateTime;
+const crypto = require('crypto');
 export const ts = Date.now();
 
-export const baseURL = "https://gateway.marvel.com/v1/public";
+export const baseURL = 'https://gateway.marvel.com/v1/public';
 
 export const apikey = process.env.PRISMA_MARVEL_API_KEY;
 
@@ -19,9 +19,9 @@ export function optionalChaining(func) {
 }
 
 export const hash = crypto
-	.createHash("md5")
+	.createHash('md5')
 	.update(data)
-	.digest("hex");
+	.digest('hex');
 
 export type CharacterWhereInput = {
 	id?: any;

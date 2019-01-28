@@ -4,10 +4,12 @@ import { extractFragmentReplacements } from 'prisma-binding';
 import { FragmentReplacement } from 'graphql-binding';
 import { MergeSchemaHelper } from '../utils/MergeSchemaHelper';
 import { importSchema } from 'graphql-import';
+import { GraphQLDateTime } from 'graphql-iso-date';
 import * as path from 'path';
 
 const resolvers = {
-	Query
+	Query,
+	DateTime: GraphQLDateTime
 };
 
 const mergedSchema: MergeSchemaHelper = new MergeSchemaHelper();
