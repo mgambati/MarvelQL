@@ -4,7 +4,10 @@
 #
 version: 2
 jobs:
-  build:
+  deploy:
+    branches:
+      only:
+        - master
     docker:
       # specify the version you desire here
       - image: circleci/node:11.6.0
