@@ -3,6 +3,7 @@ const qs = require('qs');
 import { baseURL, hash, ts, apikey } from '../utils';
 import { orderByDirectory, formatEnum } from '../utils/formatters';
 
+// todo: Refactor get to include hash and ts;
 export default class MarvelApiModel {
 	marvel;
 	constructor() {
@@ -10,8 +11,16 @@ export default class MarvelApiModel {
 			baseURL
 		});
 	}
-	async createParams(args?: any) {
-		return await qs.stringify({ ...args, hash, ts, apikey });
+	createParams(args?: any) {
+		return qs.stringify({ ...args, hash, ts, apikey });
+	}
+
+	async getConnections(resourceUri) {
+		const params = this.createParams();
+		const response = await this.marvel.get(
+			`${resourceUri.replace(baseURL)}?${params}`
+		);
+		return response.data.data.results[0];
 	}
 	getFormattedEnum(arg) {
 		if (!arg) {

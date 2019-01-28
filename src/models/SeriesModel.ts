@@ -49,15 +49,15 @@ export default class SeriesModel extends MarvelApiModel {
 	async getMany(
 		where: SeriesWhereInput,
 		orderBy: SeriesOrderBy,
-		offset: number,
-		limit: number
+		limit: number,
+		offset: number
 	) {
 		const input = this.getWhereArgs(where);
 		const params = await this.createParams({
 			...input,
 			orderBy: this.getOrderBy(orderBy, 'series'),
-			offset,
-			limit
+			limit,
+			offset
 		});
 		const response = await this.marvel.get(`/series?${params}`);
 		return await response.data.data.results.map((item) =>

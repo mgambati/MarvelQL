@@ -6,9 +6,11 @@ import { MergeSchemaHelper } from '../utils/MergeSchemaHelper';
 import { importSchema } from 'graphql-import';
 import { GraphQLDateTime } from 'graphql-iso-date';
 import * as path from 'path';
+import { Character } from './Character';
 
 const resolvers = {
 	Query,
+	Character,
 	DateTime: GraphQLDateTime
 };
 
