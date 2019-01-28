@@ -1,0 +1,55 @@
+image: node:9.8.0-alpine
+
+# .staging_variables: &staging_variables
+#   NOW_ALIAS: marvel-graphql-staging.now.sh
+
+.production_variables: &production_variables
+  NOW_ALIAS: https://api.marvelql.com
+  PRISMA_MARVEL_PRIVATE_KEY: 140a52c97a8ef92f028d89a543e83d711f9e80a0
+  PRISMA_MARVEL_API_KEY: ba0613cb148841f5091cb0075b5076d2
+  PRISMA_ENDPOINT: https://us1.prisma.sh/raj-singh/marvel-api/production
+  PRISMA_SECRET: mysecret123
+  APP_SECRET: thanoswasntwrong
+
+.deploy_now_sh_template: &deploy_now_sh
+  image: node:9.8.0
+  script:
+    # - yarn install
+    - yarn global add now apollo
+    - bash ./.scripts/generateEnvFile.sh
+    - bash ./.scripts/deploy-now.sh
+    - yarn apollo:publish
+
+variables:
+  NOW_TEAM: novvum
+  NOW_PROJECT: marvel-graphql
+
+.deploy_up_main_branches_only_template: &deploy_main_branches_only
+  only:
+    - master
+
+.deploy_up_branches_except_template: &deploy_up_branches_except
+  except:
+    - master
+
+stages:
+  - deploy
+
+# staging-now:
+#   stage: deploy
+#   variables:
+#     <<: *staging_variables
+#   <<: *deploy_now_sh
+#   environment:
+#     name: staging
+#   when: manual
+
+production-now:
+  stage: deploy
+  variables:
+    <<: *production_variables
+  <<: *deploy_now_sh
+  environment:
+    name: production
+  # when: manual
+  <<: *deploy_main_branches_only
