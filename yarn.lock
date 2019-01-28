@@ -845,7 +845,7 @@ apollo-utilities@^1.0.0, apollo-utilities@^1.0.1:
     fast-json-stable-stringify "^2.0.0"
     tslib "^1.9.3"
 
-apollo@^2.1.1:
+apollo@^2.3.1:
   version "2.3.1"
   resolved "https://registry.npmjs.org/apollo/-/apollo-2.3.1.tgz#759415e0764b0a2c14336af9e9844155b181e652"
   dependencies:
@@ -4573,9 +4573,9 @@ normalize-url@2.0.1:
     query-string "^5.0.1"
     sort-keys "^2.0.0"
 
-now@11.2.8:
-  version "11.2.8"
-  resolved "https://registry.npmjs.org/now/-/now-11.2.8.tgz#bad9617cd065a2ce7e24e99fed8e88f28f40c327"
+now@^13.1.2:
+  version "13.1.2"
+  resolved "https://registry.npmjs.org/now/-/now-13.1.2.tgz#dda24eb622edeedc43e694d31d9c81f2154896c4"
 
 npm-bundled@^1.0.1:
   version "1.0.5"
