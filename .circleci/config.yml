@@ -42,3 +42,28 @@ jobs:
 
       # run tests!
       - run: yarn deploy
+  publish-apollo:
+    branches:
+      only:
+        - master
+    docker:
+      # specify the version you desire here
+      - image: circleci/node:11.6.0
+    working_directory: ~/repo
+    steps:
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+            - v1-dependencies-2.3.1
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+
+      - run: yarn global add apollo@2.3.1
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-2.3.1
+
+      # run tests!
+      - run: yarn apollo:publish
