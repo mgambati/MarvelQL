@@ -5,9 +5,6 @@
 version: 2
 jobs:
   deploy:
-    branches:
-      only:
-        - master
     docker:
       # specify the version you desire here
       - image: circleci/node:11.6.0
@@ -43,9 +40,6 @@ jobs:
       # run tests!
       - run: yarn deploy
   publish-apollo:
-    branches:
-      only:
-        - master
     docker:
       # specify the version you desire here
       - image: circleci/node:11.6.0
@@ -73,4 +67,12 @@ workflows:
   build_and_publish:
     jobs:
       - build
+          filters:
+            branches:
+              only:
+                - master
       - publish-apollo
+          filters:
+            branches:
+              only:
+                -master
