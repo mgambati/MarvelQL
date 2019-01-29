@@ -6,6 +6,9 @@ version: 2
 
 jobs:
   deploy:
+    filters:
+      branches:
+        only: master
     docker:
       # specify the version you desire here
       - image: circleci/node:11.6.0
@@ -44,6 +47,9 @@ jobs:
     docker:
       # specify the version you desire here
       - image: circleci/node:11.6.0
+    filters:
+      branches:
+        only: master
     working_directory: ~/repo
     steps:
       # Download and cache dependencies
@@ -69,12 +75,6 @@ workflows:
   deploy-publish:
     jobs:
       - deploy
-          filters:
-            branches:
-              only: master
       - publish-apollo:
           requires:
             - deploy
-          filters:
-            branches:
-              only: master
