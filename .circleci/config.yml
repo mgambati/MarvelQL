@@ -71,12 +71,10 @@ workflows:
       - deploy
           filters:
             branches:
-              only:
-                - master
+              only: master
       - publish-apollo:
           requires:
             - deploy
           filters:
             branches:
-              only:
-                - master
+              only: master
