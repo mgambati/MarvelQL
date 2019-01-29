@@ -4,6 +4,7 @@
 #
 workflows:
   version: 2
+
   deploy-publish:
     jobs:
       deploy:
@@ -45,6 +46,8 @@ workflows:
           # run tests!
           - run: yarn deploy
       publish-apollo:
+        requires:
+          - deploy
         branches:
           only:
             - master
