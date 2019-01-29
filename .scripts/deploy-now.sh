@@ -12,7 +12,7 @@ ALIAS=$NOW_ALIAS
 export PATH="./node_modules/.bin:$PATH"
 # 1. Wait for deployment ready
 URL=$(now --dotenv .env --public --token "$NOW_TOKEN" --team $TEAM --name $PROJECT)
-now ls --token "$NOW_TOKEN" --team $TEAM
+# now ls --token "$NOW_TOKEN" --team $TEAM
 now scale "$ALIAS" --token "$NOW_TOKEN" --team $TEAM 1 || true
 # 2. Alias
 now alias set "$URL" "$ALIAS" --token "$NOW_TOKEN" --team $TEAM
@@ -25,5 +25,5 @@ now scale "$ALIAS" --token "$NOW_TOKEN" --team $TEAM 10 || true
 
 # 5. Log results
 # now ls --token "$NOW_TOKEN" --team $TEAM
-now alias ls --token "$NOW_TOKEN" --team $TEAM
+# now alias ls --token "$NOW_TOKEN" --team $TEAM
 
