@@ -22,7 +22,8 @@ const server = new ApolloServer({
   }),
   engine: {
     apiKey: "service:marvelQL:31heDXzZ0JWmMz7L4zCuug"
-  }
+  },
+  playground: { version: "1.7.20" }
 });
 server.listen().then(({ url }) => {
   console.log(`🚀  Server ready at ${url}`);
