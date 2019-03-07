@@ -6,11 +6,11 @@ export const ts = Date.now();
 export const baseURL = 'https://gateway.marvel.com/v1/public';
 
 export const apikey =
-	process.env.PRISMA_MARVEL_API_KEY || 'ba0613cb148841f5091cb0075b5076d2';
+	process.env.PRISMA_MARVEL_API_KEY || '07812287fdfb880f5ebdbf1e5b9fce53';
 
 const privateKey =
 	process.env.PRISMA_MARVEL_PRIVATE_KEY ||
-	'140a52c97a8ef92f028d89a543e83d711f9e80a0';
+	'e23c321aab355ba04371c1e50cef43823ab35752';
 const data = `${ts}${privateKey}${apikey}`;
 
 export function optionalChaining(func) {
