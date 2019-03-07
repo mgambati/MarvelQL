@@ -1,9 +1,9 @@
-import { DateTime } from "../generated/prisma";
+import crypto from 'crypto';
+export type DateTime = Date | string;
 
-const crypto = require("crypto");
 export const ts = Date.now();
 
-export const baseURL = "https://gateway.marvel.com/v1/public";
+export const baseURL = 'https://gateway.marvel.com/v1/public';
 
 export const apikey = process.env.PRISMA_MARVEL_API_KEY;
 
@@ -19,11 +19,11 @@ export function optionalChaining(func) {
 }
 
 export const hash = crypto
-	.createHash("md5")
+	.createHash('md5')
 	.update(data)
-	.digest("hex");
+	.digest('hex');
 
-export type CharacterWhereInput = {
+export interface CharacterWhereInput {
 	id?: any;
 	name?: string;
 	nameStartsWith?: string;
@@ -32,7 +32,7 @@ export type CharacterWhereInput = {
 	series?: number[];
 	events?: number[];
 	stories?: number[];
-};
+}
 
 export enum CharacterOrderBy {
 	name_asc,
@@ -115,7 +115,7 @@ export enum ComicFormatType {
 	collection
 }
 
-export type ComicWhereInput = {
+export interface ComicWhereInput {
 	format?: ComicFormat;
 	formatType?: ComicFormatType;
 	noVariants?: boolean;
@@ -135,9 +135,9 @@ export type ComicWhereInput = {
 	stories?: number;
 	sharedAppearances?: number;
 	collaborators?: number;
-};
+}
 
-export type CreatorWhereInput = {
+export interface CreatorWhereInput {
 	firstName?: string;
 	middleName?: string;
 	lastName?: string;
@@ -151,9 +151,9 @@ export type CreatorWhereInput = {
 	series?: number;
 	events?: number;
 	stories?: number;
-};
+}
 
-export type EventsWhereInput = {
+export interface EventsWhereInput {
 	name?: string;
 	nameStartsWith?: string;
 	modifiedSince?: DateTime;
@@ -161,9 +161,9 @@ export type EventsWhereInput = {
 	characters?: number;
 	series?: number;
 	comics?: number;
-};
+}
 
-export type SeriesWhereInput = {
+export interface SeriesWhereInput {
 	title?: string;
 	titleStartsWith?: string;
 	startYear?: number;
@@ -175,13 +175,13 @@ export type SeriesWhereInput = {
 	characters?: number;
 	seriesType?: SeriesType;
 	contains?: ComicFormat;
-};
+}
 
-export type StoriesWhereInput = {
+export interface StoriesWhereInput {
 	modifiedSince?: DateTime;
 	comics?: number;
 	series?: number;
 	events?: number;
 	creators?: number;
 	characters?: number;
-};
+}
