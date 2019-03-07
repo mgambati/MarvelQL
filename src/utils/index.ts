@@ -5,9 +5,12 @@ export const ts = Date.now();
 
 export const baseURL = 'https://gateway.marvel.com/v1/public';
 
-export const apikey = process.env.PRISMA_MARVEL_API_KEY;
+export const apikey =
+	process.env.PRISMA_MARVEL_API_KEY || 'ba0613cb148841f5091cb0075b5076d2';
 
-const privateKey = process.env.PRISMA_MARVEL_PRIVATE_KEY;
+const privateKey =
+	process.env.PRISMA_MARVEL_PRIVATE_KEY ||
+	'140a52c97a8ef92f028d89a543e83d711f9e80a0';
 const data = `${ts}${privateKey}${apikey}`;
 
 export function optionalChaining(func) {

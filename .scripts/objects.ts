@@ -1,0 +1,70 @@
+/**
+ * Copyright (c) 2015-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the license found in the
+ * LICENSE-examples file in the root directory of this source tree.
+ */
+import { URL } from 'url';
+import qs from 'qs';
+import { Agent } from 'https';
+import { existsSync, writeFileSync } from 'fs';
+import { hash, ts, apikey, baseURL } from '../src/utils';
+import fetch from 'isomorphic-fetch';
+
+function normalizeUrl(url) {
+	return new URL(url).toString();
+}
+let i = parseInt(process.argv[3]);
+let max = parseInt(process.argv[3]) + (parseInt(process.argv[4]) || 1000);
+const limit = parseInt(process.argv[5]) || 5;
+/**
+ * Iterate through the resources, fetch from the URL, convert the results into
+ * objects, then generate and print the cache.
+ */
+const name = process.argv[2];
+
+async function cacheResources() {
+	const agent = new Agent({ keepAlive: true });
+	const cache = {};
+	const params = await qs.stringify({ hash, ts, apikey });
+
+	for (i; i <= max; i += limit) {
+		let url = `https://gateway.marvel.com/v1/public/${name}?offset=${i}&limit=${limit}&${params}`;
+		while (url != null) {
+			console.error(url);
+			const response = await fetch(url, { agent });
+			const data = await response.json();
+			for (const obj of data.data.results) {
+				cache[normalizeUrl(`${baseURL}/${name}/${obj.id}`)] = obj;
+			}
+			url = data.next;
+		}
+	}
+
+	return cache;
+}
+
+const outfile = process.argv[2];
+if (!outfile) {
+	console.error('Missing ouput file!');
+	process.exit(1);
+}
+
+if (!existsSync(outfile)) {
+	console.log('Downloading cache...');
+	cacheResources()
+		.then((cache) => {
+			const data = JSON.stringify(cache, null, 2);
+			writeFileSync(
+				`src/cache/${name} ${process.argv[3]}-${max}.json`,
+				data,
+				'utf-8'
+			);
+			console.log('Cached!');
+		})
+		.catch(function(err) {
+			console.error(err);
+			process.exit(1);
+		});
+}
