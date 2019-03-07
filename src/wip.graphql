@@ -1,12 +1,12 @@
 interface MarvelNode {
-	id: String
+	id: Int
 	resourceURI: String
 	thumbnail: String
 	modified: String
 }
 
 type Character implements MarvelNode {
-	id: String
+	id: Int
 	name: String
 	thumbnail: String
 	description: String
@@ -20,7 +20,7 @@ type Character implements MarvelNode {
 }
 
 type Comic implements MarvelNode {
-  id: ID
+  id: Int
   digitalId: Int
   title: String
   issueNumber: Int
@@ -77,7 +77,7 @@ type TextObject {
 }
 
 type Story implements MarvelNode {
-  id: ID
+  id: Int
   title: String
   description: String
   resourceURI: String
@@ -93,7 +93,7 @@ type Story implements MarvelNode {
 }
 
 type Series implements MarvelNode {
-  id: ID
+  id: Int
   title: String
   description: String
   resourceURI: String
@@ -111,3 +111,42 @@ type Series implements MarvelNode {
   next: Summary
   previous: Summary
 }
+
+type Event implements MarvelNode {
+  id: Int
+  title: String
+  description: String
+  resourceURI: String
+  urls: [MarvelUrl!]
+  modified: String
+  start: String
+  end: String
+  thumbnail: String
+  series: [Summary!]
+  stories: [Summary!]
+  comics: [Summary!]
+  characters: [Summary!]
+  creators: [Summary!]
+  next: Summary
+  previous: Summary
+}
+
+
+
+ type Creator implements MarvelNode {
+  id: ID
+  firstName: String
+  middleName: String
+  lastName: String
+  suffix: String
+  fullName: String
+  modified: String
+  resourceURI: String
+  urls: [MarvelUrl!]
+  thumbnail: String
+  series: [Summary!]
+  stories: [Summary!]
+  comics: [Summary!]
+  events: [Summary!]
+}
+
