@@ -11,25 +11,27 @@ import { Agent } from 'https';
 import { existsSync, writeFileSync } from 'fs';
 import { hash, ts, apikey, baseURL } from '../src/utils';
 import fetch from 'isomorphic-fetch';
+const state = require("../src/cache/_state.json")
 
 function normalizeUrl(url) {
 	return new URL(url).toString();
 }
-let i = parseInt(process.argv[3]);
-let max = parseInt(process.argv[3]) + (parseInt(process.argv[4]) || 1000);
-const limit = parseInt(process.argv[5]) || 5;
 /**
  * Iterate through the resources, fetch from the URL, convert the results into
  * objects, then generate and print the cache.
  */
 const name = process.argv[2];
+const count = (parseInt(process.argv[4]) || state.count || 1000);
+const limit = parseInt(process.argv[5]) || state.limit || 5;
+const startIdx = parseInt(process.argv[3]) || state[name].cursor;
+const endIdx = startIdx + count;
 
 async function cacheResources() {
 	const agent = new Agent({ keepAlive: true });
 	const cache = {};
 	const params = await qs.stringify({ hash, ts, apikey });
 
-	for (i; i <= max; i += limit) {
+	for (let i = startIdx; i <= endIdx; i += limit) {
 		let url = `https://gateway.marvel.com/v1/public/${name}?offset=${i}&limit=${limit}&${params}`;
 		while (url != null) {
 			console.error(url);
@@ -57,13 +59,19 @@ if (!existsSync(outfile)) {
 		.then((cache) => {
 			const data = JSON.stringify(cache, null, 2);
 			writeFileSync(
-				`src/cache/${name} ${process.argv[3]}-${max}.json`,
+				`src/cache/${name} ${startIdx}-${endIdx}.json`,
 				data,
+				'utf-8'
+			);
+			state[name].cursor = endIdx;
+			writeFileSync(
+				`src/cache/_state.json`,
+				JSON.stringify(state, null, 2),
 				'utf-8'
 			);
 			console.log('Cached!');
 		})
-		.catch(function(err) {
+		.catch(function (err) {
 			console.error(err);
 			process.exit(1);
 		});
