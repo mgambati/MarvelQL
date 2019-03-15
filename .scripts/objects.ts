@@ -59,7 +59,7 @@ if (!existsSync(outfile)) {
 		.then((cache) => {
 			const data = JSON.stringify(cache, null, 2);
 			writeFileSync(
-				`src/cache/${name} ${startIdx}-${endIdx}.json`,
+				`src/cache/${name}/${name} ${startIdx}-${endIdx}.json`,
 				data,
 				'utf-8'
 			);
