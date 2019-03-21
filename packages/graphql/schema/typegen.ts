@@ -105,6 +105,7 @@ export interface NexusGenEnums {
 
 export interface NexusGenRootTypes {
   Character: { // root type
+    comics?: NexusGenRootTypes['Summary'][] | null; // [Summary!]
     description?: string | null; // String
     events?: NexusGenRootTypes['Summary'][] | null; // [Summary!]
     id?: string | null; // ID
@@ -272,7 +273,7 @@ export interface NexusGenAllTypes extends NexusGenRootTypes {
 
 export interface NexusGenFieldTypes {
   Character: { // field return type
-    comics: NexusGenRootTypes['Comic'][] | null; // [Comic!]
+    comics: NexusGenRootTypes['Summary'][] | null; // [Summary!]
     description: string | null; // String
     events: NexusGenRootTypes['Summary'][] | null; // [Summary!]
     id: string | null; // ID

@@ -18,25 +18,25 @@ export const Character = objectType({
             description: 'A set of public web site URLs for the resource.',
         })
         t.list.field("comics", {
-            type: "Comic",
+            type: "Summary",
             nullable: true,
             description: 'Lists of comics filtered by a character id.',
-            async resolve(parent: any, args, ctx) {
-                return (await parent.comics).map(async comic => {
-                    if (comic.resourceURI) {
-                        if (ctx.data.comics[comic.resourceURI]) {
-                            // console.log("hit");
-                            return ctx.data.comics[comic.resourceURI]
-                        } else {
-                            // console.log("miss");
-                            const c = await ctx.comicsModel.getById(comic.resourceURI.split("/").pop())
-                            ctx.data.comics.add(comic.resourceURI, c)
-                            return c;
-                        }
-                    }
-                    return comic;
-                });
-            }
+            // async resolve(parent: any, args, ctx) {
+            //     return (await parent.comics).map(async comic => {
+            //         if (comic.resourceURI) {
+            //             if (ctx.data.comics[comic.resourceURI]) {
+            //                 // console.log("hit");
+            //                 return ctx.data.comics[comic.resourceURI]
+            //             } else {
+            //                 // console.log("miss");
+            //                 const c = await ctx.comicsModel.getById(comic.resourceURI.split("/").pop())
+            //                 ctx.data.comics.add(comic.resourceURI, c)
+            //                 return c;
+            //             }
+            //         }
+            //         return comic;
+            //     });
+            // }
         })
         t.list.field("series", {
             type: "Summary",
