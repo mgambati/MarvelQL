@@ -6,6 +6,7 @@ import EventModel from "../models/EventModel";
 import SeriesModel from "../models/SeriesModel";
 import StoryModel from "../models/StoryModel";
 import dataImporter from '../../data/src/data';
+import { Prisma, prisma } from '@marvelql/prisma';
 
 type DataModel = {
 	[key: string]: any;
@@ -30,7 +31,7 @@ const data = {
 }
 
 export interface Context {
-	// db: Prisma;
+	db: Prisma;
 	api: MarvelApiModel;
 	data: CachedData;
 	charactersModel: CharacterModel;
@@ -44,6 +45,7 @@ export interface Context {
 
 export default (req): CachedData => ({
 	...req,
+	db: prisma,
 	api: new MarvelApiModel(),
 	data,
 	charactersModel: new CharacterModel(),
