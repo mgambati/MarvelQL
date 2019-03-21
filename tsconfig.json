@@ -1,12 +1,23 @@
 {
+  "compileOnSave": false,
   "compilerOptions": {
-    "esModuleInterop": true,
-    "target": "es5",
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "jsx": "react-native",
+    "lib": [
+      "dom",
+      "es2017",
+      "esnext.asynciterable"
+    ],
+    "noEmit": false,
+    "module": "esnext",
     "moduleResolution": "node",
-    "module": "commonjs",
     "sourceMap": true,
-    "rootDir": "src",
-    "outDir": "dist",
-    "lib": ["esnext", "dom"]
-  }
+    "target": "esnext"
+  },
+  "exclude": [
+    "node_modules",
+    "**/generated/**/*.*"
+  ]
 }

@@ -1,0 +1,24 @@
+{
+  "name": "@marvelql/data",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/main.js",
+  "private": true,
+  "scripts": {
+    "download": "ts-node src/objects.ts",
+    "merge": "ts-node src/merge.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@marvelql/graphql": "^1.0.0",
+    "@types/node": "^8.0.28",
+    "dataloader": "^1.4.0",
+    "isomorphic-fetch": "^2.2.1",
+    "json-concat": "^0.0.1"
+  },
+  "devDependencies": {
+    "typescript": "2.9.2"
+  }
+}

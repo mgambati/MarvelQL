@@ -1,0 +1,152 @@
+interface MarvelNode {
+	id: Int
+	resourceURI: String
+	thumbnail: String
+	modified: String
+}
+
+type Character implements MarvelNode {
+	id: Int
+	name: String
+	thumbnail: String
+	description: String
+	modified: String
+	resourceURI: String
+	urls: [MarvelUrl!] @relation("FOUND_ON", direction: out)
+	comics: [Comic!]
+	series: [Series!]
+	events: [Event!]
+	stories: [Story!]
+}
+
+type Comic implements MarvelNode {
+  id: Int
+  digitalId: Int
+  title: String
+  issueNumber: Int
+  variantDescription: String
+  description: String
+  modified: String
+  isbn: String
+  upc: String
+  diamondCode: String
+  ean: String
+  issn: String
+  format: String
+	thumbnail: String
+  textObjects: [TextObject!]
+  resourceURI: String
+	dates: [ComicDate!]
+  prices: [ComicPrice!]
+  images: [ComicImage!]
+  urls: [MarvelUrl!]
+  series: Summary
+  variants: [Summary!]
+  collections: [Summary!]
+  collectedIssues: [Summary!]
+  characters: [Summary!]
+  events: [Summary!]
+  stories: [Summary!]
+  creators: [Summary!]
+}
+
+type ComicDate {
+  type: String
+  date: String
+}
+
+type ComicPrice {
+  type: String
+  price: Int
+}
+
+enum ComicFormatType {
+  comic
+  collection
+}
+
+type ComicImage {
+  path: String
+  extension: String
+}
+
+type TextObject {
+  type: String
+  language: String
+  text: String
+}
+
+type Story implements MarvelNode {
+  id: Int
+  title: String
+  description: String
+  resourceURI: String
+  type: String
+  modified: String
+  thumbnail: String
+  comics: [Summary!]
+  events: [Summary!]
+  characters: [Summary!]
+  creators: [Summary!]
+  series: [Summary!]
+  originalIssue: Summary
+}
+
+type Series implements MarvelNode {
+  id: Int
+  title: String
+  description: String
+  resourceURI: String
+  urls: [MarvelUrl!]
+  startYear: Int
+  endYear: Int
+  rating: String
+  modified: String
+  thumbnail: String
+  comics: [Summary!]
+  stories: [Summary!]
+  events: [Summary!]
+  characters: [Summary!]
+  creators: [Summary!]
+  next: Summary
+  previous: Summary
+}
+
+type Event implements MarvelNode {
+  id: Int
+  title: String
+  description: String
+  resourceURI: String
+  urls: [MarvelUrl!]
+  modified: String
+  start: String
+  end: String
+  thumbnail: String
+  series: [Summary!]
+  stories: [Summary!]
+  comics: [Summary!]
+  characters: [Summary!]
+  creators: [Summary!]
+  next: Summary
+  previous: Summary
+}
+
+
+
+ type Creator implements MarvelNode {
+  id: ID
+  firstName: String
+  middleName: String
+  lastName: String
+  suffix: String
+  fullName: String
+  modified: String
+  resourceURI: String
+  urls: [MarvelUrl!]
+  thumbnail: String
+  series: [Summary!]
+  stories: [Summary!]
+  comics: [Summary!]
+  events: [Summary!]
+}
+

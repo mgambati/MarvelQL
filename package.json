@@ -1,37 +1,48 @@
 {
-  "name": "marvel-graphql",
+  "name": "este",
+  "version": "1.0.0",
+  "private": true,
+  "license": "MIT",
+  "bin": {
+    "ts-node": "dist/bin.js"
+  },
+  "engines": {
+    "node": "8.10.0"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
-    "start": "dotenv -- nodemon -e ts,graphql -x ts-node src/index.ts",
-    "dev": "npm-run-all --parallel start playground",
-    "debug": "dotenv -- nodemon -e ts,graphql -x ts-node --inspect src/index.ts",
-    "playground": "graphql playground",
-    "build": "rimraf dist && tsc",
-    "apollo:publish": "apollo schema:publish --endpoint=https://api.marvelql.com --key='service:marvelQL:31heDXzZ0JWmMz7L4zCuug'",
+    "ts": "ts-node -T -r esm -r dotenv/config",
+    "ts:watch": "ts-node-dev --no-notify --transpileOnly -r esm -r dotenv/config",
+    "start": "yarn ts packages/graphql/index.ts",
+    "dev": "yarn ts:watch packages/graphql/index.ts",
     "deploy": "bash ./.scripts/deploy.sh"
   },
   "dependencies": {
-    "apollo-server": "^2.4.8",
-    "axios": "0.18.0",
-    "bcryptjs": "2.4.3",
-    "crypto": "1.0.1",
-    "graphql": "14.0.2",
-    "graphql-import": "0.7.1",
-    "jsonwebtoken": "8.3.0",
-    "object-assign-deep": "0.4.0",
-    "path": "0.12.7",
-    "prisma-binding": "2.1.0",
-    "qs": "6.5.2"
+    "esm": "^3.2.0",
+    "wsrun": "^3.6.2"
   },
   "devDependencies": {
-    "@types/bcryptjs": "2.4.1",
-    "@types/graphql": "14.0.3",
-    "dotenv-cli": "1.4.0",
-    "graphql-cli": "2.16.4",
-    "nodemon": "1.17.5",
-    "npm-run-all": "4.1.3",
-    "prisma": "1.11.1",
-    "rimraf": "2.6.2",
-    "ts-node": "6.2.0",
-    "typescript": "2.9.2"
+    "@typescript-eslint/eslint-plugin": "^1.4.1",
+    "@typescript-eslint/parser": "^1.4.1",
+    "apollo": "^2.6.2",
+    "babel-plugin-module-resolver": "^3.1.2",
+    "dotenv": "^6.2.0",
+    "eslint": "^5.14.1",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^4.0.0",
+    "eslint-import-resolver-node": "^0.3.2",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-react": "^7.12.4",
+    "eslint-plugin-react-hooks": "^1.2.0",
+    "eslint-plugin-relay": "^1.0.0",
+    "now": "14.2.2",
+    "prisma": "^1.26.6",
+    "rimraf": "^2.6.3",
+    "ts-node": "^8.0.0",
+    "ts-node-dev": "^1.0.0-pre.32",
+    "typescript": "^3.2.2"
   }
 }
