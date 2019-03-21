@@ -4,7 +4,7 @@
 
 type Character implements MarvelNode {
   """Lists of comics filtered by a character id."""
-  comics: [Comic!]
+  comics: [Summary!]
 
   """A short bio or description of the character."""
   description: String
