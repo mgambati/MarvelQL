@@ -1,7 +1,8 @@
-dist
-package-lock.json
+.DS_Store
+.next
 node_modules
-.idea
-.vscode
-*.log
+npm-debug.log
+web/bundles
+yarn-error.log
 .env*
+!.env.dev
