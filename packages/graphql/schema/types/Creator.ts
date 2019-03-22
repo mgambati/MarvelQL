@@ -30,24 +30,40 @@ export const Creator = objectType({
             description: 'A set of public web site URLs for the resource.',
         });
         t.list.field("series", {
-            type: "Summary",
+            type: "Series",
             nullable: true,
-            description: 'A list of series (Summary Types) related to this creator',
+            description: 'A list of series (Series Types) related to this creator',
+            async resolve(parent, args, ctx) {
+                const res = await ctx.api.get(`/creators/${parent.id}/series`);
+                return res.results;
+            }
         });
         t.list.field("stories", {
-            type: "Summary",
+            type: "Story",
             nullable: true,
-            description: 'A list of stories (Summary Types) related to this creator',
+            description: 'A list of stories (Story Types) related to this creator',
+            async resolve(parent, args, ctx) {
+                const res = await ctx.api.get(`/creators/${parent.id}/stories`);
+                return res.results;
+            }
         });
         t.list.field("comics", {
-            type: "Summary",
+            type: "Comic",
             nullable: true,
-            description: 'A list of comics (Summary Types) related to this creator',
+            description: 'A list of comics (Comic Types) related to this creator',
+            async resolve(parent, args, ctx) {
+                const res = await ctx.api.get(`/creators/${parent.id}/comics`);
+                return res.results;
+            }
         });
         t.list.field("events", {
-            type: "Summary",
+            type: "Event",
             nullable: true,
-            description: 'A list of events (Summary Types) related to this creator',
+            description: 'A list of events (Event Types) related to this creator',
+            async resolve(parent, args, ctx) {
+                const res = await ctx.api.get(`/creators/${parent.id}/events`);
+                return res.results;
+            }
         });
     }
 });

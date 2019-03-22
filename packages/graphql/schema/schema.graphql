@@ -4,13 +4,13 @@
 
 type Character implements MarvelNode {
   """Lists of comics filtered by a character id."""
-  comics: [Summary!]
+  comics: [Comic!]
 
   """A short bio or description of the character."""
   description: String
 
   """Lists of events filtered by a character id."""
-  events: [Summary!]
+  events: [Event!]
 
   """A unique ID to a particular marvel resource."""
   id: ID
@@ -25,10 +25,10 @@ type Character implements MarvelNode {
   resourceURI: String
 
   """Lists of series filtered by a character id."""
-  series: [Summary!]
+  series: [Series!]
 
   """Lists of stories filtered by a character id."""
-  stories: [Summary!]
+  stories: [Story!]
 
   """The url path for a canonical photo to the resource"""
   thumbnail: String
@@ -100,8 +100,8 @@ input CharacterWhereInput {
 }
 
 type Comic implements MarvelNode {
-  """A list of characters (Summary Types) to this comic"""
-  characters: [Summary!]
+  """A list of characters (Character Types) to this comic"""
+  characters: [Character!]
 
   """
   A list of issues collected in this comic (will generally be empty for periodical formats such as "comic" or magazine").
@@ -113,8 +113,8 @@ type Comic implements MarvelNode {
   """
   collections: [Summary!]
 
-  """A list of creators (Summary Types) related to this comic"""
-  creators: [Summary!]
+  """A list of creators (Creator Types) related to this comic"""
+  creators: [Creator!]
 
   """A list of key dates for this comic."""
   dates: [ComicDate!]
@@ -133,8 +133,8 @@ type Comic implements MarvelNode {
   """The EAN barcode for the comic."""
   ean: String
 
-  """A list of events (Summary Types) related to this comic"""
-  events: [Summary!]
+  """A list of events (Event Types) related to this comic"""
+  events: [Event!]
 
   """
   The publication format of the comic e.g. comic, hardcover, trade paperback.
@@ -170,10 +170,10 @@ type Comic implements MarvelNode {
   resourceURI: String
 
   """A list of series (Summary Types) to this comic"""
-  series: Summary
+  series: Series
 
-  """A list of stories (Summary Types) related to this comic"""
-  stories: [Summary!]
+  """A list of stories (Story Types) related to this comic"""
+  stories: [Story!]
 
   """A set of descriptive text blurbs for the comic."""
   textObjects: [TextObject!]
@@ -383,11 +383,11 @@ input ComicWhereInput {
 }
 
 type Creator implements MarvelNode {
-  """A list of comics (Summary Types) related to this creator"""
-  comics: [Summary!]
+  """A list of comics (Comic Types) related to this creator"""
+  comics: [Comic!]
 
-  """A list of events (Summary Types) related to this creator"""
-  events: [Summary!]
+  """A list of events (Event Types) related to this creator"""
+  events: [Event!]
 
   """The first name of the creator"""
   firstName: String
@@ -410,11 +410,11 @@ type Creator implements MarvelNode {
   """The canonical URL identifier for a resource."""
   resourceURI: String
 
-  """A list of series (Summary Types) related to this creator"""
-  series: [Summary!]
+  """A list of series (Series Types) related to this creator"""
+  series: [Series!]
 
-  """A list of stories (Summary Types) related to this creator"""
-  stories: [Summary!]
+  """A list of stories (Story Types) related to this creator"""
+  stories: [Story!]
 
   """The suffix of the creator"""
   suffix: String
@@ -510,14 +510,14 @@ A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the
 scalar DateTime
 
 type Event implements MarvelNode {
-  """A list of characters (Summary Types) related to this event"""
-  characters: [Summary!]
+  """A list of characters (Character Types) related to this event"""
+  characters: [Character!]
 
-  """A list of comics (Summary Types) related to this event"""
-  comics: [Summary!]
+  """A list of comics (Comic Types) related to this event"""
+  comics: [Comic!]
 
-  """A list of creators (Summary Types) related to this event"""
-  creators: [Summary!]
+  """A list of creators (Creator Types) related to this event"""
+  creators: [Creator!]
 
   """A description of the event."""
   description: String
@@ -540,14 +540,14 @@ type Event implements MarvelNode {
   """The canonical URL identifier for a resource."""
   resourceURI: String
 
-  """A list of series (Summary Types) related to this event"""
-  series: [Summary!]
+  """A list of series (Series Types) related to this event"""
+  series: [Series!]
 
   """The date of publication of the first issue in this event."""
   start: String
 
-  """A list of stories (Summary Types) related to this event"""
-  stories: [Summary!]
+  """A list of stories (Story Types) related to this event"""
+  stories: [Story!]
 
   """The url path for a canonical photo to the resource"""
   thumbnail: String
@@ -716,14 +716,14 @@ type Query {
 }
 
 type Series implements MarvelNode {
-  """A list of characters (Summary Types) related to this series"""
-  characters: [Summary!]
+  """A list of characters (Character Types) related to this series"""
+  characters: [Character!]
 
-  """A list of comics (Summary Types) related to this series"""
-  comics: [Summary!]
+  """A list of comics (Comic Types) related to this series"""
+  comics: [Comic!]
 
-  """A list of creators (Summary Types) related to this series"""
-  creators: [Summary!]
+  """A list of creators (Creator Types) related to this series"""
+  creators: [Creator!]
 
   """A description of the series."""
   description: String
@@ -733,8 +733,8 @@ type Series implements MarvelNode {
   """
   endYear: Int
 
-  """A list of events (Summary Types) related to this series"""
-  events: [Summary!]
+  """A list of events (Event Types) related to this series"""
+  events: [Event!]
 
   """A unique ID to a particular marvel resource."""
   id: ID
@@ -742,11 +742,11 @@ type Series implements MarvelNode {
   """A date for which the resource has been modified"""
   modified: String
 
-  """A list of previous series (Summary Types) in relation to this series"""
-  next: Summary
+  """A list of previous series (Series Types) in relation to this series"""
+  next: Series
 
-  """A list of previous series (Summary Types) in relation to this series"""
-  previous: Summary
+  """A list of previous series (Series Types) in relation to this series"""
+  previous: Series
 
   """The age-appropriateness rating for the series."""
   rating: String
@@ -757,8 +757,8 @@ type Series implements MarvelNode {
   """The first year of publication for the series."""
   startYear: Int
 
-  """A list of stories (Summary Types) related to this series"""
-  stories: [Summary!]
+  """A list of stories (Story Types) related to this series"""
+  stories: [Story!]
 
   """The url path for a canonical photo to the resource"""
   thumbnail: String
@@ -868,20 +868,20 @@ input StoriesWhereInput {
 }
 
 type Story implements MarvelNode {
-  """A list of characters (Summary Types) related to this story"""
-  characters: [Summary!]
+  """A list of characters (Character Types) related to this story"""
+  characters: [Character!]
 
-  """A list of comics (Summary Types) related to this story"""
-  comics: [Summary!]
+  """A list of comics (Comic Types) related to this story"""
+  comics: [Comic!]
 
-  """A list of creators (Summary Types) related to this story"""
-  creators: [Summary!]
+  """A list of creators (Creator Types) related to this story"""
+  creators: [Creator!]
 
   """A short description of the story."""
   description: String
 
-  """A list of events (Summary Types) related to this story"""
-  events: [Summary!]
+  """A list of events (Event Types) related to this story"""
+  events: [Event!]
 
   """A unique ID to a particular marvel resource."""
   id: ID
@@ -895,8 +895,8 @@ type Story implements MarvelNode {
   """The canonical URL identifier for a resource."""
   resourceURI: String
 
-  """A list of series (Summary Types) related to this story"""
-  series: [Summary!]
+  """A list of series (Series Types) related to this story"""
+  series: [Series!]
 
   """The url path for a canonical photo to the resource"""
   thumbnail: String

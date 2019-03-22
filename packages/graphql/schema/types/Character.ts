@@ -18,40 +18,73 @@ export const Character = objectType({
             description: 'A set of public web site URLs for the resource.',
         })
         t.list.field("comics", {
-            type: "Summary",
+            type: "Comic",
             nullable: true,
             description: 'Lists of comics filtered by a character id.',
-            // async resolve(parent: any, args, ctx) {
-            //     return (await parent.comics).map(async comic => {
-            //         if (comic.resourceURI) {
-            //             if (ctx.data.comics[comic.resourceURI]) {
-            //                 // console.log("hit");
-            //                 return ctx.data.comics[comic.resourceURI]
-            //             } else {
-            //                 // console.log("miss");
-            //                 const c = await ctx.comicsModel.getById(comic.resourceURI.split("/").pop())
-            //                 ctx.data.comics.add(comic.resourceURI, c)
-            //                 return c;
-            //             }
-            //         }
-            //         return comic;
-            //     });
-            // }
+            async resolve(parent: any, args, ctx) {
+                const res = (await ctx.api.get(`/characters/${parent.id}/comics`))
+                return res.results;
+                // return (await parent.comics).map(async item => {
+                //     let id = item.id;
+                //     if (!id && item.resourceURI) {
+                //         id = ctx.comicsModel.extractId(item.resourceURI);
+                //     }
+                //     const c = await ctx.comicsModel.getById(id)
+                //     return c;
+                // });
+            }
         })
         t.list.field("series", {
-            type: "Summary",
+            type: "Series",
             nullable: true,
             description: 'Lists of series filtered by a character id.',
+            async resolve(parent: any, args, ctx) {
+                const res = (await ctx.api.get(`/characters/${parent.id}/series`))
+                return res.results;
+                // return (await parent.series).map(async item => {
+                //     let id = item.id;
+                //     if (!id && item.resourceURI) {
+                //         id = ctx.seriesModel.extractId(item.resourceURI);
+                //     }
+                //     const c = await ctx.seriesModel.getById(id)
+                //     return c;
+                // });
+            }
         })
         t.list.field("events", {
-            type: "Summary",
+            type: "Event",
             nullable: true,
             description: 'Lists of events filtered by a character id.',
+            async resolve(parent: any, args, ctx) {
+                const res = (await ctx.api.get(`/characters/${parent.id}/events`))
+                return res.results
+                // return (await parent.events).map(async item => {
+                // let id = item.id;
+                // if (!id && item.resourceURI) {
+                //     id = ctx.eventsModel.extractId(item.resourceURI);
+                // }
+                // const c = await ctx.eventsModel.getById(id)
+                // return c;
+                // });
+            }
         })
         t.list.field("stories", {
-            type: "Summary",
+            type: "Story",
             nullable: true,
             description: 'Lists of stories filtered by a character id.',
+            async resolve(parent: any, args, ctx) {
+                const res = (await ctx.api.get(`/characters/${parent.id}/stories`))
+                console.log(res.results[0])
+                return res.results;
+                // return (await parent.stories).map(async item => {
+                // let id = item.id;
+                // if (!id && item.resourceURI) {
+                //     id = ctx.storiesModel.extractId(item.resourceURI);
+                // }
+                // const c = await ctx.storiesModel.getById(id)
+                // return c;
+                // });
+            }
         })
     }
 })

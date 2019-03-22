@@ -2,10 +2,12 @@ import MarvelApiModel from './MarvelApiModel';
 import { optionalChaining } from '../utils';
 import { formatThumbnail, getSummary } from '../utils/formatters';
 import { NexusGenInputs, NexusGenEnums } from "../schema/typegen";
+import { Context } from '../utils/getContext';
+import { SeriesCreateInput } from 'packages/prisma';
 
 export default class SeriesModel extends MarvelApiModel {
-	constructor() {
-		super();
+	constructor(context: Context) {
+		super(context);
 	}
 	getWhereArgs(where) {
 		const seriesType = optionalChaining(() => where.seriesType)
@@ -38,21 +40,74 @@ export default class SeriesModel extends MarvelApiModel {
 		}
 	}
 	async getById(id: any) {
-		try {
-			const params = await this.createParams();
-			const response = await this.marvel.get(`/series/${id}?${params}`);
-			return this.formatApiData(response.data.data.results[0]);
-		} catch (error) {
-			console.error(error);
-			throw new Error(error);
-		}
+		return await this.cacheFallback({
+			getFromCache: async () => {
+				return await this.context.db.series({
+					marvelId: id
+				})
+			},
+			fallback: async () => {
+				const response = await this.get(`/series/${id}`);
+				return this.storeApiData(response.results[0]);
+			}
+		})
 	}
-	async getMany(
+	async storeApiData(series) {
+		let seriesData: SeriesCreateInput = {
+			marvelId: `${series.id}`,
+			title: series.title,
+			description: series.description,
+			resourceURI: series.resourceURI,
+			urls: series.urls,
+			startYear: series.startYear,
+			endYear: series.endYear,
+			rating: series.rating,
+			type: series.type,
+			thumbnail: series.thumbnail && series.thumbnail.path ? `${series.thumbnail.path}.${series.thumbnail.extension}` : "",
+		};
+		Object.assign(seriesData, await this.makeConnections({
+			targets: [
+				{
+					singularRef: "creator",
+					pluralRef: "creators",
+				},
+				{
+					singularRef: "character",
+					pluralRef: "characters",
+				},
+				{
+					singularRef: "story",
+					pluralRef: "stories",
+				},
+				{
+					singularRef: "comic",
+					pluralRef: "comics",
+				},
+				{
+					singularRef: "event",
+					pluralRef: "events"
+				}
+			],
+			apiData: series
+		}))
+		const created = await this.context.db.createSeries(seriesData)
+
+		return this.convertCached(created);
+		// console.log(series)
+		// return this.formatApiData(series);
+	}
+	async getMany(args: {
 		where: NexusGenInputs["SeriesWhereInput"],
 		orderBy: NexusGenEnums["SeriesOrderBy"],
 		offset: number,
 		limit: number
-	) {
+	}) {
+		const {
+			where,
+			orderBy,
+			limit,
+			offset
+		} = args;
 		const input = this.getWhereArgs(where);
 		const params = await this.createParams({
 			...input,

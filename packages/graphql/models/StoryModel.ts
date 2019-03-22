@@ -1,10 +1,15 @@
 import MarvelApiModel from './MarvelApiModel';
 import { formatThumbnail, getSummary } from '../utils/formatters';
 import { NexusGenInputs, NexusGenEnums } from "../schema/typegen";
+import { Context } from '../utils/getContext';
+import { StoryCreateInput } from 'packages/prisma';
 
 export default class StoryModel extends MarvelApiModel {
-	constructor() {
-		super();
+	constructor(context: Context) {
+		super(context, {
+			singularRef: "story",
+			pluralRef: "stories"
+		});
 	}
 	async getOne(where: NexusGenInputs["StoriesWhereInput"]) {
 		try {
@@ -19,21 +24,69 @@ export default class StoryModel extends MarvelApiModel {
 		}
 	}
 	async getById(id: any) {
-		try {
-			const params = await this.createParams();
-			const response = await this.marvel.get(`/stories/${id}?${params}`);
-			return this.formatApiData(response.data.data.results[0]);
-		} catch (error) {
-			console.error(error);
-			throw new Error(error);
-		}
+		return await this.cacheFallback({
+			getFromCache: async () => {
+				return await this.context.db.story({
+					marvelId: id
+				})
+			},
+			fallback: async () => {
+				const response = await this.get(`/stories/${id}`);
+				return await this.storeApiData(response.results[0]);
+			}
+		})
 	}
-	async getMany(
+	async storeApiData(apiData) {
+		const inputData: StoryCreateInput = {
+			marvelId: `${apiData.id}`,
+			title: apiData.title,
+			description: apiData.description,
+			resourceURI: apiData.resourceURI,
+			type: apiData.type,
+			thumbnail: apiData.thumbnail && apiData.thumbnail.path ? `${apiData.thumbnail.path}.${apiData.thumbnail.extension}` : "",
+
+		};
+		Object.assign(inputData, await this.makeConnections({
+			targets: [
+				{
+					singularRef: "creator",
+					pluralRef: "creators",
+				},
+				{
+					singularRef: "character",
+					pluralRef: "characters",
+				},
+				{
+					singularRef: "series",
+					pluralRef: "series",
+				},
+				{
+					singularRef: "comic",
+					pluralRef: "comics",
+				},
+				{
+					singularRef: "event",
+					pluralRef: "events",
+				},
+			],
+			apiData: apiData
+		}))
+		const created = await this.context.db.createEvent(inputData)
+
+		return this.convertCached(created);
+	}
+	async getMany(args: {
 		where: NexusGenInputs["StoriesWhereInput"],
 		orderBy: NexusGenEnums["StoriesOrderBy"],
 		offset: number,
 		limit: number
-	) {
+	}) {
+		const {
+			where,
+			orderBy,
+			limit,
+			offset
+		} = args;
 		try {
 			const params = await this.createParams({
 				...where,

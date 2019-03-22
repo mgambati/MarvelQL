@@ -80,37 +80,37 @@ export const formatThumbnail = (thumbnail: any) => {
 };
 
 export const getSummary = {
-	comics: async (c: { comics: { items: { map: (arg0: (comic: any) => any) => void; }; }; }) =>
-		optionalChaining(() => c.comics)
-			? c.comics.items.map((comic: any) => ({
-				...comic
-			}))
-			: null,
-	series: async (c: { series: { items: { map: (arg0: (s: any) => any) => void; }; }; }) =>
-		optionalChaining(() => c.series)
+	comics: (c: { comics: { items: { map: (arg0: (comic: any) => any) => void; }; }; }) => optionalChaining(() => c.comics)
+		? c.comics.items.map((comic: any) => ({
+			...comic
+		}))
+		: null,
+	series: (c: { series: { items: { map: (arg0: (s: any) => any) => void; }; }; }) => {
+		return optionalChaining(() => c.series)
 			? c.series.items.map((s: any) => ({
 				...s
 			}))
-			: null,
-	events: async (c: { events: { items: { map: (arg0: (event: any) => any) => void; }; }; }) =>
+			: null
+	},
+	events: (c: { events: { items: { map: (arg0: (event: any) => any) => void; }; }; }) =>
 		optionalChaining(() => c.events)
 			? c.events.items.map((event: any) => ({
 				...event
 			}))
 			: null,
-	stories: async (c: { stories: { items: { map: (arg0: (story: any) => any) => void; }; }; }) =>
+	stories: (c: { stories: { items: { map: (arg0: (story: any) => any) => void; }; }; }) =>
 		optionalChaining(() => c.stories)
 			? c.stories.items.map((story: any) => ({
 				...story
 			}))
 			: null,
-	characters: async (c: { characters: { items: { map: (arg0: (ch: any) => any) => void; }; }; }) =>
+	characters: (c: { characters: { items: { map: (arg0: (ch: any) => any) => void; }; }; }) =>
 		optionalChaining(() => c.characters)
 			? c.characters.items.map((ch: any) => ({
 				...ch
 			}))
 			: null,
-	creators: async (c: { creators: { items: { map: (arg0: (creator: any) => any) => void; }; }; }) =>
+	creators: (c: { creators: { items: { map: (arg0: (creator: any) => any) => void; }; }; }) =>
 		optionalChaining(() => c.creators)
 			? c.creators.items.map((creator: any) => ({
 				...creator

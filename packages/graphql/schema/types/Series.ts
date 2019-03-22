@@ -29,39 +29,71 @@ export const Series = objectType({
             description: 'The age-appropriateness rating for the series.',
         });
         t.list.field("comics", {
-            type: "Summary",
+            type: "Comic",
             nullable: true,
-            description: 'A list of comics (Summary Types) related to this series',
+            description: 'A list of comics (Comic Types) related to this series',
+            async resolve(parent, args, ctx) {
+                const res = await ctx.api.get(`/series/${parent.id}/comics`);
+                return res.results;
+            }
         });
         t.list.field("stories", {
-            type: "Summary",
+            type: "Story",
             nullable: true,
-            description: 'A list of stories (Summary Types) related to this series',
+            description: 'A list of stories (Story Types) related to this series',
+            async resolve(parent, args, ctx) {
+                const res = await ctx.api.get(`/series/${parent.id}/stories`);
+                return res.results;
+            }
         });
         t.list.field("events", {
-            type: "Summary",
+            type: "Event",
             nullable: true,
-            description: 'A list of events (Summary Types) related to this series',
+            description: 'A list of events (Event Types) related to this series',
+            async resolve(parent, args, ctx) {
+                const res = await ctx.api.get(`/series/${parent.id}/events`);
+                return res.results;
+            }
         });
         t.list.field("characters", {
-            type: "Summary",
+            type: "Character",
             nullable: true,
-            description: 'A list of characters (Summary Types) related to this series',
+            description: 'A list of characters (Character Types) related to this series',
+            async resolve(parent, args, ctx) {
+                const res = await ctx.api.get(`/series/${parent.id}/characters`);
+                return res.results;
+            }
         });
         t.list.field("creators", {
-            type: "Summary",
+            type: "Creator",
             nullable: true,
-            description: 'A list of creators (Summary Types) related to this series',
+            description: 'A list of creators (Creator Types) related to this series',
+            async resolve(parent, args, ctx) {
+                const res = await ctx.api.get(`/series/${parent.id}/creators`);
+                return res.results;
+            }
         });
         t.field("next", {
-            type: "Summary",
+            type: "Series",
             nullable: true,
-            description: 'A list of previous series (Summary Types) in relation to this series',
+            description: 'A list of previous series (Series Types) in relation to this series',
+            async resolve(parent: any, args, ctx) {
+                if (parent.next && parent.next.resourceURI) {
+                    const res = await ctx.seriesModel.getById(ctx.seriesModel.extractId(parent.next.resourceURI));
+                    return res;
+                }
+            }
         });
         t.field("previous", {
-            type: "Summary",
+            type: "Series",
             nullable: true,
-            description: 'A list of previous series (Summary Types) in relation to this series',
+            description: 'A list of previous series (Series Types) in relation to this series',
+            async resolve(parent: any, args, ctx) {
+                if (parent.previous && parent.previous.resourceURI) {
+                    const res = await ctx.seriesModel.getById(ctx.seriesModel.extractId(parent.previous.resourceURI));
+                    return res;
+                }
+            }
         });
     }
 });

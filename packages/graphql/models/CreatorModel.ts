@@ -27,12 +27,18 @@ export default class CreatorModel extends MarvelApiModel {
 			throw new Error(error);
 		}
 	}
-	async getMany(
+	async getMany(args: {
 		where: NexusGenInputs["CreatorWhereInput"],
 		orderBy: NexusGenEnums["CreatorOrderBy"],
 		offset: number,
 		limit: number
-	) {
+	}) {
+		const {
+			where,
+			orderBy,
+			offset,
+			limit,
+		} = args;
 		try {
 			const params = await this.createParams({
 				...where,

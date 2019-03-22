@@ -2,11 +2,16 @@ import MarvelApiModel from './MarvelApiModel';
 import { optionalChaining } from '../utils';
 import { formatThumbnail, getSummary } from '../utils/formatters';
 import { NexusGenInputs, NexusGenEnums } from "../schema/typegen";
+import { Context } from '../utils/getContext';
+import { ComicCreateInput } from 'packages/prisma';
 
 
 export default class ComicModel extends MarvelApiModel {
-	constructor() {
-		super();
+	constructor(context: Context) {
+		super(context, {
+			singularRef: "comic",
+			pluralRef: "comics"
+		});
 	}
 	getWhereArgs(where) {
 		const format = optionalChaining(() => where.format)
@@ -39,21 +44,83 @@ export default class ComicModel extends MarvelApiModel {
 		}
 	}
 	async getById(id: any) {
-		try {
-			const params = await this.createParams();
-			const response = await this.marvel.get(`/comics/${id}?${params}`);
-			return this.formatApiData(response.data.data.results[0]);
-		} catch (error) {
-			console.error(error);
-			throw new Error(error);
-		}
+		return await this.cacheFallback({
+			getFromCache: async () => {
+				return await this.context.db.comic({
+					marvelId: id
+				})
+			},
+			fallback: async () => {
+				const response = await this.get(`/comics/${id}`);
+				return await this.storeApiData(response.results[0]);
+			}
+		})
 	}
-	async getMany(
+	async storeApiData(comic) {
+		let comicData: ComicCreateInput = {
+			marvelId: `${comic.id}`,
+			digitalId: comic.digitalId,
+			title: comic.title,
+			issueNumber: comic.issueNumber,
+			variantDescription: comic.variantDescription,
+			description: comic.description,
+			isbn: comic.isbn,
+			upc: comic.upc,
+			diamondCode: comic.diamondCode,
+			ean: comic.ean,
+			issn: comic.issn,
+			format: comic.format,
+			resourceURI: comic.resourceURI,
+			thumbnail: comic.thumbnail && comic.thumbnail.path ? `${comic.thumbnail.path}.${comic.thumbnail.extension}` : "",
+			textObjects: comic.textObjects,
+			urls: comic.urls,
+			dates: comic.dates,
+			images: comic.images
+		};
+		Object.assign(comicData, await this.makeConnections({
+			targets: [
+				{
+					singularRef: "character",
+					pluralRef: "characters",
+				},
+				{
+					singularRef: "story",
+					pluralRef: "stories",
+				},
+				{
+					singularRef: "event",
+					pluralRef: "events",
+				},
+				{
+					singularRef: "creator",
+					pluralRef: "creators",
+				},
+				{
+					singularRef: "series",
+					pluralRef: "series",
+					connectionType: "one"
+				}
+			],
+			apiData: comic
+		}))
+
+		const created = await this.context.db.createComic(comicData)
+
+		return this.convertCached(created);
+	}
+
+	async getMany(args: {
 		where: NexusGenInputs["ComicWhereInput"],
 		orderBy: NexusGenEnums["ComicOrderBy"],
 		offset: number,
 		limit: number
-	) {
+	}) {
+		const {
+			where,
+			orderBy,
+			limit,
+			offset
+		} = args;
 		const input = this.getWhereArgs(where);
 		const params = await this.createParams({
 			...input,
@@ -66,10 +133,7 @@ export default class ComicModel extends MarvelApiModel {
 			this.formatApiData(comic)
 		);
 	}
-	catch(error) {
-		console.error(error);
-		throw new Error(error);
-	}
+
 	formatApiData(comic) {
 		return {
 			...comic,

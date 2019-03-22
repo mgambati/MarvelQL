@@ -59,9 +59,13 @@ export const Comic = objectType({
             description: 'A set of public web site URLs for the resource.',
         })
         t.field("series", {
-            type: "Summary",
+            type: "Series",
             nullable: true,
             description: 'A list of series (Summary Types) to this comic',
+            async resolve(parent: any, args, ctx) {
+                const res = await ctx.seriesModel.getById(ctx.seriesModel.extractId(parent.series.resourceURI));
+                return res;
+            }
         })
         t.list.field("variants", {
             type: "Summary",
@@ -94,24 +98,40 @@ export const Comic = objectType({
             description: 'A list of promotional images associated with this comic.',
         })
         t.list.field("characters", {
-            type: "Summary",
+            type: "Character",
             nullable: true,
-            description: 'A list of characters (Summary Types) to this comic',
+            description: 'A list of characters (Character Types) to this comic',
+            async resolve(parent, args, ctx) {
+                const res = await ctx.api.get(`/comics/${parent.id}/characters`);
+                return res.results;
+            }
         })
         t.list.field("events", {
-            type: "Summary",
+            type: "Event",
             nullable: true,
-            description: 'A list of events (Summary Types) related to this comic',
+            description: 'A list of events (Event Types) related to this comic',
+            async resolve(parent, args, ctx) {
+                const res = await ctx.api.get(`/comics/${parent.id}/events`);
+                return res.results;
+            }
         })
         t.list.field("stories", {
-            type: "Summary",
+            type: "Story",
             nullable: true,
-            description: 'A list of stories (Summary Types) related to this comic',
+            description: 'A list of stories (Story Types) related to this comic',
+            async resolve(parent, args, ctx) {
+                const res = await ctx.api.get(`/comics/${parent.id}/stories`);
+                return res.results;
+            }
         })
         t.list.field("creators", {
-            type: "Summary",
+            type: "Creator",
             nullable: true,
-            description: 'A list of creators (Summary Types) related to this comic',
+            description: 'A list of creators (Creator Types) related to this comic',
+            async resolve(parent, args, ctx) {
+                const res = await ctx.api.get(`/comics/${parent.id}/creators`);
+                return res.results;
+            }
         })
     }
 })

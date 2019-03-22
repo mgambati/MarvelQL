@@ -105,29 +105,22 @@ export interface NexusGenEnums {
 
 export interface NexusGenRootTypes {
   Character: { // root type
-    comics?: NexusGenRootTypes['Summary'][] | null; // [Summary!]
     description?: string | null; // String
-    events?: NexusGenRootTypes['Summary'][] | null; // [Summary!]
     id?: string | null; // ID
     modified?: string | null; // String
     name?: string | null; // String
     resourceURI?: string | null; // String
-    series?: NexusGenRootTypes['Summary'][] | null; // [Summary!]
-    stories?: NexusGenRootTypes['Summary'][] | null; // [Summary!]
     thumbnail?: string | null; // String
     urls?: NexusGenRootTypes['MarvelUrl'][] | null; // [MarvelUrl!]
   }
   Comic: { // root type
-    characters?: NexusGenRootTypes['Summary'][] | null; // [Summary!]
     collectedIssues?: NexusGenRootTypes['Summary'][] | null; // [Summary!]
     collections?: NexusGenRootTypes['Summary'][] | null; // [Summary!]
-    creators?: NexusGenRootTypes['Summary'][] | null; // [Summary!]
     dates?: NexusGenRootTypes['ComicDate'][] | null; // [ComicDate!]
     description?: string | null; // String
     diamondCode?: string | null; // String
     digitalId?: number | null; // Int
     ean?: string | null; // String
-    events?: NexusGenRootTypes['Summary'][] | null; // [Summary!]
     format?: string | null; // String
     id?: string | null; // ID
     images?: NexusGenRootTypes['ComicImage'][] | null; // [ComicImage!]
@@ -137,8 +130,6 @@ export interface NexusGenRootTypes {
     modified?: string | null; // String
     prices?: NexusGenRootTypes['ComicPrice'][] | null; // [ComicPrice!]
     resourceURI?: string | null; // String
-    series?: NexusGenRootTypes['Summary'] | null; // Summary
-    stories?: NexusGenRootTypes['Summary'][] | null; // [Summary!]
     textObjects?: NexusGenRootTypes['TextObject'][] | null; // [TextObject!]
     thumbnail?: string | null; // String
     title?: string | null; // String
@@ -160,8 +151,6 @@ export interface NexusGenRootTypes {
     type?: string | null; // String
   }
   Creator: { // root type
-    comics?: NexusGenRootTypes['Summary'][] | null; // [Summary!]
-    events?: NexusGenRootTypes['Summary'][] | null; // [Summary!]
     firstName?: string | null; // String
     fullName?: string | null; // String
     id?: string | null; // ID
@@ -169,16 +158,11 @@ export interface NexusGenRootTypes {
     middleName?: string | null; // String
     modified?: string | null; // String
     resourceURI?: string | null; // String
-    series?: NexusGenRootTypes['Summary'][] | null; // [Summary!]
-    stories?: NexusGenRootTypes['Summary'][] | null; // [Summary!]
     suffix?: string | null; // String
     thumbnail?: string | null; // String
     urls?: NexusGenRootTypes['MarvelUrl'][] | null; // [MarvelUrl!]
   }
   Event: { // root type
-    characters?: NexusGenRootTypes['Summary'][] | null; // [Summary!]
-    comics?: NexusGenRootTypes['Summary'][] | null; // [Summary!]
-    creators?: NexusGenRootTypes['Summary'][] | null; // [Summary!]
     description?: string | null; // String
     end?: string | null; // String
     id?: string | null; // ID
@@ -186,9 +170,7 @@ export interface NexusGenRootTypes {
     next?: NexusGenRootTypes['Summary'] | null; // Summary
     previous?: NexusGenRootTypes['Summary'] | null; // Summary
     resourceURI?: string | null; // String
-    series?: NexusGenRootTypes['Summary'][] | null; // [Summary!]
     start?: string | null; // String
-    stories?: NexusGenRootTypes['Summary'][] | null; // [Summary!]
     thumbnail?: string | null; // String
     title?: string | null; // String
     urls?: NexusGenRootTypes['MarvelUrl'][] | null; // [MarvelUrl!]
@@ -199,35 +181,23 @@ export interface NexusGenRootTypes {
   }
   Query: {};
   Series: { // root type
-    characters?: NexusGenRootTypes['Summary'][] | null; // [Summary!]
-    comics?: NexusGenRootTypes['Summary'][] | null; // [Summary!]
-    creators?: NexusGenRootTypes['Summary'][] | null; // [Summary!]
     description?: string | null; // String
     endYear?: number | null; // Int
-    events?: NexusGenRootTypes['Summary'][] | null; // [Summary!]
     id?: string | null; // ID
     modified?: string | null; // String
-    next?: NexusGenRootTypes['Summary'] | null; // Summary
-    previous?: NexusGenRootTypes['Summary'] | null; // Summary
     rating?: string | null; // String
     resourceURI?: string | null; // String
     startYear?: number | null; // Int
-    stories?: NexusGenRootTypes['Summary'][] | null; // [Summary!]
     thumbnail?: string | null; // String
     title?: string | null; // String
     urls?: NexusGenRootTypes['MarvelUrl'][] | null; // [MarvelUrl!]
   }
   Story: { // root type
-    characters?: NexusGenRootTypes['Summary'][] | null; // [Summary!]
-    comics?: NexusGenRootTypes['Summary'][] | null; // [Summary!]
-    creators?: NexusGenRootTypes['Summary'][] | null; // [Summary!]
     description?: string | null; // String
-    events?: NexusGenRootTypes['Summary'][] | null; // [Summary!]
     id?: string | null; // ID
     modified?: string | null; // String
     originalIssue?: NexusGenRootTypes['Summary'] | null; // Summary
     resourceURI?: string | null; // String
-    series?: NexusGenRootTypes['Summary'][] | null; // [Summary!]
     thumbnail?: string | null; // String
     title?: string | null; // String
     type?: string | null; // String
@@ -273,29 +243,29 @@ export interface NexusGenAllTypes extends NexusGenRootTypes {
 
 export interface NexusGenFieldTypes {
   Character: { // field return type
-    comics: NexusGenRootTypes['Summary'][] | null; // [Summary!]
+    comics: NexusGenRootTypes['Comic'][] | null; // [Comic!]
     description: string | null; // String
-    events: NexusGenRootTypes['Summary'][] | null; // [Summary!]
+    events: NexusGenRootTypes['Event'][] | null; // [Event!]
     id: string | null; // ID
     modified: string | null; // String
     name: string | null; // String
     resourceURI: string | null; // String
-    series: NexusGenRootTypes['Summary'][] | null; // [Summary!]
-    stories: NexusGenRootTypes['Summary'][] | null; // [Summary!]
+    series: NexusGenRootTypes['Series'][] | null; // [Series!]
+    stories: NexusGenRootTypes['Story'][] | null; // [Story!]
     thumbnail: string | null; // String
     urls: NexusGenRootTypes['MarvelUrl'][] | null; // [MarvelUrl!]
   }
   Comic: { // field return type
-    characters: NexusGenRootTypes['Summary'][] | null; // [Summary!]
+    characters: NexusGenRootTypes['Character'][] | null; // [Character!]
     collectedIssues: NexusGenRootTypes['Summary'][] | null; // [Summary!]
     collections: NexusGenRootTypes['Summary'][] | null; // [Summary!]
-    creators: NexusGenRootTypes['Summary'][] | null; // [Summary!]
+    creators: NexusGenRootTypes['Creator'][] | null; // [Creator!]
     dates: NexusGenRootTypes['ComicDate'][] | null; // [ComicDate!]
     description: string | null; // String
     diamondCode: string | null; // String
     digitalId: number | null; // Int
     ean: string | null; // String
-    events: NexusGenRootTypes['Summary'][] | null; // [Summary!]
+    events: NexusGenRootTypes['Event'][] | null; // [Event!]
     format: string | null; // String
     id: string | null; // ID
     images: NexusGenRootTypes['ComicImage'][] | null; // [ComicImage!]
@@ -305,8 +275,8 @@ export interface NexusGenFieldTypes {
     modified: string | null; // String
     prices: NexusGenRootTypes['ComicPrice'][] | null; // [ComicPrice!]
     resourceURI: string | null; // String
-    series: NexusGenRootTypes['Summary'] | null; // Summary
-    stories: NexusGenRootTypes['Summary'][] | null; // [Summary!]
+    series: NexusGenRootTypes['Series'] | null; // Series
+    stories: NexusGenRootTypes['Story'][] | null; // [Story!]
     textObjects: NexusGenRootTypes['TextObject'][] | null; // [TextObject!]
     thumbnail: string | null; // String
     title: string | null; // String
@@ -328,8 +298,8 @@ export interface NexusGenFieldTypes {
     type: string | null; // String
   }
   Creator: { // field return type
-    comics: NexusGenRootTypes['Summary'][] | null; // [Summary!]
-    events: NexusGenRootTypes['Summary'][] | null; // [Summary!]
+    comics: NexusGenRootTypes['Comic'][] | null; // [Comic!]
+    events: NexusGenRootTypes['Event'][] | null; // [Event!]
     firstName: string | null; // String
     fullName: string | null; // String
     id: string | null; // ID
@@ -337,16 +307,16 @@ export interface NexusGenFieldTypes {
     middleName: string | null; // String
     modified: string | null; // String
     resourceURI: string | null; // String
-    series: NexusGenRootTypes['Summary'][] | null; // [Summary!]
-    stories: NexusGenRootTypes['Summary'][] | null; // [Summary!]
+    series: NexusGenRootTypes['Series'][] | null; // [Series!]
+    stories: NexusGenRootTypes['Story'][] | null; // [Story!]
     suffix: string | null; // String
     thumbnail: string | null; // String
     urls: NexusGenRootTypes['MarvelUrl'][] | null; // [MarvelUrl!]
   }
   Event: { // field return type
-    characters: NexusGenRootTypes['Summary'][] | null; // [Summary!]
-    comics: NexusGenRootTypes['Summary'][] | null; // [Summary!]
-    creators: NexusGenRootTypes['Summary'][] | null; // [Summary!]
+    characters: NexusGenRootTypes['Character'][] | null; // [Character!]
+    comics: NexusGenRootTypes['Comic'][] | null; // [Comic!]
+    creators: NexusGenRootTypes['Creator'][] | null; // [Creator!]
     description: string | null; // String
     end: string | null; // String
     id: string | null; // ID
@@ -354,9 +324,9 @@ export interface NexusGenFieldTypes {
     next: NexusGenRootTypes['Summary'] | null; // Summary
     previous: NexusGenRootTypes['Summary'] | null; // Summary
     resourceURI: string | null; // String
-    series: NexusGenRootTypes['Summary'][] | null; // [Summary!]
+    series: NexusGenRootTypes['Series'][] | null; // [Series!]
     start: string | null; // String
-    stories: NexusGenRootTypes['Summary'][] | null; // [Summary!]
+    stories: NexusGenRootTypes['Story'][] | null; // [Story!]
     thumbnail: string | null; // String
     title: string | null; // String
     urls: NexusGenRootTypes['MarvelUrl'][] | null; // [MarvelUrl!]
@@ -381,35 +351,35 @@ export interface NexusGenFieldTypes {
     stories: NexusGenRootTypes['Story'][] | null; // [Story!]
   }
   Series: { // field return type
-    characters: NexusGenRootTypes['Summary'][] | null; // [Summary!]
-    comics: NexusGenRootTypes['Summary'][] | null; // [Summary!]
-    creators: NexusGenRootTypes['Summary'][] | null; // [Summary!]
+    characters: NexusGenRootTypes['Character'][] | null; // [Character!]
+    comics: NexusGenRootTypes['Comic'][] | null; // [Comic!]
+    creators: NexusGenRootTypes['Creator'][] | null; // [Creator!]
     description: string | null; // String
     endYear: number | null; // Int
-    events: NexusGenRootTypes['Summary'][] | null; // [Summary!]
+    events: NexusGenRootTypes['Event'][] | null; // [Event!]
     id: string | null; // ID
     modified: string | null; // String
-    next: NexusGenRootTypes['Summary'] | null; // Summary
-    previous: NexusGenRootTypes['Summary'] | null; // Summary
+    next: NexusGenRootTypes['Series'] | null; // Series
+    previous: NexusGenRootTypes['Series'] | null; // Series
     rating: string | null; // String
     resourceURI: string | null; // String
     startYear: number | null; // Int
-    stories: NexusGenRootTypes['Summary'][] | null; // [Summary!]
+    stories: NexusGenRootTypes['Story'][] | null; // [Story!]
     thumbnail: string | null; // String
     title: string | null; // String
     urls: NexusGenRootTypes['MarvelUrl'][] | null; // [MarvelUrl!]
   }
   Story: { // field return type
-    characters: NexusGenRootTypes['Summary'][] | null; // [Summary!]
-    comics: NexusGenRootTypes['Summary'][] | null; // [Summary!]
-    creators: NexusGenRootTypes['Summary'][] | null; // [Summary!]
+    characters: NexusGenRootTypes['Character'][] | null; // [Character!]
+    comics: NexusGenRootTypes['Comic'][] | null; // [Comic!]
+    creators: NexusGenRootTypes['Creator'][] | null; // [Creator!]
     description: string | null; // String
-    events: NexusGenRootTypes['Summary'][] | null; // [Summary!]
+    events: NexusGenRootTypes['Event'][] | null; // [Event!]
     id: string | null; // ID
     modified: string | null; // String
     originalIssue: NexusGenRootTypes['Summary'] | null; // Summary
     resourceURI: string | null; // String
-    series: NexusGenRootTypes['Summary'][] | null; // [Summary!]
+    series: NexusGenRootTypes['Series'][] | null; // [Series!]
     thumbnail: string | null; // String
     title: string | null; // String
     type: string | null; // String

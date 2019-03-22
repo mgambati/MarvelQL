@@ -5,7 +5,7 @@ export const Event = objectType({
         t.implements("MarvelNode");
         t.string("title", {
             nullable: true,
-            description: 'The title of the event.',
+            description: 'The title of the event.'
         });
         t.string("description", {
             nullable: true,
@@ -25,29 +25,49 @@ export const Event = objectType({
             description: 'The date of publication of the last issue in this event.',
         });
         t.list.field("series", {
-            type: "Summary",
+            type: "Series",
             nullable: true,
-            description: 'A list of series (Summary Types) related to this event',
+            description: 'A list of series (Series Types) related to this event',
+            async resolve(parent, args, ctx) {
+                const res = await ctx.api.get(`/events/${parent.id}/series`);
+                return res.results;
+            }
         });
         t.list.field("stories", {
-            type: "Summary",
+            type: "Story",
             nullable: true,
-            description: 'A list of stories (Summary Types) related to this event',
+            description: 'A list of stories (Story Types) related to this event',
+            async resolve(parent, args, ctx) {
+                const res = await ctx.api.get(`/events/${parent.id}/stories`);
+                return res.results;
+            }
         });
         t.list.field("comics", {
-            type: "Summary",
+            type: "Comic",
             nullable: true,
-            description: 'A list of comics (Summary Types) related to this event',
+            description: 'A list of comics (Comic Types) related to this event',
+            async resolve(parent, args, ctx) {
+                const res = await ctx.api.get(`/events/${parent.id}/comics`);
+                return res.results;
+            }
         });
         t.list.field("characters", {
-            type: "Summary",
+            type: "Character",
             nullable: true,
-            description: 'A list of characters (Summary Types) related to this event',
+            description: 'A list of characters (Character Types) related to this event',
+            async resolve(parent, args, ctx) {
+                const res = await ctx.api.get(`/events/${parent.id}/characters`);
+                return res.results;
+            }
         });
         t.list.field("creators", {
-            type: "Summary",
+            type: "Creator",
             nullable: true,
-            description: 'A list of creators (Summary Types) related to this event',
+            description: 'A list of creators (Creator Types) related to this event',
+            async resolve(parent, args, ctx) {
+                const res = await ctx.api.get(`/events/${parent.id}/creators`);
+                return res.results;
+            }
         });
         t.field("next", {
             type: "Summary",

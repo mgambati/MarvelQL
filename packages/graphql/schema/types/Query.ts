@@ -14,12 +14,12 @@ export const Query = objectType({
                 orderBy: arg({ type: "CharacterOrderBy" }),
             },
             async resolve(_, args, ctx, info) {
-                return await ctx.charactersModel.getMany(
-                    args.where,
-                    args.orderBy,
-                    args.limit,
-                    args.offset
-                );
+                return await ctx.charactersModel.getMany({
+                    where: args.where,
+                    orderBy: args.orderBy,
+                    offset: args.offset,
+                    limit: args.limit,
+                });
             },
         });
         t.field("getCharacter", {
@@ -44,12 +44,12 @@ export const Query = objectType({
                 limit: intArg({ description: "Limit the result set to the specified number of resources." }),
             },
             async resolve(_, args, ctx, info) {
-                return await ctx.comicsModel.getMany(
-                    args.where,
-                    args.orderBy,
-                    args.limit,
-                    args.offset
-                );
+                return await ctx.comicsModel.getMany({
+                    where: args.where,
+                    orderBy: args.orderBy,
+                    limit: args.limit,
+                    offset: args.offset
+                });
             },
         });
         t.field("getComic", {
@@ -74,12 +74,12 @@ export const Query = objectType({
                 limit: intArg({ description: "Limit the result set to the specified number of resources." }),
             },
             async resolve(_, args, ctx, info) {
-                return await ctx.creatorsModel.getMany(
-                    args.where,
-                    args.orderBy,
-                    args.limit,
-                    args.offset
-                );
+                return await ctx.creatorsModel.getMany({
+                    where: args.where,
+                    orderBy: args.orderBy,
+                    limit: args.limit,
+                    offset: args.offset
+                });
             }
         });
         t.field("getCreator", {
@@ -104,12 +104,12 @@ export const Query = objectType({
                 limit: intArg({ description: "Limit the result set to the specified number of resources." }),
             },
             async resolve(_, args, ctx, info) {
-                return await ctx.eventsModel.getMany(
-                    args.where,
-                    args.orderBy,
-                    args.limit,
-                    args.offset
-                );
+                return await ctx.eventsModel.getMany({
+                    where: args.where,
+                    orderBy: args.orderBy,
+                    limit: args.limit,
+                    offset: args.offset
+                });
             },
         });
         t.field("getEvent", {
@@ -134,12 +134,12 @@ export const Query = objectType({
                 limit: intArg({ description: "Limit the result set to the specified number of resources." }),
             },
             async resolve(_, args, ctx, info) {
-                return await ctx.seriesModel.getMany(
-                    args.where,
-                    args.orderBy,
-                    args.limit,
-                    args.offset
-                );
+                return await ctx.seriesModel.getMany({
+                    where: args.where,
+                    orderBy: args.orderBy,
+                    limit: args.limit,
+                    offset: args.offset
+                });
             },
         });
         t.field("getSeries", {
@@ -164,12 +164,12 @@ export const Query = objectType({
                 limit: intArg({ description: "Limit the result set to the specified number of resources." }),
             },
             async resolve(_, args, ctx, info) {
-                return await ctx.storiesModel.getMany(
-                    args.where,
-                    args.orderBy,
-                    args.limit,
-                    args.offset
-                );
+                return await ctx.storiesModel.getMany({
+                    where: args.where,
+                    orderBy: args.orderBy,
+                    limit: args.limit,
+                    offset: args.offset
+                });
             }
         });
         t.field("getStory", {

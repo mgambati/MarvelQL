@@ -1,5 +1,6 @@
 type Character {
   id: ID! @unique
+  marvelId: String! @unique
   createdAt: DateTime!
   updatedAt: DateTime!
   resourceURI: String
@@ -7,7 +8,7 @@ type Character {
   modified: String
   name: String
   description: String
-  urls: [MarvelUrl!]
+  urls: Json
   comics: [Comic!]
   series: [Series!]!
   events: [Event!]!
@@ -16,6 +17,7 @@ type Character {
 
 type Comic {
   id: ID! @unique
+  marvelId: String! @unique
   createdAt: DateTime!
   updatedAt: DateTime!
   resourceURI: String
@@ -32,47 +34,30 @@ type Comic {
   ean: String
   issn: String
   format: String
-  textObjects: [TextObject!]
-  urls: [MarvelUrl!]
+  textObjects: Json
+  urls: Json
+  dates: Json
+  prices: Json
+  images: Json
+  characters: [Character!]!
+  _characters: Json
+  events: [Event!]!
+  _events: Json
+  stories: [Story!]!
+  _stories: Json
+  creators: [Creator!]!
+  _creators: Json
   series: Series
-  # variants: [Summary!]
+  _series: Json
+  # variants: [Story!] @relation(name: "StoryOriginalIssue")
+  # _variants: Json
   # collections: [Summary!]
   # collectedIssues: [Summary!]
-  dates: [ComicDate!]
-  prices: [ComicPrice!]
-  images: [ComicImage!]
-  characters: [Character!]!
-  events: [Event!]!
-  stories: [Story!]!
-  creators: [Creator!]!
-}
-
-type ComicDate {
-  id: ID! @unique
-  createdAt: DateTime!
-  updatedAt: DateTime!
-  type: String
-  date: String
-}
-
-type ComicImage {
-  id: ID! @unique
-  createdAt: DateTime!
-  updatedAt: DateTime!
-  path: String
-  extension: String
-}
-
-type ComicPrice {
-  id: ID! @unique
-  createdAt: DateTime!
-  updatedAt: DateTime!
-  type: String
-  price: Int
 }
 
 type Creator {
   id: ID! @unique
+  marvelId: String! @unique
   createdAt: DateTime!
   updatedAt: DateTime!
   resourceURI: String
@@ -83,7 +68,7 @@ type Creator {
   lastName: String
   suffix: String
   fullName: String
-  urls: [MarvelUrl!]
+  urls: Json
   series: [Series!]!
   stories: [Story!]!
   comics: [Comic!]!
@@ -92,6 +77,7 @@ type Creator {
 
 type Event {
   id: ID! @unique
+  marvelId: String! @unique
   createdAt: DateTime!
   updatedAt: DateTime!
   resourceURI: String
@@ -99,28 +85,28 @@ type Event {
   modified: String
   title: String
   description: String
-  urls: [MarvelUrl!]
-  start: String
-  end: String
+  urls: Json
+  start: DateTime
+  end: DateTime
   series: [Series!]!
+  _series: Json
   stories: [Story!]!
+  _stories: Json
   comics: [Comic!]!
+  _comics: Json
   characters: [Character!]!
+  _characters: Json
   creators: [Creator!]!
+  _creators: Json
   next: Event @relation(name: "EventRelation")
+  _next: Json
   previous: Event @relation(name: "EventRelation")
-}
-
-type MarvelUrl {
-  id: ID! @unique
-  createdAt: DateTime!
-  updatedAt: DateTime!
-  type: String
-  url: String
+  _previous: Json
 }
 
 type Series {
   id: ID! @unique
+  marvelId: String! @unique
   createdAt: DateTime!
   updatedAt: DateTime!
   resourceURI: String
@@ -128,21 +114,28 @@ type Series {
   modified: String
   title: String
   description: String
-  urls: [MarvelUrl!]
+  urls: Json
   startYear: Int
   endYear: Int
   rating: String
+  type: String
   comics: [Comic!]!
+  _comics: Json
   stories: [Story!]!
+  _stories: Json
   events: [Event!]!
+  _events: Json
   characters: [Character!]!
+  _characters: Json
   creators: [Creator!]!
+  _creators: Json
   next: Series @relation(name: "SeriesRelation")
   previous: Series @relation(name: "SeriesRelation")
 }
 
 type Story {
   id: ID! @unique
+  marvelId: String! @unique
   createdAt: DateTime!
   updatedAt: DateTime!
   resourceURI: String
@@ -152,18 +145,15 @@ type Story {
   description: String
   type: String
   comics: [Comic!]!
+  _comics: Json
   events: [Event!]!
+  _events: Json
   characters: [Character!]!
+  _characters: Json
   creators: [Creator!]!
+  _creators: Json
   series: [Series!]!
-  originalIssue: Story
-}
-
-type TextObject {
-  id: ID! @unique
-  createdAt: DateTime!
-  updatedAt: DateTime!
-  type: String
-  language: String
-  text: String
+  _series: Json
+  # originalIssue: Comic @relation(name: "StoryOriginalIssue")
+  _originalIssue: Json
 }
