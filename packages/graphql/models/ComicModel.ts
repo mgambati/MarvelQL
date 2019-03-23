@@ -32,12 +32,13 @@ export default class ComicModel extends MarvelApiModel {
 	async getOne(where: NexusGenInputs["ComicWhereInput"]) {
 		try {
 			const input = this.getWhereArgs(where);
-			const params = await this.createParams({
+			const params = {
 				...input
-			});
+			}
 
-			const response = await this.marvel.get(`/comics?${params}`);
-			return this.formatApiData(response.data.data.results[0]);
+			const response = await this.get(`/comics`, { params });
+			response.results.map(this.storeApiData)
+			return this.formatApiData(response.results[0]);
 		} catch (error) {
 			console.error(error);
 			throw new Error(error);
@@ -56,57 +57,44 @@ export default class ComicModel extends MarvelApiModel {
 			}
 		})
 	}
-	async storeApiData(comic) {
-		let comicData: ComicCreateInput = {
-			marvelId: `${comic.id}`,
-			digitalId: comic.digitalId,
-			title: comic.title,
-			issueNumber: comic.issueNumber,
-			variantDescription: comic.variantDescription,
-			description: comic.description,
-			isbn: comic.isbn,
-			upc: comic.upc,
-			diamondCode: comic.diamondCode,
-			ean: comic.ean,
-			issn: comic.issn,
-			format: comic.format,
-			resourceURI: comic.resourceURI,
-			thumbnail: comic.thumbnail && comic.thumbnail.path ? `${comic.thumbnail.path}.${comic.thumbnail.extension}` : "",
-			textObjects: comic.textObjects,
-			urls: comic.urls,
-			dates: comic.dates,
-			images: comic.images
-		};
-		Object.assign(comicData, await this.makeConnections({
-			targets: [
-				{
-					singularRef: "character",
-					pluralRef: "characters",
-				},
-				{
-					singularRef: "story",
-					pluralRef: "stories",
-				},
-				{
-					singularRef: "event",
-					pluralRef: "events",
-				},
-				{
-					singularRef: "creator",
-					pluralRef: "creators",
-				},
-				{
-					singularRef: "series",
-					pluralRef: "series",
-					connectionType: "one"
-				}
-			],
-			apiData: comic
-		}))
+	storeApiData = (apiData): Promise<any> => {
+		const marvelId = `${apiData.id}`;
+		return this.updateCache({
+			getCached: () => this.context.db.comic({
+				marvelId
+			}),
+			addToCache: async () => {
+				let inputData: ComicCreateInput = {
+					marvelId,
+					digitalId: apiData.digitalId,
+					title: apiData.title,
+					issueNumber: apiData.issueNumber,
+					variantDescription: apiData.variantDescription,
+					description: apiData.description,
+					isbn: apiData.isbn,
+					upc: apiData.upc,
+					diamondCode: apiData.diamondCode,
+					ean: apiData.ean,
+					issn: apiData.issn,
+					format: apiData.format,
+					resourceURI: apiData.resourceURI,
+					thumbnail: apiData.thumbnail && apiData.thumbnail.path ? `${apiData.thumbnail.path}.${apiData.thumbnail.extension}` : "",
+					textObjects: apiData.textObjects,
+					urls: apiData.urls,
+					dates: apiData.dates,
+					images: apiData.images
+				};
 
-		const created = await this.context.db.createComic(comicData)
-
-		return this.convertCached(created);
+				const upserted = await this.context.db.upsertComic({
+					where: {
+						marvelId: inputData.marvelId
+					},
+					create: inputData,
+					update: inputData
+				})
+				return upserted;
+			}
+		})
 	}
 
 	async getMany(args: {
@@ -122,14 +110,15 @@ export default class ComicModel extends MarvelApiModel {
 			offset
 		} = args;
 		const input = this.getWhereArgs(where);
-		const params = await this.createParams({
+		const params = ({
 			...input,
 			orderBy: this.getOrderBy(orderBy, 'comics'),
 			offset,
 			limit
 		});
-		const response = await this.marvel.get(`/comics?${params}`);
-		return await response.data.data.results.map((comic) =>
+		const response = await this.get(`/comics`, { params });
+		response.results.map(this.storeApiData)
+		return await response.results.map((comic) =>
 			this.formatApiData(comic)
 		);
 	}
@@ -138,10 +127,10 @@ export default class ComicModel extends MarvelApiModel {
 		return {
 			...comic,
 			thumbnail: formatThumbnail(comic.thumbnail),
-			characters: getSummary['characters'](comic),
-			events: getSummary['events'](comic),
-			creators: getSummary['creators'](comic),
-			stories: getSummary['stories'](comic)
+			// characters: getSummary['characters'](comic),
+			// events: getSummary['events'](comic),
+			// creators: getSummary['creators'](comic),
+			// stories: getSummary['stories'](comic)
 		};
 	}
 }

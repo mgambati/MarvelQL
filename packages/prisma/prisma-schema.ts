@@ -663,15 +663,10 @@ type Comic {
   prices: Json
   images: Json
   characters(where: CharacterWhereInput, orderBy: CharacterOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Character!]
-  _characters: Json
   events(where: EventWhereInput, orderBy: EventOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Event!]
-  _events: Json
   stories(where: StoryWhereInput, orderBy: StoryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Story!]
-  _stories: Json
   creators(where: CreatorWhereInput, orderBy: CreatorOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Creator!]
-  _creators: Json
   series: Series
-  _series: Json
 }
 
 type ComicConnection {
@@ -702,15 +697,10 @@ input ComicCreateInput {
   prices: Json
   images: Json
   characters: CharacterCreateManyWithoutComicsInput
-  _characters: Json
   events: EventCreateManyWithoutComicsInput
-  _events: Json
   stories: StoryCreateManyWithoutComicsInput
-  _stories: Json
   creators: CreatorCreateManyWithoutComicsInput
-  _creators: Json
   series: SeriesCreateOneWithoutComicsInput
-  _series: Json
 }
 
 input ComicCreateManyWithoutCharactersInput {
@@ -759,15 +749,10 @@ input ComicCreateWithoutCharactersInput {
   dates: Json
   prices: Json
   images: Json
-  _characters: Json
   events: EventCreateManyWithoutComicsInput
-  _events: Json
   stories: StoryCreateManyWithoutComicsInput
-  _stories: Json
   creators: CreatorCreateManyWithoutComicsInput
-  _creators: Json
   series: SeriesCreateOneWithoutComicsInput
-  _series: Json
 }
 
 input ComicCreateWithoutCreatorsInput {
@@ -792,14 +777,9 @@ input ComicCreateWithoutCreatorsInput {
   prices: Json
   images: Json
   characters: CharacterCreateManyWithoutComicsInput
-  _characters: Json
   events: EventCreateManyWithoutComicsInput
-  _events: Json
   stories: StoryCreateManyWithoutComicsInput
-  _stories: Json
-  _creators: Json
   series: SeriesCreateOneWithoutComicsInput
-  _series: Json
 }
 
 input ComicCreateWithoutEventsInput {
@@ -824,14 +804,9 @@ input ComicCreateWithoutEventsInput {
   prices: Json
   images: Json
   characters: CharacterCreateManyWithoutComicsInput
-  _characters: Json
-  _events: Json
   stories: StoryCreateManyWithoutComicsInput
-  _stories: Json
   creators: CreatorCreateManyWithoutComicsInput
-  _creators: Json
   series: SeriesCreateOneWithoutComicsInput
-  _series: Json
 }
 
 input ComicCreateWithoutSeriesInput {
@@ -856,14 +831,9 @@ input ComicCreateWithoutSeriesInput {
   prices: Json
   images: Json
   characters: CharacterCreateManyWithoutComicsInput
-  _characters: Json
   events: EventCreateManyWithoutComicsInput
-  _events: Json
   stories: StoryCreateManyWithoutComicsInput
-  _stories: Json
   creators: CreatorCreateManyWithoutComicsInput
-  _creators: Json
-  _series: Json
 }
 
 input ComicCreateWithoutStoriesInput {
@@ -888,14 +858,9 @@ input ComicCreateWithoutStoriesInput {
   prices: Json
   images: Json
   characters: CharacterCreateManyWithoutComicsInput
-  _characters: Json
   events: EventCreateManyWithoutComicsInput
-  _events: Json
-  _stories: Json
   creators: CreatorCreateManyWithoutComicsInput
-  _creators: Json
   series: SeriesCreateOneWithoutComicsInput
-  _series: Json
 }
 
 type ComicEdge {
@@ -950,16 +915,6 @@ enum ComicOrderByInput {
   prices_DESC
   images_ASC
   images_DESC
-  _characters_ASC
-  _characters_DESC
-  _events_ASC
-  _events_DESC
-  _stories_ASC
-  _stories_DESC
-  _creators_ASC
-  _creators_DESC
-  _series_ASC
-  _series_DESC
 }
 
 type ComicPreviousValues {
@@ -986,11 +941,6 @@ type ComicPreviousValues {
   dates: Json
   prices: Json
   images: Json
-  _characters: Json
-  _events: Json
-  _stories: Json
-  _creators: Json
-  _series: Json
 }
 
 input ComicScalarWhereInput {
@@ -1267,15 +1217,10 @@ input ComicUpdateInput {
   prices: Json
   images: Json
   characters: CharacterUpdateManyWithoutComicsInput
-  _characters: Json
   events: EventUpdateManyWithoutComicsInput
-  _events: Json
   stories: StoryUpdateManyWithoutComicsInput
-  _stories: Json
   creators: CreatorUpdateManyWithoutComicsInput
-  _creators: Json
   series: SeriesUpdateOneWithoutComicsInput
-  _series: Json
 }
 
 input ComicUpdateManyDataInput {
@@ -1299,11 +1244,6 @@ input ComicUpdateManyDataInput {
   dates: Json
   prices: Json
   images: Json
-  _characters: Json
-  _events: Json
-  _stories: Json
-  _creators: Json
-  _series: Json
 }
 
 input ComicUpdateManyMutationInput {
@@ -1327,11 +1267,6 @@ input ComicUpdateManyMutationInput {
   dates: Json
   prices: Json
   images: Json
-  _characters: Json
-  _events: Json
-  _stories: Json
-  _creators: Json
-  _series: Json
 }
 
 input ComicUpdateManyWithoutCharactersInput {
@@ -1420,15 +1355,10 @@ input ComicUpdateWithoutCharactersDataInput {
   dates: Json
   prices: Json
   images: Json
-  _characters: Json
   events: EventUpdateManyWithoutComicsInput
-  _events: Json
   stories: StoryUpdateManyWithoutComicsInput
-  _stories: Json
   creators: CreatorUpdateManyWithoutComicsInput
-  _creators: Json
   series: SeriesUpdateOneWithoutComicsInput
-  _series: Json
 }
 
 input ComicUpdateWithoutCreatorsDataInput {
@@ -1453,14 +1383,9 @@ input ComicUpdateWithoutCreatorsDataInput {
   prices: Json
   images: Json
   characters: CharacterUpdateManyWithoutComicsInput
-  _characters: Json
   events: EventUpdateManyWithoutComicsInput
-  _events: Json
   stories: StoryUpdateManyWithoutComicsInput
-  _stories: Json
-  _creators: Json
   series: SeriesUpdateOneWithoutComicsInput
-  _series: Json
 }
 
 input ComicUpdateWithoutEventsDataInput {
@@ -1485,14 +1410,9 @@ input ComicUpdateWithoutEventsDataInput {
   prices: Json
   images: Json
   characters: CharacterUpdateManyWithoutComicsInput
-  _characters: Json
-  _events: Json
   stories: StoryUpdateManyWithoutComicsInput
-  _stories: Json
   creators: CreatorUpdateManyWithoutComicsInput
-  _creators: Json
   series: SeriesUpdateOneWithoutComicsInput
-  _series: Json
 }
 
 input ComicUpdateWithoutSeriesDataInput {
@@ -1517,14 +1437,9 @@ input ComicUpdateWithoutSeriesDataInput {
   prices: Json
   images: Json
   characters: CharacterUpdateManyWithoutComicsInput
-  _characters: Json
   events: EventUpdateManyWithoutComicsInput
-  _events: Json
   stories: StoryUpdateManyWithoutComicsInput
-  _stories: Json
   creators: CreatorUpdateManyWithoutComicsInput
-  _creators: Json
-  _series: Json
 }
 
 input ComicUpdateWithoutStoriesDataInput {
@@ -1549,14 +1464,9 @@ input ComicUpdateWithoutStoriesDataInput {
   prices: Json
   images: Json
   characters: CharacterUpdateManyWithoutComicsInput
-  _characters: Json
   events: EventUpdateManyWithoutComicsInput
-  _events: Json
-  _stories: Json
   creators: CreatorUpdateManyWithoutComicsInput
-  _creators: Json
   series: SeriesUpdateOneWithoutComicsInput
-  _series: Json
 }
 
 input ComicUpdateWithWhereUniqueWithoutCharactersInput {
@@ -2622,19 +2532,12 @@ type Event {
   start: DateTime
   end: DateTime
   series(where: SeriesWhereInput, orderBy: SeriesOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Series!]
-  _series: Json
   stories(where: StoryWhereInput, orderBy: StoryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Story!]
-  _stories: Json
   comics(where: ComicWhereInput, orderBy: ComicOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Comic!]
-  _comics: Json
   characters(where: CharacterWhereInput, orderBy: CharacterOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Character!]
-  _characters: Json
   creators(where: CreatorWhereInput, orderBy: CreatorOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Creator!]
-  _creators: Json
   next: Event
-  _next: Json
   previous: Event
-  _previous: Json
 }
 
 type EventConnection {
@@ -2654,19 +2557,12 @@ input EventCreateInput {
   start: DateTime
   end: DateTime
   series: SeriesCreateManyWithoutEventsInput
-  _series: Json
   stories: StoryCreateManyWithoutEventsInput
-  _stories: Json
   comics: ComicCreateManyWithoutEventsInput
-  _comics: Json
   characters: CharacterCreateManyWithoutEventsInput
-  _characters: Json
   creators: CreatorCreateManyWithoutEventsInput
-  _creators: Json
   next: EventCreateOneWithoutPreviousInput
-  _next: Json
   previous: EventCreateOneWithoutNextInput
-  _previous: Json
 }
 
 input EventCreateManyWithoutCharactersInput {
@@ -2715,18 +2611,11 @@ input EventCreateWithoutCharactersInput {
   start: DateTime
   end: DateTime
   series: SeriesCreateManyWithoutEventsInput
-  _series: Json
   stories: StoryCreateManyWithoutEventsInput
-  _stories: Json
   comics: ComicCreateManyWithoutEventsInput
-  _comics: Json
-  _characters: Json
   creators: CreatorCreateManyWithoutEventsInput
-  _creators: Json
   next: EventCreateOneWithoutPreviousInput
-  _next: Json
   previous: EventCreateOneWithoutNextInput
-  _previous: Json
 }
 
 input EventCreateWithoutComicsInput {
@@ -2740,18 +2629,11 @@ input EventCreateWithoutComicsInput {
   start: DateTime
   end: DateTime
   series: SeriesCreateManyWithoutEventsInput
-  _series: Json
   stories: StoryCreateManyWithoutEventsInput
-  _stories: Json
-  _comics: Json
   characters: CharacterCreateManyWithoutEventsInput
-  _characters: Json
   creators: CreatorCreateManyWithoutEventsInput
-  _creators: Json
   next: EventCreateOneWithoutPreviousInput
-  _next: Json
   previous: EventCreateOneWithoutNextInput
-  _previous: Json
 }
 
 input EventCreateWithoutCreatorsInput {
@@ -2765,18 +2647,11 @@ input EventCreateWithoutCreatorsInput {
   start: DateTime
   end: DateTime
   series: SeriesCreateManyWithoutEventsInput
-  _series: Json
   stories: StoryCreateManyWithoutEventsInput
-  _stories: Json
   comics: ComicCreateManyWithoutEventsInput
-  _comics: Json
   characters: CharacterCreateManyWithoutEventsInput
-  _characters: Json
-  _creators: Json
   next: EventCreateOneWithoutPreviousInput
-  _next: Json
   previous: EventCreateOneWithoutNextInput
-  _previous: Json
 }
 
 input EventCreateWithoutNextInput {
@@ -2790,18 +2665,11 @@ input EventCreateWithoutNextInput {
   start: DateTime
   end: DateTime
   series: SeriesCreateManyWithoutEventsInput
-  _series: Json
   stories: StoryCreateManyWithoutEventsInput
-  _stories: Json
   comics: ComicCreateManyWithoutEventsInput
-  _comics: Json
   characters: CharacterCreateManyWithoutEventsInput
-  _characters: Json
   creators: CreatorCreateManyWithoutEventsInput
-  _creators: Json
-  _next: Json
   previous: EventCreateOneWithoutNextInput
-  _previous: Json
 }
 
 input EventCreateWithoutPreviousInput {
@@ -2815,18 +2683,11 @@ input EventCreateWithoutPreviousInput {
   start: DateTime
   end: DateTime
   series: SeriesCreateManyWithoutEventsInput
-  _series: Json
   stories: StoryCreateManyWithoutEventsInput
-  _stories: Json
   comics: ComicCreateManyWithoutEventsInput
-  _comics: Json
   characters: CharacterCreateManyWithoutEventsInput
-  _characters: Json
   creators: CreatorCreateManyWithoutEventsInput
-  _creators: Json
   next: EventCreateOneWithoutPreviousInput
-  _next: Json
-  _previous: Json
 }
 
 input EventCreateWithoutSeriesInput {
@@ -2839,19 +2700,12 @@ input EventCreateWithoutSeriesInput {
   urls: Json
   start: DateTime
   end: DateTime
-  _series: Json
   stories: StoryCreateManyWithoutEventsInput
-  _stories: Json
   comics: ComicCreateManyWithoutEventsInput
-  _comics: Json
   characters: CharacterCreateManyWithoutEventsInput
-  _characters: Json
   creators: CreatorCreateManyWithoutEventsInput
-  _creators: Json
   next: EventCreateOneWithoutPreviousInput
-  _next: Json
   previous: EventCreateOneWithoutNextInput
-  _previous: Json
 }
 
 input EventCreateWithoutStoriesInput {
@@ -2865,18 +2719,11 @@ input EventCreateWithoutStoriesInput {
   start: DateTime
   end: DateTime
   series: SeriesCreateManyWithoutEventsInput
-  _series: Json
-  _stories: Json
   comics: ComicCreateManyWithoutEventsInput
-  _comics: Json
   characters: CharacterCreateManyWithoutEventsInput
-  _characters: Json
   creators: CreatorCreateManyWithoutEventsInput
-  _creators: Json
   next: EventCreateOneWithoutPreviousInput
-  _next: Json
   previous: EventCreateOneWithoutNextInput
-  _previous: Json
 }
 
 type EventEdge {
@@ -2909,20 +2756,6 @@ enum EventOrderByInput {
   start_DESC
   end_ASC
   end_DESC
-  _series_ASC
-  _series_DESC
-  _stories_ASC
-  _stories_DESC
-  _comics_ASC
-  _comics_DESC
-  _characters_ASC
-  _characters_DESC
-  _creators_ASC
-  _creators_DESC
-  _next_ASC
-  _next_DESC
-  _previous_ASC
-  _previous_DESC
 }
 
 type EventPreviousValues {
@@ -2938,13 +2771,6 @@ type EventPreviousValues {
   urls: Json
   start: DateTime
   end: DateTime
-  _series: Json
-  _stories: Json
-  _comics: Json
-  _characters: Json
-  _creators: Json
-  _next: Json
-  _previous: Json
 }
 
 input EventScalarWhereInput {
@@ -3112,19 +2938,12 @@ input EventUpdateInput {
   start: DateTime
   end: DateTime
   series: SeriesUpdateManyWithoutEventsInput
-  _series: Json
   stories: StoryUpdateManyWithoutEventsInput
-  _stories: Json
   comics: ComicUpdateManyWithoutEventsInput
-  _comics: Json
   characters: CharacterUpdateManyWithoutEventsInput
-  _characters: Json
   creators: CreatorUpdateManyWithoutEventsInput
-  _creators: Json
   next: EventUpdateOneWithoutPreviousInput
-  _next: Json
   previous: EventUpdateOneWithoutNextInput
-  _previous: Json
 }
 
 input EventUpdateManyDataInput {
@@ -3137,13 +2956,6 @@ input EventUpdateManyDataInput {
   urls: Json
   start: DateTime
   end: DateTime
-  _series: Json
-  _stories: Json
-  _comics: Json
-  _characters: Json
-  _creators: Json
-  _next: Json
-  _previous: Json
 }
 
 input EventUpdateManyMutationInput {
@@ -3156,13 +2968,6 @@ input EventUpdateManyMutationInput {
   urls: Json
   start: DateTime
   end: DateTime
-  _series: Json
-  _stories: Json
-  _comics: Json
-  _characters: Json
-  _creators: Json
-  _next: Json
-  _previous: Json
 }
 
 input EventUpdateManyWithoutCharactersInput {
@@ -3259,18 +3064,11 @@ input EventUpdateWithoutCharactersDataInput {
   start: DateTime
   end: DateTime
   series: SeriesUpdateManyWithoutEventsInput
-  _series: Json
   stories: StoryUpdateManyWithoutEventsInput
-  _stories: Json
   comics: ComicUpdateManyWithoutEventsInput
-  _comics: Json
-  _characters: Json
   creators: CreatorUpdateManyWithoutEventsInput
-  _creators: Json
   next: EventUpdateOneWithoutPreviousInput
-  _next: Json
   previous: EventUpdateOneWithoutNextInput
-  _previous: Json
 }
 
 input EventUpdateWithoutComicsDataInput {
@@ -3284,18 +3082,11 @@ input EventUpdateWithoutComicsDataInput {
   start: DateTime
   end: DateTime
   series: SeriesUpdateManyWithoutEventsInput
-  _series: Json
   stories: StoryUpdateManyWithoutEventsInput
-  _stories: Json
-  _comics: Json
   characters: CharacterUpdateManyWithoutEventsInput
-  _characters: Json
   creators: CreatorUpdateManyWithoutEventsInput
-  _creators: Json
   next: EventUpdateOneWithoutPreviousInput
-  _next: Json
   previous: EventUpdateOneWithoutNextInput
-  _previous: Json
 }
 
 input EventUpdateWithoutCreatorsDataInput {
@@ -3309,18 +3100,11 @@ input EventUpdateWithoutCreatorsDataInput {
   start: DateTime
   end: DateTime
   series: SeriesUpdateManyWithoutEventsInput
-  _series: Json
   stories: StoryUpdateManyWithoutEventsInput
-  _stories: Json
   comics: ComicUpdateManyWithoutEventsInput
-  _comics: Json
   characters: CharacterUpdateManyWithoutEventsInput
-  _characters: Json
-  _creators: Json
   next: EventUpdateOneWithoutPreviousInput
-  _next: Json
   previous: EventUpdateOneWithoutNextInput
-  _previous: Json
 }
 
 input EventUpdateWithoutNextDataInput {
@@ -3334,18 +3118,11 @@ input EventUpdateWithoutNextDataInput {
   start: DateTime
   end: DateTime
   series: SeriesUpdateManyWithoutEventsInput
-  _series: Json
   stories: StoryUpdateManyWithoutEventsInput
-  _stories: Json
   comics: ComicUpdateManyWithoutEventsInput
-  _comics: Json
   characters: CharacterUpdateManyWithoutEventsInput
-  _characters: Json
   creators: CreatorUpdateManyWithoutEventsInput
-  _creators: Json
-  _next: Json
   previous: EventUpdateOneWithoutNextInput
-  _previous: Json
 }
 
 input EventUpdateWithoutPreviousDataInput {
@@ -3359,18 +3136,11 @@ input EventUpdateWithoutPreviousDataInput {
   start: DateTime
   end: DateTime
   series: SeriesUpdateManyWithoutEventsInput
-  _series: Json
   stories: StoryUpdateManyWithoutEventsInput
-  _stories: Json
   comics: ComicUpdateManyWithoutEventsInput
-  _comics: Json
   characters: CharacterUpdateManyWithoutEventsInput
-  _characters: Json
   creators: CreatorUpdateManyWithoutEventsInput
-  _creators: Json
   next: EventUpdateOneWithoutPreviousInput
-  _next: Json
-  _previous: Json
 }
 
 input EventUpdateWithoutSeriesDataInput {
@@ -3383,19 +3153,12 @@ input EventUpdateWithoutSeriesDataInput {
   urls: Json
   start: DateTime
   end: DateTime
-  _series: Json
   stories: StoryUpdateManyWithoutEventsInput
-  _stories: Json
   comics: ComicUpdateManyWithoutEventsInput
-  _comics: Json
   characters: CharacterUpdateManyWithoutEventsInput
-  _characters: Json
   creators: CreatorUpdateManyWithoutEventsInput
-  _creators: Json
   next: EventUpdateOneWithoutPreviousInput
-  _next: Json
   previous: EventUpdateOneWithoutNextInput
-  _previous: Json
 }
 
 input EventUpdateWithoutStoriesDataInput {
@@ -3409,18 +3172,11 @@ input EventUpdateWithoutStoriesDataInput {
   start: DateTime
   end: DateTime
   series: SeriesUpdateManyWithoutEventsInput
-  _series: Json
-  _stories: Json
   comics: ComicUpdateManyWithoutEventsInput
-  _comics: Json
   characters: CharacterUpdateManyWithoutEventsInput
-  _characters: Json
   creators: CreatorUpdateManyWithoutEventsInput
-  _creators: Json
   next: EventUpdateOneWithoutPreviousInput
-  _next: Json
   previous: EventUpdateOneWithoutNextInput
-  _previous: Json
 }
 
 input EventUpdateWithWhereUniqueWithoutCharactersInput {
@@ -3744,15 +3500,10 @@ type Series {
   rating: String
   type: String
   comics(where: ComicWhereInput, orderBy: ComicOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Comic!]
-  _comics: Json
   stories(where: StoryWhereInput, orderBy: StoryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Story!]
-  _stories: Json
   events(where: EventWhereInput, orderBy: EventOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Event!]
-  _events: Json
   characters(where: CharacterWhereInput, orderBy: CharacterOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Character!]
-  _characters: Json
   creators(where: CreatorWhereInput, orderBy: CreatorOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Creator!]
-  _creators: Json
   next: Series
   previous: Series
 }
@@ -3776,15 +3527,10 @@ input SeriesCreateInput {
   rating: String
   type: String
   comics: ComicCreateManyWithoutSeriesInput
-  _comics: Json
   stories: StoryCreateManyWithoutSeriesInput
-  _stories: Json
   events: EventCreateManyWithoutSeriesInput
-  _events: Json
   characters: CharacterCreateManyWithoutSeriesInput
-  _characters: Json
   creators: CreatorCreateManyWithoutSeriesInput
-  _creators: Json
   next: SeriesCreateOneWithoutPreviousInput
   previous: SeriesCreateOneWithoutNextInput
 }
@@ -3837,14 +3583,9 @@ input SeriesCreateWithoutCharactersInput {
   rating: String
   type: String
   comics: ComicCreateManyWithoutSeriesInput
-  _comics: Json
   stories: StoryCreateManyWithoutSeriesInput
-  _stories: Json
   events: EventCreateManyWithoutSeriesInput
-  _events: Json
-  _characters: Json
   creators: CreatorCreateManyWithoutSeriesInput
-  _creators: Json
   next: SeriesCreateOneWithoutPreviousInput
   previous: SeriesCreateOneWithoutNextInput
 }
@@ -3861,15 +3602,10 @@ input SeriesCreateWithoutComicsInput {
   endYear: Int
   rating: String
   type: String
-  _comics: Json
   stories: StoryCreateManyWithoutSeriesInput
-  _stories: Json
   events: EventCreateManyWithoutSeriesInput
-  _events: Json
   characters: CharacterCreateManyWithoutSeriesInput
-  _characters: Json
   creators: CreatorCreateManyWithoutSeriesInput
-  _creators: Json
   next: SeriesCreateOneWithoutPreviousInput
   previous: SeriesCreateOneWithoutNextInput
 }
@@ -3887,14 +3623,9 @@ input SeriesCreateWithoutCreatorsInput {
   rating: String
   type: String
   comics: ComicCreateManyWithoutSeriesInput
-  _comics: Json
   stories: StoryCreateManyWithoutSeriesInput
-  _stories: Json
   events: EventCreateManyWithoutSeriesInput
-  _events: Json
   characters: CharacterCreateManyWithoutSeriesInput
-  _characters: Json
-  _creators: Json
   next: SeriesCreateOneWithoutPreviousInput
   previous: SeriesCreateOneWithoutNextInput
 }
@@ -3912,14 +3643,9 @@ input SeriesCreateWithoutEventsInput {
   rating: String
   type: String
   comics: ComicCreateManyWithoutSeriesInput
-  _comics: Json
   stories: StoryCreateManyWithoutSeriesInput
-  _stories: Json
-  _events: Json
   characters: CharacterCreateManyWithoutSeriesInput
-  _characters: Json
   creators: CreatorCreateManyWithoutSeriesInput
-  _creators: Json
   next: SeriesCreateOneWithoutPreviousInput
   previous: SeriesCreateOneWithoutNextInput
 }
@@ -3937,15 +3663,10 @@ input SeriesCreateWithoutNextInput {
   rating: String
   type: String
   comics: ComicCreateManyWithoutSeriesInput
-  _comics: Json
   stories: StoryCreateManyWithoutSeriesInput
-  _stories: Json
   events: EventCreateManyWithoutSeriesInput
-  _events: Json
   characters: CharacterCreateManyWithoutSeriesInput
-  _characters: Json
   creators: CreatorCreateManyWithoutSeriesInput
-  _creators: Json
   previous: SeriesCreateOneWithoutNextInput
 }
 
@@ -3962,15 +3683,10 @@ input SeriesCreateWithoutPreviousInput {
   rating: String
   type: String
   comics: ComicCreateManyWithoutSeriesInput
-  _comics: Json
   stories: StoryCreateManyWithoutSeriesInput
-  _stories: Json
   events: EventCreateManyWithoutSeriesInput
-  _events: Json
   characters: CharacterCreateManyWithoutSeriesInput
-  _characters: Json
   creators: CreatorCreateManyWithoutSeriesInput
-  _creators: Json
   next: SeriesCreateOneWithoutPreviousInput
 }
 
@@ -3987,14 +3703,9 @@ input SeriesCreateWithoutStoriesInput {
   rating: String
   type: String
   comics: ComicCreateManyWithoutSeriesInput
-  _comics: Json
-  _stories: Json
   events: EventCreateManyWithoutSeriesInput
-  _events: Json
   characters: CharacterCreateManyWithoutSeriesInput
-  _characters: Json
   creators: CreatorCreateManyWithoutSeriesInput
-  _creators: Json
   next: SeriesCreateOneWithoutPreviousInput
   previous: SeriesCreateOneWithoutNextInput
 }
@@ -4033,16 +3744,6 @@ enum SeriesOrderByInput {
   rating_DESC
   type_ASC
   type_DESC
-  _comics_ASC
-  _comics_DESC
-  _stories_ASC
-  _stories_DESC
-  _events_ASC
-  _events_DESC
-  _characters_ASC
-  _characters_DESC
-  _creators_ASC
-  _creators_DESC
 }
 
 type SeriesPreviousValues {
@@ -4060,11 +3761,6 @@ type SeriesPreviousValues {
   endYear: Int
   rating: String
   type: String
-  _comics: Json
-  _stories: Json
-  _events: Json
-  _characters: Json
-  _creators: Json
 }
 
 input SeriesScalarWhereInput {
@@ -4262,15 +3958,10 @@ input SeriesUpdateInput {
   rating: String
   type: String
   comics: ComicUpdateManyWithoutSeriesInput
-  _comics: Json
   stories: StoryUpdateManyWithoutSeriesInput
-  _stories: Json
   events: EventUpdateManyWithoutSeriesInput
-  _events: Json
   characters: CharacterUpdateManyWithoutSeriesInput
-  _characters: Json
   creators: CreatorUpdateManyWithoutSeriesInput
-  _creators: Json
   next: SeriesUpdateOneWithoutPreviousInput
   previous: SeriesUpdateOneWithoutNextInput
 }
@@ -4287,11 +3978,6 @@ input SeriesUpdateManyDataInput {
   endYear: Int
   rating: String
   type: String
-  _comics: Json
-  _stories: Json
-  _events: Json
-  _characters: Json
-  _creators: Json
 }
 
 input SeriesUpdateManyMutationInput {
@@ -4306,11 +3992,6 @@ input SeriesUpdateManyMutationInput {
   endYear: Int
   rating: String
   type: String
-  _comics: Json
-  _stories: Json
-  _events: Json
-  _characters: Json
-  _creators: Json
 }
 
 input SeriesUpdateManyWithoutCharactersInput {
@@ -4406,14 +4087,9 @@ input SeriesUpdateWithoutCharactersDataInput {
   rating: String
   type: String
   comics: ComicUpdateManyWithoutSeriesInput
-  _comics: Json
   stories: StoryUpdateManyWithoutSeriesInput
-  _stories: Json
   events: EventUpdateManyWithoutSeriesInput
-  _events: Json
-  _characters: Json
   creators: CreatorUpdateManyWithoutSeriesInput
-  _creators: Json
   next: SeriesUpdateOneWithoutPreviousInput
   previous: SeriesUpdateOneWithoutNextInput
 }
@@ -4430,15 +4106,10 @@ input SeriesUpdateWithoutComicsDataInput {
   endYear: Int
   rating: String
   type: String
-  _comics: Json
   stories: StoryUpdateManyWithoutSeriesInput
-  _stories: Json
   events: EventUpdateManyWithoutSeriesInput
-  _events: Json
   characters: CharacterUpdateManyWithoutSeriesInput
-  _characters: Json
   creators: CreatorUpdateManyWithoutSeriesInput
-  _creators: Json
   next: SeriesUpdateOneWithoutPreviousInput
   previous: SeriesUpdateOneWithoutNextInput
 }
@@ -4456,14 +4127,9 @@ input SeriesUpdateWithoutCreatorsDataInput {
   rating: String
   type: String
   comics: ComicUpdateManyWithoutSeriesInput
-  _comics: Json
   stories: StoryUpdateManyWithoutSeriesInput
-  _stories: Json
   events: EventUpdateManyWithoutSeriesInput
-  _events: Json
   characters: CharacterUpdateManyWithoutSeriesInput
-  _characters: Json
-  _creators: Json
   next: SeriesUpdateOneWithoutPreviousInput
   previous: SeriesUpdateOneWithoutNextInput
 }
@@ -4481,14 +4147,9 @@ input SeriesUpdateWithoutEventsDataInput {
   rating: String
   type: String
   comics: ComicUpdateManyWithoutSeriesInput
-  _comics: Json
   stories: StoryUpdateManyWithoutSeriesInput
-  _stories: Json
-  _events: Json
   characters: CharacterUpdateManyWithoutSeriesInput
-  _characters: Json
   creators: CreatorUpdateManyWithoutSeriesInput
-  _creators: Json
   next: SeriesUpdateOneWithoutPreviousInput
   previous: SeriesUpdateOneWithoutNextInput
 }
@@ -4506,15 +4167,10 @@ input SeriesUpdateWithoutNextDataInput {
   rating: String
   type: String
   comics: ComicUpdateManyWithoutSeriesInput
-  _comics: Json
   stories: StoryUpdateManyWithoutSeriesInput
-  _stories: Json
   events: EventUpdateManyWithoutSeriesInput
-  _events: Json
   characters: CharacterUpdateManyWithoutSeriesInput
-  _characters: Json
   creators: CreatorUpdateManyWithoutSeriesInput
-  _creators: Json
   previous: SeriesUpdateOneWithoutNextInput
 }
 
@@ -4531,15 +4187,10 @@ input SeriesUpdateWithoutPreviousDataInput {
   rating: String
   type: String
   comics: ComicUpdateManyWithoutSeriesInput
-  _comics: Json
   stories: StoryUpdateManyWithoutSeriesInput
-  _stories: Json
   events: EventUpdateManyWithoutSeriesInput
-  _events: Json
   characters: CharacterUpdateManyWithoutSeriesInput
-  _characters: Json
   creators: CreatorUpdateManyWithoutSeriesInput
-  _creators: Json
   next: SeriesUpdateOneWithoutPreviousInput
 }
 
@@ -4556,14 +4207,9 @@ input SeriesUpdateWithoutStoriesDataInput {
   rating: String
   type: String
   comics: ComicUpdateManyWithoutSeriesInput
-  _comics: Json
-  _stories: Json
   events: EventUpdateManyWithoutSeriesInput
-  _events: Json
   characters: CharacterUpdateManyWithoutSeriesInput
-  _characters: Json
   creators: CreatorUpdateManyWithoutSeriesInput
-  _creators: Json
   next: SeriesUpdateOneWithoutPreviousInput
   previous: SeriesUpdateOneWithoutNextInput
 }
@@ -4825,15 +4471,10 @@ type Story {
   description: String
   type: String
   comics(where: ComicWhereInput, orderBy: ComicOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Comic!]
-  _comics: Json
   events(where: EventWhereInput, orderBy: EventOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Event!]
-  _events: Json
   characters(where: CharacterWhereInput, orderBy: CharacterOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Character!]
-  _characters: Json
   creators(where: CreatorWhereInput, orderBy: CreatorOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Creator!]
-  _creators: Json
   series(where: SeriesWhereInput, orderBy: SeriesOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Series!]
-  _series: Json
   _originalIssue: Json
 }
 
@@ -4852,15 +4493,10 @@ input StoryCreateInput {
   description: String
   type: String
   comics: ComicCreateManyWithoutStoriesInput
-  _comics: Json
   events: EventCreateManyWithoutStoriesInput
-  _events: Json
   characters: CharacterCreateManyWithoutStoriesInput
-  _characters: Json
   creators: CreatorCreateManyWithoutStoriesInput
-  _creators: Json
   series: SeriesCreateManyWithoutStoriesInput
-  _series: Json
   _originalIssue: Json
 }
 
@@ -4898,14 +4534,9 @@ input StoryCreateWithoutCharactersInput {
   description: String
   type: String
   comics: ComicCreateManyWithoutStoriesInput
-  _comics: Json
   events: EventCreateManyWithoutStoriesInput
-  _events: Json
-  _characters: Json
   creators: CreatorCreateManyWithoutStoriesInput
-  _creators: Json
   series: SeriesCreateManyWithoutStoriesInput
-  _series: Json
   _originalIssue: Json
 }
 
@@ -4917,15 +4548,10 @@ input StoryCreateWithoutComicsInput {
   title: String
   description: String
   type: String
-  _comics: Json
   events: EventCreateManyWithoutStoriesInput
-  _events: Json
   characters: CharacterCreateManyWithoutStoriesInput
-  _characters: Json
   creators: CreatorCreateManyWithoutStoriesInput
-  _creators: Json
   series: SeriesCreateManyWithoutStoriesInput
-  _series: Json
   _originalIssue: Json
 }
 
@@ -4938,14 +4564,9 @@ input StoryCreateWithoutCreatorsInput {
   description: String
   type: String
   comics: ComicCreateManyWithoutStoriesInput
-  _comics: Json
   events: EventCreateManyWithoutStoriesInput
-  _events: Json
   characters: CharacterCreateManyWithoutStoriesInput
-  _characters: Json
-  _creators: Json
   series: SeriesCreateManyWithoutStoriesInput
-  _series: Json
   _originalIssue: Json
 }
 
@@ -4958,14 +4579,9 @@ input StoryCreateWithoutEventsInput {
   description: String
   type: String
   comics: ComicCreateManyWithoutStoriesInput
-  _comics: Json
-  _events: Json
   characters: CharacterCreateManyWithoutStoriesInput
-  _characters: Json
   creators: CreatorCreateManyWithoutStoriesInput
-  _creators: Json
   series: SeriesCreateManyWithoutStoriesInput
-  _series: Json
   _originalIssue: Json
 }
 
@@ -4978,14 +4594,9 @@ input StoryCreateWithoutSeriesInput {
   description: String
   type: String
   comics: ComicCreateManyWithoutStoriesInput
-  _comics: Json
   events: EventCreateManyWithoutStoriesInput
-  _events: Json
   characters: CharacterCreateManyWithoutStoriesInput
-  _characters: Json
   creators: CreatorCreateManyWithoutStoriesInput
-  _creators: Json
-  _series: Json
   _originalIssue: Json
 }
 
@@ -5015,16 +4626,6 @@ enum StoryOrderByInput {
   description_DESC
   type_ASC
   type_DESC
-  _comics_ASC
-  _comics_DESC
-  _events_ASC
-  _events_DESC
-  _characters_ASC
-  _characters_DESC
-  _creators_ASC
-  _creators_DESC
-  _series_ASC
-  _series_DESC
   _originalIssue_ASC
   _originalIssue_DESC
 }
@@ -5040,11 +4641,6 @@ type StoryPreviousValues {
   title: String
   description: String
   type: String
-  _comics: Json
-  _events: Json
-  _characters: Json
-  _creators: Json
-  _series: Json
   _originalIssue: Json
 }
 
@@ -5209,15 +4805,10 @@ input StoryUpdateInput {
   description: String
   type: String
   comics: ComicUpdateManyWithoutStoriesInput
-  _comics: Json
   events: EventUpdateManyWithoutStoriesInput
-  _events: Json
   characters: CharacterUpdateManyWithoutStoriesInput
-  _characters: Json
   creators: CreatorUpdateManyWithoutStoriesInput
-  _creators: Json
   series: SeriesUpdateManyWithoutStoriesInput
-  _series: Json
   _originalIssue: Json
 }
 
@@ -5229,11 +4820,6 @@ input StoryUpdateManyDataInput {
   title: String
   description: String
   type: String
-  _comics: Json
-  _events: Json
-  _characters: Json
-  _creators: Json
-  _series: Json
   _originalIssue: Json
 }
 
@@ -5245,11 +4831,6 @@ input StoryUpdateManyMutationInput {
   title: String
   description: String
   type: String
-  _comics: Json
-  _events: Json
-  _characters: Json
-  _creators: Json
-  _series: Json
   _originalIssue: Json
 }
 
@@ -5327,14 +4908,9 @@ input StoryUpdateWithoutCharactersDataInput {
   description: String
   type: String
   comics: ComicUpdateManyWithoutStoriesInput
-  _comics: Json
   events: EventUpdateManyWithoutStoriesInput
-  _events: Json
-  _characters: Json
   creators: CreatorUpdateManyWithoutStoriesInput
-  _creators: Json
   series: SeriesUpdateManyWithoutStoriesInput
-  _series: Json
   _originalIssue: Json
 }
 
@@ -5346,15 +4922,10 @@ input StoryUpdateWithoutComicsDataInput {
   title: String
   description: String
   type: String
-  _comics: Json
   events: EventUpdateManyWithoutStoriesInput
-  _events: Json
   characters: CharacterUpdateManyWithoutStoriesInput
-  _characters: Json
   creators: CreatorUpdateManyWithoutStoriesInput
-  _creators: Json
   series: SeriesUpdateManyWithoutStoriesInput
-  _series: Json
   _originalIssue: Json
 }
 
@@ -5367,14 +4938,9 @@ input StoryUpdateWithoutCreatorsDataInput {
   description: String
   type: String
   comics: ComicUpdateManyWithoutStoriesInput
-  _comics: Json
   events: EventUpdateManyWithoutStoriesInput
-  _events: Json
   characters: CharacterUpdateManyWithoutStoriesInput
-  _characters: Json
-  _creators: Json
   series: SeriesUpdateManyWithoutStoriesInput
-  _series: Json
   _originalIssue: Json
 }
 
@@ -5387,14 +4953,9 @@ input StoryUpdateWithoutEventsDataInput {
   description: String
   type: String
   comics: ComicUpdateManyWithoutStoriesInput
-  _comics: Json
-  _events: Json
   characters: CharacterUpdateManyWithoutStoriesInput
-  _characters: Json
   creators: CreatorUpdateManyWithoutStoriesInput
-  _creators: Json
   series: SeriesUpdateManyWithoutStoriesInput
-  _series: Json
   _originalIssue: Json
 }
 
@@ -5407,14 +4968,9 @@ input StoryUpdateWithoutSeriesDataInput {
   description: String
   type: String
   comics: ComicUpdateManyWithoutStoriesInput
-  _comics: Json
   events: EventUpdateManyWithoutStoriesInput
-  _events: Json
   characters: CharacterUpdateManyWithoutStoriesInput
-  _characters: Json
   creators: CreatorUpdateManyWithoutStoriesInput
-  _creators: Json
-  _series: Json
   _originalIssue: Json
 }
 

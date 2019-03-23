@@ -1,17 +1,23 @@
 import MarvelApiModel from './MarvelApiModel';
 import { formatThumbnail, getSummary } from '../utils/formatters';
 import { NexusGenInputs, NexusGenEnums } from "../schema/typegen";
+import { Context } from '../utils/getContext';
+import { CreatorCreateInput } from 'packages/prisma';
 export default class CreatorModel extends MarvelApiModel {
-	constructor() {
-		super();
+	constructor(context: Context) {
+		super(context, {
+			singularRef: "creator",
+			pluralRef: "creators"
+		});
 	}
 	async getOne(where: NexusGenInputs["CreatorWhereInput"]) {
 		try {
-			const params = await this.createParams({
+			const params = {
 				...where
-			});
-			const response = await this.marvel.get(`/creators?${params}`);
-			return await this.formatApiData(response.data.data.results[0]);
+			};
+			const response = await this.get(`/creators`, { params });
+			response.results.map(this.storeApiData)
+			return await this.formatApiData(response.results[0]);
 		} catch (error) {
 			console.error(error);
 			throw new Error(error);
@@ -19,9 +25,9 @@ export default class CreatorModel extends MarvelApiModel {
 	}
 	async getById(id: any) {
 		try {
-			const params = await this.createParams();
-			const response = await this.marvel.get(`/creators/${id}?${params}`);
-			return this.formatApiData(response.data.data.results[0]);
+			const response = await this.get(`/creators/${id}`);
+			response.results.map(this.storeApiData)
+			return this.formatApiData(response.results[0]);
 		} catch (error) {
 			console.error(error);
 			throw new Error(error);
@@ -40,14 +46,15 @@ export default class CreatorModel extends MarvelApiModel {
 			limit,
 		} = args;
 		try {
-			const params = await this.createParams({
+			const params = {
 				...where,
 				orderBy: this.getOrderBy(orderBy, 'creators'),
 				offset,
 				limit
-			});
-			const response = await this.marvel.get(`/creators?${params}`);
-			return await response.data.data.results.map((item) =>
+			};
+			const response = await this.get(`/creators`, { params });
+			response.results.map(this.storeApiData)
+			return await response.results.map((item) =>
 				this.formatApiData(item)
 			);
 		} catch (error) {
@@ -55,14 +62,39 @@ export default class CreatorModel extends MarvelApiModel {
 			throw new Error(error);
 		}
 	}
+	storeApiData = async (apiData) => {
+		const marvelId = `${apiData.id}`;
+		return this.updateCache({
+			getCached: () => this.context.db.series({
+				marvelId
+			}),
+			addToCache: async () => {
+				let inputData: CreatorCreateInput = {
+					marvelId,
+					firstName: apiData.firstName,
+					middleName: apiData.middleName,
+					lastName: apiData.lastName,
+					suffix: apiData.suffix,
+					fullName: apiData.fullName,
+					thumbnail: apiData.thumbnail && apiData.thumbnail.path ? `${apiData.thumbnail.path}.${apiData.thumbnail.extension}` : "",
+					resourceURI: apiData.resourceURI,
+					urls: apiData.urls,
+				};
+				const upserted = await this.context.db.upsertCreator({
+					where: {
+						marvelId: inputData.marvelId
+					},
+					create: inputData,
+					update: inputData
+				})
+				return upserted;
+			}
+		})
+	}
 	formatApiData(item) {
 		return {
 			...item,
 			thumbnail: formatThumbnail(item.thumbnail),
-			series: getSummary['series'](item),
-			comics: getSummary['comics'](item),
-			stories: getSummary['stories'](item),
-			events: getSummary['events'](item)
 		};
 	}
 }

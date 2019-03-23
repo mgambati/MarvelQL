@@ -22,16 +22,10 @@ export const Character = objectType({
             nullable: true,
             description: 'Lists of comics filtered by a character id.',
             async resolve(parent: any, args, ctx) {
-                const res = (await ctx.api.get(`/characters/${parent.id}/comics`))
-                return res.results;
-                // return (await parent.comics).map(async item => {
-                //     let id = item.id;
-                //     if (!id && item.resourceURI) {
-                //         id = ctx.comicsModel.extractId(item.resourceURI);
-                //     }
-                //     const c = await ctx.comicsModel.getById(id)
-                //     return c;
-                // });
+                return ctx.charactersModel.getConnection({
+                    connectionName: "comics",
+                    data: parent
+                })
             }
         })
         t.list.field("series", {
@@ -39,16 +33,10 @@ export const Character = objectType({
             nullable: true,
             description: 'Lists of series filtered by a character id.',
             async resolve(parent: any, args, ctx) {
-                const res = (await ctx.api.get(`/characters/${parent.id}/series`))
-                return res.results;
-                // return (await parent.series).map(async item => {
-                //     let id = item.id;
-                //     if (!id && item.resourceURI) {
-                //         id = ctx.seriesModel.extractId(item.resourceURI);
-                //     }
-                //     const c = await ctx.seriesModel.getById(id)
-                //     return c;
-                // });
+                return ctx.charactersModel.getConnection({
+                    connectionName: "series",
+                    data: parent
+                })
             }
         })
         t.list.field("events", {
@@ -56,16 +44,10 @@ export const Character = objectType({
             nullable: true,
             description: 'Lists of events filtered by a character id.',
             async resolve(parent: any, args, ctx) {
-                const res = (await ctx.api.get(`/characters/${parent.id}/events`))
-                return res.results
-                // return (await parent.events).map(async item => {
-                // let id = item.id;
-                // if (!id && item.resourceURI) {
-                //     id = ctx.eventsModel.extractId(item.resourceURI);
-                // }
-                // const c = await ctx.eventsModel.getById(id)
-                // return c;
-                // });
+                return ctx.charactersModel.getConnection({
+                    connectionName: "events",
+                    data: parent
+                })
             }
         })
         t.list.field("stories", {
@@ -73,17 +55,10 @@ export const Character = objectType({
             nullable: true,
             description: 'Lists of stories filtered by a character id.',
             async resolve(parent: any, args, ctx) {
-                const res = (await ctx.api.get(`/characters/${parent.id}/stories`))
-                console.log(res.results[0])
-                return res.results;
-                // return (await parent.stories).map(async item => {
-                // let id = item.id;
-                // if (!id && item.resourceURI) {
-                //     id = ctx.storiesModel.extractId(item.resourceURI);
-                // }
-                // const c = await ctx.storiesModel.getById(id)
-                // return c;
-                // });
+                return ctx.charactersModel.getConnection({
+                    connectionName: "stories",
+                    data: parent
+                })
             }
         })
     }

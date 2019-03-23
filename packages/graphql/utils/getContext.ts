@@ -49,12 +49,12 @@ export default (req): CachedData => {
 		db: prisma,
 		api: new MarvelApiModel(),
 		data,
-		creatorsModel: new CreatorModel()
 	})
 	context.charactersModel = new CharacterModel(context);
 	context.comicsModel = new ComicModel(context);
 	context.seriesModel = new SeriesModel(context);
 	context.eventsModel = new EventModel(context);
 	context.storiesModel = new StoryModel(context);
+	context.creatorsModel = new CreatorModel(context);
 	return context;
 }

@@ -367,17 +367,7 @@ export type ComicOrderByInput =
   | "prices_ASC"
   | "prices_DESC"
   | "images_ASC"
-  | "images_DESC"
-  | "_characters_ASC"
-  | "_characters_DESC"
-  | "_events_ASC"
-  | "_events_DESC"
-  | "_stories_ASC"
-  | "_stories_DESC"
-  | "_creators_ASC"
-  | "_creators_DESC"
-  | "_series_ASC"
-  | "_series_DESC";
+  | "images_DESC";
 
 export type CharacterOrderByInput =
   | "id_ASC"
@@ -425,21 +415,7 @@ export type EventOrderByInput =
   | "start_ASC"
   | "start_DESC"
   | "end_ASC"
-  | "end_DESC"
-  | "_series_ASC"
-  | "_series_DESC"
-  | "_stories_ASC"
-  | "_stories_DESC"
-  | "_comics_ASC"
-  | "_comics_DESC"
-  | "_characters_ASC"
-  | "_characters_DESC"
-  | "_creators_ASC"
-  | "_creators_DESC"
-  | "_next_ASC"
-  | "_next_DESC"
-  | "_previous_ASC"
-  | "_previous_DESC";
+  | "end_DESC";
 
 export type SeriesOrderByInput =
   | "id_ASC"
@@ -469,17 +445,7 @@ export type SeriesOrderByInput =
   | "rating_ASC"
   | "rating_DESC"
   | "type_ASC"
-  | "type_DESC"
-  | "_comics_ASC"
-  | "_comics_DESC"
-  | "_stories_ASC"
-  | "_stories_DESC"
-  | "_events_ASC"
-  | "_events_DESC"
-  | "_characters_ASC"
-  | "_characters_DESC"
-  | "_creators_ASC"
-  | "_creators_DESC";
+  | "type_DESC";
 
 export type StoryOrderByInput =
   | "id_ASC"
@@ -502,16 +468,6 @@ export type StoryOrderByInput =
   | "description_DESC"
   | "type_ASC"
   | "type_DESC"
-  | "_comics_ASC"
-  | "_comics_DESC"
-  | "_events_ASC"
-  | "_events_DESC"
-  | "_characters_ASC"
-  | "_characters_DESC"
-  | "_creators_ASC"
-  | "_creators_DESC"
-  | "_series_ASC"
-  | "_series_DESC"
   | "_originalIssue_ASC"
   | "_originalIssue_DESC";
 
@@ -564,14 +520,9 @@ export interface StoryUpdateWithoutEventsDataInput {
   description?: String;
   type?: String;
   comics?: ComicUpdateManyWithoutStoriesInput;
-  _comics?: Json;
-  _events?: Json;
   characters?: CharacterUpdateManyWithoutStoriesInput;
-  _characters?: Json;
   creators?: CreatorUpdateManyWithoutStoriesInput;
-  _creators?: Json;
   series?: SeriesUpdateManyWithoutStoriesInput;
-  _series?: Json;
   _originalIssue?: Json;
 }
 
@@ -1079,14 +1030,9 @@ export interface SeriesUpdateWithoutCharactersDataInput {
   rating?: String;
   type?: String;
   comics?: ComicUpdateManyWithoutSeriesInput;
-  _comics?: Json;
   stories?: StoryUpdateManyWithoutSeriesInput;
-  _stories?: Json;
   events?: EventUpdateManyWithoutSeriesInput;
-  _events?: Json;
-  _characters?: Json;
   creators?: CreatorUpdateManyWithoutSeriesInput;
-  _creators?: Json;
   next?: SeriesUpdateOneWithoutPreviousInput;
   previous?: SeriesUpdateOneWithoutNextInput;
 }
@@ -1153,14 +1099,9 @@ export interface StoryUpdateWithoutSeriesDataInput {
   description?: String;
   type?: String;
   comics?: ComicUpdateManyWithoutStoriesInput;
-  _comics?: Json;
   events?: EventUpdateManyWithoutStoriesInput;
-  _events?: Json;
   characters?: CharacterUpdateManyWithoutStoriesInput;
-  _characters?: Json;
   creators?: CreatorUpdateManyWithoutStoriesInput;
-  _creators?: Json;
-  _series?: Json;
   _originalIssue?: Json;
 }
 
@@ -1218,15 +1159,10 @@ export interface StoryUpdateInput {
   description?: String;
   type?: String;
   comics?: ComicUpdateManyWithoutStoriesInput;
-  _comics?: Json;
   events?: EventUpdateManyWithoutStoriesInput;
-  _events?: Json;
   characters?: CharacterUpdateManyWithoutStoriesInput;
-  _characters?: Json;
   creators?: CreatorUpdateManyWithoutStoriesInput;
-  _creators?: Json;
   series?: SeriesUpdateManyWithoutStoriesInput;
-  _series?: Json;
   _originalIssue?: Json;
 }
 
@@ -1252,14 +1188,9 @@ export interface ComicUpdateWithoutStoriesDataInput {
   prices?: Json;
   images?: Json;
   characters?: CharacterUpdateManyWithoutComicsInput;
-  _characters?: Json;
   events?: EventUpdateManyWithoutComicsInput;
-  _events?: Json;
-  _stories?: Json;
   creators?: CreatorUpdateManyWithoutComicsInput;
-  _creators?: Json;
   series?: SeriesUpdateOneWithoutComicsInput;
-  _series?: Json;
 }
 
 export interface SeriesUpdateManyMutationInput {
@@ -1274,11 +1205,6 @@ export interface SeriesUpdateManyMutationInput {
   endYear?: Int;
   rating?: String;
   type?: String;
-  _comics?: Json;
-  _stories?: Json;
-  _events?: Json;
-  _characters?: Json;
-  _creators?: Json;
 }
 
 export interface CreatorUpdateManyWithoutComicsInput {
@@ -1312,15 +1238,10 @@ export interface SeriesCreateInput {
   rating?: String;
   type?: String;
   comics?: ComicCreateManyWithoutSeriesInput;
-  _comics?: Json;
   stories?: StoryCreateManyWithoutSeriesInput;
-  _stories?: Json;
   events?: EventCreateManyWithoutSeriesInput;
-  _events?: Json;
   characters?: CharacterCreateManyWithoutSeriesInput;
-  _characters?: Json;
   creators?: CreatorCreateManyWithoutSeriesInput;
-  _creators?: Json;
   next?: SeriesCreateOneWithoutPreviousInput;
   previous?: SeriesCreateOneWithoutNextInput;
 }
@@ -1340,13 +1261,6 @@ export interface EventUpdateManyMutationInput {
   urls?: Json;
   start?: DateTimeInput;
   end?: DateTimeInput;
-  _series?: Json;
-  _stories?: Json;
-  _comics?: Json;
-  _characters?: Json;
-  _creators?: Json;
-  _next?: Json;
-  _previous?: Json;
 }
 
 export interface CreatorUpdateWithoutComicsDataInput {
@@ -1376,19 +1290,12 @@ export interface EventCreateInput {
   start?: DateTimeInput;
   end?: DateTimeInput;
   series?: SeriesCreateManyWithoutEventsInput;
-  _series?: Json;
   stories?: StoryCreateManyWithoutEventsInput;
-  _stories?: Json;
   comics?: ComicCreateManyWithoutEventsInput;
-  _comics?: Json;
   characters?: CharacterCreateManyWithoutEventsInput;
-  _characters?: Json;
   creators?: CreatorCreateManyWithoutEventsInput;
-  _creators?: Json;
   next?: EventCreateOneWithoutPreviousInput;
-  _next?: Json;
   previous?: EventCreateOneWithoutNextInput;
-  _previous?: Json;
 }
 
 export interface SeriesUpdateManyWithoutCreatorsInput {
@@ -1459,14 +1366,9 @@ export interface SeriesUpdateWithoutCreatorsDataInput {
   rating?: String;
   type?: String;
   comics?: ComicUpdateManyWithoutSeriesInput;
-  _comics?: Json;
   stories?: StoryUpdateManyWithoutSeriesInput;
-  _stories?: Json;
   events?: EventUpdateManyWithoutSeriesInput;
-  _events?: Json;
   characters?: CharacterUpdateManyWithoutSeriesInput;
-  _characters?: Json;
-  _creators?: Json;
   next?: SeriesUpdateOneWithoutPreviousInput;
   previous?: SeriesUpdateOneWithoutNextInput;
 }
@@ -1492,11 +1394,6 @@ export interface ComicUpdateManyMutationInput {
   dates?: Json;
   prices?: Json;
   images?: Json;
-  _characters?: Json;
-  _events?: Json;
-  _stories?: Json;
-  _creators?: Json;
-  _series?: Json;
 }
 
 export interface EventUpdateManyWithoutSeriesInput {
@@ -1539,15 +1436,10 @@ export interface ComicCreateInput {
   prices?: Json;
   images?: Json;
   characters?: CharacterCreateManyWithoutComicsInput;
-  _characters?: Json;
   events?: EventCreateManyWithoutComicsInput;
-  _events?: Json;
   stories?: StoryCreateManyWithoutComicsInput;
-  _stories?: Json;
   creators?: CreatorCreateManyWithoutComicsInput;
-  _creators?: Json;
   series?: SeriesCreateOneWithoutComicsInput;
-  _series?: Json;
 }
 
 export interface SeriesUpsertWithWhereUniqueWithoutCharactersInput {
@@ -1576,19 +1468,12 @@ export interface EventUpdateWithoutSeriesDataInput {
   urls?: Json;
   start?: DateTimeInput;
   end?: DateTimeInput;
-  _series?: Json;
   stories?: StoryUpdateManyWithoutEventsInput;
-  _stories?: Json;
   comics?: ComicUpdateManyWithoutEventsInput;
-  _comics?: Json;
   characters?: CharacterUpdateManyWithoutEventsInput;
-  _characters?: Json;
   creators?: CreatorUpdateManyWithoutEventsInput;
-  _creators?: Json;
   next?: EventUpdateOneWithoutPreviousInput;
-  _next?: Json;
   previous?: EventUpdateOneWithoutNextInput;
-  _previous?: Json;
 }
 
 export interface EventUpsertWithWhereUniqueWithoutComicsInput {
@@ -1990,15 +1875,10 @@ export interface ComicCreateWithoutCharactersInput {
   dates?: Json;
   prices?: Json;
   images?: Json;
-  _characters?: Json;
   events?: EventCreateManyWithoutComicsInput;
-  _events?: Json;
   stories?: StoryCreateManyWithoutComicsInput;
-  _stories?: Json;
   creators?: CreatorCreateManyWithoutComicsInput;
-  _creators?: Json;
   series?: SeriesCreateOneWithoutComicsInput;
-  _series?: Json;
 }
 
 export interface StoryUpsertWithWhereUniqueWithoutSeriesInput {
@@ -2018,18 +1898,11 @@ export interface EventCreateWithoutComicsInput {
   start?: DateTimeInput;
   end?: DateTimeInput;
   series?: SeriesCreateManyWithoutEventsInput;
-  _series?: Json;
   stories?: StoryCreateManyWithoutEventsInput;
-  _stories?: Json;
-  _comics?: Json;
   characters?: CharacterCreateManyWithoutEventsInput;
-  _characters?: Json;
   creators?: CreatorCreateManyWithoutEventsInput;
-  _creators?: Json;
   next?: EventCreateOneWithoutPreviousInput;
-  _next?: Json;
   previous?: EventCreateOneWithoutNextInput;
-  _previous?: Json;
 }
 
 export interface ComicWhereInput {
@@ -2292,14 +2165,9 @@ export interface SeriesCreateWithoutEventsInput {
   rating?: String;
   type?: String;
   comics?: ComicCreateManyWithoutSeriesInput;
-  _comics?: Json;
   stories?: StoryCreateManyWithoutSeriesInput;
-  _stories?: Json;
-  _events?: Json;
   characters?: CharacterCreateManyWithoutSeriesInput;
-  _characters?: Json;
   creators?: CreatorCreateManyWithoutSeriesInput;
-  _creators?: Json;
   next?: SeriesCreateOneWithoutPreviousInput;
   previous?: SeriesCreateOneWithoutNextInput;
 }
@@ -2346,14 +2214,9 @@ export interface ComicCreateWithoutSeriesInput {
   prices?: Json;
   images?: Json;
   characters?: CharacterCreateManyWithoutComicsInput;
-  _characters?: Json;
   events?: EventCreateManyWithoutComicsInput;
-  _events?: Json;
   stories?: StoryCreateManyWithoutComicsInput;
-  _stories?: Json;
   creators?: CreatorCreateManyWithoutComicsInput;
-  _creators?: Json;
-  _series?: Json;
 }
 
 export interface EventUpdateWithWhereUniqueWithoutCharactersInput {
@@ -2385,18 +2248,11 @@ export interface EventUpdateWithoutCharactersDataInput {
   start?: DateTimeInput;
   end?: DateTimeInput;
   series?: SeriesUpdateManyWithoutEventsInput;
-  _series?: Json;
   stories?: StoryUpdateManyWithoutEventsInput;
-  _stories?: Json;
   comics?: ComicUpdateManyWithoutEventsInput;
-  _comics?: Json;
-  _characters?: Json;
   creators?: CreatorUpdateManyWithoutEventsInput;
-  _creators?: Json;
   next?: EventUpdateOneWithoutPreviousInput;
-  _next?: Json;
   previous?: EventUpdateOneWithoutNextInput;
-  _previous?: Json;
 }
 
 export interface SeriesCreateWithoutCharactersInput {
@@ -2412,14 +2268,9 @@ export interface SeriesCreateWithoutCharactersInput {
   rating?: String;
   type?: String;
   comics?: ComicCreateManyWithoutSeriesInput;
-  _comics?: Json;
   stories?: StoryCreateManyWithoutSeriesInput;
-  _stories?: Json;
   events?: EventCreateManyWithoutSeriesInput;
-  _events?: Json;
-  _characters?: Json;
   creators?: CreatorCreateManyWithoutSeriesInput;
-  _creators?: Json;
   next?: SeriesCreateOneWithoutPreviousInput;
   previous?: SeriesCreateOneWithoutNextInput;
 }
@@ -2451,14 +2302,9 @@ export interface StoryCreateWithoutSeriesInput {
   description?: String;
   type?: String;
   comics?: ComicCreateManyWithoutStoriesInput;
-  _comics?: Json;
   events?: EventCreateManyWithoutStoriesInput;
-  _events?: Json;
   characters?: CharacterCreateManyWithoutStoriesInput;
-  _characters?: Json;
   creators?: CreatorCreateManyWithoutStoriesInput;
-  _creators?: Json;
-  _series?: Json;
   _originalIssue?: Json;
 }
 
@@ -2489,14 +2335,9 @@ export interface ComicCreateWithoutStoriesInput {
   prices?: Json;
   images?: Json;
   characters?: CharacterCreateManyWithoutComicsInput;
-  _characters?: Json;
   events?: EventCreateManyWithoutComicsInput;
-  _events?: Json;
-  _stories?: Json;
   creators?: CreatorCreateManyWithoutComicsInput;
-  _creators?: Json;
   series?: SeriesCreateOneWithoutComicsInput;
-  _series?: Json;
 }
 
 export interface ComicUpdateWithoutEventsDataInput {
@@ -2521,14 +2362,9 @@ export interface ComicUpdateWithoutEventsDataInput {
   prices?: Json;
   images?: Json;
   characters?: CharacterUpdateManyWithoutComicsInput;
-  _characters?: Json;
-  _events?: Json;
   stories?: StoryUpdateManyWithoutComicsInput;
-  _stories?: Json;
   creators?: CreatorUpdateManyWithoutComicsInput;
-  _creators?: Json;
   series?: SeriesUpdateOneWithoutComicsInput;
-  _series?: Json;
 }
 
 export interface CreatorCreateWithoutComicsInput {
@@ -2578,14 +2414,9 @@ export interface SeriesCreateWithoutCreatorsInput {
   rating?: String;
   type?: String;
   comics?: ComicCreateManyWithoutSeriesInput;
-  _comics?: Json;
   stories?: StoryCreateManyWithoutSeriesInput;
-  _stories?: Json;
   events?: EventCreateManyWithoutSeriesInput;
-  _events?: Json;
   characters?: CharacterCreateManyWithoutSeriesInput;
-  _characters?: Json;
-  _creators?: Json;
   next?: SeriesCreateOneWithoutPreviousInput;
   previous?: SeriesCreateOneWithoutNextInput;
 }
@@ -2605,19 +2436,12 @@ export interface EventCreateWithoutSeriesInput {
   urls?: Json;
   start?: DateTimeInput;
   end?: DateTimeInput;
-  _series?: Json;
   stories?: StoryCreateManyWithoutEventsInput;
-  _stories?: Json;
   comics?: ComicCreateManyWithoutEventsInput;
-  _comics?: Json;
   characters?: CharacterCreateManyWithoutEventsInput;
-  _characters?: Json;
   creators?: CreatorCreateManyWithoutEventsInput;
-  _creators?: Json;
   next?: EventCreateOneWithoutPreviousInput;
-  _next?: Json;
   previous?: EventCreateOneWithoutNextInput;
-  _previous?: Json;
 }
 
 export interface StoryUpdateWithoutComicsDataInput {
@@ -2628,15 +2452,10 @@ export interface StoryUpdateWithoutComicsDataInput {
   title?: String;
   description?: String;
   type?: String;
-  _comics?: Json;
   events?: EventUpdateManyWithoutStoriesInput;
-  _events?: Json;
   characters?: CharacterUpdateManyWithoutStoriesInput;
-  _characters?: Json;
   creators?: CreatorUpdateManyWithoutStoriesInput;
-  _creators?: Json;
   series?: SeriesUpdateManyWithoutStoriesInput;
-  _series?: Json;
   _originalIssue?: Json;
 }
 
@@ -2649,14 +2468,9 @@ export interface StoryCreateWithoutEventsInput {
   description?: String;
   type?: String;
   comics?: ComicCreateManyWithoutStoriesInput;
-  _comics?: Json;
-  _events?: Json;
   characters?: CharacterCreateManyWithoutStoriesInput;
-  _characters?: Json;
   creators?: CreatorCreateManyWithoutStoriesInput;
-  _creators?: Json;
   series?: SeriesCreateManyWithoutStoriesInput;
-  _series?: Json;
   _originalIssue?: Json;
 }
 
@@ -2707,18 +2521,11 @@ export interface EventCreateWithoutCharactersInput {
   start?: DateTimeInput;
   end?: DateTimeInput;
   series?: SeriesCreateManyWithoutEventsInput;
-  _series?: Json;
   stories?: StoryCreateManyWithoutEventsInput;
-  _stories?: Json;
   comics?: ComicCreateManyWithoutEventsInput;
-  _comics?: Json;
-  _characters?: Json;
   creators?: CreatorCreateManyWithoutEventsInput;
-  _creators?: Json;
   next?: EventCreateOneWithoutPreviousInput;
-  _next?: Json;
   previous?: EventCreateOneWithoutNextInput;
-  _previous?: Json;
 }
 
 export interface EventUpdateWithoutStoriesDataInput {
@@ -2732,18 +2539,11 @@ export interface EventUpdateWithoutStoriesDataInput {
   start?: DateTimeInput;
   end?: DateTimeInput;
   series?: SeriesUpdateManyWithoutEventsInput;
-  _series?: Json;
-  _stories?: Json;
   comics?: ComicUpdateManyWithoutEventsInput;
-  _comics?: Json;
   characters?: CharacterUpdateManyWithoutEventsInput;
-  _characters?: Json;
   creators?: CreatorUpdateManyWithoutEventsInput;
-  _creators?: Json;
   next?: EventUpdateOneWithoutPreviousInput;
-  _next?: Json;
   previous?: EventUpdateOneWithoutNextInput;
-  _previous?: Json;
 }
 
 export interface ComicCreateWithoutEventsInput {
@@ -2768,14 +2568,9 @@ export interface ComicCreateWithoutEventsInput {
   prices?: Json;
   images?: Json;
   characters?: CharacterCreateManyWithoutComicsInput;
-  _characters?: Json;
-  _events?: Json;
   stories?: StoryCreateManyWithoutComicsInput;
-  _stories?: Json;
   creators?: CreatorCreateManyWithoutComicsInput;
-  _creators?: Json;
   series?: SeriesCreateOneWithoutComicsInput;
-  _series?: Json;
 }
 
 export interface CharacterUpdateManyWithoutEventsInput {
@@ -2806,15 +2601,10 @@ export interface StoryCreateWithoutComicsInput {
   title?: String;
   description?: String;
   type?: String;
-  _comics?: Json;
   events?: EventCreateManyWithoutStoriesInput;
-  _events?: Json;
   characters?: CharacterCreateManyWithoutStoriesInput;
-  _characters?: Json;
   creators?: CreatorCreateManyWithoutStoriesInput;
-  _creators?: Json;
   series?: SeriesCreateManyWithoutStoriesInput;
-  _series?: Json;
   _originalIssue?: Json;
 }
 
@@ -2834,18 +2624,11 @@ export interface EventCreateWithoutStoriesInput {
   start?: DateTimeInput;
   end?: DateTimeInput;
   series?: SeriesCreateManyWithoutEventsInput;
-  _series?: Json;
-  _stories?: Json;
   comics?: ComicCreateManyWithoutEventsInput;
-  _comics?: Json;
   characters?: CharacterCreateManyWithoutEventsInput;
-  _characters?: Json;
   creators?: CreatorCreateManyWithoutEventsInput;
-  _creators?: Json;
   next?: EventCreateOneWithoutPreviousInput;
-  _next?: Json;
   previous?: EventCreateOneWithoutNextInput;
-  _previous?: Json;
 }
 
 export interface CharacterUpdateWithoutEventsDataInput {
@@ -2903,14 +2686,9 @@ export interface StoryCreateWithoutCharactersInput {
   description?: String;
   type?: String;
   comics?: ComicCreateManyWithoutStoriesInput;
-  _comics?: Json;
   events?: EventCreateManyWithoutStoriesInput;
-  _events?: Json;
-  _characters?: Json;
   creators?: CreatorCreateManyWithoutStoriesInput;
-  _creators?: Json;
   series?: SeriesCreateManyWithoutStoriesInput;
-  _series?: Json;
   _originalIssue?: Json;
 }
 
@@ -2944,14 +2722,9 @@ export interface StoryUpdateWithoutCharactersDataInput {
   description?: String;
   type?: String;
   comics?: ComicUpdateManyWithoutStoriesInput;
-  _comics?: Json;
   events?: EventUpdateManyWithoutStoriesInput;
-  _events?: Json;
-  _characters?: Json;
   creators?: CreatorUpdateManyWithoutStoriesInput;
-  _creators?: Json;
   series?: SeriesUpdateManyWithoutStoriesInput;
-  _series?: Json;
   _originalIssue?: Json;
 }
 
@@ -2977,14 +2750,9 @@ export interface ComicCreateWithoutCreatorsInput {
   prices?: Json;
   images?: Json;
   characters?: CharacterCreateManyWithoutComicsInput;
-  _characters?: Json;
   events?: EventCreateManyWithoutComicsInput;
-  _events?: Json;
   stories?: StoryCreateManyWithoutComicsInput;
-  _stories?: Json;
-  _creators?: Json;
   series?: SeriesCreateOneWithoutComicsInput;
-  _series?: Json;
 }
 
 export interface CreatorUpdateManyWithoutStoriesInput {
@@ -3019,15 +2787,10 @@ export interface SeriesCreateWithoutComicsInput {
   endYear?: Int;
   rating?: String;
   type?: String;
-  _comics?: Json;
   stories?: StoryCreateManyWithoutSeriesInput;
-  _stories?: Json;
   events?: EventCreateManyWithoutSeriesInput;
-  _events?: Json;
   characters?: CharacterCreateManyWithoutSeriesInput;
-  _characters?: Json;
   creators?: CreatorCreateManyWithoutSeriesInput;
-  _creators?: Json;
   next?: SeriesCreateOneWithoutPreviousInput;
   previous?: SeriesCreateOneWithoutNextInput;
 }
@@ -3109,14 +2872,9 @@ export interface StoryCreateWithoutCreatorsInput {
   description?: String;
   type?: String;
   comics?: ComicCreateManyWithoutStoriesInput;
-  _comics?: Json;
   events?: EventCreateManyWithoutStoriesInput;
-  _events?: Json;
   characters?: CharacterCreateManyWithoutStoriesInput;
-  _characters?: Json;
-  _creators?: Json;
   series?: SeriesCreateManyWithoutStoriesInput;
-  _series?: Json;
   _originalIssue?: Json;
 }
 
@@ -3138,14 +2896,9 @@ export interface SeriesCreateWithoutStoriesInput {
   rating?: String;
   type?: String;
   comics?: ComicCreateManyWithoutSeriesInput;
-  _comics?: Json;
-  _stories?: Json;
   events?: EventCreateManyWithoutSeriesInput;
-  _events?: Json;
   characters?: CharacterCreateManyWithoutSeriesInput;
-  _characters?: Json;
   creators?: CreatorCreateManyWithoutSeriesInput;
-  _creators?: Json;
   next?: SeriesCreateOneWithoutPreviousInput;
   previous?: SeriesCreateOneWithoutNextInput;
 }
@@ -3172,14 +2925,9 @@ export interface ComicUpdateWithoutCreatorsDataInput {
   prices?: Json;
   images?: Json;
   characters?: CharacterUpdateManyWithoutComicsInput;
-  _characters?: Json;
   events?: EventUpdateManyWithoutComicsInput;
-  _events?: Json;
   stories?: StoryUpdateManyWithoutComicsInput;
-  _stories?: Json;
-  _creators?: Json;
   series?: SeriesUpdateOneWithoutComicsInput;
-  _series?: Json;
 }
 
 export interface SeriesCreateWithoutPreviousInput {
@@ -3195,15 +2943,10 @@ export interface SeriesCreateWithoutPreviousInput {
   rating?: String;
   type?: String;
   comics?: ComicCreateManyWithoutSeriesInput;
-  _comics?: Json;
   stories?: StoryCreateManyWithoutSeriesInput;
-  _stories?: Json;
   events?: EventCreateManyWithoutSeriesInput;
-  _events?: Json;
   characters?: CharacterCreateManyWithoutSeriesInput;
-  _characters?: Json;
   creators?: CreatorCreateManyWithoutSeriesInput;
-  _creators?: Json;
   next?: SeriesCreateOneWithoutPreviousInput;
 }
 
@@ -3229,15 +2972,10 @@ export interface SeriesCreateWithoutNextInput {
   rating?: String;
   type?: String;
   comics?: ComicCreateManyWithoutSeriesInput;
-  _comics?: Json;
   stories?: StoryCreateManyWithoutSeriesInput;
-  _stories?: Json;
   events?: EventCreateManyWithoutSeriesInput;
-  _events?: Json;
   characters?: CharacterCreateManyWithoutSeriesInput;
-  _characters?: Json;
   creators?: CreatorCreateManyWithoutSeriesInput;
-  _creators?: Json;
   previous?: SeriesCreateOneWithoutNextInput;
 }
 
@@ -3253,15 +2991,10 @@ export interface SeriesUpdateWithoutComicsDataInput {
   endYear?: Int;
   rating?: String;
   type?: String;
-  _comics?: Json;
   stories?: StoryUpdateManyWithoutSeriesInput;
-  _stories?: Json;
   events?: EventUpdateManyWithoutSeriesInput;
-  _events?: Json;
   characters?: CharacterUpdateManyWithoutSeriesInput;
-  _characters?: Json;
   creators?: CreatorUpdateManyWithoutSeriesInput;
-  _creators?: Json;
   next?: SeriesUpdateOneWithoutPreviousInput;
   previous?: SeriesUpdateOneWithoutNextInput;
 }
@@ -3277,18 +3010,11 @@ export interface EventCreateWithoutCreatorsInput {
   start?: DateTimeInput;
   end?: DateTimeInput;
   series?: SeriesCreateManyWithoutEventsInput;
-  _series?: Json;
   stories?: StoryCreateManyWithoutEventsInput;
-  _stories?: Json;
   comics?: ComicCreateManyWithoutEventsInput;
-  _comics?: Json;
   characters?: CharacterCreateManyWithoutEventsInput;
-  _characters?: Json;
-  _creators?: Json;
   next?: EventCreateOneWithoutPreviousInput;
-  _next?: Json;
   previous?: EventCreateOneWithoutNextInput;
-  _previous?: Json;
 }
 
 export interface CharacterUpdateManyWithoutSeriesInput {
@@ -3322,18 +3048,11 @@ export interface EventCreateWithoutPreviousInput {
   start?: DateTimeInput;
   end?: DateTimeInput;
   series?: SeriesCreateManyWithoutEventsInput;
-  _series?: Json;
   stories?: StoryCreateManyWithoutEventsInput;
-  _stories?: Json;
   comics?: ComicCreateManyWithoutEventsInput;
-  _comics?: Json;
   characters?: CharacterCreateManyWithoutEventsInput;
-  _characters?: Json;
   creators?: CreatorCreateManyWithoutEventsInput;
-  _creators?: Json;
   next?: EventCreateOneWithoutPreviousInput;
-  _next?: Json;
-  _previous?: Json;
 }
 
 export interface CharacterUpdateWithWhereUniqueWithoutSeriesInput {
@@ -3381,18 +3100,11 @@ export interface EventCreateWithoutNextInput {
   start?: DateTimeInput;
   end?: DateTimeInput;
   series?: SeriesCreateManyWithoutEventsInput;
-  _series?: Json;
   stories?: StoryCreateManyWithoutEventsInput;
-  _stories?: Json;
   comics?: ComicCreateManyWithoutEventsInput;
-  _comics?: Json;
   characters?: CharacterCreateManyWithoutEventsInput;
-  _characters?: Json;
   creators?: CreatorCreateManyWithoutEventsInput;
-  _creators?: Json;
-  _next?: Json;
   previous?: EventCreateOneWithoutNextInput;
-  _previous?: Json;
 }
 
 export interface CharacterUpsertWithWhereUniqueWithoutSeriesInput {
@@ -3562,15 +3274,10 @@ export interface ComicUpdateWithoutCharactersDataInput {
   dates?: Json;
   prices?: Json;
   images?: Json;
-  _characters?: Json;
   events?: EventUpdateManyWithoutComicsInput;
-  _events?: Json;
   stories?: StoryUpdateManyWithoutComicsInput;
-  _stories?: Json;
   creators?: CreatorUpdateManyWithoutComicsInput;
-  _creators?: Json;
   series?: SeriesUpdateOneWithoutComicsInput;
-  _series?: Json;
 }
 
 export interface CharacterUpdateManyWithWhereNestedInput {
@@ -3642,14 +3349,9 @@ export interface SeriesUpdateWithoutEventsDataInput {
   rating?: String;
   type?: String;
   comics?: ComicUpdateManyWithoutSeriesInput;
-  _comics?: Json;
   stories?: StoryUpdateManyWithoutSeriesInput;
-  _stories?: Json;
-  _events?: Json;
   characters?: CharacterUpdateManyWithoutSeriesInput;
-  _characters?: Json;
   creators?: CreatorUpdateManyWithoutSeriesInput;
-  _creators?: Json;
   next?: SeriesUpdateOneWithoutPreviousInput;
   previous?: SeriesUpdateOneWithoutNextInput;
 }
@@ -3750,14 +3452,9 @@ export interface StoryUpdateWithoutCreatorsDataInput {
   description?: String;
   type?: String;
   comics?: ComicUpdateManyWithoutStoriesInput;
-  _comics?: Json;
   events?: EventUpdateManyWithoutStoriesInput;
-  _events?: Json;
   characters?: CharacterUpdateManyWithoutStoriesInput;
-  _characters?: Json;
-  _creators?: Json;
   series?: SeriesUpdateManyWithoutStoriesInput;
-  _series?: Json;
   _originalIssue?: Json;
 }
 
@@ -3798,11 +3495,6 @@ export interface StoryUpdateManyMutationInput {
   title?: String;
   description?: String;
   type?: String;
-  _comics?: Json;
-  _events?: Json;
-  _characters?: Json;
-  _creators?: Json;
-  _series?: Json;
   _originalIssue?: Json;
 }
 
@@ -3824,15 +3516,10 @@ export interface SeriesUpdateInput {
   rating?: String;
   type?: String;
   comics?: ComicUpdateManyWithoutSeriesInput;
-  _comics?: Json;
   stories?: StoryUpdateManyWithoutSeriesInput;
-  _stories?: Json;
   events?: EventUpdateManyWithoutSeriesInput;
-  _events?: Json;
   characters?: CharacterUpdateManyWithoutSeriesInput;
-  _characters?: Json;
   creators?: CreatorUpdateManyWithoutSeriesInput;
-  _creators?: Json;
   next?: SeriesUpdateOneWithoutPreviousInput;
   previous?: SeriesUpdateOneWithoutNextInput;
 }
@@ -3850,14 +3537,9 @@ export interface SeriesUpdateWithoutStoriesDataInput {
   rating?: String;
   type?: String;
   comics?: ComicUpdateManyWithoutSeriesInput;
-  _comics?: Json;
-  _stories?: Json;
   events?: EventUpdateManyWithoutSeriesInput;
-  _events?: Json;
   characters?: CharacterUpdateManyWithoutSeriesInput;
-  _characters?: Json;
   creators?: CreatorUpdateManyWithoutSeriesInput;
-  _creators?: Json;
   next?: SeriesUpdateOneWithoutPreviousInput;
   previous?: SeriesUpdateOneWithoutNextInput;
 }
@@ -3873,19 +3555,12 @@ export interface EventUpdateInput {
   start?: DateTimeInput;
   end?: DateTimeInput;
   series?: SeriesUpdateManyWithoutEventsInput;
-  _series?: Json;
   stories?: StoryUpdateManyWithoutEventsInput;
-  _stories?: Json;
   comics?: ComicUpdateManyWithoutEventsInput;
-  _comics?: Json;
   characters?: CharacterUpdateManyWithoutEventsInput;
-  _characters?: Json;
   creators?: CreatorUpdateManyWithoutEventsInput;
-  _creators?: Json;
   next?: EventUpdateOneWithoutPreviousInput;
-  _next?: Json;
   previous?: EventUpdateOneWithoutNextInput;
-  _previous?: Json;
 }
 
 export interface SeriesUpdateOneWithoutPreviousInput {
@@ -3927,15 +3602,10 @@ export interface SeriesUpdateWithoutPreviousDataInput {
   rating?: String;
   type?: String;
   comics?: ComicUpdateManyWithoutSeriesInput;
-  _comics?: Json;
   stories?: StoryUpdateManyWithoutSeriesInput;
-  _stories?: Json;
   events?: EventUpdateManyWithoutSeriesInput;
-  _events?: Json;
   characters?: CharacterUpdateManyWithoutSeriesInput;
-  _characters?: Json;
   creators?: CreatorUpdateManyWithoutSeriesInput;
-  _creators?: Json;
   next?: SeriesUpdateOneWithoutPreviousInput;
 }
 
@@ -3961,15 +3631,10 @@ export interface ComicUpdateInput {
   prices?: Json;
   images?: Json;
   characters?: CharacterUpdateManyWithoutComicsInput;
-  _characters?: Json;
   events?: EventUpdateManyWithoutComicsInput;
-  _events?: Json;
   stories?: StoryUpdateManyWithoutComicsInput;
-  _stories?: Json;
   creators?: CreatorUpdateManyWithoutComicsInput;
-  _creators?: Json;
   series?: SeriesUpdateOneWithoutComicsInput;
-  _series?: Json;
 }
 
 export interface SeriesUpsertWithoutPreviousInput {
@@ -4011,15 +3676,10 @@ export interface SeriesUpdateWithoutNextDataInput {
   rating?: String;
   type?: String;
   comics?: ComicUpdateManyWithoutSeriesInput;
-  _comics?: Json;
   stories?: StoryUpdateManyWithoutSeriesInput;
-  _stories?: Json;
   events?: EventUpdateManyWithoutSeriesInput;
-  _events?: Json;
   characters?: CharacterUpdateManyWithoutSeriesInput;
-  _characters?: Json;
   creators?: CreatorUpdateManyWithoutSeriesInput;
-  _creators?: Json;
   previous?: SeriesUpdateOneWithoutNextInput;
 }
 
@@ -4244,11 +3904,6 @@ export interface SeriesUpdateManyDataInput {
   endYear?: Int;
   rating?: String;
   type?: String;
-  _comics?: Json;
-  _stories?: Json;
-  _events?: Json;
-  _characters?: Json;
-  _creators?: Json;
 }
 
 export interface EventCreateManyWithoutSeriesInput {
@@ -4426,11 +4081,6 @@ export interface StoryUpdateManyDataInput {
   title?: String;
   description?: String;
   type?: String;
-  _comics?: Json;
-  _events?: Json;
-  _characters?: Json;
-  _creators?: Json;
-  _series?: Json;
   _originalIssue?: Json;
 }
 
@@ -4487,18 +4137,11 @@ export interface EventUpdateWithoutCreatorsDataInput {
   start?: DateTimeInput;
   end?: DateTimeInput;
   series?: SeriesUpdateManyWithoutEventsInput;
-  _series?: Json;
   stories?: StoryUpdateManyWithoutEventsInput;
-  _stories?: Json;
   comics?: ComicUpdateManyWithoutEventsInput;
-  _comics?: Json;
   characters?: CharacterUpdateManyWithoutEventsInput;
-  _characters?: Json;
-  _creators?: Json;
   next?: EventUpdateOneWithoutPreviousInput;
-  _next?: Json;
   previous?: EventUpdateOneWithoutNextInput;
-  _previous?: Json;
 }
 
 export interface StoryCreateManyWithoutCreatorsInput {
@@ -4531,18 +4174,11 @@ export interface EventUpdateWithoutPreviousDataInput {
   start?: DateTimeInput;
   end?: DateTimeInput;
   series?: SeriesUpdateManyWithoutEventsInput;
-  _series?: Json;
   stories?: StoryUpdateManyWithoutEventsInput;
-  _stories?: Json;
   comics?: ComicUpdateManyWithoutEventsInput;
-  _comics?: Json;
   characters?: CharacterUpdateManyWithoutEventsInput;
-  _characters?: Json;
   creators?: CreatorUpdateManyWithoutEventsInput;
-  _creators?: Json;
   next?: EventUpdateOneWithoutPreviousInput;
-  _next?: Json;
-  _previous?: Json;
 }
 
 export interface EventCreateManyWithoutCreatorsInput {
@@ -4821,14 +4457,9 @@ export interface ComicUpdateWithoutSeriesDataInput {
   prices?: Json;
   images?: Json;
   characters?: CharacterUpdateManyWithoutComicsInput;
-  _characters?: Json;
   events?: EventUpdateManyWithoutComicsInput;
-  _events?: Json;
   stories?: StoryUpdateManyWithoutComicsInput;
-  _stories?: Json;
   creators?: CreatorUpdateManyWithoutComicsInput;
-  _creators?: Json;
-  _series?: Json;
 }
 
 export interface CreatorUpdateManyWithWhereNestedInput {
@@ -4915,18 +4546,11 @@ export interface EventUpdateWithoutNextDataInput {
   start?: DateTimeInput;
   end?: DateTimeInput;
   series?: SeriesUpdateManyWithoutEventsInput;
-  _series?: Json;
   stories?: StoryUpdateManyWithoutEventsInput;
-  _stories?: Json;
   comics?: ComicUpdateManyWithoutEventsInput;
-  _comics?: Json;
   characters?: CharacterUpdateManyWithoutEventsInput;
-  _characters?: Json;
   creators?: CreatorUpdateManyWithoutEventsInput;
-  _creators?: Json;
-  _next?: Json;
   previous?: EventUpdateOneWithoutNextInput;
-  _previous?: Json;
 }
 
 export type StoryWhereUniqueInput = AtLeastOne<{
@@ -5122,13 +4746,6 @@ export interface EventUpdateManyDataInput {
   urls?: Json;
   start?: DateTimeInput;
   end?: DateTimeInput;
-  _series?: Json;
-  _stories?: Json;
-  _comics?: Json;
-  _characters?: Json;
-  _creators?: Json;
-  _next?: Json;
-  _previous?: Json;
 }
 
 export interface CharacterCreateManyWithoutEventsInput {
@@ -5453,11 +5070,6 @@ export interface ComicUpdateManyDataInput {
   dates?: Json;
   prices?: Json;
   images?: Json;
-  _characters?: Json;
-  _events?: Json;
-  _stories?: Json;
-  _creators?: Json;
-  _series?: Json;
 }
 
 export interface StorySubscriptionWhereInput {
@@ -5604,15 +5216,10 @@ export interface StoryCreateInput {
   description?: String;
   type?: String;
   comics?: ComicCreateManyWithoutStoriesInput;
-  _comics?: Json;
   events?: EventCreateManyWithoutStoriesInput;
-  _events?: Json;
   characters?: CharacterCreateManyWithoutStoriesInput;
-  _characters?: Json;
   creators?: CreatorCreateManyWithoutStoriesInput;
-  _creators?: Json;
   series?: SeriesCreateManyWithoutStoriesInput;
-  _series?: Json;
   _originalIssue?: Json;
 }
 
@@ -5627,18 +5234,11 @@ export interface EventUpdateWithoutComicsDataInput {
   start?: DateTimeInput;
   end?: DateTimeInput;
   series?: SeriesUpdateManyWithoutEventsInput;
-  _series?: Json;
   stories?: StoryUpdateManyWithoutEventsInput;
-  _stories?: Json;
-  _comics?: Json;
   characters?: CharacterUpdateManyWithoutEventsInput;
-  _characters?: Json;
   creators?: CreatorUpdateManyWithoutEventsInput;
-  _creators?: Json;
   next?: EventUpdateOneWithoutPreviousInput;
-  _next?: Json;
   previous?: EventUpdateOneWithoutNextInput;
-  _previous?: Json;
 }
 
 export interface SeriesCreateOneWithoutNextInput {
@@ -5661,11 +5261,6 @@ export interface StoryPreviousValues {
   title?: String;
   description?: String;
   type?: String;
-  _comics?: Json;
-  _events?: Json;
-  _characters?: Json;
-  _creators?: Json;
-  _series?: Json;
   _originalIssue?: Json;
 }
 
@@ -5682,11 +5277,6 @@ export interface StoryPreviousValuesPromise
   title: () => Promise<String>;
   description: () => Promise<String>;
   type: () => Promise<String>;
-  _comics: () => Promise<Json>;
-  _events: () => Promise<Json>;
-  _characters: () => Promise<Json>;
-  _creators: () => Promise<Json>;
-  _series: () => Promise<Json>;
   _originalIssue: () => Promise<Json>;
 }
 
@@ -5703,11 +5293,6 @@ export interface StoryPreviousValuesSubscription
   title: () => Promise<AsyncIterator<String>>;
   description: () => Promise<AsyncIterator<String>>;
   type: () => Promise<AsyncIterator<String>>;
-  _comics: () => Promise<AsyncIterator<Json>>;
-  _events: () => Promise<AsyncIterator<Json>>;
-  _characters: () => Promise<AsyncIterator<Json>>;
-  _creators: () => Promise<AsyncIterator<Json>>;
-  _series: () => Promise<AsyncIterator<Json>>;
   _originalIssue: () => Promise<AsyncIterator<Json>>;
 }
 
@@ -5758,11 +5343,6 @@ export interface Comic {
   dates?: Json;
   prices?: Json;
   images?: Json;
-  _characters?: Json;
-  _events?: Json;
-  _stories?: Json;
-  _creators?: Json;
-  _series?: Json;
 }
 
 export interface ComicPromise extends Promise<Comic>, Fragmentable {
@@ -5800,7 +5380,6 @@ export interface ComicPromise extends Promise<Comic>, Fragmentable {
       last?: Int;
     }
   ) => T;
-  _characters: () => Promise<Json>;
   events: <T = FragmentableArray<Event>>(
     args?: {
       where?: EventWhereInput;
@@ -5812,7 +5391,6 @@ export interface ComicPromise extends Promise<Comic>, Fragmentable {
       last?: Int;
     }
   ) => T;
-  _events: () => Promise<Json>;
   stories: <T = FragmentableArray<Story>>(
     args?: {
       where?: StoryWhereInput;
@@ -5824,7 +5402,6 @@ export interface ComicPromise extends Promise<Comic>, Fragmentable {
       last?: Int;
     }
   ) => T;
-  _stories: () => Promise<Json>;
   creators: <T = FragmentableArray<Creator>>(
     args?: {
       where?: CreatorWhereInput;
@@ -5836,9 +5413,7 @@ export interface ComicPromise extends Promise<Comic>, Fragmentable {
       last?: Int;
     }
   ) => T;
-  _creators: () => Promise<Json>;
   series: <T = SeriesPromise>() => T;
-  _series: () => Promise<Json>;
 }
 
 export interface ComicSubscription
@@ -5878,7 +5453,6 @@ export interface ComicSubscription
       last?: Int;
     }
   ) => T;
-  _characters: () => Promise<AsyncIterator<Json>>;
   events: <T = Promise<AsyncIterator<EventSubscription>>>(
     args?: {
       where?: EventWhereInput;
@@ -5890,7 +5464,6 @@ export interface ComicSubscription
       last?: Int;
     }
   ) => T;
-  _events: () => Promise<AsyncIterator<Json>>;
   stories: <T = Promise<AsyncIterator<StorySubscription>>>(
     args?: {
       where?: StoryWhereInput;
@@ -5902,7 +5475,6 @@ export interface ComicSubscription
       last?: Int;
     }
   ) => T;
-  _stories: () => Promise<AsyncIterator<Json>>;
   creators: <T = Promise<AsyncIterator<CreatorSubscription>>>(
     args?: {
       where?: CreatorWhereInput;
@@ -5914,9 +5486,7 @@ export interface ComicSubscription
       last?: Int;
     }
   ) => T;
-  _creators: () => Promise<AsyncIterator<Json>>;
   series: <T = SeriesSubscription>() => T;
-  _series: () => Promise<AsyncIterator<Json>>;
 }
 
 export interface CharacterConnection {
@@ -6291,13 +5861,6 @@ export interface EventPreviousValues {
   urls?: Json;
   start?: DateTimeOutput;
   end?: DateTimeOutput;
-  _series?: Json;
-  _stories?: Json;
-  _comics?: Json;
-  _characters?: Json;
-  _creators?: Json;
-  _next?: Json;
-  _previous?: Json;
 }
 
 export interface EventPreviousValuesPromise
@@ -6315,13 +5878,6 @@ export interface EventPreviousValuesPromise
   urls: () => Promise<Json>;
   start: () => Promise<DateTimeOutput>;
   end: () => Promise<DateTimeOutput>;
-  _series: () => Promise<Json>;
-  _stories: () => Promise<Json>;
-  _comics: () => Promise<Json>;
-  _characters: () => Promise<Json>;
-  _creators: () => Promise<Json>;
-  _next: () => Promise<Json>;
-  _previous: () => Promise<Json>;
 }
 
 export interface EventPreviousValuesSubscription
@@ -6339,13 +5895,6 @@ export interface EventPreviousValuesSubscription
   urls: () => Promise<AsyncIterator<Json>>;
   start: () => Promise<AsyncIterator<DateTimeOutput>>;
   end: () => Promise<AsyncIterator<DateTimeOutput>>;
-  _series: () => Promise<AsyncIterator<Json>>;
-  _stories: () => Promise<AsyncIterator<Json>>;
-  _comics: () => Promise<AsyncIterator<Json>>;
-  _characters: () => Promise<AsyncIterator<Json>>;
-  _creators: () => Promise<AsyncIterator<Json>>;
-  _next: () => Promise<AsyncIterator<Json>>;
-  _previous: () => Promise<AsyncIterator<Json>>;
 }
 
 export interface AggregateSeries {
@@ -6433,11 +5982,6 @@ export interface SeriesPreviousValues {
   endYear?: Int;
   rating?: String;
   type?: String;
-  _comics?: Json;
-  _stories?: Json;
-  _events?: Json;
-  _characters?: Json;
-  _creators?: Json;
 }
 
 export interface SeriesPreviousValuesPromise
@@ -6457,11 +6001,6 @@ export interface SeriesPreviousValuesPromise
   endYear: () => Promise<Int>;
   rating: () => Promise<String>;
   type: () => Promise<String>;
-  _comics: () => Promise<Json>;
-  _stories: () => Promise<Json>;
-  _events: () => Promise<Json>;
-  _characters: () => Promise<Json>;
-  _creators: () => Promise<Json>;
 }
 
 export interface SeriesPreviousValuesSubscription
@@ -6481,11 +6020,6 @@ export interface SeriesPreviousValuesSubscription
   endYear: () => Promise<AsyncIterator<Int>>;
   rating: () => Promise<AsyncIterator<String>>;
   type: () => Promise<AsyncIterator<String>>;
-  _comics: () => Promise<AsyncIterator<Json>>;
-  _stories: () => Promise<AsyncIterator<Json>>;
-  _events: () => Promise<AsyncIterator<Json>>;
-  _characters: () => Promise<AsyncIterator<Json>>;
-  _creators: () => Promise<AsyncIterator<Json>>;
 }
 
 export interface AggregateCreator {
@@ -6621,11 +6155,6 @@ export interface Story {
   title?: String;
   description?: String;
   type?: String;
-  _comics?: Json;
-  _events?: Json;
-  _characters?: Json;
-  _creators?: Json;
-  _series?: Json;
   _originalIssue?: Json;
 }
 
@@ -6651,7 +6180,6 @@ export interface StoryPromise extends Promise<Story>, Fragmentable {
       last?: Int;
     }
   ) => T;
-  _comics: () => Promise<Json>;
   events: <T = FragmentableArray<Event>>(
     args?: {
       where?: EventWhereInput;
@@ -6663,7 +6191,6 @@ export interface StoryPromise extends Promise<Story>, Fragmentable {
       last?: Int;
     }
   ) => T;
-  _events: () => Promise<Json>;
   characters: <T = FragmentableArray<Character>>(
     args?: {
       where?: CharacterWhereInput;
@@ -6675,7 +6202,6 @@ export interface StoryPromise extends Promise<Story>, Fragmentable {
       last?: Int;
     }
   ) => T;
-  _characters: () => Promise<Json>;
   creators: <T = FragmentableArray<Creator>>(
     args?: {
       where?: CreatorWhereInput;
@@ -6687,7 +6213,6 @@ export interface StoryPromise extends Promise<Story>, Fragmentable {
       last?: Int;
     }
   ) => T;
-  _creators: () => Promise<Json>;
   series: <T = FragmentableArray<Series>>(
     args?: {
       where?: SeriesWhereInput;
@@ -6699,7 +6224,6 @@ export interface StoryPromise extends Promise<Story>, Fragmentable {
       last?: Int;
     }
   ) => T;
-  _series: () => Promise<Json>;
   _originalIssue: () => Promise<Json>;
 }
 
@@ -6727,7 +6251,6 @@ export interface StorySubscription
       last?: Int;
     }
   ) => T;
-  _comics: () => Promise<AsyncIterator<Json>>;
   events: <T = Promise<AsyncIterator<EventSubscription>>>(
     args?: {
       where?: EventWhereInput;
@@ -6739,7 +6262,6 @@ export interface StorySubscription
       last?: Int;
     }
   ) => T;
-  _events: () => Promise<AsyncIterator<Json>>;
   characters: <T = Promise<AsyncIterator<CharacterSubscription>>>(
     args?: {
       where?: CharacterWhereInput;
@@ -6751,7 +6273,6 @@ export interface StorySubscription
       last?: Int;
     }
   ) => T;
-  _characters: () => Promise<AsyncIterator<Json>>;
   creators: <T = Promise<AsyncIterator<CreatorSubscription>>>(
     args?: {
       where?: CreatorWhereInput;
@@ -6763,7 +6284,6 @@ export interface StorySubscription
       last?: Int;
     }
   ) => T;
-  _creators: () => Promise<AsyncIterator<Json>>;
   series: <T = Promise<AsyncIterator<SeriesSubscription>>>(
     args?: {
       where?: SeriesWhereInput;
@@ -6775,7 +6295,6 @@ export interface StorySubscription
       last?: Int;
     }
   ) => T;
-  _series: () => Promise<AsyncIterator<Json>>;
   _originalIssue: () => Promise<AsyncIterator<Json>>;
 }
 
@@ -6869,11 +6388,6 @@ export interface ComicPreviousValues {
   dates?: Json;
   prices?: Json;
   images?: Json;
-  _characters?: Json;
-  _events?: Json;
-  _stories?: Json;
-  _creators?: Json;
-  _series?: Json;
 }
 
 export interface ComicPreviousValuesPromise
@@ -6902,11 +6416,6 @@ export interface ComicPreviousValuesPromise
   dates: () => Promise<Json>;
   prices: () => Promise<Json>;
   images: () => Promise<Json>;
-  _characters: () => Promise<Json>;
-  _events: () => Promise<Json>;
-  _stories: () => Promise<Json>;
-  _creators: () => Promise<Json>;
-  _series: () => Promise<Json>;
 }
 
 export interface ComicPreviousValuesSubscription
@@ -6935,11 +6444,6 @@ export interface ComicPreviousValuesSubscription
   dates: () => Promise<AsyncIterator<Json>>;
   prices: () => Promise<AsyncIterator<Json>>;
   images: () => Promise<AsyncIterator<Json>>;
-  _characters: () => Promise<AsyncIterator<Json>>;
-  _events: () => Promise<AsyncIterator<Json>>;
-  _stories: () => Promise<AsyncIterator<Json>>;
-  _creators: () => Promise<AsyncIterator<Json>>;
-  _series: () => Promise<AsyncIterator<Json>>;
 }
 
 export interface AggregateEvent {
@@ -7061,11 +6565,6 @@ export interface Series {
   endYear?: Int;
   rating?: String;
   type?: String;
-  _comics?: Json;
-  _stories?: Json;
-  _events?: Json;
-  _characters?: Json;
-  _creators?: Json;
 }
 
 export interface SeriesPromise extends Promise<Series>, Fragmentable {
@@ -7094,7 +6593,6 @@ export interface SeriesPromise extends Promise<Series>, Fragmentable {
       last?: Int;
     }
   ) => T;
-  _comics: () => Promise<Json>;
   stories: <T = FragmentableArray<Story>>(
     args?: {
       where?: StoryWhereInput;
@@ -7106,7 +6604,6 @@ export interface SeriesPromise extends Promise<Series>, Fragmentable {
       last?: Int;
     }
   ) => T;
-  _stories: () => Promise<Json>;
   events: <T = FragmentableArray<Event>>(
     args?: {
       where?: EventWhereInput;
@@ -7118,7 +6615,6 @@ export interface SeriesPromise extends Promise<Series>, Fragmentable {
       last?: Int;
     }
   ) => T;
-  _events: () => Promise<Json>;
   characters: <T = FragmentableArray<Character>>(
     args?: {
       where?: CharacterWhereInput;
@@ -7130,7 +6626,6 @@ export interface SeriesPromise extends Promise<Series>, Fragmentable {
       last?: Int;
     }
   ) => T;
-  _characters: () => Promise<Json>;
   creators: <T = FragmentableArray<Creator>>(
     args?: {
       where?: CreatorWhereInput;
@@ -7142,7 +6637,6 @@ export interface SeriesPromise extends Promise<Series>, Fragmentable {
       last?: Int;
     }
   ) => T;
-  _creators: () => Promise<Json>;
   next: <T = SeriesPromise>() => T;
   previous: <T = SeriesPromise>() => T;
 }
@@ -7175,7 +6669,6 @@ export interface SeriesSubscription
       last?: Int;
     }
   ) => T;
-  _comics: () => Promise<AsyncIterator<Json>>;
   stories: <T = Promise<AsyncIterator<StorySubscription>>>(
     args?: {
       where?: StoryWhereInput;
@@ -7187,7 +6680,6 @@ export interface SeriesSubscription
       last?: Int;
     }
   ) => T;
-  _stories: () => Promise<AsyncIterator<Json>>;
   events: <T = Promise<AsyncIterator<EventSubscription>>>(
     args?: {
       where?: EventWhereInput;
@@ -7199,7 +6691,6 @@ export interface SeriesSubscription
       last?: Int;
     }
   ) => T;
-  _events: () => Promise<AsyncIterator<Json>>;
   characters: <T = Promise<AsyncIterator<CharacterSubscription>>>(
     args?: {
       where?: CharacterWhereInput;
@@ -7211,7 +6702,6 @@ export interface SeriesSubscription
       last?: Int;
     }
   ) => T;
-  _characters: () => Promise<AsyncIterator<Json>>;
   creators: <T = Promise<AsyncIterator<CreatorSubscription>>>(
     args?: {
       where?: CreatorWhereInput;
@@ -7223,7 +6713,6 @@ export interface SeriesSubscription
       last?: Int;
     }
   ) => T;
-  _creators: () => Promise<AsyncIterator<Json>>;
   next: <T = SeriesSubscription>() => T;
   previous: <T = SeriesSubscription>() => T;
 }
@@ -7374,13 +6863,6 @@ export interface Event {
   urls?: Json;
   start?: DateTimeOutput;
   end?: DateTimeOutput;
-  _series?: Json;
-  _stories?: Json;
-  _comics?: Json;
-  _characters?: Json;
-  _creators?: Json;
-  _next?: Json;
-  _previous?: Json;
 }
 
 export interface EventPromise extends Promise<Event>, Fragmentable {
@@ -7407,7 +6889,6 @@ export interface EventPromise extends Promise<Event>, Fragmentable {
       last?: Int;
     }
   ) => T;
-  _series: () => Promise<Json>;
   stories: <T = FragmentableArray<Story>>(
     args?: {
       where?: StoryWhereInput;
@@ -7419,7 +6900,6 @@ export interface EventPromise extends Promise<Event>, Fragmentable {
       last?: Int;
     }
   ) => T;
-  _stories: () => Promise<Json>;
   comics: <T = FragmentableArray<Comic>>(
     args?: {
       where?: ComicWhereInput;
@@ -7431,7 +6911,6 @@ export interface EventPromise extends Promise<Event>, Fragmentable {
       last?: Int;
     }
   ) => T;
-  _comics: () => Promise<Json>;
   characters: <T = FragmentableArray<Character>>(
     args?: {
       where?: CharacterWhereInput;
@@ -7443,7 +6922,6 @@ export interface EventPromise extends Promise<Event>, Fragmentable {
       last?: Int;
     }
   ) => T;
-  _characters: () => Promise<Json>;
   creators: <T = FragmentableArray<Creator>>(
     args?: {
       where?: CreatorWhereInput;
@@ -7455,11 +6933,8 @@ export interface EventPromise extends Promise<Event>, Fragmentable {
       last?: Int;
     }
   ) => T;
-  _creators: () => Promise<Json>;
   next: <T = EventPromise>() => T;
-  _next: () => Promise<Json>;
   previous: <T = EventPromise>() => T;
-  _previous: () => Promise<Json>;
 }
 
 export interface EventSubscription
@@ -7488,7 +6963,6 @@ export interface EventSubscription
       last?: Int;
     }
   ) => T;
-  _series: () => Promise<AsyncIterator<Json>>;
   stories: <T = Promise<AsyncIterator<StorySubscription>>>(
     args?: {
       where?: StoryWhereInput;
@@ -7500,7 +6974,6 @@ export interface EventSubscription
       last?: Int;
     }
   ) => T;
-  _stories: () => Promise<AsyncIterator<Json>>;
   comics: <T = Promise<AsyncIterator<ComicSubscription>>>(
     args?: {
       where?: ComicWhereInput;
@@ -7512,7 +6985,6 @@ export interface EventSubscription
       last?: Int;
     }
   ) => T;
-  _comics: () => Promise<AsyncIterator<Json>>;
   characters: <T = Promise<AsyncIterator<CharacterSubscription>>>(
     args?: {
       where?: CharacterWhereInput;
@@ -7524,7 +6996,6 @@ export interface EventSubscription
       last?: Int;
     }
   ) => T;
-  _characters: () => Promise<AsyncIterator<Json>>;
   creators: <T = Promise<AsyncIterator<CreatorSubscription>>>(
     args?: {
       where?: CreatorWhereInput;
@@ -7536,11 +7007,8 @@ export interface EventSubscription
       last?: Int;
     }
   ) => T;
-  _creators: () => Promise<AsyncIterator<Json>>;
   next: <T = EventSubscription>() => T;
-  _next: () => Promise<AsyncIterator<Json>>;
   previous: <T = EventSubscription>() => T;
-  _previous: () => Promise<AsyncIterator<Json>>;
 }
 
 /*

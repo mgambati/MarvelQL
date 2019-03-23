@@ -7,7 +7,10 @@ import { SeriesCreateInput } from 'packages/prisma';
 
 export default class SeriesModel extends MarvelApiModel {
 	constructor(context: Context) {
-		super(context);
+		super(context, {
+			singularRef: "series",
+			pluralRef: "series",
+		});
 	}
 	getWhereArgs(where) {
 		const seriesType = optionalChaining(() => where.seriesType)
@@ -28,12 +31,17 @@ export default class SeriesModel extends MarvelApiModel {
 	async getOne(where: NexusGenInputs["SeriesWhereInput"]) {
 		try {
 			const input = this.getWhereArgs(where);
-			const params = await this.createParams({
+			const params = ({
 				...input
 			});
 
-			const response = await this.marvel.get(`/series?${params}`);
-			return this.formatApiData(response.data.data.results[0]);
+			const response = await this.get(`/series`, { params });
+			if (response.results.length > 0) {
+				response.results.map(this.storeApiData);
+				return this.formatApiData(response.results[0]);
+			} else {
+				return null;
+			}
 		} catch (error) {
 			console.error(error);
 			throw new Error(error);
@@ -52,50 +60,6 @@ export default class SeriesModel extends MarvelApiModel {
 			}
 		})
 	}
-	async storeApiData(series) {
-		let seriesData: SeriesCreateInput = {
-			marvelId: `${series.id}`,
-			title: series.title,
-			description: series.description,
-			resourceURI: series.resourceURI,
-			urls: series.urls,
-			startYear: series.startYear,
-			endYear: series.endYear,
-			rating: series.rating,
-			type: series.type,
-			thumbnail: series.thumbnail && series.thumbnail.path ? `${series.thumbnail.path}.${series.thumbnail.extension}` : "",
-		};
-		Object.assign(seriesData, await this.makeConnections({
-			targets: [
-				{
-					singularRef: "creator",
-					pluralRef: "creators",
-				},
-				{
-					singularRef: "character",
-					pluralRef: "characters",
-				},
-				{
-					singularRef: "story",
-					pluralRef: "stories",
-				},
-				{
-					singularRef: "comic",
-					pluralRef: "comics",
-				},
-				{
-					singularRef: "event",
-					pluralRef: "events"
-				}
-			],
-			apiData: series
-		}))
-		const created = await this.context.db.createSeries(seriesData)
-
-		return this.convertCached(created);
-		// console.log(series)
-		// return this.formatApiData(series);
-	}
 	async getMany(args: {
 		where: NexusGenInputs["SeriesWhereInput"],
 		orderBy: NexusGenEnums["SeriesOrderBy"],
@@ -109,30 +73,80 @@ export default class SeriesModel extends MarvelApiModel {
 			offset
 		} = args;
 		const input = this.getWhereArgs(where);
-		const params = await this.createParams({
+		const params = ({
 			...input,
 			orderBy: this.getOrderBy(orderBy, 'series'),
 			offset,
 			limit
 		});
-		const response = await this.marvel.get(`/series?${params}`);
-		return await response.data.data.results.map((item) =>
+		const response = await this.get(`/series`, { params });
+		response.results.map(this.storeApiData);
+		return await response.results.map((item) =>
 			this.formatApiData(item)
 		);
 	}
-	catch(error) {
-		console.error(error);
-		throw new Error(error);
+	storeApiData = async (apiData) => {
+		const marvelId = `${apiData.id}`;
+		return this.updateCache({
+			getCached: () => this.context.db.series({
+				marvelId
+			}),
+			addToCache: async () => {
+				let inputData: SeriesCreateInput = {
+					marvelId: `${apiData.id}`,
+					title: apiData.title,
+					description: apiData.description,
+					resourceURI: apiData.resourceURI,
+					urls: apiData.urls,
+					startYear: apiData.startYear,
+					endYear: apiData.endYear,
+					rating: apiData.rating,
+					type: apiData.type,
+					thumbnail: apiData.thumbnail && apiData.thumbnail.path ? `${apiData.thumbnail.path}.${apiData.thumbnail.extension}` : "",
+				};
+				if (apiData.next && apiData.next.resourceURI) {
+					// inputData._next = apiData.next;
+					const id = this.extractId(apiData.next.resourceURI);
+					const existing = await this.context.db.series({
+						marvelId: id
+					});
+					if (existing) {
+						inputData.next = {
+							connect: {
+								id: existing.id
+							}
+						}
+					}
+				}
+				if (apiData.previous && apiData.previous.resourceURI) {
+					// inputData._previous = apiData.previous;
+					const id = this.extractId(apiData.previous.resourceURI);
+					const existing = await this.context.db.series({
+						marvelId: id
+					});
+					if (existing) {
+						inputData.previous = {
+							connect: {
+								id: existing.id
+							}
+						}
+					}
+				}
+				const upserted = await this.context.db.upsertSeries({
+					where: {
+						marvelId: inputData.marvelId
+					},
+					create: inputData,
+					update: inputData
+				})
+				return upserted;
+			}
+		})
 	}
 	formatApiData(item) {
 		return {
 			...item,
 			thumbnail: formatThumbnail(item.thumbnail),
-			events: getSummary['events'](item),
-			comics: getSummary['comics'](item),
-			stories: getSummary['stories'](item),
-			characters: getSummary['characters'](item),
-			creators: getSummary['creators'](item)
 		};
 	}
 }

@@ -32,45 +32,56 @@ export const Series = objectType({
             type: "Comic",
             nullable: true,
             description: 'A list of comics (Comic Types) related to this series',
-            async resolve(parent, args, ctx) {
-                const res = await ctx.api.get(`/series/${parent.id}/comics`);
-                return res.results;
+            async resolve(parent: any, args, ctx) {
+                return ctx.seriesModel.getConnection({
+                    connectionName: "comics",
+                    cardinality: "many-one",
+                    data: parent
+                })
             }
         });
         t.list.field("stories", {
             type: "Story",
             nullable: true,
             description: 'A list of stories (Story Types) related to this series',
-            async resolve(parent, args, ctx) {
-                const res = await ctx.api.get(`/series/${parent.id}/stories`);
-                return res.results;
+            async resolve(parent: any, args, ctx) {
+                return ctx.seriesModel.getConnection({
+                    connectionName: "stories",
+                    data: parent
+                })
             }
         });
         t.list.field("events", {
             type: "Event",
             nullable: true,
             description: 'A list of events (Event Types) related to this series',
-            async resolve(parent, args, ctx) {
-                const res = await ctx.api.get(`/series/${parent.id}/events`);
-                return res.results;
+            async resolve(parent: any, args, ctx) {
+                return ctx.seriesModel.getConnection({
+                    connectionName: "events",
+                    data: parent
+                })
             }
         });
         t.list.field("characters", {
             type: "Character",
             nullable: true,
             description: 'A list of characters (Character Types) related to this series',
-            async resolve(parent, args, ctx) {
-                const res = await ctx.api.get(`/series/${parent.id}/characters`);
-                return res.results;
+            async resolve(parent: any, args, ctx) {
+                return ctx.seriesModel.getConnection({
+                    connectionName: "characters",
+                    data: parent
+                })
             }
         });
         t.list.field("creators", {
             type: "Creator",
             nullable: true,
             description: 'A list of creators (Creator Types) related to this series',
-            async resolve(parent, args, ctx) {
-                const res = await ctx.api.get(`/series/${parent.id}/creators`);
-                return res.results;
+            async resolve(parent: any, args, ctx) {
+                return ctx.seriesModel.getConnection({
+                    connectionName: "creators",
+                    data: parent
+                })
             }
         });
         t.field("next", {
@@ -78,10 +89,12 @@ export const Series = objectType({
             nullable: true,
             description: 'A list of previous series (Series Types) in relation to this series',
             async resolve(parent: any, args, ctx) {
-                if (parent.next && parent.next.resourceURI) {
-                    const res = await ctx.seriesModel.getById(ctx.seriesModel.extractId(parent.next.resourceURI));
-                    return res;
-                }
+                return ctx.seriesModel.getConnection({
+                    connectionName: "next",
+                    connectionType: "series",
+                    cardinality: "one-one",
+                    data: parent
+                })
             }
         });
         t.field("previous", {
@@ -89,10 +102,12 @@ export const Series = objectType({
             nullable: true,
             description: 'A list of previous series (Series Types) in relation to this series',
             async resolve(parent: any, args, ctx) {
-                if (parent.previous && parent.previous.resourceURI) {
-                    const res = await ctx.seriesModel.getById(ctx.seriesModel.extractId(parent.previous.resourceURI));
-                    return res;
-                }
+                return ctx.seriesModel.getConnection({
+                    connectionName: "previous",
+                    connectionType: "series",
+                    cardinality: "one-one",
+                    data: parent
+                })
             }
         });
     }

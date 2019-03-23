@@ -169,7 +169,7 @@ type Comic implements MarvelNode {
   """The canonical URL identifier for a resource."""
   resourceURI: String
 
-  """A list of series (Summary Types) to this comic"""
+  """The series that this comic belongs to"""
   series: Series
 
   """A list of stories (Story Types) related to this comic"""
@@ -531,11 +531,11 @@ type Event implements MarvelNode {
   """A date for which the resource has been modified"""
   modified: String
 
-  """The next event (Summary Type) in relation to this event"""
-  next: Summary
+  """The next event (Event Type) in relation to this event"""
+  next: Event
 
-  """The previous event (Summary Type) in relation to this event"""
-  previous: Summary
+  """The previous event (Event Type) in relation to this event"""
+  previous: Event
 
   """The canonical URL identifier for a resource."""
   resourceURI: String

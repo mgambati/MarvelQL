@@ -19,45 +19,55 @@ export const Story = objectType({
             type: "Comic",
             nullable: true,
             description: 'A list of comics (Comic Types) related to this story',
-            async resolve(parent, args, ctx) {
-                const res = await ctx.api.get(`/stories/${parent.id}/comics`);
-                return res.results;
+            async resolve(parent: any, args, ctx) {
+                return ctx.storiesModel.getConnection({
+                    connectionName: "comics",
+                    data: parent
+                })
             }
         });
         t.list.field("events", {
             type: "Event",
             nullable: true,
             description: 'A list of events (Event Types) related to this story',
-            async resolve(parent, args, ctx) {
-                const res = await ctx.api.get(`/stories/${parent.id}/events`);
-                return res.results;
+            async resolve(parent: any, args, ctx) {
+                return ctx.storiesModel.getConnection({
+                    connectionName: "events",
+                    data: parent
+                })
             }
         });
         t.list.field("characters", {
             type: "Character",
             nullable: true,
             description: 'A list of characters (Character Types) related to this story',
-            async resolve(parent, args, ctx) {
-                const res = await ctx.api.get(`/stories/${parent.id}/characters`);
-                return res.results;
+            async resolve(parent: any, args, ctx) {
+                return ctx.storiesModel.getConnection({
+                    connectionName: "characters",
+                    data: parent
+                })
             }
         });
         t.list.field("creators", {
             type: "Creator",
             nullable: true,
             description: 'A list of creators (Creator Types) related to this story',
-            async resolve(parent, args, ctx) {
-                const res = await ctx.api.get(`/stories/${parent.id}/creators`);
-                return res.results;
+            async resolve(parent: any, args, ctx) {
+                return ctx.storiesModel.getConnection({
+                    connectionName: "creators",
+                    data: parent
+                })
             }
         });
         t.list.field("series", {
             type: "Series",
             nullable: true,
             description: 'A list of series (Series Types) related to this story',
-            async resolve(parent, args, ctx) {
-                const res = await ctx.api.get(`/stories/${parent.id}/series`);
-                return res.results;
+            async resolve(parent: any, args, ctx) {
+                return ctx.storiesModel.getConnection({
+                    connectionName: "series",
+                    data: parent
+                })
             }
         });
         t.field("originalIssue", {

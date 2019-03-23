@@ -40,15 +40,10 @@ type Comic {
   prices: Json
   images: Json
   characters: [Character!]!
-  _characters: Json
   events: [Event!]!
-  _events: Json
-  stories: [Story!]!
-  _stories: Json
+  stories: [Story!]! @relation(name: "ComicsStories")
   creators: [Creator!]!
-  _creators: Json
   series: Series
-  _series: Json
   # variants: [Story!] @relation(name: "StoryOriginalIssue")
   # _variants: Json
   # collections: [Summary!]
@@ -89,19 +84,12 @@ type Event {
   start: DateTime
   end: DateTime
   series: [Series!]!
-  _series: Json
   stories: [Story!]!
-  _stories: Json
   comics: [Comic!]!
-  _comics: Json
   characters: [Character!]!
-  _characters: Json
   creators: [Creator!]!
-  _creators: Json
   next: Event @relation(name: "EventRelation")
-  _next: Json
   previous: Event @relation(name: "EventRelation")
-  _previous: Json
 }
 
 type Series {
@@ -120,15 +108,10 @@ type Series {
   rating: String
   type: String
   comics: [Comic!]!
-  _comics: Json
   stories: [Story!]!
-  _stories: Json
   events: [Event!]!
-  _events: Json
   characters: [Character!]!
-  _characters: Json
   creators: [Creator!]!
-  _creators: Json
   next: Series @relation(name: "SeriesRelation")
   previous: Series @relation(name: "SeriesRelation")
 }
@@ -144,16 +127,11 @@ type Story {
   title: String
   description: String
   type: String
-  comics: [Comic!]!
-  _comics: Json
+  comics: [Comic!]! @relation(name: "ComicsStories")
   events: [Event!]!
-  _events: Json
   characters: [Character!]!
-  _characters: Json
   creators: [Creator!]!
-  _creators: Json
   series: [Series!]!
-  _series: Json
   # originalIssue: Comic @relation(name: "StoryOriginalIssue")
   _originalIssue: Json
 }

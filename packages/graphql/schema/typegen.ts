@@ -167,8 +167,6 @@ export interface NexusGenRootTypes {
     end?: string | null; // String
     id?: string | null; // ID
     modified?: string | null; // String
-    next?: NexusGenRootTypes['Summary'] | null; // Summary
-    previous?: NexusGenRootTypes['Summary'] | null; // Summary
     resourceURI?: string | null; // String
     start?: string | null; // String
     thumbnail?: string | null; // String
@@ -321,8 +319,8 @@ export interface NexusGenFieldTypes {
     end: string | null; // String
     id: string | null; // ID
     modified: string | null; // String
-    next: NexusGenRootTypes['Summary'] | null; // Summary
-    previous: NexusGenRootTypes['Summary'] | null; // Summary
+    next: NexusGenRootTypes['Event'] | null; // Event
+    previous: NexusGenRootTypes['Event'] | null; // Event
     resourceURI: string | null; // String
     series: NexusGenRootTypes['Series'][] | null; // [Series!]
     start: string | null; // String

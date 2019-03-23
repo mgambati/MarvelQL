@@ -33,36 +33,44 @@ export const Creator = objectType({
             type: "Series",
             nullable: true,
             description: 'A list of series (Series Types) related to this creator',
-            async resolve(parent, args, ctx) {
-                const res = await ctx.api.get(`/creators/${parent.id}/series`);
-                return res.results;
+            async resolve(parent: any, args, ctx) {
+                return ctx.creatorsModel.getConnection({
+                    connectionName: "series",
+                    data: parent
+                })
             }
         });
         t.list.field("stories", {
             type: "Story",
             nullable: true,
             description: 'A list of stories (Story Types) related to this creator',
-            async resolve(parent, args, ctx) {
-                const res = await ctx.api.get(`/creators/${parent.id}/stories`);
-                return res.results;
+            async resolve(parent: any, args, ctx) {
+                return ctx.creatorsModel.getConnection({
+                    connectionName: "stories",
+                    data: parent
+                })
             }
         });
         t.list.field("comics", {
             type: "Comic",
             nullable: true,
             description: 'A list of comics (Comic Types) related to this creator',
-            async resolve(parent, args, ctx) {
-                const res = await ctx.api.get(`/creators/${parent.id}/comics`);
-                return res.results;
+            async resolve(parent: any, args, ctx) {
+                return ctx.creatorsModel.getConnection({
+                    connectionName: "comics",
+                    data: parent
+                })
             }
         });
         t.list.field("events", {
             type: "Event",
             nullable: true,
             description: 'A list of events (Event Types) related to this creator',
-            async resolve(parent, args, ctx) {
-                const res = await ctx.api.get(`/creators/${parent.id}/events`);
-                return res.results;
+            async resolve(parent: any, args, ctx) {
+                return ctx.creatorsModel.getConnection({
+                    connectionName: "events",
+                    data: parent
+                })
             }
         });
     }

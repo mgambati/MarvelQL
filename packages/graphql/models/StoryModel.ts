@@ -13,11 +13,12 @@ export default class StoryModel extends MarvelApiModel {
 	}
 	async getOne(where: NexusGenInputs["StoriesWhereInput"]) {
 		try {
-			const params = await this.createParams({
+			const params = ({
 				...where
 			});
-			const response = await this.marvel.get(`/stories?${params}`);
-			return await this.formatApiData(response.data.data.results[0]);
+			const response = await this.get(`/stories`, { params });
+			response.results.map(this.storeApiData)
+			return await this.formatApiData(response.results[0]);
 		} catch (error) {
 			console.error(error);
 			throw new Error(error);
@@ -36,45 +37,6 @@ export default class StoryModel extends MarvelApiModel {
 			}
 		})
 	}
-	async storeApiData(apiData) {
-		const inputData: StoryCreateInput = {
-			marvelId: `${apiData.id}`,
-			title: apiData.title,
-			description: apiData.description,
-			resourceURI: apiData.resourceURI,
-			type: apiData.type,
-			thumbnail: apiData.thumbnail && apiData.thumbnail.path ? `${apiData.thumbnail.path}.${apiData.thumbnail.extension}` : "",
-
-		};
-		Object.assign(inputData, await this.makeConnections({
-			targets: [
-				{
-					singularRef: "creator",
-					pluralRef: "creators",
-				},
-				{
-					singularRef: "character",
-					pluralRef: "characters",
-				},
-				{
-					singularRef: "series",
-					pluralRef: "series",
-				},
-				{
-					singularRef: "comic",
-					pluralRef: "comics",
-				},
-				{
-					singularRef: "event",
-					pluralRef: "events",
-				},
-			],
-			apiData: apiData
-		}))
-		const created = await this.context.db.createEvent(inputData)
-
-		return this.convertCached(created);
-	}
 	async getMany(args: {
 		where: NexusGenInputs["StoriesWhereInput"],
 		orderBy: NexusGenEnums["StoriesOrderBy"],
@@ -88,20 +50,61 @@ export default class StoryModel extends MarvelApiModel {
 			offset
 		} = args;
 		try {
-			const params = await this.createParams({
+			const params = {
 				...where,
 				orderBy: this.getOrderBy(orderBy, 'stories'),
 				offset,
 				limit
-			});
-			const response = await this.marvel.get(`/stories?${params}`);
-			return await response.data.data.results.map((item) =>
+			};
+			const response = await this.get(`/stories`, { params });
+			response.results.map(this.storeApiData)
+			return await response.results.map((item) =>
 				this.formatApiData(item)
 			);
 		} catch (error) {
 			console.error(error);
 			throw new Error(error);
 		}
+	}
+	storeApiData = async (apiData) => {
+		const marvelId = `${apiData.id}`;
+		return this.updateCache({
+			getCached: () => this.context.db.story({
+				marvelId
+			}),
+			addToCache: async () => {
+				const inputData: StoryCreateInput = {
+					marvelId: marvelId,
+					title: apiData.title,
+					description: apiData.description,
+					resourceURI: apiData.resourceURI,
+					type: apiData.type,
+					thumbnail: apiData.thumbnail && apiData.thumbnail.path ? `${apiData.thumbnail.path}.${apiData.thumbnail.extension}` : "",
+				};
+				// if (apiData.originalIssue && apiData.originalIssue.resourceURI) {
+				// 	const marvelId = this.context.comicsModel.extractId(apiData.originalIssue.resourceURI);
+				// 	const originalIssue = await this.context.db.comic({
+				// 		marvelId
+				// 	});
+				// 	inputData._originalIssue = apiData.originalIssue;
+				// 	if (originalIssue) {
+				// 		inputData.originalIssue = {
+				// 			connect: {
+				// 				id: originalIssue.id
+				// 			}
+				// 		}
+				// 	}
+				// }
+				const cached = await this.context.db.upsertStory({
+					where: {
+						marvelId: marvelId
+					},
+					create: inputData,
+					update: inputData,
+				})
+				return cached;
+			}
+		})
 	}
 	formatApiData(item) {
 		return {
