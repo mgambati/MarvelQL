@@ -1,0 +1,10 @@
+{
+  "name": "@marvelql/hasura",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "rajinwonderland",
+  "license": "MIT",
+  "scripts": {
+    "compose": "docker-compose up"
+  }
+}
