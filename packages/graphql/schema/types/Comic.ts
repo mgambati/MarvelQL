@@ -233,7 +233,7 @@ export const ComicPrice = objectType({
             nullable: true,
             description: 'A description of the price (e.g. print price, digital price).',
         });
-        t.int("price", {
+        t.float("price", {
             nullable: true,
             description: 'The price of the comic resource',
         });
