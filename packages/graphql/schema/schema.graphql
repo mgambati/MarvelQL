@@ -289,7 +289,7 @@ enum ComicOrderBy {
 
 type ComicPrice {
   """The price of the comic resource"""
-  price: Int
+  price: Float
 
   """A description of the price (e.g. print price, digital price)."""
   type: String

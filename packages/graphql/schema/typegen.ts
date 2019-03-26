@@ -147,7 +147,7 @@ export interface NexusGenRootTypes {
     path?: string | null; // String
   }
   ComicPrice: { // root type
-    price?: number | null; // Int
+    price?: number | null; // Float
     type?: string | null; // String
   }
   Creator: { // root type
@@ -292,7 +292,7 @@ export interface NexusGenFieldTypes {
     path: string | null; // String
   }
   ComicPrice: { // field return type
-    price: number | null; // Int
+    price: number | null; // Float
     type: string | null; // String
   }
   Creator: { // field return type
