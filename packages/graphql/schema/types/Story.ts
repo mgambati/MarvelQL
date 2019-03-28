@@ -16,29 +16,59 @@ export const Story = objectType({
             description: 'The story type e.g. interior story, cover, text story.',
         });
         t.list.field("comics", {
-            type: "Summary",
+            type: "Comic",
             nullable: true,
-            description: 'A list of comics (Summary Types) related to this story',
+            description: 'A list of comics (Comic Types) related to this story',
+            async resolve(parent: any, args, ctx) {
+                return ctx.storiesModel.getConnection({
+                    connectionName: "comics",
+                    data: parent
+                })
+            }
         });
         t.list.field("events", {
-            type: "Summary",
+            type: "Event",
             nullable: true,
-            description: 'A list of events (Summary Types) related to this story',
+            description: 'A list of events (Event Types) related to this story',
+            async resolve(parent: any, args, ctx) {
+                return ctx.storiesModel.getConnection({
+                    connectionName: "events",
+                    data: parent
+                })
+            }
         });
         t.list.field("characters", {
-            type: "Summary",
+            type: "Character",
             nullable: true,
-            description: 'A list of characters (Summary Types) related to this story',
+            description: 'A list of characters (Character Types) related to this story',
+            async resolve(parent: any, args, ctx) {
+                return ctx.storiesModel.getConnection({
+                    connectionName: "characters",
+                    data: parent
+                })
+            }
         });
         t.list.field("creators", {
-            type: "Summary",
+            type: "Creator",
             nullable: true,
-            description: 'A list of creators (Summary Types) related to this story',
+            description: 'A list of creators (Creator Types) related to this story',
+            async resolve(parent: any, args, ctx) {
+                return ctx.storiesModel.getConnection({
+                    connectionName: "creators",
+                    data: parent
+                })
+            }
         });
         t.list.field("series", {
-            type: "Summary",
+            type: "Series",
             nullable: true,
-            description: 'A list of series (Summary Types) related to this story',
+            description: 'A list of series (Series Types) related to this story',
+            async resolve(parent: any, args, ctx) {
+                return ctx.storiesModel.getConnection({
+                    connectionName: "series",
+                    data: parent
+                })
+            }
         });
         t.field("originalIssue", {
             type: "Summary",
