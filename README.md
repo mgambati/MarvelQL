@@ -1,3 +1,5 @@
+<p align="center"><img src="docs/assets/marvelql_logo.png" width="100%"/></p>
+
 # Marvel API GraphQL Wrapper
 
 A wrapper around [Marvel](https://developer.marvel.com/) built using GraphQL.
