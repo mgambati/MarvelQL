@@ -1,5 +1,5 @@
 {
-  "name": "este",
+  "name": "marvelql",
   "version": "1.0.0",
   "private": true,
   "license": "MIT",
@@ -17,7 +17,10 @@
     "ts:watch": "ts-node-dev --no-notify --transpileOnly -r esm -r dotenv/config",
     "start": "yarn ts packages/graphql/index.ts",
     "dev": "yarn ts:watch packages/graphql/index.ts",
-    "deploy": "bash ./.scripts/deploy.sh"
+    "deploy": "bash ./.scripts/deploy.sh",
+    "rook": "yarn workspace",
+    "board": "yarn workspaces",
+    "data": "yarn workspace @marvelql/data download"
   },
   "dependencies": {
     "esm": "^3.2.0",
