@@ -1,4 +1,4 @@
-<p align="center"><img src="docs/assets/marvelql_logo.png" width="100%"/></p>
+<p align="center"><img src="docs/assets/marvelql_logo.png" height="300px"/></p>
 
 # Marvel API GraphQL Wrapper
 
