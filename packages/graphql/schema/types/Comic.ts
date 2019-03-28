@@ -59,9 +59,16 @@ export const Comic = objectType({
             description: 'A set of public web site URLs for the resource.',
         })
         t.field("series", {
-            type: "Summary",
+            type: "Series",
             nullable: true,
-            description: 'A list of series (Summary Types) to this comic',
+            description: 'The series that this comic belongs to',
+            async resolve(parent: any, args, ctx) {
+                return ctx.comicsModel.getConnection({
+                    connectionName: "series",
+                    cardinality: "one-many",
+                    data: parent
+                })
+            }
         })
         t.list.field("variants", {
             type: "Summary",
@@ -94,24 +101,48 @@ export const Comic = objectType({
             description: 'A list of promotional images associated with this comic.',
         })
         t.list.field("characters", {
-            type: "Summary",
+            type: "Character",
             nullable: true,
-            description: 'A list of characters (Summary Types) to this comic',
+            description: 'A list of characters (Character Types) to this comic',
+            async resolve(parent: any, args, ctx) {
+                return ctx.comicsModel.getConnection({
+                    connectionName: "characters",
+                    data: parent
+                })
+            }
         })
         t.list.field("events", {
-            type: "Summary",
+            type: "Event",
             nullable: true,
-            description: 'A list of events (Summary Types) related to this comic',
+            description: 'A list of events (Event Types) related to this comic',
+            async resolve(parent: any, args, ctx) {
+                return ctx.comicsModel.getConnection({
+                    connectionName: "events",
+                    data: parent
+                })
+            }
         })
         t.list.field("stories", {
-            type: "Summary",
+            type: "Story",
             nullable: true,
-            description: 'A list of stories (Summary Types) related to this comic',
+            description: 'A list of stories (Story Types) related to this comic',
+            async resolve(parent: any, args, ctx) {
+                return ctx.comicsModel.getConnection({
+                    connectionName: "stories",
+                    data: parent
+                })
+            }
         })
         t.list.field("creators", {
-            type: "Summary",
+            type: "Creator",
             nullable: true,
-            description: 'A list of creators (Summary Types) related to this comic',
+            description: 'A list of creators (Creator Types) related to this comic',
+            async resolve(parent: any, args, ctx) {
+                return ctx.comicsModel.getConnection({
+                    connectionName: "creators",
+                    data: parent
+                })
+            }
         })
     }
 })
@@ -202,7 +233,7 @@ export const ComicPrice = objectType({
             nullable: true,
             description: 'A description of the price (e.g. print price, digital price).',
         });
-        t.int("price", {
+        t.float("price", {
             nullable: true,
             description: 'The price of the comic resource',
         });

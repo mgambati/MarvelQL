@@ -14,7 +14,12 @@ export type AtLeastOne<T, U = { [K in keyof T]: Pick<T, K> }> = Partial<T> &
   U[keyof U];
 
 export interface Exists {
-  user: (where?: UserWhereInput) => Promise<boolean>;
+  character: (where?: CharacterWhereInput) => Promise<boolean>;
+  comic: (where?: ComicWhereInput) => Promise<boolean>;
+  creator: (where?: CreatorWhereInput) => Promise<boolean>;
+  event: (where?: EventWhereInput) => Promise<boolean>;
+  series: (where?: SeriesWhereInput) => Promise<boolean>;
+  story: (where?: StoryWhereInput) => Promise<boolean>;
 }
 
 export interface Node {}
@@ -36,51 +41,249 @@ export interface Prisma {
    * Queries
    */
 
-  user: (where: UserWhereUniqueInput) => UserPromise;
-  users: (
+  character: (where: CharacterWhereUniqueInput) => CharacterPromise;
+  characters: (
     args?: {
-      where?: UserWhereInput;
-      orderBy?: UserOrderByInput;
+      where?: CharacterWhereInput;
+      orderBy?: CharacterOrderByInput;
       skip?: Int;
       after?: String;
       before?: String;
       first?: Int;
       last?: Int;
     }
-  ) => FragmentableArray<User>;
-  usersConnection: (
+  ) => FragmentableArray<Character>;
+  charactersConnection: (
     args?: {
-      where?: UserWhereInput;
-      orderBy?: UserOrderByInput;
+      where?: CharacterWhereInput;
+      orderBy?: CharacterOrderByInput;
       skip?: Int;
       after?: String;
       before?: String;
       first?: Int;
       last?: Int;
     }
-  ) => UserConnectionPromise;
+  ) => CharacterConnectionPromise;
+  comic: (where: ComicWhereUniqueInput) => ComicPromise;
+  comics: (
+    args?: {
+      where?: ComicWhereInput;
+      orderBy?: ComicOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => FragmentableArray<Comic>;
+  comicsConnection: (
+    args?: {
+      where?: ComicWhereInput;
+      orderBy?: ComicOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => ComicConnectionPromise;
+  creator: (where: CreatorWhereUniqueInput) => CreatorPromise;
+  creators: (
+    args?: {
+      where?: CreatorWhereInput;
+      orderBy?: CreatorOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => FragmentableArray<Creator>;
+  creatorsConnection: (
+    args?: {
+      where?: CreatorWhereInput;
+      orderBy?: CreatorOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => CreatorConnectionPromise;
+  event: (where: EventWhereUniqueInput) => EventPromise;
+  events: (
+    args?: {
+      where?: EventWhereInput;
+      orderBy?: EventOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => FragmentableArray<Event>;
+  eventsConnection: (
+    args?: {
+      where?: EventWhereInput;
+      orderBy?: EventOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => EventConnectionPromise;
+  series: (where: SeriesWhereUniqueInput) => SeriesPromise;
+  serieses: (
+    args?: {
+      where?: SeriesWhereInput;
+      orderBy?: SeriesOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => FragmentableArray<Series>;
+  seriesesConnection: (
+    args?: {
+      where?: SeriesWhereInput;
+      orderBy?: SeriesOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => SeriesConnectionPromise;
+  story: (where: StoryWhereUniqueInput) => StoryPromise;
+  stories: (
+    args?: {
+      where?: StoryWhereInput;
+      orderBy?: StoryOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => FragmentableArray<Story>;
+  storiesConnection: (
+    args?: {
+      where?: StoryWhereInput;
+      orderBy?: StoryOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => StoryConnectionPromise;
   node: (args: { id: ID_Output }) => Node;
 
   /**
    * Mutations
    */
 
-  createUser: (data: UserCreateInput) => UserPromise;
-  updateUser: (
-    args: { data: UserUpdateInput; where: UserWhereUniqueInput }
-  ) => UserPromise;
-  updateManyUsers: (
-    args: { data: UserUpdateManyMutationInput; where?: UserWhereInput }
-  ) => BatchPayloadPromise;
-  upsertUser: (
+  createCharacter: (data: CharacterCreateInput) => CharacterPromise;
+  updateCharacter: (
+    args: { data: CharacterUpdateInput; where: CharacterWhereUniqueInput }
+  ) => CharacterPromise;
+  updateManyCharacters: (
     args: {
-      where: UserWhereUniqueInput;
-      create: UserCreateInput;
-      update: UserUpdateInput;
+      data: CharacterUpdateManyMutationInput;
+      where?: CharacterWhereInput;
     }
-  ) => UserPromise;
-  deleteUser: (where: UserWhereUniqueInput) => UserPromise;
-  deleteManyUsers: (where?: UserWhereInput) => BatchPayloadPromise;
+  ) => BatchPayloadPromise;
+  upsertCharacter: (
+    args: {
+      where: CharacterWhereUniqueInput;
+      create: CharacterCreateInput;
+      update: CharacterUpdateInput;
+    }
+  ) => CharacterPromise;
+  deleteCharacter: (where: CharacterWhereUniqueInput) => CharacterPromise;
+  deleteManyCharacters: (where?: CharacterWhereInput) => BatchPayloadPromise;
+  createComic: (data: ComicCreateInput) => ComicPromise;
+  updateComic: (
+    args: { data: ComicUpdateInput; where: ComicWhereUniqueInput }
+  ) => ComicPromise;
+  updateManyComics: (
+    args: { data: ComicUpdateManyMutationInput; where?: ComicWhereInput }
+  ) => BatchPayloadPromise;
+  upsertComic: (
+    args: {
+      where: ComicWhereUniqueInput;
+      create: ComicCreateInput;
+      update: ComicUpdateInput;
+    }
+  ) => ComicPromise;
+  deleteComic: (where: ComicWhereUniqueInput) => ComicPromise;
+  deleteManyComics: (where?: ComicWhereInput) => BatchPayloadPromise;
+  createCreator: (data: CreatorCreateInput) => CreatorPromise;
+  updateCreator: (
+    args: { data: CreatorUpdateInput; where: CreatorWhereUniqueInput }
+  ) => CreatorPromise;
+  updateManyCreators: (
+    args: { data: CreatorUpdateManyMutationInput; where?: CreatorWhereInput }
+  ) => BatchPayloadPromise;
+  upsertCreator: (
+    args: {
+      where: CreatorWhereUniqueInput;
+      create: CreatorCreateInput;
+      update: CreatorUpdateInput;
+    }
+  ) => CreatorPromise;
+  deleteCreator: (where: CreatorWhereUniqueInput) => CreatorPromise;
+  deleteManyCreators: (where?: CreatorWhereInput) => BatchPayloadPromise;
+  createEvent: (data: EventCreateInput) => EventPromise;
+  updateEvent: (
+    args: { data: EventUpdateInput; where: EventWhereUniqueInput }
+  ) => EventPromise;
+  updateManyEvents: (
+    args: { data: EventUpdateManyMutationInput; where?: EventWhereInput }
+  ) => BatchPayloadPromise;
+  upsertEvent: (
+    args: {
+      where: EventWhereUniqueInput;
+      create: EventCreateInput;
+      update: EventUpdateInput;
+    }
+  ) => EventPromise;
+  deleteEvent: (where: EventWhereUniqueInput) => EventPromise;
+  deleteManyEvents: (where?: EventWhereInput) => BatchPayloadPromise;
+  createSeries: (data: SeriesCreateInput) => SeriesPromise;
+  updateSeries: (
+    args: { data: SeriesUpdateInput; where: SeriesWhereUniqueInput }
+  ) => SeriesPromise;
+  updateManySerieses: (
+    args: { data: SeriesUpdateManyMutationInput; where?: SeriesWhereInput }
+  ) => BatchPayloadPromise;
+  upsertSeries: (
+    args: {
+      where: SeriesWhereUniqueInput;
+      create: SeriesCreateInput;
+      update: SeriesUpdateInput;
+    }
+  ) => SeriesPromise;
+  deleteSeries: (where: SeriesWhereUniqueInput) => SeriesPromise;
+  deleteManySerieses: (where?: SeriesWhereInput) => BatchPayloadPromise;
+  createStory: (data: StoryCreateInput) => StoryPromise;
+  updateStory: (
+    args: { data: StoryUpdateInput; where: StoryWhereUniqueInput }
+  ) => StoryPromise;
+  updateManyStories: (
+    args: { data: StoryUpdateManyMutationInput; where?: StoryWhereInput }
+  ) => BatchPayloadPromise;
+  upsertStory: (
+    args: {
+      where: StoryWhereUniqueInput;
+      create: StoryCreateInput;
+      update: StoryUpdateInput;
+    }
+  ) => StoryPromise;
+  deleteStory: (where: StoryWhereUniqueInput) => StoryPromise;
+  deleteManyStories: (where?: StoryWhereInput) => BatchPayloadPromise;
 
   /**
    * Subscriptions
@@ -90,9 +293,24 @@ export interface Prisma {
 }
 
 export interface Subscription {
-  user: (
-    where?: UserSubscriptionWhereInput
-  ) => UserSubscriptionPayloadSubscription;
+  character: (
+    where?: CharacterSubscriptionWhereInput
+  ) => CharacterSubscriptionPayloadSubscription;
+  comic: (
+    where?: ComicSubscriptionWhereInput
+  ) => ComicSubscriptionPayloadSubscription;
+  creator: (
+    where?: CreatorSubscriptionWhereInput
+  ) => CreatorSubscriptionPayloadSubscription;
+  event: (
+    where?: EventSubscriptionWhereInput
+  ) => EventSubscriptionPayloadSubscription;
+  series: (
+    where?: SeriesSubscriptionWhereInput
+  ) => SeriesSubscriptionPayloadSubscription;
+  story: (
+    where?: StorySubscriptionWhereInput
+  ) => StorySubscriptionPayloadSubscription;
 }
 
 export interface ClientConstructor<T> {
@@ -103,31 +321,212 @@ export interface ClientConstructor<T> {
  * Types
  */
 
-export type UserOrderByInput =
+export type ComicOrderByInput =
   | "id_ASC"
   | "id_DESC"
-  | "name_ASC"
-  | "name_DESC"
+  | "marvelId_ASC"
+  | "marvelId_DESC"
   | "createdAt_ASC"
   | "createdAt_DESC"
   | "updatedAt_ASC"
-  | "updatedAt_DESC";
+  | "updatedAt_DESC"
+  | "resourceURI_ASC"
+  | "resourceURI_DESC"
+  | "thumbnail_ASC"
+  | "thumbnail_DESC"
+  | "modified_ASC"
+  | "modified_DESC"
+  | "digitalId_ASC"
+  | "digitalId_DESC"
+  | "title_ASC"
+  | "title_DESC"
+  | "issueNumber_ASC"
+  | "issueNumber_DESC"
+  | "variantDescription_ASC"
+  | "variantDescription_DESC"
+  | "description_ASC"
+  | "description_DESC"
+  | "isbn_ASC"
+  | "isbn_DESC"
+  | "upc_ASC"
+  | "upc_DESC"
+  | "diamondCode_ASC"
+  | "diamondCode_DESC"
+  | "ean_ASC"
+  | "ean_DESC"
+  | "issn_ASC"
+  | "issn_DESC"
+  | "format_ASC"
+  | "format_DESC"
+  | "textObjects_ASC"
+  | "textObjects_DESC"
+  | "urls_ASC"
+  | "urls_DESC"
+  | "dates_ASC"
+  | "dates_DESC"
+  | "prices_ASC"
+  | "prices_DESC"
+  | "images_ASC"
+  | "images_DESC";
+
+export type CharacterOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "marvelId_ASC"
+  | "marvelId_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC"
+  | "resourceURI_ASC"
+  | "resourceURI_DESC"
+  | "thumbnail_ASC"
+  | "thumbnail_DESC"
+  | "modified_ASC"
+  | "modified_DESC"
+  | "name_ASC"
+  | "name_DESC"
+  | "description_ASC"
+  | "description_DESC"
+  | "urls_ASC"
+  | "urls_DESC";
+
+export type EventOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "marvelId_ASC"
+  | "marvelId_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC"
+  | "resourceURI_ASC"
+  | "resourceURI_DESC"
+  | "thumbnail_ASC"
+  | "thumbnail_DESC"
+  | "modified_ASC"
+  | "modified_DESC"
+  | "title_ASC"
+  | "title_DESC"
+  | "description_ASC"
+  | "description_DESC"
+  | "urls_ASC"
+  | "urls_DESC"
+  | "start_ASC"
+  | "start_DESC"
+  | "end_ASC"
+  | "end_DESC";
+
+export type SeriesOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "marvelId_ASC"
+  | "marvelId_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC"
+  | "resourceURI_ASC"
+  | "resourceURI_DESC"
+  | "thumbnail_ASC"
+  | "thumbnail_DESC"
+  | "modified_ASC"
+  | "modified_DESC"
+  | "title_ASC"
+  | "title_DESC"
+  | "description_ASC"
+  | "description_DESC"
+  | "urls_ASC"
+  | "urls_DESC"
+  | "startYear_ASC"
+  | "startYear_DESC"
+  | "endYear_ASC"
+  | "endYear_DESC"
+  | "rating_ASC"
+  | "rating_DESC"
+  | "type_ASC"
+  | "type_DESC";
+
+export type StoryOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "marvelId_ASC"
+  | "marvelId_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC"
+  | "resourceURI_ASC"
+  | "resourceURI_DESC"
+  | "thumbnail_ASC"
+  | "thumbnail_DESC"
+  | "modified_ASC"
+  | "modified_DESC"
+  | "title_ASC"
+  | "title_DESC"
+  | "description_ASC"
+  | "description_DESC"
+  | "type_ASC"
+  | "type_DESC"
+  | "_originalIssue_ASC"
+  | "_originalIssue_DESC";
+
+export type CreatorOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "marvelId_ASC"
+  | "marvelId_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC"
+  | "resourceURI_ASC"
+  | "resourceURI_DESC"
+  | "thumbnail_ASC"
+  | "thumbnail_DESC"
+  | "modified_ASC"
+  | "modified_DESC"
+  | "firstName_ASC"
+  | "firstName_DESC"
+  | "middleName_ASC"
+  | "middleName_DESC"
+  | "lastName_ASC"
+  | "lastName_DESC"
+  | "suffix_ASC"
+  | "suffix_DESC"
+  | "fullName_ASC"
+  | "fullName_DESC"
+  | "urls_ASC"
+  | "urls_DESC";
 
 export type MutationType = "CREATED" | "UPDATED" | "DELETED";
 
-export interface UserCreateInput {
-  name: String;
+export interface EventUpdateWithWhereUniqueWithoutSeriesInput {
+  where: EventWhereUniqueInput;
+  data: EventUpdateWithoutSeriesDataInput;
 }
 
-export interface UserUpdateInput {
-  name?: String;
+export type CharacterWhereUniqueInput = AtLeastOne<{
+  id: ID_Input;
+  marvelId?: String;
+}>;
+
+export interface StoryUpdateWithoutEventsDataInput {
+  marvelId?: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  title?: String;
+  description?: String;
+  type?: String;
+  comics?: ComicUpdateManyWithoutStoriesInput;
+  characters?: CharacterUpdateManyWithoutStoriesInput;
+  creators?: CreatorUpdateManyWithoutStoriesInput;
+  series?: SeriesUpdateManyWithoutStoriesInput;
+  _originalIssue?: Json;
 }
 
-export interface UserUpdateManyMutationInput {
-  name?: String;
-}
-
-export interface UserWhereInput {
+export interface SeriesWhereInput {
   id?: ID_Input;
   id_not?: ID_Input;
   id_in?: ID_Input[] | ID_Input;
@@ -142,6 +541,437 @@ export interface UserWhereInput {
   id_not_starts_with?: ID_Input;
   id_ends_with?: ID_Input;
   id_not_ends_with?: ID_Input;
+  marvelId?: String;
+  marvelId_not?: String;
+  marvelId_in?: String[] | String;
+  marvelId_not_in?: String[] | String;
+  marvelId_lt?: String;
+  marvelId_lte?: String;
+  marvelId_gt?: String;
+  marvelId_gte?: String;
+  marvelId_contains?: String;
+  marvelId_not_contains?: String;
+  marvelId_starts_with?: String;
+  marvelId_not_starts_with?: String;
+  marvelId_ends_with?: String;
+  marvelId_not_ends_with?: String;
+  createdAt?: DateTimeInput;
+  createdAt_not?: DateTimeInput;
+  createdAt_in?: DateTimeInput[] | DateTimeInput;
+  createdAt_not_in?: DateTimeInput[] | DateTimeInput;
+  createdAt_lt?: DateTimeInput;
+  createdAt_lte?: DateTimeInput;
+  createdAt_gt?: DateTimeInput;
+  createdAt_gte?: DateTimeInput;
+  updatedAt?: DateTimeInput;
+  updatedAt_not?: DateTimeInput;
+  updatedAt_in?: DateTimeInput[] | DateTimeInput;
+  updatedAt_not_in?: DateTimeInput[] | DateTimeInput;
+  updatedAt_lt?: DateTimeInput;
+  updatedAt_lte?: DateTimeInput;
+  updatedAt_gt?: DateTimeInput;
+  updatedAt_gte?: DateTimeInput;
+  resourceURI?: String;
+  resourceURI_not?: String;
+  resourceURI_in?: String[] | String;
+  resourceURI_not_in?: String[] | String;
+  resourceURI_lt?: String;
+  resourceURI_lte?: String;
+  resourceURI_gt?: String;
+  resourceURI_gte?: String;
+  resourceURI_contains?: String;
+  resourceURI_not_contains?: String;
+  resourceURI_starts_with?: String;
+  resourceURI_not_starts_with?: String;
+  resourceURI_ends_with?: String;
+  resourceURI_not_ends_with?: String;
+  thumbnail?: String;
+  thumbnail_not?: String;
+  thumbnail_in?: String[] | String;
+  thumbnail_not_in?: String[] | String;
+  thumbnail_lt?: String;
+  thumbnail_lte?: String;
+  thumbnail_gt?: String;
+  thumbnail_gte?: String;
+  thumbnail_contains?: String;
+  thumbnail_not_contains?: String;
+  thumbnail_starts_with?: String;
+  thumbnail_not_starts_with?: String;
+  thumbnail_ends_with?: String;
+  thumbnail_not_ends_with?: String;
+  modified?: String;
+  modified_not?: String;
+  modified_in?: String[] | String;
+  modified_not_in?: String[] | String;
+  modified_lt?: String;
+  modified_lte?: String;
+  modified_gt?: String;
+  modified_gte?: String;
+  modified_contains?: String;
+  modified_not_contains?: String;
+  modified_starts_with?: String;
+  modified_not_starts_with?: String;
+  modified_ends_with?: String;
+  modified_not_ends_with?: String;
+  title?: String;
+  title_not?: String;
+  title_in?: String[] | String;
+  title_not_in?: String[] | String;
+  title_lt?: String;
+  title_lte?: String;
+  title_gt?: String;
+  title_gte?: String;
+  title_contains?: String;
+  title_not_contains?: String;
+  title_starts_with?: String;
+  title_not_starts_with?: String;
+  title_ends_with?: String;
+  title_not_ends_with?: String;
+  description?: String;
+  description_not?: String;
+  description_in?: String[] | String;
+  description_not_in?: String[] | String;
+  description_lt?: String;
+  description_lte?: String;
+  description_gt?: String;
+  description_gte?: String;
+  description_contains?: String;
+  description_not_contains?: String;
+  description_starts_with?: String;
+  description_not_starts_with?: String;
+  description_ends_with?: String;
+  description_not_ends_with?: String;
+  startYear?: Int;
+  startYear_not?: Int;
+  startYear_in?: Int[] | Int;
+  startYear_not_in?: Int[] | Int;
+  startYear_lt?: Int;
+  startYear_lte?: Int;
+  startYear_gt?: Int;
+  startYear_gte?: Int;
+  endYear?: Int;
+  endYear_not?: Int;
+  endYear_in?: Int[] | Int;
+  endYear_not_in?: Int[] | Int;
+  endYear_lt?: Int;
+  endYear_lte?: Int;
+  endYear_gt?: Int;
+  endYear_gte?: Int;
+  rating?: String;
+  rating_not?: String;
+  rating_in?: String[] | String;
+  rating_not_in?: String[] | String;
+  rating_lt?: String;
+  rating_lte?: String;
+  rating_gt?: String;
+  rating_gte?: String;
+  rating_contains?: String;
+  rating_not_contains?: String;
+  rating_starts_with?: String;
+  rating_not_starts_with?: String;
+  rating_ends_with?: String;
+  rating_not_ends_with?: String;
+  type?: String;
+  type_not?: String;
+  type_in?: String[] | String;
+  type_not_in?: String[] | String;
+  type_lt?: String;
+  type_lte?: String;
+  type_gt?: String;
+  type_gte?: String;
+  type_contains?: String;
+  type_not_contains?: String;
+  type_starts_with?: String;
+  type_not_starts_with?: String;
+  type_ends_with?: String;
+  type_not_ends_with?: String;
+  comics_every?: ComicWhereInput;
+  comics_some?: ComicWhereInput;
+  comics_none?: ComicWhereInput;
+  stories_every?: StoryWhereInput;
+  stories_some?: StoryWhereInput;
+  stories_none?: StoryWhereInput;
+  events_every?: EventWhereInput;
+  events_some?: EventWhereInput;
+  events_none?: EventWhereInput;
+  characters_every?: CharacterWhereInput;
+  characters_some?: CharacterWhereInput;
+  characters_none?: CharacterWhereInput;
+  creators_every?: CreatorWhereInput;
+  creators_some?: CreatorWhereInput;
+  creators_none?: CreatorWhereInput;
+  next?: SeriesWhereInput;
+  previous?: SeriesWhereInput;
+  AND?: SeriesWhereInput[] | SeriesWhereInput;
+  OR?: SeriesWhereInput[] | SeriesWhereInput;
+  NOT?: SeriesWhereInput[] | SeriesWhereInput;
+}
+
+export interface CharacterUpdateManyWithoutStoriesInput {
+  create?:
+    | CharacterCreateWithoutStoriesInput[]
+    | CharacterCreateWithoutStoriesInput;
+  delete?: CharacterWhereUniqueInput[] | CharacterWhereUniqueInput;
+  connect?: CharacterWhereUniqueInput[] | CharacterWhereUniqueInput;
+  set?: CharacterWhereUniqueInput[] | CharacterWhereUniqueInput;
+  disconnect?: CharacterWhereUniqueInput[] | CharacterWhereUniqueInput;
+  update?:
+    | CharacterUpdateWithWhereUniqueWithoutStoriesInput[]
+    | CharacterUpdateWithWhereUniqueWithoutStoriesInput;
+  upsert?:
+    | CharacterUpsertWithWhereUniqueWithoutStoriesInput[]
+    | CharacterUpsertWithWhereUniqueWithoutStoriesInput;
+  deleteMany?: CharacterScalarWhereInput[] | CharacterScalarWhereInput;
+  updateMany?:
+    | CharacterUpdateManyWithWhereNestedInput[]
+    | CharacterUpdateManyWithWhereNestedInput;
+}
+
+export interface EventWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  marvelId?: String;
+  marvelId_not?: String;
+  marvelId_in?: String[] | String;
+  marvelId_not_in?: String[] | String;
+  marvelId_lt?: String;
+  marvelId_lte?: String;
+  marvelId_gt?: String;
+  marvelId_gte?: String;
+  marvelId_contains?: String;
+  marvelId_not_contains?: String;
+  marvelId_starts_with?: String;
+  marvelId_not_starts_with?: String;
+  marvelId_ends_with?: String;
+  marvelId_not_ends_with?: String;
+  createdAt?: DateTimeInput;
+  createdAt_not?: DateTimeInput;
+  createdAt_in?: DateTimeInput[] | DateTimeInput;
+  createdAt_not_in?: DateTimeInput[] | DateTimeInput;
+  createdAt_lt?: DateTimeInput;
+  createdAt_lte?: DateTimeInput;
+  createdAt_gt?: DateTimeInput;
+  createdAt_gte?: DateTimeInput;
+  updatedAt?: DateTimeInput;
+  updatedAt_not?: DateTimeInput;
+  updatedAt_in?: DateTimeInput[] | DateTimeInput;
+  updatedAt_not_in?: DateTimeInput[] | DateTimeInput;
+  updatedAt_lt?: DateTimeInput;
+  updatedAt_lte?: DateTimeInput;
+  updatedAt_gt?: DateTimeInput;
+  updatedAt_gte?: DateTimeInput;
+  resourceURI?: String;
+  resourceURI_not?: String;
+  resourceURI_in?: String[] | String;
+  resourceURI_not_in?: String[] | String;
+  resourceURI_lt?: String;
+  resourceURI_lte?: String;
+  resourceURI_gt?: String;
+  resourceURI_gte?: String;
+  resourceURI_contains?: String;
+  resourceURI_not_contains?: String;
+  resourceURI_starts_with?: String;
+  resourceURI_not_starts_with?: String;
+  resourceURI_ends_with?: String;
+  resourceURI_not_ends_with?: String;
+  thumbnail?: String;
+  thumbnail_not?: String;
+  thumbnail_in?: String[] | String;
+  thumbnail_not_in?: String[] | String;
+  thumbnail_lt?: String;
+  thumbnail_lte?: String;
+  thumbnail_gt?: String;
+  thumbnail_gte?: String;
+  thumbnail_contains?: String;
+  thumbnail_not_contains?: String;
+  thumbnail_starts_with?: String;
+  thumbnail_not_starts_with?: String;
+  thumbnail_ends_with?: String;
+  thumbnail_not_ends_with?: String;
+  modified?: String;
+  modified_not?: String;
+  modified_in?: String[] | String;
+  modified_not_in?: String[] | String;
+  modified_lt?: String;
+  modified_lte?: String;
+  modified_gt?: String;
+  modified_gte?: String;
+  modified_contains?: String;
+  modified_not_contains?: String;
+  modified_starts_with?: String;
+  modified_not_starts_with?: String;
+  modified_ends_with?: String;
+  modified_not_ends_with?: String;
+  title?: String;
+  title_not?: String;
+  title_in?: String[] | String;
+  title_not_in?: String[] | String;
+  title_lt?: String;
+  title_lte?: String;
+  title_gt?: String;
+  title_gte?: String;
+  title_contains?: String;
+  title_not_contains?: String;
+  title_starts_with?: String;
+  title_not_starts_with?: String;
+  title_ends_with?: String;
+  title_not_ends_with?: String;
+  description?: String;
+  description_not?: String;
+  description_in?: String[] | String;
+  description_not_in?: String[] | String;
+  description_lt?: String;
+  description_lte?: String;
+  description_gt?: String;
+  description_gte?: String;
+  description_contains?: String;
+  description_not_contains?: String;
+  description_starts_with?: String;
+  description_not_starts_with?: String;
+  description_ends_with?: String;
+  description_not_ends_with?: String;
+  start?: DateTimeInput;
+  start_not?: DateTimeInput;
+  start_in?: DateTimeInput[] | DateTimeInput;
+  start_not_in?: DateTimeInput[] | DateTimeInput;
+  start_lt?: DateTimeInput;
+  start_lte?: DateTimeInput;
+  start_gt?: DateTimeInput;
+  start_gte?: DateTimeInput;
+  end?: DateTimeInput;
+  end_not?: DateTimeInput;
+  end_in?: DateTimeInput[] | DateTimeInput;
+  end_not_in?: DateTimeInput[] | DateTimeInput;
+  end_lt?: DateTimeInput;
+  end_lte?: DateTimeInput;
+  end_gt?: DateTimeInput;
+  end_gte?: DateTimeInput;
+  series_every?: SeriesWhereInput;
+  series_some?: SeriesWhereInput;
+  series_none?: SeriesWhereInput;
+  stories_every?: StoryWhereInput;
+  stories_some?: StoryWhereInput;
+  stories_none?: StoryWhereInput;
+  comics_every?: ComicWhereInput;
+  comics_some?: ComicWhereInput;
+  comics_none?: ComicWhereInput;
+  characters_every?: CharacterWhereInput;
+  characters_some?: CharacterWhereInput;
+  characters_none?: CharacterWhereInput;
+  creators_every?: CreatorWhereInput;
+  creators_some?: CreatorWhereInput;
+  creators_none?: CreatorWhereInput;
+  next?: EventWhereInput;
+  previous?: EventWhereInput;
+  AND?: EventWhereInput[] | EventWhereInput;
+  OR?: EventWhereInput[] | EventWhereInput;
+  NOT?: EventWhereInput[] | EventWhereInput;
+}
+
+export interface CharacterUpdateWithWhereUniqueWithoutStoriesInput {
+  where: CharacterWhereUniqueInput;
+  data: CharacterUpdateWithoutStoriesDataInput;
+}
+
+export interface CharacterWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  marvelId?: String;
+  marvelId_not?: String;
+  marvelId_in?: String[] | String;
+  marvelId_not_in?: String[] | String;
+  marvelId_lt?: String;
+  marvelId_lte?: String;
+  marvelId_gt?: String;
+  marvelId_gte?: String;
+  marvelId_contains?: String;
+  marvelId_not_contains?: String;
+  marvelId_starts_with?: String;
+  marvelId_not_starts_with?: String;
+  marvelId_ends_with?: String;
+  marvelId_not_ends_with?: String;
+  createdAt?: DateTimeInput;
+  createdAt_not?: DateTimeInput;
+  createdAt_in?: DateTimeInput[] | DateTimeInput;
+  createdAt_not_in?: DateTimeInput[] | DateTimeInput;
+  createdAt_lt?: DateTimeInput;
+  createdAt_lte?: DateTimeInput;
+  createdAt_gt?: DateTimeInput;
+  createdAt_gte?: DateTimeInput;
+  updatedAt?: DateTimeInput;
+  updatedAt_not?: DateTimeInput;
+  updatedAt_in?: DateTimeInput[] | DateTimeInput;
+  updatedAt_not_in?: DateTimeInput[] | DateTimeInput;
+  updatedAt_lt?: DateTimeInput;
+  updatedAt_lte?: DateTimeInput;
+  updatedAt_gt?: DateTimeInput;
+  updatedAt_gte?: DateTimeInput;
+  resourceURI?: String;
+  resourceURI_not?: String;
+  resourceURI_in?: String[] | String;
+  resourceURI_not_in?: String[] | String;
+  resourceURI_lt?: String;
+  resourceURI_lte?: String;
+  resourceURI_gt?: String;
+  resourceURI_gte?: String;
+  resourceURI_contains?: String;
+  resourceURI_not_contains?: String;
+  resourceURI_starts_with?: String;
+  resourceURI_not_starts_with?: String;
+  resourceURI_ends_with?: String;
+  resourceURI_not_ends_with?: String;
+  thumbnail?: String;
+  thumbnail_not?: String;
+  thumbnail_in?: String[] | String;
+  thumbnail_not_in?: String[] | String;
+  thumbnail_lt?: String;
+  thumbnail_lte?: String;
+  thumbnail_gt?: String;
+  thumbnail_gte?: String;
+  thumbnail_contains?: String;
+  thumbnail_not_contains?: String;
+  thumbnail_starts_with?: String;
+  thumbnail_not_starts_with?: String;
+  thumbnail_ends_with?: String;
+  thumbnail_not_ends_with?: String;
+  modified?: String;
+  modified_not?: String;
+  modified_in?: String[] | String;
+  modified_not_in?: String[] | String;
+  modified_lt?: String;
+  modified_lte?: String;
+  modified_gt?: String;
+  modified_gte?: String;
+  modified_contains?: String;
+  modified_not_contains?: String;
+  modified_starts_with?: String;
+  modified_not_starts_with?: String;
+  modified_ends_with?: String;
+  modified_not_ends_with?: String;
   name?: String;
   name_not?: String;
   name_in?: String[] | String;
@@ -156,159 +986,4314 @@ export interface UserWhereInput {
   name_not_starts_with?: String;
   name_ends_with?: String;
   name_not_ends_with?: String;
-  AND?: UserWhereInput[] | UserWhereInput;
-  OR?: UserWhereInput[] | UserWhereInput;
-  NOT?: UserWhereInput[] | UserWhereInput;
+  description?: String;
+  description_not?: String;
+  description_in?: String[] | String;
+  description_not_in?: String[] | String;
+  description_lt?: String;
+  description_lte?: String;
+  description_gt?: String;
+  description_gte?: String;
+  description_contains?: String;
+  description_not_contains?: String;
+  description_starts_with?: String;
+  description_not_starts_with?: String;
+  description_ends_with?: String;
+  description_not_ends_with?: String;
+  comics_every?: ComicWhereInput;
+  comics_some?: ComicWhereInput;
+  comics_none?: ComicWhereInput;
+  series_every?: SeriesWhereInput;
+  series_some?: SeriesWhereInput;
+  series_none?: SeriesWhereInput;
+  events_every?: EventWhereInput;
+  events_some?: EventWhereInput;
+  events_none?: EventWhereInput;
+  stories_every?: StoryWhereInput;
+  stories_some?: StoryWhereInput;
+  stories_none?: StoryWhereInput;
+  AND?: CharacterWhereInput[] | CharacterWhereInput;
+  OR?: CharacterWhereInput[] | CharacterWhereInput;
+  NOT?: CharacterWhereInput[] | CharacterWhereInput;
 }
 
-export interface UserSubscriptionWhereInput {
+export interface SeriesUpdateWithoutCharactersDataInput {
+  marvelId?: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  title?: String;
+  description?: String;
+  urls?: Json;
+  startYear?: Int;
+  endYear?: Int;
+  rating?: String;
+  type?: String;
+  comics?: ComicUpdateManyWithoutSeriesInput;
+  stories?: StoryUpdateManyWithoutSeriesInput;
+  events?: EventUpdateManyWithoutSeriesInput;
+  creators?: CreatorUpdateManyWithoutSeriesInput;
+  next?: SeriesUpdateOneWithoutPreviousInput;
+  previous?: SeriesUpdateOneWithoutNextInput;
+}
+
+export interface ComicUpsertWithWhereUniqueWithoutStoriesInput {
+  where: ComicWhereUniqueInput;
+  update: ComicUpdateWithoutStoriesDataInput;
+  create: ComicCreateWithoutStoriesInput;
+}
+
+export interface StoryUpdateManyWithoutSeriesInput {
+  create?: StoryCreateWithoutSeriesInput[] | StoryCreateWithoutSeriesInput;
+  delete?: StoryWhereUniqueInput[] | StoryWhereUniqueInput;
+  connect?: StoryWhereUniqueInput[] | StoryWhereUniqueInput;
+  set?: StoryWhereUniqueInput[] | StoryWhereUniqueInput;
+  disconnect?: StoryWhereUniqueInput[] | StoryWhereUniqueInput;
+  update?:
+    | StoryUpdateWithWhereUniqueWithoutSeriesInput[]
+    | StoryUpdateWithWhereUniqueWithoutSeriesInput;
+  upsert?:
+    | StoryUpsertWithWhereUniqueWithoutSeriesInput[]
+    | StoryUpsertWithWhereUniqueWithoutSeriesInput;
+  deleteMany?: StoryScalarWhereInput[] | StoryScalarWhereInput;
+  updateMany?:
+    | StoryUpdateManyWithWhereNestedInput[]
+    | StoryUpdateManyWithWhereNestedInput;
+}
+
+export interface CharacterUpdateWithoutStoriesDataInput {
+  marvelId?: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  name?: String;
+  description?: String;
+  urls?: Json;
+  comics?: ComicUpdateManyWithoutCharactersInput;
+  series?: SeriesUpdateManyWithoutCharactersInput;
+  events?: EventUpdateManyWithoutCharactersInput;
+}
+
+export interface StoryUpdateWithWhereUniqueWithoutSeriesInput {
+  where: StoryWhereUniqueInput;
+  data: StoryUpdateWithoutSeriesDataInput;
+}
+
+export interface SeriesSubscriptionWhereInput {
   mutation_in?: MutationType[] | MutationType;
   updatedFields_contains?: String;
   updatedFields_contains_every?: String[] | String;
   updatedFields_contains_some?: String[] | String;
-  node?: UserWhereInput;
-  AND?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
-  OR?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
-  NOT?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
+  node?: SeriesWhereInput;
+  AND?: SeriesSubscriptionWhereInput[] | SeriesSubscriptionWhereInput;
+  OR?: SeriesSubscriptionWhereInput[] | SeriesSubscriptionWhereInput;
+  NOT?: SeriesSubscriptionWhereInput[] | SeriesSubscriptionWhereInput;
 }
 
-export type UserWhereUniqueInput = AtLeastOne<{
+export interface StoryUpdateWithoutSeriesDataInput {
+  marvelId?: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  title?: String;
+  description?: String;
+  type?: String;
+  comics?: ComicUpdateManyWithoutStoriesInput;
+  events?: EventUpdateManyWithoutStoriesInput;
+  characters?: CharacterUpdateManyWithoutStoriesInput;
+  creators?: CreatorUpdateManyWithoutStoriesInput;
+  _originalIssue?: Json;
+}
+
+export interface CreatorSubscriptionWhereInput {
+  mutation_in?: MutationType[] | MutationType;
+  updatedFields_contains?: String;
+  updatedFields_contains_every?: String[] | String;
+  updatedFields_contains_some?: String[] | String;
+  node?: CreatorWhereInput;
+  AND?: CreatorSubscriptionWhereInput[] | CreatorSubscriptionWhereInput;
+  OR?: CreatorSubscriptionWhereInput[] | CreatorSubscriptionWhereInput;
+  NOT?: CreatorSubscriptionWhereInput[] | CreatorSubscriptionWhereInput;
+}
+
+export interface ComicUpdateManyWithoutStoriesInput {
+  create?: ComicCreateWithoutStoriesInput[] | ComicCreateWithoutStoriesInput;
+  delete?: ComicWhereUniqueInput[] | ComicWhereUniqueInput;
+  connect?: ComicWhereUniqueInput[] | ComicWhereUniqueInput;
+  set?: ComicWhereUniqueInput[] | ComicWhereUniqueInput;
+  disconnect?: ComicWhereUniqueInput[] | ComicWhereUniqueInput;
+  update?:
+    | ComicUpdateWithWhereUniqueWithoutStoriesInput[]
+    | ComicUpdateWithWhereUniqueWithoutStoriesInput;
+  upsert?:
+    | ComicUpsertWithWhereUniqueWithoutStoriesInput[]
+    | ComicUpsertWithWhereUniqueWithoutStoriesInput;
+  deleteMany?: ComicScalarWhereInput[] | ComicScalarWhereInput;
+  updateMany?:
+    | ComicUpdateManyWithWhereNestedInput[]
+    | ComicUpdateManyWithWhereNestedInput;
+}
+
+export interface CharacterSubscriptionWhereInput {
+  mutation_in?: MutationType[] | MutationType;
+  updatedFields_contains?: String;
+  updatedFields_contains_every?: String[] | String;
+  updatedFields_contains_some?: String[] | String;
+  node?: CharacterWhereInput;
+  AND?: CharacterSubscriptionWhereInput[] | CharacterSubscriptionWhereInput;
+  OR?: CharacterSubscriptionWhereInput[] | CharacterSubscriptionWhereInput;
+  NOT?: CharacterSubscriptionWhereInput[] | CharacterSubscriptionWhereInput;
+}
+
+export interface ComicUpdateWithWhereUniqueWithoutStoriesInput {
+  where: ComicWhereUniqueInput;
+  data: ComicUpdateWithoutStoriesDataInput;
+}
+
+export interface StoryUpdateInput {
+  marvelId?: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  title?: String;
+  description?: String;
+  type?: String;
+  comics?: ComicUpdateManyWithoutStoriesInput;
+  events?: EventUpdateManyWithoutStoriesInput;
+  characters?: CharacterUpdateManyWithoutStoriesInput;
+  creators?: CreatorUpdateManyWithoutStoriesInput;
+  series?: SeriesUpdateManyWithoutStoriesInput;
+  _originalIssue?: Json;
+}
+
+export interface ComicUpdateWithoutStoriesDataInput {
+  marvelId?: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  digitalId?: Int;
+  title?: String;
+  issueNumber?: Int;
+  variantDescription?: String;
+  description?: String;
+  isbn?: String;
+  upc?: String;
+  diamondCode?: String;
+  ean?: String;
+  issn?: String;
+  format?: String;
+  textObjects?: Json;
+  urls?: Json;
+  dates?: Json;
+  prices?: Json;
+  images?: Json;
+  characters?: CharacterUpdateManyWithoutComicsInput;
+  events?: EventUpdateManyWithoutComicsInput;
+  creators?: CreatorUpdateManyWithoutComicsInput;
+  series?: SeriesUpdateOneWithoutComicsInput;
+}
+
+export interface SeriesUpdateManyMutationInput {
+  marvelId?: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  title?: String;
+  description?: String;
+  urls?: Json;
+  startYear?: Int;
+  endYear?: Int;
+  rating?: String;
+  type?: String;
+}
+
+export interface CreatorUpdateManyWithoutComicsInput {
+  create?: CreatorCreateWithoutComicsInput[] | CreatorCreateWithoutComicsInput;
+  delete?: CreatorWhereUniqueInput[] | CreatorWhereUniqueInput;
+  connect?: CreatorWhereUniqueInput[] | CreatorWhereUniqueInput;
+  set?: CreatorWhereUniqueInput[] | CreatorWhereUniqueInput;
+  disconnect?: CreatorWhereUniqueInput[] | CreatorWhereUniqueInput;
+  update?:
+    | CreatorUpdateWithWhereUniqueWithoutComicsInput[]
+    | CreatorUpdateWithWhereUniqueWithoutComicsInput;
+  upsert?:
+    | CreatorUpsertWithWhereUniqueWithoutComicsInput[]
+    | CreatorUpsertWithWhereUniqueWithoutComicsInput;
+  deleteMany?: CreatorScalarWhereInput[] | CreatorScalarWhereInput;
+  updateMany?:
+    | CreatorUpdateManyWithWhereNestedInput[]
+    | CreatorUpdateManyWithWhereNestedInput;
+}
+
+export interface SeriesCreateInput {
+  marvelId: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  title?: String;
+  description?: String;
+  urls?: Json;
+  startYear?: Int;
+  endYear?: Int;
+  rating?: String;
+  type?: String;
+  comics?: ComicCreateManyWithoutSeriesInput;
+  stories?: StoryCreateManyWithoutSeriesInput;
+  events?: EventCreateManyWithoutSeriesInput;
+  characters?: CharacterCreateManyWithoutSeriesInput;
+  creators?: CreatorCreateManyWithoutSeriesInput;
+  next?: SeriesCreateOneWithoutPreviousInput;
+  previous?: SeriesCreateOneWithoutNextInput;
+}
+
+export interface CreatorUpdateWithWhereUniqueWithoutComicsInput {
+  where: CreatorWhereUniqueInput;
+  data: CreatorUpdateWithoutComicsDataInput;
+}
+
+export interface EventUpdateManyMutationInput {
+  marvelId?: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  title?: String;
+  description?: String;
+  urls?: Json;
+  start?: DateTimeInput;
+  end?: DateTimeInput;
+}
+
+export interface CreatorUpdateWithoutComicsDataInput {
+  marvelId?: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  firstName?: String;
+  middleName?: String;
+  lastName?: String;
+  suffix?: String;
+  fullName?: String;
+  urls?: Json;
+  series?: SeriesUpdateManyWithoutCreatorsInput;
+  stories?: StoryUpdateManyWithoutCreatorsInput;
+  events?: EventUpdateManyWithoutCreatorsInput;
+}
+
+export interface EventCreateInput {
+  marvelId: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  title?: String;
+  description?: String;
+  urls?: Json;
+  start?: DateTimeInput;
+  end?: DateTimeInput;
+  series?: SeriesCreateManyWithoutEventsInput;
+  stories?: StoryCreateManyWithoutEventsInput;
+  comics?: ComicCreateManyWithoutEventsInput;
+  characters?: CharacterCreateManyWithoutEventsInput;
+  creators?: CreatorCreateManyWithoutEventsInput;
+  next?: EventCreateOneWithoutPreviousInput;
+  previous?: EventCreateOneWithoutNextInput;
+}
+
+export interface SeriesUpdateManyWithoutCreatorsInput {
+  create?:
+    | SeriesCreateWithoutCreatorsInput[]
+    | SeriesCreateWithoutCreatorsInput;
+  delete?: SeriesWhereUniqueInput[] | SeriesWhereUniqueInput;
+  connect?: SeriesWhereUniqueInput[] | SeriesWhereUniqueInput;
+  set?: SeriesWhereUniqueInput[] | SeriesWhereUniqueInput;
+  disconnect?: SeriesWhereUniqueInput[] | SeriesWhereUniqueInput;
+  update?:
+    | SeriesUpdateWithWhereUniqueWithoutCreatorsInput[]
+    | SeriesUpdateWithWhereUniqueWithoutCreatorsInput;
+  upsert?:
+    | SeriesUpsertWithWhereUniqueWithoutCreatorsInput[]
+    | SeriesUpsertWithWhereUniqueWithoutCreatorsInput;
+  deleteMany?: SeriesScalarWhereInput[] | SeriesScalarWhereInput;
+  updateMany?:
+    | SeriesUpdateManyWithWhereNestedInput[]
+    | SeriesUpdateManyWithWhereNestedInput;
+}
+
+export interface CreatorUpdateManyMutationInput {
+  marvelId?: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  firstName?: String;
+  middleName?: String;
+  lastName?: String;
+  suffix?: String;
+  fullName?: String;
+  urls?: Json;
+}
+
+export interface SeriesUpdateWithWhereUniqueWithoutCreatorsInput {
+  where: SeriesWhereUniqueInput;
+  data: SeriesUpdateWithoutCreatorsDataInput;
+}
+
+export interface CreatorCreateInput {
+  marvelId: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  firstName?: String;
+  middleName?: String;
+  lastName?: String;
+  suffix?: String;
+  fullName?: String;
+  urls?: Json;
+  series?: SeriesCreateManyWithoutCreatorsInput;
+  stories?: StoryCreateManyWithoutCreatorsInput;
+  comics?: ComicCreateManyWithoutCreatorsInput;
+  events?: EventCreateManyWithoutCreatorsInput;
+}
+
+export interface SeriesUpdateWithoutCreatorsDataInput {
+  marvelId?: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  title?: String;
+  description?: String;
+  urls?: Json;
+  startYear?: Int;
+  endYear?: Int;
+  rating?: String;
+  type?: String;
+  comics?: ComicUpdateManyWithoutSeriesInput;
+  stories?: StoryUpdateManyWithoutSeriesInput;
+  events?: EventUpdateManyWithoutSeriesInput;
+  characters?: CharacterUpdateManyWithoutSeriesInput;
+  next?: SeriesUpdateOneWithoutPreviousInput;
+  previous?: SeriesUpdateOneWithoutNextInput;
+}
+
+export interface ComicUpdateManyMutationInput {
+  marvelId?: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  digitalId?: Int;
+  title?: String;
+  issueNumber?: Int;
+  variantDescription?: String;
+  description?: String;
+  isbn?: String;
+  upc?: String;
+  diamondCode?: String;
+  ean?: String;
+  issn?: String;
+  format?: String;
+  textObjects?: Json;
+  urls?: Json;
+  dates?: Json;
+  prices?: Json;
+  images?: Json;
+}
+
+export interface EventUpdateManyWithoutSeriesInput {
+  create?: EventCreateWithoutSeriesInput[] | EventCreateWithoutSeriesInput;
+  delete?: EventWhereUniqueInput[] | EventWhereUniqueInput;
+  connect?: EventWhereUniqueInput[] | EventWhereUniqueInput;
+  set?: EventWhereUniqueInput[] | EventWhereUniqueInput;
+  disconnect?: EventWhereUniqueInput[] | EventWhereUniqueInput;
+  update?:
+    | EventUpdateWithWhereUniqueWithoutSeriesInput[]
+    | EventUpdateWithWhereUniqueWithoutSeriesInput;
+  upsert?:
+    | EventUpsertWithWhereUniqueWithoutSeriesInput[]
+    | EventUpsertWithWhereUniqueWithoutSeriesInput;
+  deleteMany?: EventScalarWhereInput[] | EventScalarWhereInput;
+  updateMany?:
+    | EventUpdateManyWithWhereNestedInput[]
+    | EventUpdateManyWithWhereNestedInput;
+}
+
+export interface ComicCreateInput {
+  marvelId: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  digitalId?: Int;
+  title?: String;
+  issueNumber?: Int;
+  variantDescription?: String;
+  description?: String;
+  isbn?: String;
+  upc?: String;
+  diamondCode?: String;
+  ean?: String;
+  issn?: String;
+  format?: String;
+  textObjects?: Json;
+  urls?: Json;
+  dates?: Json;
+  prices?: Json;
+  images?: Json;
+  characters?: CharacterCreateManyWithoutComicsInput;
+  events?: EventCreateManyWithoutComicsInput;
+  stories?: StoryCreateManyWithoutComicsInput;
+  creators?: CreatorCreateManyWithoutComicsInput;
+  series?: SeriesCreateOneWithoutComicsInput;
+}
+
+export interface SeriesUpsertWithWhereUniqueWithoutCharactersInput {
+  where: SeriesWhereUniqueInput;
+  update: SeriesUpdateWithoutCharactersDataInput;
+  create: SeriesCreateWithoutCharactersInput;
+}
+
+export interface CharacterUpdateManyMutationInput {
+  marvelId?: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  name?: String;
+  description?: String;
+  urls?: Json;
+}
+
+export interface EventUpdateWithoutSeriesDataInput {
+  marvelId?: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  title?: String;
+  description?: String;
+  urls?: Json;
+  start?: DateTimeInput;
+  end?: DateTimeInput;
+  stories?: StoryUpdateManyWithoutEventsInput;
+  comics?: ComicUpdateManyWithoutEventsInput;
+  characters?: CharacterUpdateManyWithoutEventsInput;
+  creators?: CreatorUpdateManyWithoutEventsInput;
+  next?: EventUpdateOneWithoutPreviousInput;
+  previous?: EventUpdateOneWithoutNextInput;
+}
+
+export interface EventUpsertWithWhereUniqueWithoutComicsInput {
+  where: EventWhereUniqueInput;
+  update: EventUpdateWithoutComicsDataInput;
+  create: EventCreateWithoutComicsInput;
+}
+
+export interface StoryUpdateManyWithoutEventsInput {
+  create?: StoryCreateWithoutEventsInput[] | StoryCreateWithoutEventsInput;
+  delete?: StoryWhereUniqueInput[] | StoryWhereUniqueInput;
+  connect?: StoryWhereUniqueInput[] | StoryWhereUniqueInput;
+  set?: StoryWhereUniqueInput[] | StoryWhereUniqueInput;
+  disconnect?: StoryWhereUniqueInput[] | StoryWhereUniqueInput;
+  update?:
+    | StoryUpdateWithWhereUniqueWithoutEventsInput[]
+    | StoryUpdateWithWhereUniqueWithoutEventsInput;
+  upsert?:
+    | StoryUpsertWithWhereUniqueWithoutEventsInput[]
+    | StoryUpsertWithWhereUniqueWithoutEventsInput;
+  deleteMany?: StoryScalarWhereInput[] | StoryScalarWhereInput;
+  updateMany?:
+    | StoryUpdateManyWithWhereNestedInput[]
+    | StoryUpdateManyWithWhereNestedInput;
+}
+
+export interface SeriesUpsertWithWhereUniqueWithoutEventsInput {
+  where: SeriesWhereUniqueInput;
+  update: SeriesUpdateWithoutEventsDataInput;
+  create: SeriesCreateWithoutEventsInput;
+}
+
+export interface StoryUpdateWithWhereUniqueWithoutEventsInput {
+  where: StoryWhereUniqueInput;
+  data: StoryUpdateWithoutEventsDataInput;
+}
+
+export interface CharacterUpsertWithWhereUniqueWithoutComicsInput {
+  where: CharacterWhereUniqueInput;
+  update: CharacterUpdateWithoutComicsDataInput;
+  create: CharacterCreateWithoutComicsInput;
+}
+
+export interface StoryWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  marvelId?: String;
+  marvelId_not?: String;
+  marvelId_in?: String[] | String;
+  marvelId_not_in?: String[] | String;
+  marvelId_lt?: String;
+  marvelId_lte?: String;
+  marvelId_gt?: String;
+  marvelId_gte?: String;
+  marvelId_contains?: String;
+  marvelId_not_contains?: String;
+  marvelId_starts_with?: String;
+  marvelId_not_starts_with?: String;
+  marvelId_ends_with?: String;
+  marvelId_not_ends_with?: String;
+  createdAt?: DateTimeInput;
+  createdAt_not?: DateTimeInput;
+  createdAt_in?: DateTimeInput[] | DateTimeInput;
+  createdAt_not_in?: DateTimeInput[] | DateTimeInput;
+  createdAt_lt?: DateTimeInput;
+  createdAt_lte?: DateTimeInput;
+  createdAt_gt?: DateTimeInput;
+  createdAt_gte?: DateTimeInput;
+  updatedAt?: DateTimeInput;
+  updatedAt_not?: DateTimeInput;
+  updatedAt_in?: DateTimeInput[] | DateTimeInput;
+  updatedAt_not_in?: DateTimeInput[] | DateTimeInput;
+  updatedAt_lt?: DateTimeInput;
+  updatedAt_lte?: DateTimeInput;
+  updatedAt_gt?: DateTimeInput;
+  updatedAt_gte?: DateTimeInput;
+  resourceURI?: String;
+  resourceURI_not?: String;
+  resourceURI_in?: String[] | String;
+  resourceURI_not_in?: String[] | String;
+  resourceURI_lt?: String;
+  resourceURI_lte?: String;
+  resourceURI_gt?: String;
+  resourceURI_gte?: String;
+  resourceURI_contains?: String;
+  resourceURI_not_contains?: String;
+  resourceURI_starts_with?: String;
+  resourceURI_not_starts_with?: String;
+  resourceURI_ends_with?: String;
+  resourceURI_not_ends_with?: String;
+  thumbnail?: String;
+  thumbnail_not?: String;
+  thumbnail_in?: String[] | String;
+  thumbnail_not_in?: String[] | String;
+  thumbnail_lt?: String;
+  thumbnail_lte?: String;
+  thumbnail_gt?: String;
+  thumbnail_gte?: String;
+  thumbnail_contains?: String;
+  thumbnail_not_contains?: String;
+  thumbnail_starts_with?: String;
+  thumbnail_not_starts_with?: String;
+  thumbnail_ends_with?: String;
+  thumbnail_not_ends_with?: String;
+  modified?: String;
+  modified_not?: String;
+  modified_in?: String[] | String;
+  modified_not_in?: String[] | String;
+  modified_lt?: String;
+  modified_lte?: String;
+  modified_gt?: String;
+  modified_gte?: String;
+  modified_contains?: String;
+  modified_not_contains?: String;
+  modified_starts_with?: String;
+  modified_not_starts_with?: String;
+  modified_ends_with?: String;
+  modified_not_ends_with?: String;
+  title?: String;
+  title_not?: String;
+  title_in?: String[] | String;
+  title_not_in?: String[] | String;
+  title_lt?: String;
+  title_lte?: String;
+  title_gt?: String;
+  title_gte?: String;
+  title_contains?: String;
+  title_not_contains?: String;
+  title_starts_with?: String;
+  title_not_starts_with?: String;
+  title_ends_with?: String;
+  title_not_ends_with?: String;
+  description?: String;
+  description_not?: String;
+  description_in?: String[] | String;
+  description_not_in?: String[] | String;
+  description_lt?: String;
+  description_lte?: String;
+  description_gt?: String;
+  description_gte?: String;
+  description_contains?: String;
+  description_not_contains?: String;
+  description_starts_with?: String;
+  description_not_starts_with?: String;
+  description_ends_with?: String;
+  description_not_ends_with?: String;
+  type?: String;
+  type_not?: String;
+  type_in?: String[] | String;
+  type_not_in?: String[] | String;
+  type_lt?: String;
+  type_lte?: String;
+  type_gt?: String;
+  type_gte?: String;
+  type_contains?: String;
+  type_not_contains?: String;
+  type_starts_with?: String;
+  type_not_starts_with?: String;
+  type_ends_with?: String;
+  type_not_ends_with?: String;
+  comics_every?: ComicWhereInput;
+  comics_some?: ComicWhereInput;
+  comics_none?: ComicWhereInput;
+  events_every?: EventWhereInput;
+  events_some?: EventWhereInput;
+  events_none?: EventWhereInput;
+  characters_every?: CharacterWhereInput;
+  characters_some?: CharacterWhereInput;
+  characters_none?: CharacterWhereInput;
+  creators_every?: CreatorWhereInput;
+  creators_some?: CreatorWhereInput;
+  creators_none?: CreatorWhereInput;
+  series_every?: SeriesWhereInput;
+  series_some?: SeriesWhereInput;
+  series_none?: SeriesWhereInput;
+  AND?: StoryWhereInput[] | StoryWhereInput;
+  OR?: StoryWhereInput[] | StoryWhereInput;
+  NOT?: StoryWhereInput[] | StoryWhereInput;
+}
+
+export interface CharacterCreateInput {
+  marvelId: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  name?: String;
+  description?: String;
+  urls?: Json;
+  comics?: ComicCreateManyWithoutCharactersInput;
+  series?: SeriesCreateManyWithoutCharactersInput;
+  events?: EventCreateManyWithoutCharactersInput;
+  stories?: StoryCreateManyWithoutCharactersInput;
+}
+
+export interface CreatorWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  marvelId?: String;
+  marvelId_not?: String;
+  marvelId_in?: String[] | String;
+  marvelId_not_in?: String[] | String;
+  marvelId_lt?: String;
+  marvelId_lte?: String;
+  marvelId_gt?: String;
+  marvelId_gte?: String;
+  marvelId_contains?: String;
+  marvelId_not_contains?: String;
+  marvelId_starts_with?: String;
+  marvelId_not_starts_with?: String;
+  marvelId_ends_with?: String;
+  marvelId_not_ends_with?: String;
+  createdAt?: DateTimeInput;
+  createdAt_not?: DateTimeInput;
+  createdAt_in?: DateTimeInput[] | DateTimeInput;
+  createdAt_not_in?: DateTimeInput[] | DateTimeInput;
+  createdAt_lt?: DateTimeInput;
+  createdAt_lte?: DateTimeInput;
+  createdAt_gt?: DateTimeInput;
+  createdAt_gte?: DateTimeInput;
+  updatedAt?: DateTimeInput;
+  updatedAt_not?: DateTimeInput;
+  updatedAt_in?: DateTimeInput[] | DateTimeInput;
+  updatedAt_not_in?: DateTimeInput[] | DateTimeInput;
+  updatedAt_lt?: DateTimeInput;
+  updatedAt_lte?: DateTimeInput;
+  updatedAt_gt?: DateTimeInput;
+  updatedAt_gte?: DateTimeInput;
+  resourceURI?: String;
+  resourceURI_not?: String;
+  resourceURI_in?: String[] | String;
+  resourceURI_not_in?: String[] | String;
+  resourceURI_lt?: String;
+  resourceURI_lte?: String;
+  resourceURI_gt?: String;
+  resourceURI_gte?: String;
+  resourceURI_contains?: String;
+  resourceURI_not_contains?: String;
+  resourceURI_starts_with?: String;
+  resourceURI_not_starts_with?: String;
+  resourceURI_ends_with?: String;
+  resourceURI_not_ends_with?: String;
+  thumbnail?: String;
+  thumbnail_not?: String;
+  thumbnail_in?: String[] | String;
+  thumbnail_not_in?: String[] | String;
+  thumbnail_lt?: String;
+  thumbnail_lte?: String;
+  thumbnail_gt?: String;
+  thumbnail_gte?: String;
+  thumbnail_contains?: String;
+  thumbnail_not_contains?: String;
+  thumbnail_starts_with?: String;
+  thumbnail_not_starts_with?: String;
+  thumbnail_ends_with?: String;
+  thumbnail_not_ends_with?: String;
+  modified?: String;
+  modified_not?: String;
+  modified_in?: String[] | String;
+  modified_not_in?: String[] | String;
+  modified_lt?: String;
+  modified_lte?: String;
+  modified_gt?: String;
+  modified_gte?: String;
+  modified_contains?: String;
+  modified_not_contains?: String;
+  modified_starts_with?: String;
+  modified_not_starts_with?: String;
+  modified_ends_with?: String;
+  modified_not_ends_with?: String;
+  firstName?: String;
+  firstName_not?: String;
+  firstName_in?: String[] | String;
+  firstName_not_in?: String[] | String;
+  firstName_lt?: String;
+  firstName_lte?: String;
+  firstName_gt?: String;
+  firstName_gte?: String;
+  firstName_contains?: String;
+  firstName_not_contains?: String;
+  firstName_starts_with?: String;
+  firstName_not_starts_with?: String;
+  firstName_ends_with?: String;
+  firstName_not_ends_with?: String;
+  middleName?: String;
+  middleName_not?: String;
+  middleName_in?: String[] | String;
+  middleName_not_in?: String[] | String;
+  middleName_lt?: String;
+  middleName_lte?: String;
+  middleName_gt?: String;
+  middleName_gte?: String;
+  middleName_contains?: String;
+  middleName_not_contains?: String;
+  middleName_starts_with?: String;
+  middleName_not_starts_with?: String;
+  middleName_ends_with?: String;
+  middleName_not_ends_with?: String;
+  lastName?: String;
+  lastName_not?: String;
+  lastName_in?: String[] | String;
+  lastName_not_in?: String[] | String;
+  lastName_lt?: String;
+  lastName_lte?: String;
+  lastName_gt?: String;
+  lastName_gte?: String;
+  lastName_contains?: String;
+  lastName_not_contains?: String;
+  lastName_starts_with?: String;
+  lastName_not_starts_with?: String;
+  lastName_ends_with?: String;
+  lastName_not_ends_with?: String;
+  suffix?: String;
+  suffix_not?: String;
+  suffix_in?: String[] | String;
+  suffix_not_in?: String[] | String;
+  suffix_lt?: String;
+  suffix_lte?: String;
+  suffix_gt?: String;
+  suffix_gte?: String;
+  suffix_contains?: String;
+  suffix_not_contains?: String;
+  suffix_starts_with?: String;
+  suffix_not_starts_with?: String;
+  suffix_ends_with?: String;
+  suffix_not_ends_with?: String;
+  fullName?: String;
+  fullName_not?: String;
+  fullName_in?: String[] | String;
+  fullName_not_in?: String[] | String;
+  fullName_lt?: String;
+  fullName_lte?: String;
+  fullName_gt?: String;
+  fullName_gte?: String;
+  fullName_contains?: String;
+  fullName_not_contains?: String;
+  fullName_starts_with?: String;
+  fullName_not_starts_with?: String;
+  fullName_ends_with?: String;
+  fullName_not_ends_with?: String;
+  series_every?: SeriesWhereInput;
+  series_some?: SeriesWhereInput;
+  series_none?: SeriesWhereInput;
+  stories_every?: StoryWhereInput;
+  stories_some?: StoryWhereInput;
+  stories_none?: StoryWhereInput;
+  comics_every?: ComicWhereInput;
+  comics_some?: ComicWhereInput;
+  comics_none?: ComicWhereInput;
+  events_every?: EventWhereInput;
+  events_some?: EventWhereInput;
+  events_none?: EventWhereInput;
+  AND?: CreatorWhereInput[] | CreatorWhereInput;
+  OR?: CreatorWhereInput[] | CreatorWhereInput;
+  NOT?: CreatorWhereInput[] | CreatorWhereInput;
+}
+
+export interface ComicCreateWithoutCharactersInput {
+  marvelId: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  digitalId?: Int;
+  title?: String;
+  issueNumber?: Int;
+  variantDescription?: String;
+  description?: String;
+  isbn?: String;
+  upc?: String;
+  diamondCode?: String;
+  ean?: String;
+  issn?: String;
+  format?: String;
+  textObjects?: Json;
+  urls?: Json;
+  dates?: Json;
+  prices?: Json;
+  images?: Json;
+  events?: EventCreateManyWithoutComicsInput;
+  stories?: StoryCreateManyWithoutComicsInput;
+  creators?: CreatorCreateManyWithoutComicsInput;
+  series?: SeriesCreateOneWithoutComicsInput;
+}
+
+export interface StoryUpsertWithWhereUniqueWithoutSeriesInput {
+  where: StoryWhereUniqueInput;
+  update: StoryUpdateWithoutSeriesDataInput;
+  create: StoryCreateWithoutSeriesInput;
+}
+
+export interface EventCreateWithoutComicsInput {
+  marvelId: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  title?: String;
+  description?: String;
+  urls?: Json;
+  start?: DateTimeInput;
+  end?: DateTimeInput;
+  series?: SeriesCreateManyWithoutEventsInput;
+  stories?: StoryCreateManyWithoutEventsInput;
+  characters?: CharacterCreateManyWithoutEventsInput;
+  creators?: CreatorCreateManyWithoutEventsInput;
+  next?: EventCreateOneWithoutPreviousInput;
+  previous?: EventCreateOneWithoutNextInput;
+}
+
+export interface ComicWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  marvelId?: String;
+  marvelId_not?: String;
+  marvelId_in?: String[] | String;
+  marvelId_not_in?: String[] | String;
+  marvelId_lt?: String;
+  marvelId_lte?: String;
+  marvelId_gt?: String;
+  marvelId_gte?: String;
+  marvelId_contains?: String;
+  marvelId_not_contains?: String;
+  marvelId_starts_with?: String;
+  marvelId_not_starts_with?: String;
+  marvelId_ends_with?: String;
+  marvelId_not_ends_with?: String;
+  createdAt?: DateTimeInput;
+  createdAt_not?: DateTimeInput;
+  createdAt_in?: DateTimeInput[] | DateTimeInput;
+  createdAt_not_in?: DateTimeInput[] | DateTimeInput;
+  createdAt_lt?: DateTimeInput;
+  createdAt_lte?: DateTimeInput;
+  createdAt_gt?: DateTimeInput;
+  createdAt_gte?: DateTimeInput;
+  updatedAt?: DateTimeInput;
+  updatedAt_not?: DateTimeInput;
+  updatedAt_in?: DateTimeInput[] | DateTimeInput;
+  updatedAt_not_in?: DateTimeInput[] | DateTimeInput;
+  updatedAt_lt?: DateTimeInput;
+  updatedAt_lte?: DateTimeInput;
+  updatedAt_gt?: DateTimeInput;
+  updatedAt_gte?: DateTimeInput;
+  resourceURI?: String;
+  resourceURI_not?: String;
+  resourceURI_in?: String[] | String;
+  resourceURI_not_in?: String[] | String;
+  resourceURI_lt?: String;
+  resourceURI_lte?: String;
+  resourceURI_gt?: String;
+  resourceURI_gte?: String;
+  resourceURI_contains?: String;
+  resourceURI_not_contains?: String;
+  resourceURI_starts_with?: String;
+  resourceURI_not_starts_with?: String;
+  resourceURI_ends_with?: String;
+  resourceURI_not_ends_with?: String;
+  thumbnail?: String;
+  thumbnail_not?: String;
+  thumbnail_in?: String[] | String;
+  thumbnail_not_in?: String[] | String;
+  thumbnail_lt?: String;
+  thumbnail_lte?: String;
+  thumbnail_gt?: String;
+  thumbnail_gte?: String;
+  thumbnail_contains?: String;
+  thumbnail_not_contains?: String;
+  thumbnail_starts_with?: String;
+  thumbnail_not_starts_with?: String;
+  thumbnail_ends_with?: String;
+  thumbnail_not_ends_with?: String;
+  modified?: String;
+  modified_not?: String;
+  modified_in?: String[] | String;
+  modified_not_in?: String[] | String;
+  modified_lt?: String;
+  modified_lte?: String;
+  modified_gt?: String;
+  modified_gte?: String;
+  modified_contains?: String;
+  modified_not_contains?: String;
+  modified_starts_with?: String;
+  modified_not_starts_with?: String;
+  modified_ends_with?: String;
+  modified_not_ends_with?: String;
+  digitalId?: Int;
+  digitalId_not?: Int;
+  digitalId_in?: Int[] | Int;
+  digitalId_not_in?: Int[] | Int;
+  digitalId_lt?: Int;
+  digitalId_lte?: Int;
+  digitalId_gt?: Int;
+  digitalId_gte?: Int;
+  title?: String;
+  title_not?: String;
+  title_in?: String[] | String;
+  title_not_in?: String[] | String;
+  title_lt?: String;
+  title_lte?: String;
+  title_gt?: String;
+  title_gte?: String;
+  title_contains?: String;
+  title_not_contains?: String;
+  title_starts_with?: String;
+  title_not_starts_with?: String;
+  title_ends_with?: String;
+  title_not_ends_with?: String;
+  issueNumber?: Int;
+  issueNumber_not?: Int;
+  issueNumber_in?: Int[] | Int;
+  issueNumber_not_in?: Int[] | Int;
+  issueNumber_lt?: Int;
+  issueNumber_lte?: Int;
+  issueNumber_gt?: Int;
+  issueNumber_gte?: Int;
+  variantDescription?: String;
+  variantDescription_not?: String;
+  variantDescription_in?: String[] | String;
+  variantDescription_not_in?: String[] | String;
+  variantDescription_lt?: String;
+  variantDescription_lte?: String;
+  variantDescription_gt?: String;
+  variantDescription_gte?: String;
+  variantDescription_contains?: String;
+  variantDescription_not_contains?: String;
+  variantDescription_starts_with?: String;
+  variantDescription_not_starts_with?: String;
+  variantDescription_ends_with?: String;
+  variantDescription_not_ends_with?: String;
+  description?: String;
+  description_not?: String;
+  description_in?: String[] | String;
+  description_not_in?: String[] | String;
+  description_lt?: String;
+  description_lte?: String;
+  description_gt?: String;
+  description_gte?: String;
+  description_contains?: String;
+  description_not_contains?: String;
+  description_starts_with?: String;
+  description_not_starts_with?: String;
+  description_ends_with?: String;
+  description_not_ends_with?: String;
+  isbn?: String;
+  isbn_not?: String;
+  isbn_in?: String[] | String;
+  isbn_not_in?: String[] | String;
+  isbn_lt?: String;
+  isbn_lte?: String;
+  isbn_gt?: String;
+  isbn_gte?: String;
+  isbn_contains?: String;
+  isbn_not_contains?: String;
+  isbn_starts_with?: String;
+  isbn_not_starts_with?: String;
+  isbn_ends_with?: String;
+  isbn_not_ends_with?: String;
+  upc?: String;
+  upc_not?: String;
+  upc_in?: String[] | String;
+  upc_not_in?: String[] | String;
+  upc_lt?: String;
+  upc_lte?: String;
+  upc_gt?: String;
+  upc_gte?: String;
+  upc_contains?: String;
+  upc_not_contains?: String;
+  upc_starts_with?: String;
+  upc_not_starts_with?: String;
+  upc_ends_with?: String;
+  upc_not_ends_with?: String;
+  diamondCode?: String;
+  diamondCode_not?: String;
+  diamondCode_in?: String[] | String;
+  diamondCode_not_in?: String[] | String;
+  diamondCode_lt?: String;
+  diamondCode_lte?: String;
+  diamondCode_gt?: String;
+  diamondCode_gte?: String;
+  diamondCode_contains?: String;
+  diamondCode_not_contains?: String;
+  diamondCode_starts_with?: String;
+  diamondCode_not_starts_with?: String;
+  diamondCode_ends_with?: String;
+  diamondCode_not_ends_with?: String;
+  ean?: String;
+  ean_not?: String;
+  ean_in?: String[] | String;
+  ean_not_in?: String[] | String;
+  ean_lt?: String;
+  ean_lte?: String;
+  ean_gt?: String;
+  ean_gte?: String;
+  ean_contains?: String;
+  ean_not_contains?: String;
+  ean_starts_with?: String;
+  ean_not_starts_with?: String;
+  ean_ends_with?: String;
+  ean_not_ends_with?: String;
+  issn?: String;
+  issn_not?: String;
+  issn_in?: String[] | String;
+  issn_not_in?: String[] | String;
+  issn_lt?: String;
+  issn_lte?: String;
+  issn_gt?: String;
+  issn_gte?: String;
+  issn_contains?: String;
+  issn_not_contains?: String;
+  issn_starts_with?: String;
+  issn_not_starts_with?: String;
+  issn_ends_with?: String;
+  issn_not_ends_with?: String;
+  format?: String;
+  format_not?: String;
+  format_in?: String[] | String;
+  format_not_in?: String[] | String;
+  format_lt?: String;
+  format_lte?: String;
+  format_gt?: String;
+  format_gte?: String;
+  format_contains?: String;
+  format_not_contains?: String;
+  format_starts_with?: String;
+  format_not_starts_with?: String;
+  format_ends_with?: String;
+  format_not_ends_with?: String;
+  characters_every?: CharacterWhereInput;
+  characters_some?: CharacterWhereInput;
+  characters_none?: CharacterWhereInput;
+  events_every?: EventWhereInput;
+  events_some?: EventWhereInput;
+  events_none?: EventWhereInput;
+  stories_every?: StoryWhereInput;
+  stories_some?: StoryWhereInput;
+  stories_none?: StoryWhereInput;
+  creators_every?: CreatorWhereInput;
+  creators_some?: CreatorWhereInput;
+  creators_none?: CreatorWhereInput;
+  series?: SeriesWhereInput;
+  AND?: ComicWhereInput[] | ComicWhereInput;
+  OR?: ComicWhereInput[] | ComicWhereInput;
+  NOT?: ComicWhereInput[] | ComicWhereInput;
+}
+
+export interface SeriesCreateWithoutEventsInput {
+  marvelId: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  title?: String;
+  description?: String;
+  urls?: Json;
+  startYear?: Int;
+  endYear?: Int;
+  rating?: String;
+  type?: String;
+  comics?: ComicCreateManyWithoutSeriesInput;
+  stories?: StoryCreateManyWithoutSeriesInput;
+  characters?: CharacterCreateManyWithoutSeriesInput;
+  creators?: CreatorCreateManyWithoutSeriesInput;
+  next?: SeriesCreateOneWithoutPreviousInput;
+  previous?: SeriesCreateOneWithoutNextInput;
+}
+
+export interface EventUpdateManyWithoutCharactersInput {
+  create?:
+    | EventCreateWithoutCharactersInput[]
+    | EventCreateWithoutCharactersInput;
+  delete?: EventWhereUniqueInput[] | EventWhereUniqueInput;
+  connect?: EventWhereUniqueInput[] | EventWhereUniqueInput;
+  set?: EventWhereUniqueInput[] | EventWhereUniqueInput;
+  disconnect?: EventWhereUniqueInput[] | EventWhereUniqueInput;
+  update?:
+    | EventUpdateWithWhereUniqueWithoutCharactersInput[]
+    | EventUpdateWithWhereUniqueWithoutCharactersInput;
+  upsert?:
+    | EventUpsertWithWhereUniqueWithoutCharactersInput[]
+    | EventUpsertWithWhereUniqueWithoutCharactersInput;
+  deleteMany?: EventScalarWhereInput[] | EventScalarWhereInput;
+  updateMany?:
+    | EventUpdateManyWithWhereNestedInput[]
+    | EventUpdateManyWithWhereNestedInput;
+}
+
+export interface ComicCreateWithoutSeriesInput {
+  marvelId: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  digitalId?: Int;
+  title?: String;
+  issueNumber?: Int;
+  variantDescription?: String;
+  description?: String;
+  isbn?: String;
+  upc?: String;
+  diamondCode?: String;
+  ean?: String;
+  issn?: String;
+  format?: String;
+  textObjects?: Json;
+  urls?: Json;
+  dates?: Json;
+  prices?: Json;
+  images?: Json;
+  characters?: CharacterCreateManyWithoutComicsInput;
+  events?: EventCreateManyWithoutComicsInput;
+  stories?: StoryCreateManyWithoutComicsInput;
+  creators?: CreatorCreateManyWithoutComicsInput;
+}
+
+export interface EventUpdateWithWhereUniqueWithoutCharactersInput {
+  where: EventWhereUniqueInput;
+  data: EventUpdateWithoutCharactersDataInput;
+}
+
+export interface CharacterCreateWithoutComicsInput {
+  marvelId: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  name?: String;
+  description?: String;
+  urls?: Json;
+  series?: SeriesCreateManyWithoutCharactersInput;
+  events?: EventCreateManyWithoutCharactersInput;
+  stories?: StoryCreateManyWithoutCharactersInput;
+}
+
+export interface EventUpdateWithoutCharactersDataInput {
+  marvelId?: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  title?: String;
+  description?: String;
+  urls?: Json;
+  start?: DateTimeInput;
+  end?: DateTimeInput;
+  series?: SeriesUpdateManyWithoutEventsInput;
+  stories?: StoryUpdateManyWithoutEventsInput;
+  comics?: ComicUpdateManyWithoutEventsInput;
+  creators?: CreatorUpdateManyWithoutEventsInput;
+  next?: EventUpdateOneWithoutPreviousInput;
+  previous?: EventUpdateOneWithoutNextInput;
+}
+
+export interface SeriesCreateWithoutCharactersInput {
+  marvelId: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  title?: String;
+  description?: String;
+  urls?: Json;
+  startYear?: Int;
+  endYear?: Int;
+  rating?: String;
+  type?: String;
+  comics?: ComicCreateManyWithoutSeriesInput;
+  stories?: StoryCreateManyWithoutSeriesInput;
+  events?: EventCreateManyWithoutSeriesInput;
+  creators?: CreatorCreateManyWithoutSeriesInput;
+  next?: SeriesCreateOneWithoutPreviousInput;
+  previous?: SeriesCreateOneWithoutNextInput;
+}
+
+export interface ComicUpdateManyWithoutEventsInput {
+  create?: ComicCreateWithoutEventsInput[] | ComicCreateWithoutEventsInput;
+  delete?: ComicWhereUniqueInput[] | ComicWhereUniqueInput;
+  connect?: ComicWhereUniqueInput[] | ComicWhereUniqueInput;
+  set?: ComicWhereUniqueInput[] | ComicWhereUniqueInput;
+  disconnect?: ComicWhereUniqueInput[] | ComicWhereUniqueInput;
+  update?:
+    | ComicUpdateWithWhereUniqueWithoutEventsInput[]
+    | ComicUpdateWithWhereUniqueWithoutEventsInput;
+  upsert?:
+    | ComicUpsertWithWhereUniqueWithoutEventsInput[]
+    | ComicUpsertWithWhereUniqueWithoutEventsInput;
+  deleteMany?: ComicScalarWhereInput[] | ComicScalarWhereInput;
+  updateMany?:
+    | ComicUpdateManyWithWhereNestedInput[]
+    | ComicUpdateManyWithWhereNestedInput;
+}
+
+export interface StoryCreateWithoutSeriesInput {
+  marvelId: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  title?: String;
+  description?: String;
+  type?: String;
+  comics?: ComicCreateManyWithoutStoriesInput;
+  events?: EventCreateManyWithoutStoriesInput;
+  characters?: CharacterCreateManyWithoutStoriesInput;
+  creators?: CreatorCreateManyWithoutStoriesInput;
+  _originalIssue?: Json;
+}
+
+export interface ComicUpdateWithWhereUniqueWithoutEventsInput {
+  where: ComicWhereUniqueInput;
+  data: ComicUpdateWithoutEventsDataInput;
+}
+
+export interface ComicCreateWithoutStoriesInput {
+  marvelId: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  digitalId?: Int;
+  title?: String;
+  issueNumber?: Int;
+  variantDescription?: String;
+  description?: String;
+  isbn?: String;
+  upc?: String;
+  diamondCode?: String;
+  ean?: String;
+  issn?: String;
+  format?: String;
+  textObjects?: Json;
+  urls?: Json;
+  dates?: Json;
+  prices?: Json;
+  images?: Json;
+  characters?: CharacterCreateManyWithoutComicsInput;
+  events?: EventCreateManyWithoutComicsInput;
+  creators?: CreatorCreateManyWithoutComicsInput;
+  series?: SeriesCreateOneWithoutComicsInput;
+}
+
+export interface ComicUpdateWithoutEventsDataInput {
+  marvelId?: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  digitalId?: Int;
+  title?: String;
+  issueNumber?: Int;
+  variantDescription?: String;
+  description?: String;
+  isbn?: String;
+  upc?: String;
+  diamondCode?: String;
+  ean?: String;
+  issn?: String;
+  format?: String;
+  textObjects?: Json;
+  urls?: Json;
+  dates?: Json;
+  prices?: Json;
+  images?: Json;
+  characters?: CharacterUpdateManyWithoutComicsInput;
+  stories?: StoryUpdateManyWithoutComicsInput;
+  creators?: CreatorUpdateManyWithoutComicsInput;
+  series?: SeriesUpdateOneWithoutComicsInput;
+}
+
+export interface CreatorCreateWithoutComicsInput {
+  marvelId: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  firstName?: String;
+  middleName?: String;
+  lastName?: String;
+  suffix?: String;
+  fullName?: String;
+  urls?: Json;
+  series?: SeriesCreateManyWithoutCreatorsInput;
+  stories?: StoryCreateManyWithoutCreatorsInput;
+  events?: EventCreateManyWithoutCreatorsInput;
+}
+
+export interface StoryUpdateManyWithoutComicsInput {
+  create?: StoryCreateWithoutComicsInput[] | StoryCreateWithoutComicsInput;
+  delete?: StoryWhereUniqueInput[] | StoryWhereUniqueInput;
+  connect?: StoryWhereUniqueInput[] | StoryWhereUniqueInput;
+  set?: StoryWhereUniqueInput[] | StoryWhereUniqueInput;
+  disconnect?: StoryWhereUniqueInput[] | StoryWhereUniqueInput;
+  update?:
+    | StoryUpdateWithWhereUniqueWithoutComicsInput[]
+    | StoryUpdateWithWhereUniqueWithoutComicsInput;
+  upsert?:
+    | StoryUpsertWithWhereUniqueWithoutComicsInput[]
+    | StoryUpsertWithWhereUniqueWithoutComicsInput;
+  deleteMany?: StoryScalarWhereInput[] | StoryScalarWhereInput;
+  updateMany?:
+    | StoryUpdateManyWithWhereNestedInput[]
+    | StoryUpdateManyWithWhereNestedInput;
+}
+
+export interface SeriesCreateWithoutCreatorsInput {
+  marvelId: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  title?: String;
+  description?: String;
+  urls?: Json;
+  startYear?: Int;
+  endYear?: Int;
+  rating?: String;
+  type?: String;
+  comics?: ComicCreateManyWithoutSeriesInput;
+  stories?: StoryCreateManyWithoutSeriesInput;
+  events?: EventCreateManyWithoutSeriesInput;
+  characters?: CharacterCreateManyWithoutSeriesInput;
+  next?: SeriesCreateOneWithoutPreviousInput;
+  previous?: SeriesCreateOneWithoutNextInput;
+}
+
+export interface StoryUpdateWithWhereUniqueWithoutComicsInput {
+  where: StoryWhereUniqueInput;
+  data: StoryUpdateWithoutComicsDataInput;
+}
+
+export interface EventCreateWithoutSeriesInput {
+  marvelId: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  title?: String;
+  description?: String;
+  urls?: Json;
+  start?: DateTimeInput;
+  end?: DateTimeInput;
+  stories?: StoryCreateManyWithoutEventsInput;
+  comics?: ComicCreateManyWithoutEventsInput;
+  characters?: CharacterCreateManyWithoutEventsInput;
+  creators?: CreatorCreateManyWithoutEventsInput;
+  next?: EventCreateOneWithoutPreviousInput;
+  previous?: EventCreateOneWithoutNextInput;
+}
+
+export interface StoryUpdateWithoutComicsDataInput {
+  marvelId?: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  title?: String;
+  description?: String;
+  type?: String;
+  events?: EventUpdateManyWithoutStoriesInput;
+  characters?: CharacterUpdateManyWithoutStoriesInput;
+  creators?: CreatorUpdateManyWithoutStoriesInput;
+  series?: SeriesUpdateManyWithoutStoriesInput;
+  _originalIssue?: Json;
+}
+
+export interface StoryCreateWithoutEventsInput {
+  marvelId: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  title?: String;
+  description?: String;
+  type?: String;
+  comics?: ComicCreateManyWithoutStoriesInput;
+  characters?: CharacterCreateManyWithoutStoriesInput;
+  creators?: CreatorCreateManyWithoutStoriesInput;
+  series?: SeriesCreateManyWithoutStoriesInput;
+  _originalIssue?: Json;
+}
+
+export interface EventUpdateManyWithoutStoriesInput {
+  create?: EventCreateWithoutStoriesInput[] | EventCreateWithoutStoriesInput;
+  delete?: EventWhereUniqueInput[] | EventWhereUniqueInput;
+  connect?: EventWhereUniqueInput[] | EventWhereUniqueInput;
+  set?: EventWhereUniqueInput[] | EventWhereUniqueInput;
+  disconnect?: EventWhereUniqueInput[] | EventWhereUniqueInput;
+  update?:
+    | EventUpdateWithWhereUniqueWithoutStoriesInput[]
+    | EventUpdateWithWhereUniqueWithoutStoriesInput;
+  upsert?:
+    | EventUpsertWithWhereUniqueWithoutStoriesInput[]
+    | EventUpsertWithWhereUniqueWithoutStoriesInput;
+  deleteMany?: EventScalarWhereInput[] | EventScalarWhereInput;
+  updateMany?:
+    | EventUpdateManyWithWhereNestedInput[]
+    | EventUpdateManyWithWhereNestedInput;
+}
+
+export interface CharacterCreateWithoutStoriesInput {
+  marvelId: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  name?: String;
+  description?: String;
+  urls?: Json;
+  comics?: ComicCreateManyWithoutCharactersInput;
+  series?: SeriesCreateManyWithoutCharactersInput;
+  events?: EventCreateManyWithoutCharactersInput;
+}
+
+export interface EventUpdateWithWhereUniqueWithoutStoriesInput {
+  where: EventWhereUniqueInput;
+  data: EventUpdateWithoutStoriesDataInput;
+}
+
+export interface EventCreateWithoutCharactersInput {
+  marvelId: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  title?: String;
+  description?: String;
+  urls?: Json;
+  start?: DateTimeInput;
+  end?: DateTimeInput;
+  series?: SeriesCreateManyWithoutEventsInput;
+  stories?: StoryCreateManyWithoutEventsInput;
+  comics?: ComicCreateManyWithoutEventsInput;
+  creators?: CreatorCreateManyWithoutEventsInput;
+  next?: EventCreateOneWithoutPreviousInput;
+  previous?: EventCreateOneWithoutNextInput;
+}
+
+export interface EventUpdateWithoutStoriesDataInput {
+  marvelId?: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  title?: String;
+  description?: String;
+  urls?: Json;
+  start?: DateTimeInput;
+  end?: DateTimeInput;
+  series?: SeriesUpdateManyWithoutEventsInput;
+  comics?: ComicUpdateManyWithoutEventsInput;
+  characters?: CharacterUpdateManyWithoutEventsInput;
+  creators?: CreatorUpdateManyWithoutEventsInput;
+  next?: EventUpdateOneWithoutPreviousInput;
+  previous?: EventUpdateOneWithoutNextInput;
+}
+
+export interface ComicCreateWithoutEventsInput {
+  marvelId: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  digitalId?: Int;
+  title?: String;
+  issueNumber?: Int;
+  variantDescription?: String;
+  description?: String;
+  isbn?: String;
+  upc?: String;
+  diamondCode?: String;
+  ean?: String;
+  issn?: String;
+  format?: String;
+  textObjects?: Json;
+  urls?: Json;
+  dates?: Json;
+  prices?: Json;
+  images?: Json;
+  characters?: CharacterCreateManyWithoutComicsInput;
+  stories?: StoryCreateManyWithoutComicsInput;
+  creators?: CreatorCreateManyWithoutComicsInput;
+  series?: SeriesCreateOneWithoutComicsInput;
+}
+
+export interface CharacterUpdateManyWithoutEventsInput {
+  create?:
+    | CharacterCreateWithoutEventsInput[]
+    | CharacterCreateWithoutEventsInput;
+  delete?: CharacterWhereUniqueInput[] | CharacterWhereUniqueInput;
+  connect?: CharacterWhereUniqueInput[] | CharacterWhereUniqueInput;
+  set?: CharacterWhereUniqueInput[] | CharacterWhereUniqueInput;
+  disconnect?: CharacterWhereUniqueInput[] | CharacterWhereUniqueInput;
+  update?:
+    | CharacterUpdateWithWhereUniqueWithoutEventsInput[]
+    | CharacterUpdateWithWhereUniqueWithoutEventsInput;
+  upsert?:
+    | CharacterUpsertWithWhereUniqueWithoutEventsInput[]
+    | CharacterUpsertWithWhereUniqueWithoutEventsInput;
+  deleteMany?: CharacterScalarWhereInput[] | CharacterScalarWhereInput;
+  updateMany?:
+    | CharacterUpdateManyWithWhereNestedInput[]
+    | CharacterUpdateManyWithWhereNestedInput;
+}
+
+export interface StoryCreateWithoutComicsInput {
+  marvelId: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  title?: String;
+  description?: String;
+  type?: String;
+  events?: EventCreateManyWithoutStoriesInput;
+  characters?: CharacterCreateManyWithoutStoriesInput;
+  creators?: CreatorCreateManyWithoutStoriesInput;
+  series?: SeriesCreateManyWithoutStoriesInput;
+  _originalIssue?: Json;
+}
+
+export interface CharacterUpdateWithWhereUniqueWithoutEventsInput {
+  where: CharacterWhereUniqueInput;
+  data: CharacterUpdateWithoutEventsDataInput;
+}
+
+export interface EventCreateWithoutStoriesInput {
+  marvelId: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  title?: String;
+  description?: String;
+  urls?: Json;
+  start?: DateTimeInput;
+  end?: DateTimeInput;
+  series?: SeriesCreateManyWithoutEventsInput;
+  comics?: ComicCreateManyWithoutEventsInput;
+  characters?: CharacterCreateManyWithoutEventsInput;
+  creators?: CreatorCreateManyWithoutEventsInput;
+  next?: EventCreateOneWithoutPreviousInput;
+  previous?: EventCreateOneWithoutNextInput;
+}
+
+export interface CharacterUpdateWithoutEventsDataInput {
+  marvelId?: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  name?: String;
+  description?: String;
+  urls?: Json;
+  comics?: ComicUpdateManyWithoutCharactersInput;
+  series?: SeriesUpdateManyWithoutCharactersInput;
+  stories?: StoryUpdateManyWithoutCharactersInput;
+}
+
+export interface CharacterCreateWithoutEventsInput {
+  marvelId: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  name?: String;
+  description?: String;
+  urls?: Json;
+  comics?: ComicCreateManyWithoutCharactersInput;
+  series?: SeriesCreateManyWithoutCharactersInput;
+  stories?: StoryCreateManyWithoutCharactersInput;
+}
+
+export interface StoryUpdateManyWithoutCharactersInput {
+  create?:
+    | StoryCreateWithoutCharactersInput[]
+    | StoryCreateWithoutCharactersInput;
+  delete?: StoryWhereUniqueInput[] | StoryWhereUniqueInput;
+  connect?: StoryWhereUniqueInput[] | StoryWhereUniqueInput;
+  set?: StoryWhereUniqueInput[] | StoryWhereUniqueInput;
+  disconnect?: StoryWhereUniqueInput[] | StoryWhereUniqueInput;
+  update?:
+    | StoryUpdateWithWhereUniqueWithoutCharactersInput[]
+    | StoryUpdateWithWhereUniqueWithoutCharactersInput;
+  upsert?:
+    | StoryUpsertWithWhereUniqueWithoutCharactersInput[]
+    | StoryUpsertWithWhereUniqueWithoutCharactersInput;
+  deleteMany?: StoryScalarWhereInput[] | StoryScalarWhereInput;
+  updateMany?:
+    | StoryUpdateManyWithWhereNestedInput[]
+    | StoryUpdateManyWithWhereNestedInput;
+}
+
+export interface StoryCreateWithoutCharactersInput {
+  marvelId: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  title?: String;
+  description?: String;
+  type?: String;
+  comics?: ComicCreateManyWithoutStoriesInput;
+  events?: EventCreateManyWithoutStoriesInput;
+  creators?: CreatorCreateManyWithoutStoriesInput;
+  series?: SeriesCreateManyWithoutStoriesInput;
+  _originalIssue?: Json;
+}
+
+export interface StoryUpdateWithWhereUniqueWithoutCharactersInput {
+  where: StoryWhereUniqueInput;
+  data: StoryUpdateWithoutCharactersDataInput;
+}
+
+export interface CreatorCreateWithoutStoriesInput {
+  marvelId: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  firstName?: String;
+  middleName?: String;
+  lastName?: String;
+  suffix?: String;
+  fullName?: String;
+  urls?: Json;
+  series?: SeriesCreateManyWithoutCreatorsInput;
+  comics?: ComicCreateManyWithoutCreatorsInput;
+  events?: EventCreateManyWithoutCreatorsInput;
+}
+
+export interface StoryUpdateWithoutCharactersDataInput {
+  marvelId?: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  title?: String;
+  description?: String;
+  type?: String;
+  comics?: ComicUpdateManyWithoutStoriesInput;
+  events?: EventUpdateManyWithoutStoriesInput;
+  creators?: CreatorUpdateManyWithoutStoriesInput;
+  series?: SeriesUpdateManyWithoutStoriesInput;
+  _originalIssue?: Json;
+}
+
+export interface ComicCreateWithoutCreatorsInput {
+  marvelId: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  digitalId?: Int;
+  title?: String;
+  issueNumber?: Int;
+  variantDescription?: String;
+  description?: String;
+  isbn?: String;
+  upc?: String;
+  diamondCode?: String;
+  ean?: String;
+  issn?: String;
+  format?: String;
+  textObjects?: Json;
+  urls?: Json;
+  dates?: Json;
+  prices?: Json;
+  images?: Json;
+  characters?: CharacterCreateManyWithoutComicsInput;
+  events?: EventCreateManyWithoutComicsInput;
+  stories?: StoryCreateManyWithoutComicsInput;
+  series?: SeriesCreateOneWithoutComicsInput;
+}
+
+export interface CreatorUpdateManyWithoutStoriesInput {
+  create?:
+    | CreatorCreateWithoutStoriesInput[]
+    | CreatorCreateWithoutStoriesInput;
+  delete?: CreatorWhereUniqueInput[] | CreatorWhereUniqueInput;
+  connect?: CreatorWhereUniqueInput[] | CreatorWhereUniqueInput;
+  set?: CreatorWhereUniqueInput[] | CreatorWhereUniqueInput;
+  disconnect?: CreatorWhereUniqueInput[] | CreatorWhereUniqueInput;
+  update?:
+    | CreatorUpdateWithWhereUniqueWithoutStoriesInput[]
+    | CreatorUpdateWithWhereUniqueWithoutStoriesInput;
+  upsert?:
+    | CreatorUpsertWithWhereUniqueWithoutStoriesInput[]
+    | CreatorUpsertWithWhereUniqueWithoutStoriesInput;
+  deleteMany?: CreatorScalarWhereInput[] | CreatorScalarWhereInput;
+  updateMany?:
+    | CreatorUpdateManyWithWhereNestedInput[]
+    | CreatorUpdateManyWithWhereNestedInput;
+}
+
+export interface SeriesCreateWithoutComicsInput {
+  marvelId: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  title?: String;
+  description?: String;
+  urls?: Json;
+  startYear?: Int;
+  endYear?: Int;
+  rating?: String;
+  type?: String;
+  stories?: StoryCreateManyWithoutSeriesInput;
+  events?: EventCreateManyWithoutSeriesInput;
+  characters?: CharacterCreateManyWithoutSeriesInput;
+  creators?: CreatorCreateManyWithoutSeriesInput;
+  next?: SeriesCreateOneWithoutPreviousInput;
+  previous?: SeriesCreateOneWithoutNextInput;
+}
+
+export interface CreatorUpdateWithWhereUniqueWithoutStoriesInput {
+  where: CreatorWhereUniqueInput;
+  data: CreatorUpdateWithoutStoriesDataInput;
+}
+
+export interface CharacterCreateWithoutSeriesInput {
+  marvelId: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  name?: String;
+  description?: String;
+  urls?: Json;
+  comics?: ComicCreateManyWithoutCharactersInput;
+  events?: EventCreateManyWithoutCharactersInput;
+  stories?: StoryCreateManyWithoutCharactersInput;
+}
+
+export interface CreatorUpdateWithoutStoriesDataInput {
+  marvelId?: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  firstName?: String;
+  middleName?: String;
+  lastName?: String;
+  suffix?: String;
+  fullName?: String;
+  urls?: Json;
+  series?: SeriesUpdateManyWithoutCreatorsInput;
+  comics?: ComicUpdateManyWithoutCreatorsInput;
+  events?: EventUpdateManyWithoutCreatorsInput;
+}
+
+export interface CreatorCreateWithoutSeriesInput {
+  marvelId: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  firstName?: String;
+  middleName?: String;
+  lastName?: String;
+  suffix?: String;
+  fullName?: String;
+  urls?: Json;
+  stories?: StoryCreateManyWithoutCreatorsInput;
+  comics?: ComicCreateManyWithoutCreatorsInput;
+  events?: EventCreateManyWithoutCreatorsInput;
+}
+
+export interface ComicUpdateManyWithoutCreatorsInput {
+  create?: ComicCreateWithoutCreatorsInput[] | ComicCreateWithoutCreatorsInput;
+  delete?: ComicWhereUniqueInput[] | ComicWhereUniqueInput;
+  connect?: ComicWhereUniqueInput[] | ComicWhereUniqueInput;
+  set?: ComicWhereUniqueInput[] | ComicWhereUniqueInput;
+  disconnect?: ComicWhereUniqueInput[] | ComicWhereUniqueInput;
+  update?:
+    | ComicUpdateWithWhereUniqueWithoutCreatorsInput[]
+    | ComicUpdateWithWhereUniqueWithoutCreatorsInput;
+  upsert?:
+    | ComicUpsertWithWhereUniqueWithoutCreatorsInput[]
+    | ComicUpsertWithWhereUniqueWithoutCreatorsInput;
+  deleteMany?: ComicScalarWhereInput[] | ComicScalarWhereInput;
+  updateMany?:
+    | ComicUpdateManyWithWhereNestedInput[]
+    | ComicUpdateManyWithWhereNestedInput;
+}
+
+export interface StoryCreateWithoutCreatorsInput {
+  marvelId: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  title?: String;
+  description?: String;
+  type?: String;
+  comics?: ComicCreateManyWithoutStoriesInput;
+  events?: EventCreateManyWithoutStoriesInput;
+  characters?: CharacterCreateManyWithoutStoriesInput;
+  series?: SeriesCreateManyWithoutStoriesInput;
+  _originalIssue?: Json;
+}
+
+export interface ComicUpdateWithWhereUniqueWithoutCreatorsInput {
+  where: ComicWhereUniqueInput;
+  data: ComicUpdateWithoutCreatorsDataInput;
+}
+
+export interface SeriesCreateWithoutStoriesInput {
+  marvelId: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  title?: String;
+  description?: String;
+  urls?: Json;
+  startYear?: Int;
+  endYear?: Int;
+  rating?: String;
+  type?: String;
+  comics?: ComicCreateManyWithoutSeriesInput;
+  events?: EventCreateManyWithoutSeriesInput;
+  characters?: CharacterCreateManyWithoutSeriesInput;
+  creators?: CreatorCreateManyWithoutSeriesInput;
+  next?: SeriesCreateOneWithoutPreviousInput;
+  previous?: SeriesCreateOneWithoutNextInput;
+}
+
+export interface ComicUpdateWithoutCreatorsDataInput {
+  marvelId?: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  digitalId?: Int;
+  title?: String;
+  issueNumber?: Int;
+  variantDescription?: String;
+  description?: String;
+  isbn?: String;
+  upc?: String;
+  diamondCode?: String;
+  ean?: String;
+  issn?: String;
+  format?: String;
+  textObjects?: Json;
+  urls?: Json;
+  dates?: Json;
+  prices?: Json;
+  images?: Json;
+  characters?: CharacterUpdateManyWithoutComicsInput;
+  events?: EventUpdateManyWithoutComicsInput;
+  stories?: StoryUpdateManyWithoutComicsInput;
+  series?: SeriesUpdateOneWithoutComicsInput;
+}
+
+export interface SeriesCreateWithoutPreviousInput {
+  marvelId: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  title?: String;
+  description?: String;
+  urls?: Json;
+  startYear?: Int;
+  endYear?: Int;
+  rating?: String;
+  type?: String;
+  comics?: ComicCreateManyWithoutSeriesInput;
+  stories?: StoryCreateManyWithoutSeriesInput;
+  events?: EventCreateManyWithoutSeriesInput;
+  characters?: CharacterCreateManyWithoutSeriesInput;
+  creators?: CreatorCreateManyWithoutSeriesInput;
+  next?: SeriesCreateOneWithoutPreviousInput;
+}
+
+export interface SeriesUpdateOneWithoutComicsInput {
+  create?: SeriesCreateWithoutComicsInput;
+  update?: SeriesUpdateWithoutComicsDataInput;
+  upsert?: SeriesUpsertWithoutComicsInput;
+  delete?: Boolean;
+  disconnect?: Boolean;
+  connect?: SeriesWhereUniqueInput;
+}
+
+export interface SeriesCreateWithoutNextInput {
+  marvelId: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  title?: String;
+  description?: String;
+  urls?: Json;
+  startYear?: Int;
+  endYear?: Int;
+  rating?: String;
+  type?: String;
+  comics?: ComicCreateManyWithoutSeriesInput;
+  stories?: StoryCreateManyWithoutSeriesInput;
+  events?: EventCreateManyWithoutSeriesInput;
+  characters?: CharacterCreateManyWithoutSeriesInput;
+  creators?: CreatorCreateManyWithoutSeriesInput;
+  previous?: SeriesCreateOneWithoutNextInput;
+}
+
+export interface SeriesUpdateWithoutComicsDataInput {
+  marvelId?: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  title?: String;
+  description?: String;
+  urls?: Json;
+  startYear?: Int;
+  endYear?: Int;
+  rating?: String;
+  type?: String;
+  stories?: StoryUpdateManyWithoutSeriesInput;
+  events?: EventUpdateManyWithoutSeriesInput;
+  characters?: CharacterUpdateManyWithoutSeriesInput;
+  creators?: CreatorUpdateManyWithoutSeriesInput;
+  next?: SeriesUpdateOneWithoutPreviousInput;
+  previous?: SeriesUpdateOneWithoutNextInput;
+}
+
+export interface EventCreateWithoutCreatorsInput {
+  marvelId: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  title?: String;
+  description?: String;
+  urls?: Json;
+  start?: DateTimeInput;
+  end?: DateTimeInput;
+  series?: SeriesCreateManyWithoutEventsInput;
+  stories?: StoryCreateManyWithoutEventsInput;
+  comics?: ComicCreateManyWithoutEventsInput;
+  characters?: CharacterCreateManyWithoutEventsInput;
+  next?: EventCreateOneWithoutPreviousInput;
+  previous?: EventCreateOneWithoutNextInput;
+}
+
+export interface CharacterUpdateManyWithoutSeriesInput {
+  create?:
+    | CharacterCreateWithoutSeriesInput[]
+    | CharacterCreateWithoutSeriesInput;
+  delete?: CharacterWhereUniqueInput[] | CharacterWhereUniqueInput;
+  connect?: CharacterWhereUniqueInput[] | CharacterWhereUniqueInput;
+  set?: CharacterWhereUniqueInput[] | CharacterWhereUniqueInput;
+  disconnect?: CharacterWhereUniqueInput[] | CharacterWhereUniqueInput;
+  update?:
+    | CharacterUpdateWithWhereUniqueWithoutSeriesInput[]
+    | CharacterUpdateWithWhereUniqueWithoutSeriesInput;
+  upsert?:
+    | CharacterUpsertWithWhereUniqueWithoutSeriesInput[]
+    | CharacterUpsertWithWhereUniqueWithoutSeriesInput;
+  deleteMany?: CharacterScalarWhereInput[] | CharacterScalarWhereInput;
+  updateMany?:
+    | CharacterUpdateManyWithWhereNestedInput[]
+    | CharacterUpdateManyWithWhereNestedInput;
+}
+
+export interface EventCreateWithoutPreviousInput {
+  marvelId: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  title?: String;
+  description?: String;
+  urls?: Json;
+  start?: DateTimeInput;
+  end?: DateTimeInput;
+  series?: SeriesCreateManyWithoutEventsInput;
+  stories?: StoryCreateManyWithoutEventsInput;
+  comics?: ComicCreateManyWithoutEventsInput;
+  characters?: CharacterCreateManyWithoutEventsInput;
+  creators?: CreatorCreateManyWithoutEventsInput;
+  next?: EventCreateOneWithoutPreviousInput;
+}
+
+export interface CharacterUpdateWithWhereUniqueWithoutSeriesInput {
+  where: CharacterWhereUniqueInput;
+  data: CharacterUpdateWithoutSeriesDataInput;
+}
+
+export interface CreatorCreateWithoutEventsInput {
+  marvelId: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  firstName?: String;
+  middleName?: String;
+  lastName?: String;
+  suffix?: String;
+  fullName?: String;
+  urls?: Json;
+  series?: SeriesCreateManyWithoutCreatorsInput;
+  stories?: StoryCreateManyWithoutCreatorsInput;
+  comics?: ComicCreateManyWithoutCreatorsInput;
+}
+
+export interface CharacterUpdateWithoutSeriesDataInput {
+  marvelId?: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  name?: String;
+  description?: String;
+  urls?: Json;
+  comics?: ComicUpdateManyWithoutCharactersInput;
+  events?: EventUpdateManyWithoutCharactersInput;
+  stories?: StoryUpdateManyWithoutCharactersInput;
+}
+
+export interface EventCreateWithoutNextInput {
+  marvelId: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  title?: String;
+  description?: String;
+  urls?: Json;
+  start?: DateTimeInput;
+  end?: DateTimeInput;
+  series?: SeriesCreateManyWithoutEventsInput;
+  stories?: StoryCreateManyWithoutEventsInput;
+  comics?: ComicCreateManyWithoutEventsInput;
+  characters?: CharacterCreateManyWithoutEventsInput;
+  creators?: CreatorCreateManyWithoutEventsInput;
+  previous?: EventCreateOneWithoutNextInput;
+}
+
+export interface CharacterUpsertWithWhereUniqueWithoutSeriesInput {
+  where: CharacterWhereUniqueInput;
+  update: CharacterUpdateWithoutSeriesDataInput;
+  create: CharacterCreateWithoutSeriesInput;
+}
+
+export interface ComicUpdateManyWithoutCharactersInput {
+  create?:
+    | ComicCreateWithoutCharactersInput[]
+    | ComicCreateWithoutCharactersInput;
+  delete?: ComicWhereUniqueInput[] | ComicWhereUniqueInput;
+  connect?: ComicWhereUniqueInput[] | ComicWhereUniqueInput;
+  set?: ComicWhereUniqueInput[] | ComicWhereUniqueInput;
+  disconnect?: ComicWhereUniqueInput[] | ComicWhereUniqueInput;
+  update?:
+    | ComicUpdateWithWhereUniqueWithoutCharactersInput[]
+    | ComicUpdateWithWhereUniqueWithoutCharactersInput;
+  upsert?:
+    | ComicUpsertWithWhereUniqueWithoutCharactersInput[]
+    | ComicUpsertWithWhereUniqueWithoutCharactersInput;
+  deleteMany?: ComicScalarWhereInput[] | ComicScalarWhereInput;
+  updateMany?:
+    | ComicUpdateManyWithWhereNestedInput[]
+    | ComicUpdateManyWithWhereNestedInput;
+}
+
+export interface CharacterScalarWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  marvelId?: String;
+  marvelId_not?: String;
+  marvelId_in?: String[] | String;
+  marvelId_not_in?: String[] | String;
+  marvelId_lt?: String;
+  marvelId_lte?: String;
+  marvelId_gt?: String;
+  marvelId_gte?: String;
+  marvelId_contains?: String;
+  marvelId_not_contains?: String;
+  marvelId_starts_with?: String;
+  marvelId_not_starts_with?: String;
+  marvelId_ends_with?: String;
+  marvelId_not_ends_with?: String;
+  createdAt?: DateTimeInput;
+  createdAt_not?: DateTimeInput;
+  createdAt_in?: DateTimeInput[] | DateTimeInput;
+  createdAt_not_in?: DateTimeInput[] | DateTimeInput;
+  createdAt_lt?: DateTimeInput;
+  createdAt_lte?: DateTimeInput;
+  createdAt_gt?: DateTimeInput;
+  createdAt_gte?: DateTimeInput;
+  updatedAt?: DateTimeInput;
+  updatedAt_not?: DateTimeInput;
+  updatedAt_in?: DateTimeInput[] | DateTimeInput;
+  updatedAt_not_in?: DateTimeInput[] | DateTimeInput;
+  updatedAt_lt?: DateTimeInput;
+  updatedAt_lte?: DateTimeInput;
+  updatedAt_gt?: DateTimeInput;
+  updatedAt_gte?: DateTimeInput;
+  resourceURI?: String;
+  resourceURI_not?: String;
+  resourceURI_in?: String[] | String;
+  resourceURI_not_in?: String[] | String;
+  resourceURI_lt?: String;
+  resourceURI_lte?: String;
+  resourceURI_gt?: String;
+  resourceURI_gte?: String;
+  resourceURI_contains?: String;
+  resourceURI_not_contains?: String;
+  resourceURI_starts_with?: String;
+  resourceURI_not_starts_with?: String;
+  resourceURI_ends_with?: String;
+  resourceURI_not_ends_with?: String;
+  thumbnail?: String;
+  thumbnail_not?: String;
+  thumbnail_in?: String[] | String;
+  thumbnail_not_in?: String[] | String;
+  thumbnail_lt?: String;
+  thumbnail_lte?: String;
+  thumbnail_gt?: String;
+  thumbnail_gte?: String;
+  thumbnail_contains?: String;
+  thumbnail_not_contains?: String;
+  thumbnail_starts_with?: String;
+  thumbnail_not_starts_with?: String;
+  thumbnail_ends_with?: String;
+  thumbnail_not_ends_with?: String;
+  modified?: String;
+  modified_not?: String;
+  modified_in?: String[] | String;
+  modified_not_in?: String[] | String;
+  modified_lt?: String;
+  modified_lte?: String;
+  modified_gt?: String;
+  modified_gte?: String;
+  modified_contains?: String;
+  modified_not_contains?: String;
+  modified_starts_with?: String;
+  modified_not_starts_with?: String;
+  modified_ends_with?: String;
+  modified_not_ends_with?: String;
+  name?: String;
+  name_not?: String;
+  name_in?: String[] | String;
+  name_not_in?: String[] | String;
+  name_lt?: String;
+  name_lte?: String;
+  name_gt?: String;
+  name_gte?: String;
+  name_contains?: String;
+  name_not_contains?: String;
+  name_starts_with?: String;
+  name_not_starts_with?: String;
+  name_ends_with?: String;
+  name_not_ends_with?: String;
+  description?: String;
+  description_not?: String;
+  description_in?: String[] | String;
+  description_not_in?: String[] | String;
+  description_lt?: String;
+  description_lte?: String;
+  description_gt?: String;
+  description_gte?: String;
+  description_contains?: String;
+  description_not_contains?: String;
+  description_starts_with?: String;
+  description_not_starts_with?: String;
+  description_ends_with?: String;
+  description_not_ends_with?: String;
+  AND?: CharacterScalarWhereInput[] | CharacterScalarWhereInput;
+  OR?: CharacterScalarWhereInput[] | CharacterScalarWhereInput;
+  NOT?: CharacterScalarWhereInput[] | CharacterScalarWhereInput;
+}
+
+export interface ComicUpdateWithoutCharactersDataInput {
+  marvelId?: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  digitalId?: Int;
+  title?: String;
+  issueNumber?: Int;
+  variantDescription?: String;
+  description?: String;
+  isbn?: String;
+  upc?: String;
+  diamondCode?: String;
+  ean?: String;
+  issn?: String;
+  format?: String;
+  textObjects?: Json;
+  urls?: Json;
+  dates?: Json;
+  prices?: Json;
+  images?: Json;
+  events?: EventUpdateManyWithoutComicsInput;
+  stories?: StoryUpdateManyWithoutComicsInput;
+  creators?: CreatorUpdateManyWithoutComicsInput;
+  series?: SeriesUpdateOneWithoutComicsInput;
+}
+
+export interface CharacterUpdateManyWithWhereNestedInput {
+  where: CharacterScalarWhereInput;
+  data: CharacterUpdateManyDataInput;
+}
+
+export interface EventUpdateWithWhereUniqueWithoutComicsInput {
+  where: EventWhereUniqueInput;
+  data: EventUpdateWithoutComicsDataInput;
+}
+
+export interface CharacterUpdateManyDataInput {
+  marvelId?: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  name?: String;
+  description?: String;
+  urls?: Json;
+}
+
+export interface SeriesUpdateManyWithoutEventsInput {
+  create?: SeriesCreateWithoutEventsInput[] | SeriesCreateWithoutEventsInput;
+  delete?: SeriesWhereUniqueInput[] | SeriesWhereUniqueInput;
+  connect?: SeriesWhereUniqueInput[] | SeriesWhereUniqueInput;
+  set?: SeriesWhereUniqueInput[] | SeriesWhereUniqueInput;
+  disconnect?: SeriesWhereUniqueInput[] | SeriesWhereUniqueInput;
+  update?:
+    | SeriesUpdateWithWhereUniqueWithoutEventsInput[]
+    | SeriesUpdateWithWhereUniqueWithoutEventsInput;
+  upsert?:
+    | SeriesUpsertWithWhereUniqueWithoutEventsInput[]
+    | SeriesUpsertWithWhereUniqueWithoutEventsInput;
+  deleteMany?: SeriesScalarWhereInput[] | SeriesScalarWhereInput;
+  updateMany?:
+    | SeriesUpdateManyWithWhereNestedInput[]
+    | SeriesUpdateManyWithWhereNestedInput;
+}
+
+export interface CreatorUpdateManyWithoutSeriesInput {
+  create?: CreatorCreateWithoutSeriesInput[] | CreatorCreateWithoutSeriesInput;
+  delete?: CreatorWhereUniqueInput[] | CreatorWhereUniqueInput;
+  connect?: CreatorWhereUniqueInput[] | CreatorWhereUniqueInput;
+  set?: CreatorWhereUniqueInput[] | CreatorWhereUniqueInput;
+  disconnect?: CreatorWhereUniqueInput[] | CreatorWhereUniqueInput;
+  update?:
+    | CreatorUpdateWithWhereUniqueWithoutSeriesInput[]
+    | CreatorUpdateWithWhereUniqueWithoutSeriesInput;
+  upsert?:
+    | CreatorUpsertWithWhereUniqueWithoutSeriesInput[]
+    | CreatorUpsertWithWhereUniqueWithoutSeriesInput;
+  deleteMany?: CreatorScalarWhereInput[] | CreatorScalarWhereInput;
+  updateMany?:
+    | CreatorUpdateManyWithWhereNestedInput[]
+    | CreatorUpdateManyWithWhereNestedInput;
+}
+
+export interface SeriesUpdateWithoutEventsDataInput {
+  marvelId?: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  title?: String;
+  description?: String;
+  urls?: Json;
+  startYear?: Int;
+  endYear?: Int;
+  rating?: String;
+  type?: String;
+  comics?: ComicUpdateManyWithoutSeriesInput;
+  stories?: StoryUpdateManyWithoutSeriesInput;
+  characters?: CharacterUpdateManyWithoutSeriesInput;
+  creators?: CreatorUpdateManyWithoutSeriesInput;
+  next?: SeriesUpdateOneWithoutPreviousInput;
+  previous?: SeriesUpdateOneWithoutNextInput;
+}
+
+export interface CreatorUpdateWithWhereUniqueWithoutSeriesInput {
+  where: CreatorWhereUniqueInput;
+  data: CreatorUpdateWithoutSeriesDataInput;
+}
+
+export interface ComicUpdateWithWhereUniqueWithoutSeriesInput {
+  where: ComicWhereUniqueInput;
+  data: ComicUpdateWithoutSeriesDataInput;
+}
+
+export interface CreatorUpdateWithoutSeriesDataInput {
+  marvelId?: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  firstName?: String;
+  middleName?: String;
+  lastName?: String;
+  suffix?: String;
+  fullName?: String;
+  urls?: Json;
+  stories?: StoryUpdateManyWithoutCreatorsInput;
+  comics?: ComicUpdateManyWithoutCreatorsInput;
+  events?: EventUpdateManyWithoutCreatorsInput;
+}
+
+export interface CharacterUpdateManyWithoutComicsInput {
+  create?:
+    | CharacterCreateWithoutComicsInput[]
+    | CharacterCreateWithoutComicsInput;
+  delete?: CharacterWhereUniqueInput[] | CharacterWhereUniqueInput;
+  connect?: CharacterWhereUniqueInput[] | CharacterWhereUniqueInput;
+  set?: CharacterWhereUniqueInput[] | CharacterWhereUniqueInput;
+  disconnect?: CharacterWhereUniqueInput[] | CharacterWhereUniqueInput;
+  update?:
+    | CharacterUpdateWithWhereUniqueWithoutComicsInput[]
+    | CharacterUpdateWithWhereUniqueWithoutComicsInput;
+  upsert?:
+    | CharacterUpsertWithWhereUniqueWithoutComicsInput[]
+    | CharacterUpsertWithWhereUniqueWithoutComicsInput;
+  deleteMany?: CharacterScalarWhereInput[] | CharacterScalarWhereInput;
+  updateMany?:
+    | CharacterUpdateManyWithWhereNestedInput[]
+    | CharacterUpdateManyWithWhereNestedInput;
+}
+
+export interface StoryUpdateManyWithoutCreatorsInput {
+  create?: StoryCreateWithoutCreatorsInput[] | StoryCreateWithoutCreatorsInput;
+  delete?: StoryWhereUniqueInput[] | StoryWhereUniqueInput;
+  connect?: StoryWhereUniqueInput[] | StoryWhereUniqueInput;
+  set?: StoryWhereUniqueInput[] | StoryWhereUniqueInput;
+  disconnect?: StoryWhereUniqueInput[] | StoryWhereUniqueInput;
+  update?:
+    | StoryUpdateWithWhereUniqueWithoutCreatorsInput[]
+    | StoryUpdateWithWhereUniqueWithoutCreatorsInput;
+  upsert?:
+    | StoryUpsertWithWhereUniqueWithoutCreatorsInput[]
+    | StoryUpsertWithWhereUniqueWithoutCreatorsInput;
+  deleteMany?: StoryScalarWhereInput[] | StoryScalarWhereInput;
+  updateMany?:
+    | StoryUpdateManyWithWhereNestedInput[]
+    | StoryUpdateManyWithWhereNestedInput;
+}
+
+export interface CharacterUpdateWithoutComicsDataInput {
+  marvelId?: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  name?: String;
+  description?: String;
+  urls?: Json;
+  series?: SeriesUpdateManyWithoutCharactersInput;
+  events?: EventUpdateManyWithoutCharactersInput;
+  stories?: StoryUpdateManyWithoutCharactersInput;
+}
+
+export interface StoryUpdateWithWhereUniqueWithoutCreatorsInput {
+  where: StoryWhereUniqueInput;
+  data: StoryUpdateWithoutCreatorsDataInput;
+}
+
+export interface SeriesUpdateWithWhereUniqueWithoutCharactersInput {
+  where: SeriesWhereUniqueInput;
+  data: SeriesUpdateWithoutCharactersDataInput;
+}
+
+export interface StoryUpdateWithoutCreatorsDataInput {
+  marvelId?: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  title?: String;
+  description?: String;
+  type?: String;
+  comics?: ComicUpdateManyWithoutStoriesInput;
+  events?: EventUpdateManyWithoutStoriesInput;
+  characters?: CharacterUpdateManyWithoutStoriesInput;
+  series?: SeriesUpdateManyWithoutStoriesInput;
+  _originalIssue?: Json;
+}
+
+export interface EventSubscriptionWhereInput {
+  mutation_in?: MutationType[] | MutationType;
+  updatedFields_contains?: String;
+  updatedFields_contains_every?: String[] | String;
+  updatedFields_contains_some?: String[] | String;
+  node?: EventWhereInput;
+  AND?: EventSubscriptionWhereInput[] | EventSubscriptionWhereInput;
+  OR?: EventSubscriptionWhereInput[] | EventSubscriptionWhereInput;
+  NOT?: EventSubscriptionWhereInput[] | EventSubscriptionWhereInput;
+}
+
+export interface SeriesUpdateManyWithoutStoriesInput {
+  create?: SeriesCreateWithoutStoriesInput[] | SeriesCreateWithoutStoriesInput;
+  delete?: SeriesWhereUniqueInput[] | SeriesWhereUniqueInput;
+  connect?: SeriesWhereUniqueInput[] | SeriesWhereUniqueInput;
+  set?: SeriesWhereUniqueInput[] | SeriesWhereUniqueInput;
+  disconnect?: SeriesWhereUniqueInput[] | SeriesWhereUniqueInput;
+  update?:
+    | SeriesUpdateWithWhereUniqueWithoutStoriesInput[]
+    | SeriesUpdateWithWhereUniqueWithoutStoriesInput;
+  upsert?:
+    | SeriesUpsertWithWhereUniqueWithoutStoriesInput[]
+    | SeriesUpsertWithWhereUniqueWithoutStoriesInput;
+  deleteMany?: SeriesScalarWhereInput[] | SeriesScalarWhereInput;
+  updateMany?:
+    | SeriesUpdateManyWithWhereNestedInput[]
+    | SeriesUpdateManyWithWhereNestedInput;
+}
+
+export interface StoryUpdateManyMutationInput {
+  marvelId?: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  title?: String;
+  description?: String;
+  type?: String;
+  _originalIssue?: Json;
+}
+
+export interface SeriesUpdateWithWhereUniqueWithoutStoriesInput {
+  where: SeriesWhereUniqueInput;
+  data: SeriesUpdateWithoutStoriesDataInput;
+}
+
+export interface SeriesUpdateInput {
+  marvelId?: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  title?: String;
+  description?: String;
+  urls?: Json;
+  startYear?: Int;
+  endYear?: Int;
+  rating?: String;
+  type?: String;
+  comics?: ComicUpdateManyWithoutSeriesInput;
+  stories?: StoryUpdateManyWithoutSeriesInput;
+  events?: EventUpdateManyWithoutSeriesInput;
+  characters?: CharacterUpdateManyWithoutSeriesInput;
+  creators?: CreatorUpdateManyWithoutSeriesInput;
+  next?: SeriesUpdateOneWithoutPreviousInput;
+  previous?: SeriesUpdateOneWithoutNextInput;
+}
+
+export interface SeriesUpdateWithoutStoriesDataInput {
+  marvelId?: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  title?: String;
+  description?: String;
+  urls?: Json;
+  startYear?: Int;
+  endYear?: Int;
+  rating?: String;
+  type?: String;
+  comics?: ComicUpdateManyWithoutSeriesInput;
+  events?: EventUpdateManyWithoutSeriesInput;
+  characters?: CharacterUpdateManyWithoutSeriesInput;
+  creators?: CreatorUpdateManyWithoutSeriesInput;
+  next?: SeriesUpdateOneWithoutPreviousInput;
+  previous?: SeriesUpdateOneWithoutNextInput;
+}
+
+export interface EventUpdateInput {
+  marvelId?: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  title?: String;
+  description?: String;
+  urls?: Json;
+  start?: DateTimeInput;
+  end?: DateTimeInput;
+  series?: SeriesUpdateManyWithoutEventsInput;
+  stories?: StoryUpdateManyWithoutEventsInput;
+  comics?: ComicUpdateManyWithoutEventsInput;
+  characters?: CharacterUpdateManyWithoutEventsInput;
+  creators?: CreatorUpdateManyWithoutEventsInput;
+  next?: EventUpdateOneWithoutPreviousInput;
+  previous?: EventUpdateOneWithoutNextInput;
+}
+
+export interface SeriesUpdateOneWithoutPreviousInput {
+  create?: SeriesCreateWithoutPreviousInput;
+  update?: SeriesUpdateWithoutPreviousDataInput;
+  upsert?: SeriesUpsertWithoutPreviousInput;
+  delete?: Boolean;
+  disconnect?: Boolean;
+  connect?: SeriesWhereUniqueInput;
+}
+
+export interface CreatorUpdateInput {
+  marvelId?: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  firstName?: String;
+  middleName?: String;
+  lastName?: String;
+  suffix?: String;
+  fullName?: String;
+  urls?: Json;
+  series?: SeriesUpdateManyWithoutCreatorsInput;
+  stories?: StoryUpdateManyWithoutCreatorsInput;
+  comics?: ComicUpdateManyWithoutCreatorsInput;
+  events?: EventUpdateManyWithoutCreatorsInput;
+}
+
+export interface SeriesUpdateWithoutPreviousDataInput {
+  marvelId?: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  title?: String;
+  description?: String;
+  urls?: Json;
+  startYear?: Int;
+  endYear?: Int;
+  rating?: String;
+  type?: String;
+  comics?: ComicUpdateManyWithoutSeriesInput;
+  stories?: StoryUpdateManyWithoutSeriesInput;
+  events?: EventUpdateManyWithoutSeriesInput;
+  characters?: CharacterUpdateManyWithoutSeriesInput;
+  creators?: CreatorUpdateManyWithoutSeriesInput;
+  next?: SeriesUpdateOneWithoutPreviousInput;
+}
+
+export interface ComicUpdateInput {
+  marvelId?: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  digitalId?: Int;
+  title?: String;
+  issueNumber?: Int;
+  variantDescription?: String;
+  description?: String;
+  isbn?: String;
+  upc?: String;
+  diamondCode?: String;
+  ean?: String;
+  issn?: String;
+  format?: String;
+  textObjects?: Json;
+  urls?: Json;
+  dates?: Json;
+  prices?: Json;
+  images?: Json;
+  characters?: CharacterUpdateManyWithoutComicsInput;
+  events?: EventUpdateManyWithoutComicsInput;
+  stories?: StoryUpdateManyWithoutComicsInput;
+  creators?: CreatorUpdateManyWithoutComicsInput;
+  series?: SeriesUpdateOneWithoutComicsInput;
+}
+
+export interface SeriesUpsertWithoutPreviousInput {
+  update: SeriesUpdateWithoutPreviousDataInput;
+  create: SeriesCreateWithoutPreviousInput;
+}
+
+export interface ComicUpsertWithWhereUniqueWithoutCharactersInput {
+  where: ComicWhereUniqueInput;
+  update: ComicUpdateWithoutCharactersDataInput;
+  create: ComicCreateWithoutCharactersInput;
+}
+
+export interface SeriesUpdateOneWithoutNextInput {
+  create?: SeriesCreateWithoutNextInput;
+  update?: SeriesUpdateWithoutNextDataInput;
+  upsert?: SeriesUpsertWithoutNextInput;
+  delete?: Boolean;
+  disconnect?: Boolean;
+  connect?: SeriesWhereUniqueInput;
+}
+
+export interface ComicUpsertWithWhereUniqueWithoutSeriesInput {
+  where: ComicWhereUniqueInput;
+  update: ComicUpdateWithoutSeriesDataInput;
+  create: ComicCreateWithoutSeriesInput;
+}
+
+export interface SeriesUpdateWithoutNextDataInput {
+  marvelId?: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  title?: String;
+  description?: String;
+  urls?: Json;
+  startYear?: Int;
+  endYear?: Int;
+  rating?: String;
+  type?: String;
+  comics?: ComicUpdateManyWithoutSeriesInput;
+  stories?: StoryUpdateManyWithoutSeriesInput;
+  events?: EventUpdateManyWithoutSeriesInput;
+  characters?: CharacterUpdateManyWithoutSeriesInput;
+  creators?: CreatorUpdateManyWithoutSeriesInput;
+  previous?: SeriesUpdateOneWithoutNextInput;
+}
+
+export interface ComicCreateManyWithoutCharactersInput {
+  create?:
+    | ComicCreateWithoutCharactersInput[]
+    | ComicCreateWithoutCharactersInput;
+  connect?: ComicWhereUniqueInput[] | ComicWhereUniqueInput;
+}
+
+export interface SeriesUpsertWithoutNextInput {
+  update: SeriesUpdateWithoutNextDataInput;
+  create: SeriesCreateWithoutNextInput;
+}
+
+export interface SeriesCreateManyWithoutEventsInput {
+  create?: SeriesCreateWithoutEventsInput[] | SeriesCreateWithoutEventsInput;
+  connect?: SeriesWhereUniqueInput[] | SeriesWhereUniqueInput;
+}
+
+export interface SeriesUpsertWithWhereUniqueWithoutStoriesInput {
+  where: SeriesWhereUniqueInput;
+  update: SeriesUpdateWithoutStoriesDataInput;
+  create: SeriesCreateWithoutStoriesInput;
+}
+
+export interface CharacterCreateManyWithoutComicsInput {
+  create?:
+    | CharacterCreateWithoutComicsInput[]
+    | CharacterCreateWithoutComicsInput;
+  connect?: CharacterWhereUniqueInput[] | CharacterWhereUniqueInput;
+}
+
+export interface SeriesScalarWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  marvelId?: String;
+  marvelId_not?: String;
+  marvelId_in?: String[] | String;
+  marvelId_not_in?: String[] | String;
+  marvelId_lt?: String;
+  marvelId_lte?: String;
+  marvelId_gt?: String;
+  marvelId_gte?: String;
+  marvelId_contains?: String;
+  marvelId_not_contains?: String;
+  marvelId_starts_with?: String;
+  marvelId_not_starts_with?: String;
+  marvelId_ends_with?: String;
+  marvelId_not_ends_with?: String;
+  createdAt?: DateTimeInput;
+  createdAt_not?: DateTimeInput;
+  createdAt_in?: DateTimeInput[] | DateTimeInput;
+  createdAt_not_in?: DateTimeInput[] | DateTimeInput;
+  createdAt_lt?: DateTimeInput;
+  createdAt_lte?: DateTimeInput;
+  createdAt_gt?: DateTimeInput;
+  createdAt_gte?: DateTimeInput;
+  updatedAt?: DateTimeInput;
+  updatedAt_not?: DateTimeInput;
+  updatedAt_in?: DateTimeInput[] | DateTimeInput;
+  updatedAt_not_in?: DateTimeInput[] | DateTimeInput;
+  updatedAt_lt?: DateTimeInput;
+  updatedAt_lte?: DateTimeInput;
+  updatedAt_gt?: DateTimeInput;
+  updatedAt_gte?: DateTimeInput;
+  resourceURI?: String;
+  resourceURI_not?: String;
+  resourceURI_in?: String[] | String;
+  resourceURI_not_in?: String[] | String;
+  resourceURI_lt?: String;
+  resourceURI_lte?: String;
+  resourceURI_gt?: String;
+  resourceURI_gte?: String;
+  resourceURI_contains?: String;
+  resourceURI_not_contains?: String;
+  resourceURI_starts_with?: String;
+  resourceURI_not_starts_with?: String;
+  resourceURI_ends_with?: String;
+  resourceURI_not_ends_with?: String;
+  thumbnail?: String;
+  thumbnail_not?: String;
+  thumbnail_in?: String[] | String;
+  thumbnail_not_in?: String[] | String;
+  thumbnail_lt?: String;
+  thumbnail_lte?: String;
+  thumbnail_gt?: String;
+  thumbnail_gte?: String;
+  thumbnail_contains?: String;
+  thumbnail_not_contains?: String;
+  thumbnail_starts_with?: String;
+  thumbnail_not_starts_with?: String;
+  thumbnail_ends_with?: String;
+  thumbnail_not_ends_with?: String;
+  modified?: String;
+  modified_not?: String;
+  modified_in?: String[] | String;
+  modified_not_in?: String[] | String;
+  modified_lt?: String;
+  modified_lte?: String;
+  modified_gt?: String;
+  modified_gte?: String;
+  modified_contains?: String;
+  modified_not_contains?: String;
+  modified_starts_with?: String;
+  modified_not_starts_with?: String;
+  modified_ends_with?: String;
+  modified_not_ends_with?: String;
+  title?: String;
+  title_not?: String;
+  title_in?: String[] | String;
+  title_not_in?: String[] | String;
+  title_lt?: String;
+  title_lte?: String;
+  title_gt?: String;
+  title_gte?: String;
+  title_contains?: String;
+  title_not_contains?: String;
+  title_starts_with?: String;
+  title_not_starts_with?: String;
+  title_ends_with?: String;
+  title_not_ends_with?: String;
+  description?: String;
+  description_not?: String;
+  description_in?: String[] | String;
+  description_not_in?: String[] | String;
+  description_lt?: String;
+  description_lte?: String;
+  description_gt?: String;
+  description_gte?: String;
+  description_contains?: String;
+  description_not_contains?: String;
+  description_starts_with?: String;
+  description_not_starts_with?: String;
+  description_ends_with?: String;
+  description_not_ends_with?: String;
+  startYear?: Int;
+  startYear_not?: Int;
+  startYear_in?: Int[] | Int;
+  startYear_not_in?: Int[] | Int;
+  startYear_lt?: Int;
+  startYear_lte?: Int;
+  startYear_gt?: Int;
+  startYear_gte?: Int;
+  endYear?: Int;
+  endYear_not?: Int;
+  endYear_in?: Int[] | Int;
+  endYear_not_in?: Int[] | Int;
+  endYear_lt?: Int;
+  endYear_lte?: Int;
+  endYear_gt?: Int;
+  endYear_gte?: Int;
+  rating?: String;
+  rating_not?: String;
+  rating_in?: String[] | String;
+  rating_not_in?: String[] | String;
+  rating_lt?: String;
+  rating_lte?: String;
+  rating_gt?: String;
+  rating_gte?: String;
+  rating_contains?: String;
+  rating_not_contains?: String;
+  rating_starts_with?: String;
+  rating_not_starts_with?: String;
+  rating_ends_with?: String;
+  rating_not_ends_with?: String;
+  type?: String;
+  type_not?: String;
+  type_in?: String[] | String;
+  type_not_in?: String[] | String;
+  type_lt?: String;
+  type_lte?: String;
+  type_gt?: String;
+  type_gte?: String;
+  type_contains?: String;
+  type_not_contains?: String;
+  type_starts_with?: String;
+  type_not_starts_with?: String;
+  type_ends_with?: String;
+  type_not_ends_with?: String;
+  AND?: SeriesScalarWhereInput[] | SeriesScalarWhereInput;
+  OR?: SeriesScalarWhereInput[] | SeriesScalarWhereInput;
+  NOT?: SeriesScalarWhereInput[] | SeriesScalarWhereInput;
+}
+
+export interface StoryCreateManyWithoutSeriesInput {
+  create?: StoryCreateWithoutSeriesInput[] | StoryCreateWithoutSeriesInput;
+  connect?: StoryWhereUniqueInput[] | StoryWhereUniqueInput;
+}
+
+export interface SeriesUpdateManyWithWhereNestedInput {
+  where: SeriesScalarWhereInput;
+  data: SeriesUpdateManyDataInput;
+}
+
+export interface CreatorCreateManyWithoutComicsInput {
+  create?: CreatorCreateWithoutComicsInput[] | CreatorCreateWithoutComicsInput;
+  connect?: CreatorWhereUniqueInput[] | CreatorWhereUniqueInput;
+}
+
+export interface SeriesUpdateManyDataInput {
+  marvelId?: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  title?: String;
+  description?: String;
+  urls?: Json;
+  startYear?: Int;
+  endYear?: Int;
+  rating?: String;
+  type?: String;
+}
+
+export interface EventCreateManyWithoutSeriesInput {
+  create?: EventCreateWithoutSeriesInput[] | EventCreateWithoutSeriesInput;
+  connect?: EventWhereUniqueInput[] | EventWhereUniqueInput;
+}
+
+export interface StoryUpsertWithWhereUniqueWithoutCreatorsInput {
+  where: StoryWhereUniqueInput;
+  update: StoryUpdateWithoutCreatorsDataInput;
+  create: StoryCreateWithoutCreatorsInput;
+}
+
+export interface CharacterCreateManyWithoutStoriesInput {
+  create?:
+    | CharacterCreateWithoutStoriesInput[]
+    | CharacterCreateWithoutStoriesInput;
+  connect?: CharacterWhereUniqueInput[] | CharacterWhereUniqueInput;
+}
+
+export interface StoryScalarWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  marvelId?: String;
+  marvelId_not?: String;
+  marvelId_in?: String[] | String;
+  marvelId_not_in?: String[] | String;
+  marvelId_lt?: String;
+  marvelId_lte?: String;
+  marvelId_gt?: String;
+  marvelId_gte?: String;
+  marvelId_contains?: String;
+  marvelId_not_contains?: String;
+  marvelId_starts_with?: String;
+  marvelId_not_starts_with?: String;
+  marvelId_ends_with?: String;
+  marvelId_not_ends_with?: String;
+  createdAt?: DateTimeInput;
+  createdAt_not?: DateTimeInput;
+  createdAt_in?: DateTimeInput[] | DateTimeInput;
+  createdAt_not_in?: DateTimeInput[] | DateTimeInput;
+  createdAt_lt?: DateTimeInput;
+  createdAt_lte?: DateTimeInput;
+  createdAt_gt?: DateTimeInput;
+  createdAt_gte?: DateTimeInput;
+  updatedAt?: DateTimeInput;
+  updatedAt_not?: DateTimeInput;
+  updatedAt_in?: DateTimeInput[] | DateTimeInput;
+  updatedAt_not_in?: DateTimeInput[] | DateTimeInput;
+  updatedAt_lt?: DateTimeInput;
+  updatedAt_lte?: DateTimeInput;
+  updatedAt_gt?: DateTimeInput;
+  updatedAt_gte?: DateTimeInput;
+  resourceURI?: String;
+  resourceURI_not?: String;
+  resourceURI_in?: String[] | String;
+  resourceURI_not_in?: String[] | String;
+  resourceURI_lt?: String;
+  resourceURI_lte?: String;
+  resourceURI_gt?: String;
+  resourceURI_gte?: String;
+  resourceURI_contains?: String;
+  resourceURI_not_contains?: String;
+  resourceURI_starts_with?: String;
+  resourceURI_not_starts_with?: String;
+  resourceURI_ends_with?: String;
+  resourceURI_not_ends_with?: String;
+  thumbnail?: String;
+  thumbnail_not?: String;
+  thumbnail_in?: String[] | String;
+  thumbnail_not_in?: String[] | String;
+  thumbnail_lt?: String;
+  thumbnail_lte?: String;
+  thumbnail_gt?: String;
+  thumbnail_gte?: String;
+  thumbnail_contains?: String;
+  thumbnail_not_contains?: String;
+  thumbnail_starts_with?: String;
+  thumbnail_not_starts_with?: String;
+  thumbnail_ends_with?: String;
+  thumbnail_not_ends_with?: String;
+  modified?: String;
+  modified_not?: String;
+  modified_in?: String[] | String;
+  modified_not_in?: String[] | String;
+  modified_lt?: String;
+  modified_lte?: String;
+  modified_gt?: String;
+  modified_gte?: String;
+  modified_contains?: String;
+  modified_not_contains?: String;
+  modified_starts_with?: String;
+  modified_not_starts_with?: String;
+  modified_ends_with?: String;
+  modified_not_ends_with?: String;
+  title?: String;
+  title_not?: String;
+  title_in?: String[] | String;
+  title_not_in?: String[] | String;
+  title_lt?: String;
+  title_lte?: String;
+  title_gt?: String;
+  title_gte?: String;
+  title_contains?: String;
+  title_not_contains?: String;
+  title_starts_with?: String;
+  title_not_starts_with?: String;
+  title_ends_with?: String;
+  title_not_ends_with?: String;
+  description?: String;
+  description_not?: String;
+  description_in?: String[] | String;
+  description_not_in?: String[] | String;
+  description_lt?: String;
+  description_lte?: String;
+  description_gt?: String;
+  description_gte?: String;
+  description_contains?: String;
+  description_not_contains?: String;
+  description_starts_with?: String;
+  description_not_starts_with?: String;
+  description_ends_with?: String;
+  description_not_ends_with?: String;
+  type?: String;
+  type_not?: String;
+  type_in?: String[] | String;
+  type_not_in?: String[] | String;
+  type_lt?: String;
+  type_lte?: String;
+  type_gt?: String;
+  type_gte?: String;
+  type_contains?: String;
+  type_not_contains?: String;
+  type_starts_with?: String;
+  type_not_starts_with?: String;
+  type_ends_with?: String;
+  type_not_ends_with?: String;
+  AND?: StoryScalarWhereInput[] | StoryScalarWhereInput;
+  OR?: StoryScalarWhereInput[] | StoryScalarWhereInput;
+  NOT?: StoryScalarWhereInput[] | StoryScalarWhereInput;
+}
+
+export interface ComicCreateManyWithoutEventsInput {
+  create?: ComicCreateWithoutEventsInput[] | ComicCreateWithoutEventsInput;
+  connect?: ComicWhereUniqueInput[] | ComicWhereUniqueInput;
+}
+
+export interface StoryUpdateManyWithWhereNestedInput {
+  where: StoryScalarWhereInput;
+  data: StoryUpdateManyDataInput;
+}
+
+export interface EventCreateManyWithoutStoriesInput {
+  create?: EventCreateWithoutStoriesInput[] | EventCreateWithoutStoriesInput;
+  connect?: EventWhereUniqueInput[] | EventWhereUniqueInput;
+}
+
+export interface StoryUpdateManyDataInput {
+  marvelId?: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  title?: String;
+  description?: String;
+  type?: String;
+  _originalIssue?: Json;
+}
+
+export interface StoryCreateManyWithoutCharactersInput {
+  create?:
+    | StoryCreateWithoutCharactersInput[]
+    | StoryCreateWithoutCharactersInput;
+  connect?: StoryWhereUniqueInput[] | StoryWhereUniqueInput;
+}
+
+export interface EventUpdateManyWithoutCreatorsInput {
+  create?: EventCreateWithoutCreatorsInput[] | EventCreateWithoutCreatorsInput;
+  delete?: EventWhereUniqueInput[] | EventWhereUniqueInput;
+  connect?: EventWhereUniqueInput[] | EventWhereUniqueInput;
+  set?: EventWhereUniqueInput[] | EventWhereUniqueInput;
+  disconnect?: EventWhereUniqueInput[] | EventWhereUniqueInput;
+  update?:
+    | EventUpdateWithWhereUniqueWithoutCreatorsInput[]
+    | EventUpdateWithWhereUniqueWithoutCreatorsInput;
+  upsert?:
+    | EventUpsertWithWhereUniqueWithoutCreatorsInput[]
+    | EventUpsertWithWhereUniqueWithoutCreatorsInput;
+  deleteMany?: EventScalarWhereInput[] | EventScalarWhereInput;
+  updateMany?:
+    | EventUpdateManyWithWhereNestedInput[]
+    | EventUpdateManyWithWhereNestedInput;
+}
+
+export interface ComicCreateManyWithoutCreatorsInput {
+  create?: ComicCreateWithoutCreatorsInput[] | ComicCreateWithoutCreatorsInput;
+  connect?: ComicWhereUniqueInput[] | ComicWhereUniqueInput;
+}
+
+export interface EventUpdateWithWhereUniqueWithoutCreatorsInput {
+  where: EventWhereUniqueInput;
+  data: EventUpdateWithoutCreatorsDataInput;
+}
+
+export interface CharacterCreateManyWithoutSeriesInput {
+  create?:
+    | CharacterCreateWithoutSeriesInput[]
+    | CharacterCreateWithoutSeriesInput;
+  connect?: CharacterWhereUniqueInput[] | CharacterWhereUniqueInput;
+}
+
+export interface EventUpdateWithoutCreatorsDataInput {
+  marvelId?: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  title?: String;
+  description?: String;
+  urls?: Json;
+  start?: DateTimeInput;
+  end?: DateTimeInput;
+  series?: SeriesUpdateManyWithoutEventsInput;
+  stories?: StoryUpdateManyWithoutEventsInput;
+  comics?: ComicUpdateManyWithoutEventsInput;
+  characters?: CharacterUpdateManyWithoutEventsInput;
+  next?: EventUpdateOneWithoutPreviousInput;
+  previous?: EventUpdateOneWithoutNextInput;
+}
+
+export interface StoryCreateManyWithoutCreatorsInput {
+  create?: StoryCreateWithoutCreatorsInput[] | StoryCreateWithoutCreatorsInput;
+  connect?: StoryWhereUniqueInput[] | StoryWhereUniqueInput;
+}
+
+export interface EventUpdateOneWithoutPreviousInput {
+  create?: EventCreateWithoutPreviousInput;
+  update?: EventUpdateWithoutPreviousDataInput;
+  upsert?: EventUpsertWithoutPreviousInput;
+  delete?: Boolean;
+  disconnect?: Boolean;
+  connect?: EventWhereUniqueInput;
+}
+
+export interface SeriesCreateOneWithoutPreviousInput {
+  create?: SeriesCreateWithoutPreviousInput;
+  connect?: SeriesWhereUniqueInput;
+}
+
+export interface EventUpdateWithoutPreviousDataInput {
+  marvelId?: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  title?: String;
+  description?: String;
+  urls?: Json;
+  start?: DateTimeInput;
+  end?: DateTimeInput;
+  series?: SeriesUpdateManyWithoutEventsInput;
+  stories?: StoryUpdateManyWithoutEventsInput;
+  comics?: ComicUpdateManyWithoutEventsInput;
+  characters?: CharacterUpdateManyWithoutEventsInput;
+  creators?: CreatorUpdateManyWithoutEventsInput;
+  next?: EventUpdateOneWithoutPreviousInput;
+}
+
+export interface EventCreateManyWithoutCreatorsInput {
+  create?: EventCreateWithoutCreatorsInput[] | EventCreateWithoutCreatorsInput;
+  connect?: EventWhereUniqueInput[] | EventWhereUniqueInput;
+}
+
+export interface CreatorUpdateManyWithoutEventsInput {
+  create?: CreatorCreateWithoutEventsInput[] | CreatorCreateWithoutEventsInput;
+  delete?: CreatorWhereUniqueInput[] | CreatorWhereUniqueInput;
+  connect?: CreatorWhereUniqueInput[] | CreatorWhereUniqueInput;
+  set?: CreatorWhereUniqueInput[] | CreatorWhereUniqueInput;
+  disconnect?: CreatorWhereUniqueInput[] | CreatorWhereUniqueInput;
+  update?:
+    | CreatorUpdateWithWhereUniqueWithoutEventsInput[]
+    | CreatorUpdateWithWhereUniqueWithoutEventsInput;
+  upsert?:
+    | CreatorUpsertWithWhereUniqueWithoutEventsInput[]
+    | CreatorUpsertWithWhereUniqueWithoutEventsInput;
+  deleteMany?: CreatorScalarWhereInput[] | CreatorScalarWhereInput;
+  updateMany?:
+    | CreatorUpdateManyWithWhereNestedInput[]
+    | CreatorUpdateManyWithWhereNestedInput;
+}
+
+export interface CreatorCreateManyWithoutEventsInput {
+  create?: CreatorCreateWithoutEventsInput[] | CreatorCreateWithoutEventsInput;
+  connect?: CreatorWhereUniqueInput[] | CreatorWhereUniqueInput;
+}
+
+export interface CreatorUpdateWithWhereUniqueWithoutEventsInput {
+  where: CreatorWhereUniqueInput;
+  data: CreatorUpdateWithoutEventsDataInput;
+}
+
+export interface CharacterUpdateInput {
+  marvelId?: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  name?: String;
+  description?: String;
+  urls?: Json;
+  comics?: ComicUpdateManyWithoutCharactersInput;
+  series?: SeriesUpdateManyWithoutCharactersInput;
+  events?: EventUpdateManyWithoutCharactersInput;
+  stories?: StoryUpdateManyWithoutCharactersInput;
+}
+
+export interface CreatorUpdateWithoutEventsDataInput {
+  marvelId?: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  firstName?: String;
+  middleName?: String;
+  lastName?: String;
+  suffix?: String;
+  fullName?: String;
+  urls?: Json;
+  series?: SeriesUpdateManyWithoutCreatorsInput;
+  stories?: StoryUpdateManyWithoutCreatorsInput;
+  comics?: ComicUpdateManyWithoutCreatorsInput;
+}
+
+export interface EventUpdateManyWithoutComicsInput {
+  create?: EventCreateWithoutComicsInput[] | EventCreateWithoutComicsInput;
+  delete?: EventWhereUniqueInput[] | EventWhereUniqueInput;
+  connect?: EventWhereUniqueInput[] | EventWhereUniqueInput;
+  set?: EventWhereUniqueInput[] | EventWhereUniqueInput;
+  disconnect?: EventWhereUniqueInput[] | EventWhereUniqueInput;
+  update?:
+    | EventUpdateWithWhereUniqueWithoutComicsInput[]
+    | EventUpdateWithWhereUniqueWithoutComicsInput;
+  upsert?:
+    | EventUpsertWithWhereUniqueWithoutComicsInput[]
+    | EventUpsertWithWhereUniqueWithoutComicsInput;
+  deleteMany?: EventScalarWhereInput[] | EventScalarWhereInput;
+  updateMany?:
+    | EventUpdateManyWithWhereNestedInput[]
+    | EventUpdateManyWithWhereNestedInput;
+}
+
+export interface CreatorUpsertWithWhereUniqueWithoutEventsInput {
+  where: CreatorWhereUniqueInput;
+  update: CreatorUpdateWithoutEventsDataInput;
+  create: CreatorCreateWithoutEventsInput;
+}
+
+export interface SeriesUpdateWithWhereUniqueWithoutEventsInput {
+  where: SeriesWhereUniqueInput;
+  data: SeriesUpdateWithoutEventsDataInput;
+}
+
+export interface CreatorScalarWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  marvelId?: String;
+  marvelId_not?: String;
+  marvelId_in?: String[] | String;
+  marvelId_not_in?: String[] | String;
+  marvelId_lt?: String;
+  marvelId_lte?: String;
+  marvelId_gt?: String;
+  marvelId_gte?: String;
+  marvelId_contains?: String;
+  marvelId_not_contains?: String;
+  marvelId_starts_with?: String;
+  marvelId_not_starts_with?: String;
+  marvelId_ends_with?: String;
+  marvelId_not_ends_with?: String;
+  createdAt?: DateTimeInput;
+  createdAt_not?: DateTimeInput;
+  createdAt_in?: DateTimeInput[] | DateTimeInput;
+  createdAt_not_in?: DateTimeInput[] | DateTimeInput;
+  createdAt_lt?: DateTimeInput;
+  createdAt_lte?: DateTimeInput;
+  createdAt_gt?: DateTimeInput;
+  createdAt_gte?: DateTimeInput;
+  updatedAt?: DateTimeInput;
+  updatedAt_not?: DateTimeInput;
+  updatedAt_in?: DateTimeInput[] | DateTimeInput;
+  updatedAt_not_in?: DateTimeInput[] | DateTimeInput;
+  updatedAt_lt?: DateTimeInput;
+  updatedAt_lte?: DateTimeInput;
+  updatedAt_gt?: DateTimeInput;
+  updatedAt_gte?: DateTimeInput;
+  resourceURI?: String;
+  resourceURI_not?: String;
+  resourceURI_in?: String[] | String;
+  resourceURI_not_in?: String[] | String;
+  resourceURI_lt?: String;
+  resourceURI_lte?: String;
+  resourceURI_gt?: String;
+  resourceURI_gte?: String;
+  resourceURI_contains?: String;
+  resourceURI_not_contains?: String;
+  resourceURI_starts_with?: String;
+  resourceURI_not_starts_with?: String;
+  resourceURI_ends_with?: String;
+  resourceURI_not_ends_with?: String;
+  thumbnail?: String;
+  thumbnail_not?: String;
+  thumbnail_in?: String[] | String;
+  thumbnail_not_in?: String[] | String;
+  thumbnail_lt?: String;
+  thumbnail_lte?: String;
+  thumbnail_gt?: String;
+  thumbnail_gte?: String;
+  thumbnail_contains?: String;
+  thumbnail_not_contains?: String;
+  thumbnail_starts_with?: String;
+  thumbnail_not_starts_with?: String;
+  thumbnail_ends_with?: String;
+  thumbnail_not_ends_with?: String;
+  modified?: String;
+  modified_not?: String;
+  modified_in?: String[] | String;
+  modified_not_in?: String[] | String;
+  modified_lt?: String;
+  modified_lte?: String;
+  modified_gt?: String;
+  modified_gte?: String;
+  modified_contains?: String;
+  modified_not_contains?: String;
+  modified_starts_with?: String;
+  modified_not_starts_with?: String;
+  modified_ends_with?: String;
+  modified_not_ends_with?: String;
+  firstName?: String;
+  firstName_not?: String;
+  firstName_in?: String[] | String;
+  firstName_not_in?: String[] | String;
+  firstName_lt?: String;
+  firstName_lte?: String;
+  firstName_gt?: String;
+  firstName_gte?: String;
+  firstName_contains?: String;
+  firstName_not_contains?: String;
+  firstName_starts_with?: String;
+  firstName_not_starts_with?: String;
+  firstName_ends_with?: String;
+  firstName_not_ends_with?: String;
+  middleName?: String;
+  middleName_not?: String;
+  middleName_in?: String[] | String;
+  middleName_not_in?: String[] | String;
+  middleName_lt?: String;
+  middleName_lte?: String;
+  middleName_gt?: String;
+  middleName_gte?: String;
+  middleName_contains?: String;
+  middleName_not_contains?: String;
+  middleName_starts_with?: String;
+  middleName_not_starts_with?: String;
+  middleName_ends_with?: String;
+  middleName_not_ends_with?: String;
+  lastName?: String;
+  lastName_not?: String;
+  lastName_in?: String[] | String;
+  lastName_not_in?: String[] | String;
+  lastName_lt?: String;
+  lastName_lte?: String;
+  lastName_gt?: String;
+  lastName_gte?: String;
+  lastName_contains?: String;
+  lastName_not_contains?: String;
+  lastName_starts_with?: String;
+  lastName_not_starts_with?: String;
+  lastName_ends_with?: String;
+  lastName_not_ends_with?: String;
+  suffix?: String;
+  suffix_not?: String;
+  suffix_in?: String[] | String;
+  suffix_not_in?: String[] | String;
+  suffix_lt?: String;
+  suffix_lte?: String;
+  suffix_gt?: String;
+  suffix_gte?: String;
+  suffix_contains?: String;
+  suffix_not_contains?: String;
+  suffix_starts_with?: String;
+  suffix_not_starts_with?: String;
+  suffix_ends_with?: String;
+  suffix_not_ends_with?: String;
+  fullName?: String;
+  fullName_not?: String;
+  fullName_in?: String[] | String;
+  fullName_not_in?: String[] | String;
+  fullName_lt?: String;
+  fullName_lte?: String;
+  fullName_gt?: String;
+  fullName_gte?: String;
+  fullName_contains?: String;
+  fullName_not_contains?: String;
+  fullName_starts_with?: String;
+  fullName_not_starts_with?: String;
+  fullName_ends_with?: String;
+  fullName_not_ends_with?: String;
+  AND?: CreatorScalarWhereInput[] | CreatorScalarWhereInput;
+  OR?: CreatorScalarWhereInput[] | CreatorScalarWhereInput;
+  NOT?: CreatorScalarWhereInput[] | CreatorScalarWhereInput;
+}
+
+export interface ComicUpdateWithoutSeriesDataInput {
+  marvelId?: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  digitalId?: Int;
+  title?: String;
+  issueNumber?: Int;
+  variantDescription?: String;
+  description?: String;
+  isbn?: String;
+  upc?: String;
+  diamondCode?: String;
+  ean?: String;
+  issn?: String;
+  format?: String;
+  textObjects?: Json;
+  urls?: Json;
+  dates?: Json;
+  prices?: Json;
+  images?: Json;
+  characters?: CharacterUpdateManyWithoutComicsInput;
+  events?: EventUpdateManyWithoutComicsInput;
+  stories?: StoryUpdateManyWithoutComicsInput;
+  creators?: CreatorUpdateManyWithoutComicsInput;
+}
+
+export interface CreatorUpdateManyWithWhereNestedInput {
+  where: CreatorScalarWhereInput;
+  data: CreatorUpdateManyDataInput;
+}
+
+export interface SeriesUpdateManyWithoutCharactersInput {
+  create?:
+    | SeriesCreateWithoutCharactersInput[]
+    | SeriesCreateWithoutCharactersInput;
+  delete?: SeriesWhereUniqueInput[] | SeriesWhereUniqueInput;
+  connect?: SeriesWhereUniqueInput[] | SeriesWhereUniqueInput;
+  set?: SeriesWhereUniqueInput[] | SeriesWhereUniqueInput;
+  disconnect?: SeriesWhereUniqueInput[] | SeriesWhereUniqueInput;
+  update?:
+    | SeriesUpdateWithWhereUniqueWithoutCharactersInput[]
+    | SeriesUpdateWithWhereUniqueWithoutCharactersInput;
+  upsert?:
+    | SeriesUpsertWithWhereUniqueWithoutCharactersInput[]
+    | SeriesUpsertWithWhereUniqueWithoutCharactersInput;
+  deleteMany?: SeriesScalarWhereInput[] | SeriesScalarWhereInput;
+  updateMany?:
+    | SeriesUpdateManyWithWhereNestedInput[]
+    | SeriesUpdateManyWithWhereNestedInput;
+}
+
+export interface CreatorUpdateManyDataInput {
+  marvelId?: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  firstName?: String;
+  middleName?: String;
+  lastName?: String;
+  suffix?: String;
+  fullName?: String;
+  urls?: Json;
+}
+
+export interface ComicSubscriptionWhereInput {
+  mutation_in?: MutationType[] | MutationType;
+  updatedFields_contains?: String;
+  updatedFields_contains_every?: String[] | String;
+  updatedFields_contains_some?: String[] | String;
+  node?: ComicWhereInput;
+  AND?: ComicSubscriptionWhereInput[] | ComicSubscriptionWhereInput;
+  OR?: ComicSubscriptionWhereInput[] | ComicSubscriptionWhereInput;
+  NOT?: ComicSubscriptionWhereInput[] | ComicSubscriptionWhereInput;
+}
+
+export interface EventUpsertWithoutPreviousInput {
+  update: EventUpdateWithoutPreviousDataInput;
+  create: EventCreateWithoutPreviousInput;
+}
+
+export type ComicWhereUniqueInput = AtLeastOne<{
   id: ID_Input;
+  marvelId?: String;
 }>;
+
+export interface EventUpdateOneWithoutNextInput {
+  create?: EventCreateWithoutNextInput;
+  update?: EventUpdateWithoutNextDataInput;
+  upsert?: EventUpsertWithoutNextInput;
+  delete?: Boolean;
+  disconnect?: Boolean;
+  connect?: EventWhereUniqueInput;
+}
+
+export type EventWhereUniqueInput = AtLeastOne<{
+  id: ID_Input;
+  marvelId?: String;
+}>;
+
+export interface EventUpdateWithoutNextDataInput {
+  marvelId?: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  title?: String;
+  description?: String;
+  urls?: Json;
+  start?: DateTimeInput;
+  end?: DateTimeInput;
+  series?: SeriesUpdateManyWithoutEventsInput;
+  stories?: StoryUpdateManyWithoutEventsInput;
+  comics?: ComicUpdateManyWithoutEventsInput;
+  characters?: CharacterUpdateManyWithoutEventsInput;
+  creators?: CreatorUpdateManyWithoutEventsInput;
+  previous?: EventUpdateOneWithoutNextInput;
+}
+
+export type StoryWhereUniqueInput = AtLeastOne<{
+  id: ID_Input;
+  marvelId?: String;
+}>;
+
+export interface EventUpsertWithoutNextInput {
+  update: EventUpdateWithoutNextDataInput;
+  create: EventCreateWithoutNextInput;
+}
+
+export interface EventCreateManyWithoutComicsInput {
+  create?: EventCreateWithoutComicsInput[] | EventCreateWithoutComicsInput;
+  connect?: EventWhereUniqueInput[] | EventWhereUniqueInput;
+}
+
+export interface EventUpsertWithWhereUniqueWithoutCreatorsInput {
+  where: EventWhereUniqueInput;
+  update: EventUpdateWithoutCreatorsDataInput;
+  create: EventCreateWithoutCreatorsInput;
+}
+
+export interface SeriesCreateManyWithoutCharactersInput {
+  create?:
+    | SeriesCreateWithoutCharactersInput[]
+    | SeriesCreateWithoutCharactersInput;
+  connect?: SeriesWhereUniqueInput[] | SeriesWhereUniqueInput;
+}
+
+export interface EventScalarWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  marvelId?: String;
+  marvelId_not?: String;
+  marvelId_in?: String[] | String;
+  marvelId_not_in?: String[] | String;
+  marvelId_lt?: String;
+  marvelId_lte?: String;
+  marvelId_gt?: String;
+  marvelId_gte?: String;
+  marvelId_contains?: String;
+  marvelId_not_contains?: String;
+  marvelId_starts_with?: String;
+  marvelId_not_starts_with?: String;
+  marvelId_ends_with?: String;
+  marvelId_not_ends_with?: String;
+  createdAt?: DateTimeInput;
+  createdAt_not?: DateTimeInput;
+  createdAt_in?: DateTimeInput[] | DateTimeInput;
+  createdAt_not_in?: DateTimeInput[] | DateTimeInput;
+  createdAt_lt?: DateTimeInput;
+  createdAt_lte?: DateTimeInput;
+  createdAt_gt?: DateTimeInput;
+  createdAt_gte?: DateTimeInput;
+  updatedAt?: DateTimeInput;
+  updatedAt_not?: DateTimeInput;
+  updatedAt_in?: DateTimeInput[] | DateTimeInput;
+  updatedAt_not_in?: DateTimeInput[] | DateTimeInput;
+  updatedAt_lt?: DateTimeInput;
+  updatedAt_lte?: DateTimeInput;
+  updatedAt_gt?: DateTimeInput;
+  updatedAt_gte?: DateTimeInput;
+  resourceURI?: String;
+  resourceURI_not?: String;
+  resourceURI_in?: String[] | String;
+  resourceURI_not_in?: String[] | String;
+  resourceURI_lt?: String;
+  resourceURI_lte?: String;
+  resourceURI_gt?: String;
+  resourceURI_gte?: String;
+  resourceURI_contains?: String;
+  resourceURI_not_contains?: String;
+  resourceURI_starts_with?: String;
+  resourceURI_not_starts_with?: String;
+  resourceURI_ends_with?: String;
+  resourceURI_not_ends_with?: String;
+  thumbnail?: String;
+  thumbnail_not?: String;
+  thumbnail_in?: String[] | String;
+  thumbnail_not_in?: String[] | String;
+  thumbnail_lt?: String;
+  thumbnail_lte?: String;
+  thumbnail_gt?: String;
+  thumbnail_gte?: String;
+  thumbnail_contains?: String;
+  thumbnail_not_contains?: String;
+  thumbnail_starts_with?: String;
+  thumbnail_not_starts_with?: String;
+  thumbnail_ends_with?: String;
+  thumbnail_not_ends_with?: String;
+  modified?: String;
+  modified_not?: String;
+  modified_in?: String[] | String;
+  modified_not_in?: String[] | String;
+  modified_lt?: String;
+  modified_lte?: String;
+  modified_gt?: String;
+  modified_gte?: String;
+  modified_contains?: String;
+  modified_not_contains?: String;
+  modified_starts_with?: String;
+  modified_not_starts_with?: String;
+  modified_ends_with?: String;
+  modified_not_ends_with?: String;
+  title?: String;
+  title_not?: String;
+  title_in?: String[] | String;
+  title_not_in?: String[] | String;
+  title_lt?: String;
+  title_lte?: String;
+  title_gt?: String;
+  title_gte?: String;
+  title_contains?: String;
+  title_not_contains?: String;
+  title_starts_with?: String;
+  title_not_starts_with?: String;
+  title_ends_with?: String;
+  title_not_ends_with?: String;
+  description?: String;
+  description_not?: String;
+  description_in?: String[] | String;
+  description_not_in?: String[] | String;
+  description_lt?: String;
+  description_lte?: String;
+  description_gt?: String;
+  description_gte?: String;
+  description_contains?: String;
+  description_not_contains?: String;
+  description_starts_with?: String;
+  description_not_starts_with?: String;
+  description_ends_with?: String;
+  description_not_ends_with?: String;
+  start?: DateTimeInput;
+  start_not?: DateTimeInput;
+  start_in?: DateTimeInput[] | DateTimeInput;
+  start_not_in?: DateTimeInput[] | DateTimeInput;
+  start_lt?: DateTimeInput;
+  start_lte?: DateTimeInput;
+  start_gt?: DateTimeInput;
+  start_gte?: DateTimeInput;
+  end?: DateTimeInput;
+  end_not?: DateTimeInput;
+  end_in?: DateTimeInput[] | DateTimeInput;
+  end_not_in?: DateTimeInput[] | DateTimeInput;
+  end_lt?: DateTimeInput;
+  end_lte?: DateTimeInput;
+  end_gt?: DateTimeInput;
+  end_gte?: DateTimeInput;
+  AND?: EventScalarWhereInput[] | EventScalarWhereInput;
+  OR?: EventScalarWhereInput[] | EventScalarWhereInput;
+  NOT?: EventScalarWhereInput[] | EventScalarWhereInput;
+}
+
+export interface SeriesCreateManyWithoutCreatorsInput {
+  create?:
+    | SeriesCreateWithoutCreatorsInput[]
+    | SeriesCreateWithoutCreatorsInput;
+  connect?: SeriesWhereUniqueInput[] | SeriesWhereUniqueInput;
+}
+
+export interface EventUpdateManyWithWhereNestedInput {
+  where: EventScalarWhereInput;
+  data: EventUpdateManyDataInput;
+}
+
+export interface EventCreateManyWithoutCharactersInput {
+  create?:
+    | EventCreateWithoutCharactersInput[]
+    | EventCreateWithoutCharactersInput;
+  connect?: EventWhereUniqueInput[] | EventWhereUniqueInput;
+}
+
+export interface EventUpdateManyDataInput {
+  marvelId?: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  title?: String;
+  description?: String;
+  urls?: Json;
+  start?: DateTimeInput;
+  end?: DateTimeInput;
+}
+
+export interface CharacterCreateManyWithoutEventsInput {
+  create?:
+    | CharacterCreateWithoutEventsInput[]
+    | CharacterCreateWithoutEventsInput;
+  connect?: CharacterWhereUniqueInput[] | CharacterWhereUniqueInput;
+}
+
+export interface CreatorUpsertWithWhereUniqueWithoutSeriesInput {
+  where: CreatorWhereUniqueInput;
+  update: CreatorUpdateWithoutSeriesDataInput;
+  create: CreatorCreateWithoutSeriesInput;
+}
+
+export interface SeriesCreateOneWithoutComicsInput {
+  create?: SeriesCreateWithoutComicsInput;
+  connect?: SeriesWhereUniqueInput;
+}
+
+export interface SeriesUpsertWithoutComicsInput {
+  update: SeriesUpdateWithoutComicsDataInput;
+  create: SeriesCreateWithoutComicsInput;
+}
+
+export interface SeriesCreateManyWithoutStoriesInput {
+  create?: SeriesCreateWithoutStoriesInput[] | SeriesCreateWithoutStoriesInput;
+  connect?: SeriesWhereUniqueInput[] | SeriesWhereUniqueInput;
+}
+
+export interface ComicUpsertWithWhereUniqueWithoutCreatorsInput {
+  where: ComicWhereUniqueInput;
+  update: ComicUpdateWithoutCreatorsDataInput;
+  create: ComicCreateWithoutCreatorsInput;
+}
+
+export interface EventCreateOneWithoutPreviousInput {
+  create?: EventCreateWithoutPreviousInput;
+  connect?: EventWhereUniqueInput;
+}
+
+export interface ComicScalarWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  marvelId?: String;
+  marvelId_not?: String;
+  marvelId_in?: String[] | String;
+  marvelId_not_in?: String[] | String;
+  marvelId_lt?: String;
+  marvelId_lte?: String;
+  marvelId_gt?: String;
+  marvelId_gte?: String;
+  marvelId_contains?: String;
+  marvelId_not_contains?: String;
+  marvelId_starts_with?: String;
+  marvelId_not_starts_with?: String;
+  marvelId_ends_with?: String;
+  marvelId_not_ends_with?: String;
+  createdAt?: DateTimeInput;
+  createdAt_not?: DateTimeInput;
+  createdAt_in?: DateTimeInput[] | DateTimeInput;
+  createdAt_not_in?: DateTimeInput[] | DateTimeInput;
+  createdAt_lt?: DateTimeInput;
+  createdAt_lte?: DateTimeInput;
+  createdAt_gt?: DateTimeInput;
+  createdAt_gte?: DateTimeInput;
+  updatedAt?: DateTimeInput;
+  updatedAt_not?: DateTimeInput;
+  updatedAt_in?: DateTimeInput[] | DateTimeInput;
+  updatedAt_not_in?: DateTimeInput[] | DateTimeInput;
+  updatedAt_lt?: DateTimeInput;
+  updatedAt_lte?: DateTimeInput;
+  updatedAt_gt?: DateTimeInput;
+  updatedAt_gte?: DateTimeInput;
+  resourceURI?: String;
+  resourceURI_not?: String;
+  resourceURI_in?: String[] | String;
+  resourceURI_not_in?: String[] | String;
+  resourceURI_lt?: String;
+  resourceURI_lte?: String;
+  resourceURI_gt?: String;
+  resourceURI_gte?: String;
+  resourceURI_contains?: String;
+  resourceURI_not_contains?: String;
+  resourceURI_starts_with?: String;
+  resourceURI_not_starts_with?: String;
+  resourceURI_ends_with?: String;
+  resourceURI_not_ends_with?: String;
+  thumbnail?: String;
+  thumbnail_not?: String;
+  thumbnail_in?: String[] | String;
+  thumbnail_not_in?: String[] | String;
+  thumbnail_lt?: String;
+  thumbnail_lte?: String;
+  thumbnail_gt?: String;
+  thumbnail_gte?: String;
+  thumbnail_contains?: String;
+  thumbnail_not_contains?: String;
+  thumbnail_starts_with?: String;
+  thumbnail_not_starts_with?: String;
+  thumbnail_ends_with?: String;
+  thumbnail_not_ends_with?: String;
+  modified?: String;
+  modified_not?: String;
+  modified_in?: String[] | String;
+  modified_not_in?: String[] | String;
+  modified_lt?: String;
+  modified_lte?: String;
+  modified_gt?: String;
+  modified_gte?: String;
+  modified_contains?: String;
+  modified_not_contains?: String;
+  modified_starts_with?: String;
+  modified_not_starts_with?: String;
+  modified_ends_with?: String;
+  modified_not_ends_with?: String;
+  digitalId?: Int;
+  digitalId_not?: Int;
+  digitalId_in?: Int[] | Int;
+  digitalId_not_in?: Int[] | Int;
+  digitalId_lt?: Int;
+  digitalId_lte?: Int;
+  digitalId_gt?: Int;
+  digitalId_gte?: Int;
+  title?: String;
+  title_not?: String;
+  title_in?: String[] | String;
+  title_not_in?: String[] | String;
+  title_lt?: String;
+  title_lte?: String;
+  title_gt?: String;
+  title_gte?: String;
+  title_contains?: String;
+  title_not_contains?: String;
+  title_starts_with?: String;
+  title_not_starts_with?: String;
+  title_ends_with?: String;
+  title_not_ends_with?: String;
+  issueNumber?: Int;
+  issueNumber_not?: Int;
+  issueNumber_in?: Int[] | Int;
+  issueNumber_not_in?: Int[] | Int;
+  issueNumber_lt?: Int;
+  issueNumber_lte?: Int;
+  issueNumber_gt?: Int;
+  issueNumber_gte?: Int;
+  variantDescription?: String;
+  variantDescription_not?: String;
+  variantDescription_in?: String[] | String;
+  variantDescription_not_in?: String[] | String;
+  variantDescription_lt?: String;
+  variantDescription_lte?: String;
+  variantDescription_gt?: String;
+  variantDescription_gte?: String;
+  variantDescription_contains?: String;
+  variantDescription_not_contains?: String;
+  variantDescription_starts_with?: String;
+  variantDescription_not_starts_with?: String;
+  variantDescription_ends_with?: String;
+  variantDescription_not_ends_with?: String;
+  description?: String;
+  description_not?: String;
+  description_in?: String[] | String;
+  description_not_in?: String[] | String;
+  description_lt?: String;
+  description_lte?: String;
+  description_gt?: String;
+  description_gte?: String;
+  description_contains?: String;
+  description_not_contains?: String;
+  description_starts_with?: String;
+  description_not_starts_with?: String;
+  description_ends_with?: String;
+  description_not_ends_with?: String;
+  isbn?: String;
+  isbn_not?: String;
+  isbn_in?: String[] | String;
+  isbn_not_in?: String[] | String;
+  isbn_lt?: String;
+  isbn_lte?: String;
+  isbn_gt?: String;
+  isbn_gte?: String;
+  isbn_contains?: String;
+  isbn_not_contains?: String;
+  isbn_starts_with?: String;
+  isbn_not_starts_with?: String;
+  isbn_ends_with?: String;
+  isbn_not_ends_with?: String;
+  upc?: String;
+  upc_not?: String;
+  upc_in?: String[] | String;
+  upc_not_in?: String[] | String;
+  upc_lt?: String;
+  upc_lte?: String;
+  upc_gt?: String;
+  upc_gte?: String;
+  upc_contains?: String;
+  upc_not_contains?: String;
+  upc_starts_with?: String;
+  upc_not_starts_with?: String;
+  upc_ends_with?: String;
+  upc_not_ends_with?: String;
+  diamondCode?: String;
+  diamondCode_not?: String;
+  diamondCode_in?: String[] | String;
+  diamondCode_not_in?: String[] | String;
+  diamondCode_lt?: String;
+  diamondCode_lte?: String;
+  diamondCode_gt?: String;
+  diamondCode_gte?: String;
+  diamondCode_contains?: String;
+  diamondCode_not_contains?: String;
+  diamondCode_starts_with?: String;
+  diamondCode_not_starts_with?: String;
+  diamondCode_ends_with?: String;
+  diamondCode_not_ends_with?: String;
+  ean?: String;
+  ean_not?: String;
+  ean_in?: String[] | String;
+  ean_not_in?: String[] | String;
+  ean_lt?: String;
+  ean_lte?: String;
+  ean_gt?: String;
+  ean_gte?: String;
+  ean_contains?: String;
+  ean_not_contains?: String;
+  ean_starts_with?: String;
+  ean_not_starts_with?: String;
+  ean_ends_with?: String;
+  ean_not_ends_with?: String;
+  issn?: String;
+  issn_not?: String;
+  issn_in?: String[] | String;
+  issn_not_in?: String[] | String;
+  issn_lt?: String;
+  issn_lte?: String;
+  issn_gt?: String;
+  issn_gte?: String;
+  issn_contains?: String;
+  issn_not_contains?: String;
+  issn_starts_with?: String;
+  issn_not_starts_with?: String;
+  issn_ends_with?: String;
+  issn_not_ends_with?: String;
+  format?: String;
+  format_not?: String;
+  format_in?: String[] | String;
+  format_not_in?: String[] | String;
+  format_lt?: String;
+  format_lte?: String;
+  format_gt?: String;
+  format_gte?: String;
+  format_contains?: String;
+  format_not_contains?: String;
+  format_starts_with?: String;
+  format_not_starts_with?: String;
+  format_ends_with?: String;
+  format_not_ends_with?: String;
+  AND?: ComicScalarWhereInput[] | ComicScalarWhereInput;
+  OR?: ComicScalarWhereInput[] | ComicScalarWhereInput;
+  NOT?: ComicScalarWhereInput[] | ComicScalarWhereInput;
+}
+
+export interface ComicUpdateWithWhereUniqueWithoutCharactersInput {
+  where: ComicWhereUniqueInput;
+  data: ComicUpdateWithoutCharactersDataInput;
+}
+
+export interface ComicUpdateManyWithWhereNestedInput {
+  where: ComicScalarWhereInput;
+  data: ComicUpdateManyDataInput;
+}
+
+export interface ComicUpdateManyWithoutSeriesInput {
+  create?: ComicCreateWithoutSeriesInput[] | ComicCreateWithoutSeriesInput;
+  delete?: ComicWhereUniqueInput[] | ComicWhereUniqueInput;
+  connect?: ComicWhereUniqueInput[] | ComicWhereUniqueInput;
+  set?: ComicWhereUniqueInput[] | ComicWhereUniqueInput;
+  disconnect?: ComicWhereUniqueInput[] | ComicWhereUniqueInput;
+  update?:
+    | ComicUpdateWithWhereUniqueWithoutSeriesInput[]
+    | ComicUpdateWithWhereUniqueWithoutSeriesInput;
+  upsert?:
+    | ComicUpsertWithWhereUniqueWithoutSeriesInput[]
+    | ComicUpsertWithWhereUniqueWithoutSeriesInput;
+  deleteMany?: ComicScalarWhereInput[] | ComicScalarWhereInput;
+  updateMany?:
+    | ComicUpdateManyWithWhereNestedInput[]
+    | ComicUpdateManyWithWhereNestedInput;
+}
+
+export interface ComicUpdateManyDataInput {
+  marvelId?: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  digitalId?: Int;
+  title?: String;
+  issueNumber?: Int;
+  variantDescription?: String;
+  description?: String;
+  isbn?: String;
+  upc?: String;
+  diamondCode?: String;
+  ean?: String;
+  issn?: String;
+  format?: String;
+  textObjects?: Json;
+  urls?: Json;
+  dates?: Json;
+  prices?: Json;
+  images?: Json;
+}
+
+export interface StorySubscriptionWhereInput {
+  mutation_in?: MutationType[] | MutationType;
+  updatedFields_contains?: String;
+  updatedFields_contains_every?: String[] | String;
+  updatedFields_contains_some?: String[] | String;
+  node?: StoryWhereInput;
+  AND?: StorySubscriptionWhereInput[] | StorySubscriptionWhereInput;
+  OR?: StorySubscriptionWhereInput[] | StorySubscriptionWhereInput;
+  NOT?: StorySubscriptionWhereInput[] | StorySubscriptionWhereInput;
+}
+
+export interface CreatorUpsertWithWhereUniqueWithoutStoriesInput {
+  where: CreatorWhereUniqueInput;
+  update: CreatorUpdateWithoutStoriesDataInput;
+  create: CreatorCreateWithoutStoriesInput;
+}
+
+export type CreatorWhereUniqueInput = AtLeastOne<{
+  id: ID_Input;
+  marvelId?: String;
+}>;
+
+export interface StoryUpsertWithWhereUniqueWithoutCharactersInput {
+  where: StoryWhereUniqueInput;
+  update: StoryUpdateWithoutCharactersDataInput;
+  create: StoryCreateWithoutCharactersInput;
+}
+
+export interface ComicCreateManyWithoutStoriesInput {
+  create?: ComicCreateWithoutStoriesInput[] | ComicCreateWithoutStoriesInput;
+  connect?: ComicWhereUniqueInput[] | ComicWhereUniqueInput;
+}
+
+export interface CharacterUpsertWithWhereUniqueWithoutEventsInput {
+  where: CharacterWhereUniqueInput;
+  update: CharacterUpdateWithoutEventsDataInput;
+  create: CharacterCreateWithoutEventsInput;
+}
+
+export interface StoryCreateManyWithoutComicsInput {
+  create?: StoryCreateWithoutComicsInput[] | StoryCreateWithoutComicsInput;
+  connect?: StoryWhereUniqueInput[] | StoryWhereUniqueInput;
+}
+
+export interface EventUpsertWithWhereUniqueWithoutStoriesInput {
+  where: EventWhereUniqueInput;
+  update: EventUpdateWithoutStoriesDataInput;
+  create: EventCreateWithoutStoriesInput;
+}
+
+export interface CreatorCreateManyWithoutSeriesInput {
+  create?: CreatorCreateWithoutSeriesInput[] | CreatorCreateWithoutSeriesInput;
+  connect?: CreatorWhereUniqueInput[] | CreatorWhereUniqueInput;
+}
+
+export interface StoryUpsertWithWhereUniqueWithoutComicsInput {
+  where: StoryWhereUniqueInput;
+  update: StoryUpdateWithoutComicsDataInput;
+  create: StoryCreateWithoutComicsInput;
+}
+
+export interface EventCreateOneWithoutNextInput {
+  create?: EventCreateWithoutNextInput;
+  connect?: EventWhereUniqueInput;
+}
+
+export interface ComicUpsertWithWhereUniqueWithoutEventsInput {
+  where: ComicWhereUniqueInput;
+  update: ComicUpdateWithoutEventsDataInput;
+  create: ComicCreateWithoutEventsInput;
+}
+
+export interface CharacterUpdateWithWhereUniqueWithoutComicsInput {
+  where: CharacterWhereUniqueInput;
+  data: CharacterUpdateWithoutComicsDataInput;
+}
+
+export interface EventUpsertWithWhereUniqueWithoutCharactersInput {
+  where: EventWhereUniqueInput;
+  update: EventUpdateWithoutCharactersDataInput;
+  create: EventCreateWithoutCharactersInput;
+}
+
+export type SeriesWhereUniqueInput = AtLeastOne<{
+  id: ID_Input;
+  marvelId?: String;
+}>;
+
+export interface CharacterUpsertWithWhereUniqueWithoutStoriesInput {
+  where: CharacterWhereUniqueInput;
+  update: CharacterUpdateWithoutStoriesDataInput;
+  create: CharacterCreateWithoutStoriesInput;
+}
+
+export interface StoryCreateManyWithoutEventsInput {
+  create?: StoryCreateWithoutEventsInput[] | StoryCreateWithoutEventsInput;
+  connect?: StoryWhereUniqueInput[] | StoryWhereUniqueInput;
+}
+
+export interface CreatorUpsertWithWhereUniqueWithoutComicsInput {
+  where: CreatorWhereUniqueInput;
+  update: CreatorUpdateWithoutComicsDataInput;
+  create: CreatorCreateWithoutComicsInput;
+}
+
+export interface SeriesUpsertWithWhereUniqueWithoutCreatorsInput {
+  where: SeriesWhereUniqueInput;
+  update: SeriesUpdateWithoutCreatorsDataInput;
+  create: SeriesCreateWithoutCreatorsInput;
+}
+
+export interface EventUpsertWithWhereUniqueWithoutSeriesInput {
+  where: EventWhereUniqueInput;
+  update: EventUpdateWithoutSeriesDataInput;
+  create: EventCreateWithoutSeriesInput;
+}
+
+export interface StoryUpsertWithWhereUniqueWithoutEventsInput {
+  where: StoryWhereUniqueInput;
+  update: StoryUpdateWithoutEventsDataInput;
+  create: StoryCreateWithoutEventsInput;
+}
+
+export interface CreatorCreateManyWithoutStoriesInput {
+  create?:
+    | CreatorCreateWithoutStoriesInput[]
+    | CreatorCreateWithoutStoriesInput;
+  connect?: CreatorWhereUniqueInput[] | CreatorWhereUniqueInput;
+}
+
+export interface ComicCreateManyWithoutSeriesInput {
+  create?: ComicCreateWithoutSeriesInput[] | ComicCreateWithoutSeriesInput;
+  connect?: ComicWhereUniqueInput[] | ComicWhereUniqueInput;
+}
+
+export interface StoryCreateInput {
+  marvelId: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  title?: String;
+  description?: String;
+  type?: String;
+  comics?: ComicCreateManyWithoutStoriesInput;
+  events?: EventCreateManyWithoutStoriesInput;
+  characters?: CharacterCreateManyWithoutStoriesInput;
+  creators?: CreatorCreateManyWithoutStoriesInput;
+  series?: SeriesCreateManyWithoutStoriesInput;
+  _originalIssue?: Json;
+}
+
+export interface EventUpdateWithoutComicsDataInput {
+  marvelId?: String;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  title?: String;
+  description?: String;
+  urls?: Json;
+  start?: DateTimeInput;
+  end?: DateTimeInput;
+  series?: SeriesUpdateManyWithoutEventsInput;
+  stories?: StoryUpdateManyWithoutEventsInput;
+  characters?: CharacterUpdateManyWithoutEventsInput;
+  creators?: CreatorUpdateManyWithoutEventsInput;
+  next?: EventUpdateOneWithoutPreviousInput;
+  previous?: EventUpdateOneWithoutNextInput;
+}
+
+export interface SeriesCreateOneWithoutNextInput {
+  create?: SeriesCreateWithoutNextInput;
+  connect?: SeriesWhereUniqueInput;
+}
 
 export interface NodeNode {
   id: ID_Output;
 }
 
-export interface AggregateUser {
-  count: Int;
-}
-
-export interface AggregateUserPromise
-  extends Promise<AggregateUser>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateUserSubscription
-  extends Promise<AsyncIterator<AggregateUser>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface BatchPayload {
-  count: Long;
-}
-
-export interface BatchPayloadPromise
-  extends Promise<BatchPayload>,
-    Fragmentable {
-  count: () => Promise<Long>;
-}
-
-export interface BatchPayloadSubscription
-  extends Promise<AsyncIterator<BatchPayload>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Long>>;
-}
-
-export interface UserPreviousValues {
+export interface StoryPreviousValues {
   id: ID_Output;
-  name: String;
+  marvelId: String;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  title?: String;
+  description?: String;
+  type?: String;
+  _originalIssue?: Json;
 }
 
-export interface UserPreviousValuesPromise
-  extends Promise<UserPreviousValues>,
+export interface StoryPreviousValuesPromise
+  extends Promise<StoryPreviousValues>,
     Fragmentable {
   id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
+  marvelId: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  resourceURI: () => Promise<String>;
+  thumbnail: () => Promise<String>;
+  modified: () => Promise<String>;
+  title: () => Promise<String>;
+  description: () => Promise<String>;
+  type: () => Promise<String>;
+  _originalIssue: () => Promise<Json>;
 }
 
-export interface UserPreviousValuesSubscription
-  extends Promise<AsyncIterator<UserPreviousValues>>,
+export interface StoryPreviousValuesSubscription
+  extends Promise<AsyncIterator<StoryPreviousValues>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
-}
-
-export interface UserEdge {
-  node: User;
-  cursor: String;
-}
-
-export interface UserEdgePromise extends Promise<UserEdge>, Fragmentable {
-  node: <T = UserPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface UserEdgeSubscription
-  extends Promise<AsyncIterator<UserEdge>>,
-    Fragmentable {
-  node: <T = UserSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface UserSubscriptionPayload {
-  mutation: MutationType;
-  node: User;
-  updatedFields: String[];
-  previousValues: UserPreviousValues;
-}
-
-export interface UserSubscriptionPayloadPromise
-  extends Promise<UserSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = UserPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = UserPreviousValuesPromise>() => T;
-}
-
-export interface UserSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<UserSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = UserSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = UserPreviousValuesSubscription>() => T;
-}
-
-export interface User {
-  id: ID_Output;
-  name: String;
-}
-
-export interface UserPromise extends Promise<User>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-}
-
-export interface UserSubscription
-  extends Promise<AsyncIterator<User>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
-}
-
-export interface UserConnection {
-  pageInfo: PageInfo;
-  edges: UserEdge[];
-}
-
-export interface UserConnectionPromise
-  extends Promise<UserConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<UserEdge>>() => T;
-  aggregate: <T = AggregateUserPromise>() => T;
-}
-
-export interface UserConnectionSubscription
-  extends Promise<AsyncIterator<UserConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<UserEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateUserSubscription>() => T;
+  marvelId: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  resourceURI: () => Promise<AsyncIterator<String>>;
+  thumbnail: () => Promise<AsyncIterator<String>>;
+  modified: () => Promise<AsyncIterator<String>>;
+  title: () => Promise<AsyncIterator<String>>;
+  description: () => Promise<AsyncIterator<String>>;
+  type: () => Promise<AsyncIterator<String>>;
+  _originalIssue: () => Promise<AsyncIterator<Json>>;
 }
 
 export interface PageInfo {
@@ -334,18 +5319,1702 @@ export interface PageInfoSubscription
   endCursor: () => Promise<AsyncIterator<String>>;
 }
 
+export interface Comic {
+  id: ID_Output;
+  marvelId: String;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  digitalId?: Int;
+  title?: String;
+  issueNumber?: Int;
+  variantDescription?: String;
+  description?: String;
+  isbn?: String;
+  upc?: String;
+  diamondCode?: String;
+  ean?: String;
+  issn?: String;
+  format?: String;
+  textObjects?: Json;
+  urls?: Json;
+  dates?: Json;
+  prices?: Json;
+  images?: Json;
+}
+
+export interface ComicPromise extends Promise<Comic>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  marvelId: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  resourceURI: () => Promise<String>;
+  thumbnail: () => Promise<String>;
+  modified: () => Promise<String>;
+  digitalId: () => Promise<Int>;
+  title: () => Promise<String>;
+  issueNumber: () => Promise<Int>;
+  variantDescription: () => Promise<String>;
+  description: () => Promise<String>;
+  isbn: () => Promise<String>;
+  upc: () => Promise<String>;
+  diamondCode: () => Promise<String>;
+  ean: () => Promise<String>;
+  issn: () => Promise<String>;
+  format: () => Promise<String>;
+  textObjects: () => Promise<Json>;
+  urls: () => Promise<Json>;
+  dates: () => Promise<Json>;
+  prices: () => Promise<Json>;
+  images: () => Promise<Json>;
+  characters: <T = FragmentableArray<Character>>(
+    args?: {
+      where?: CharacterWhereInput;
+      orderBy?: CharacterOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  events: <T = FragmentableArray<Event>>(
+    args?: {
+      where?: EventWhereInput;
+      orderBy?: EventOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  stories: <T = FragmentableArray<Story>>(
+    args?: {
+      where?: StoryWhereInput;
+      orderBy?: StoryOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  creators: <T = FragmentableArray<Creator>>(
+    args?: {
+      where?: CreatorWhereInput;
+      orderBy?: CreatorOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  series: <T = SeriesPromise>() => T;
+}
+
+export interface ComicSubscription
+  extends Promise<AsyncIterator<Comic>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  marvelId: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  resourceURI: () => Promise<AsyncIterator<String>>;
+  thumbnail: () => Promise<AsyncIterator<String>>;
+  modified: () => Promise<AsyncIterator<String>>;
+  digitalId: () => Promise<AsyncIterator<Int>>;
+  title: () => Promise<AsyncIterator<String>>;
+  issueNumber: () => Promise<AsyncIterator<Int>>;
+  variantDescription: () => Promise<AsyncIterator<String>>;
+  description: () => Promise<AsyncIterator<String>>;
+  isbn: () => Promise<AsyncIterator<String>>;
+  upc: () => Promise<AsyncIterator<String>>;
+  diamondCode: () => Promise<AsyncIterator<String>>;
+  ean: () => Promise<AsyncIterator<String>>;
+  issn: () => Promise<AsyncIterator<String>>;
+  format: () => Promise<AsyncIterator<String>>;
+  textObjects: () => Promise<AsyncIterator<Json>>;
+  urls: () => Promise<AsyncIterator<Json>>;
+  dates: () => Promise<AsyncIterator<Json>>;
+  prices: () => Promise<AsyncIterator<Json>>;
+  images: () => Promise<AsyncIterator<Json>>;
+  characters: <T = Promise<AsyncIterator<CharacterSubscription>>>(
+    args?: {
+      where?: CharacterWhereInput;
+      orderBy?: CharacterOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  events: <T = Promise<AsyncIterator<EventSubscription>>>(
+    args?: {
+      where?: EventWhereInput;
+      orderBy?: EventOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  stories: <T = Promise<AsyncIterator<StorySubscription>>>(
+    args?: {
+      where?: StoryWhereInput;
+      orderBy?: StoryOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  creators: <T = Promise<AsyncIterator<CreatorSubscription>>>(
+    args?: {
+      where?: CreatorWhereInput;
+      orderBy?: CreatorOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  series: <T = SeriesSubscription>() => T;
+}
+
+export interface CharacterConnection {
+  pageInfo: PageInfo;
+  edges: CharacterEdge[];
+}
+
+export interface CharacterConnectionPromise
+  extends Promise<CharacterConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<CharacterEdge>>() => T;
+  aggregate: <T = AggregateCharacterPromise>() => T;
+}
+
+export interface CharacterConnectionSubscription
+  extends Promise<AsyncIterator<CharacterConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<CharacterEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateCharacterSubscription>() => T;
+}
+
+export interface AggregateStory {
+  count: Int;
+}
+
+export interface AggregateStoryPromise
+  extends Promise<AggregateStory>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateStorySubscription
+  extends Promise<AsyncIterator<AggregateStory>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface Creator {
+  id: ID_Output;
+  marvelId: String;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  firstName?: String;
+  middleName?: String;
+  lastName?: String;
+  suffix?: String;
+  fullName?: String;
+  urls?: Json;
+}
+
+export interface CreatorPromise extends Promise<Creator>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  marvelId: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  resourceURI: () => Promise<String>;
+  thumbnail: () => Promise<String>;
+  modified: () => Promise<String>;
+  firstName: () => Promise<String>;
+  middleName: () => Promise<String>;
+  lastName: () => Promise<String>;
+  suffix: () => Promise<String>;
+  fullName: () => Promise<String>;
+  urls: () => Promise<Json>;
+  series: <T = FragmentableArray<Series>>(
+    args?: {
+      where?: SeriesWhereInput;
+      orderBy?: SeriesOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  stories: <T = FragmentableArray<Story>>(
+    args?: {
+      where?: StoryWhereInput;
+      orderBy?: StoryOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  comics: <T = FragmentableArray<Comic>>(
+    args?: {
+      where?: ComicWhereInput;
+      orderBy?: ComicOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  events: <T = FragmentableArray<Event>>(
+    args?: {
+      where?: EventWhereInput;
+      orderBy?: EventOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+}
+
+export interface CreatorSubscription
+  extends Promise<AsyncIterator<Creator>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  marvelId: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  resourceURI: () => Promise<AsyncIterator<String>>;
+  thumbnail: () => Promise<AsyncIterator<String>>;
+  modified: () => Promise<AsyncIterator<String>>;
+  firstName: () => Promise<AsyncIterator<String>>;
+  middleName: () => Promise<AsyncIterator<String>>;
+  lastName: () => Promise<AsyncIterator<String>>;
+  suffix: () => Promise<AsyncIterator<String>>;
+  fullName: () => Promise<AsyncIterator<String>>;
+  urls: () => Promise<AsyncIterator<Json>>;
+  series: <T = Promise<AsyncIterator<SeriesSubscription>>>(
+    args?: {
+      where?: SeriesWhereInput;
+      orderBy?: SeriesOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  stories: <T = Promise<AsyncIterator<StorySubscription>>>(
+    args?: {
+      where?: StoryWhereInput;
+      orderBy?: StoryOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  comics: <T = Promise<AsyncIterator<ComicSubscription>>>(
+    args?: {
+      where?: ComicWhereInput;
+      orderBy?: ComicOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  events: <T = Promise<AsyncIterator<EventSubscription>>>(
+    args?: {
+      where?: EventWhereInput;
+      orderBy?: EventOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+}
+
+export interface StoryConnection {
+  pageInfo: PageInfo;
+  edges: StoryEdge[];
+}
+
+export interface StoryConnectionPromise
+  extends Promise<StoryConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<StoryEdge>>() => T;
+  aggregate: <T = AggregateStoryPromise>() => T;
+}
+
+export interface StoryConnectionSubscription
+  extends Promise<AsyncIterator<StoryConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<StoryEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateStorySubscription>() => T;
+}
+
+export interface Character {
+  id: ID_Output;
+  marvelId: String;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  name?: String;
+  description?: String;
+  urls?: Json;
+}
+
+export interface CharacterPromise extends Promise<Character>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  marvelId: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  resourceURI: () => Promise<String>;
+  thumbnail: () => Promise<String>;
+  modified: () => Promise<String>;
+  name: () => Promise<String>;
+  description: () => Promise<String>;
+  urls: () => Promise<Json>;
+  comics: <T = FragmentableArray<Comic>>(
+    args?: {
+      where?: ComicWhereInput;
+      orderBy?: ComicOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  series: <T = FragmentableArray<Series>>(
+    args?: {
+      where?: SeriesWhereInput;
+      orderBy?: SeriesOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  events: <T = FragmentableArray<Event>>(
+    args?: {
+      where?: EventWhereInput;
+      orderBy?: EventOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  stories: <T = FragmentableArray<Story>>(
+    args?: {
+      where?: StoryWhereInput;
+      orderBy?: StoryOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+}
+
+export interface CharacterSubscription
+  extends Promise<AsyncIterator<Character>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  marvelId: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  resourceURI: () => Promise<AsyncIterator<String>>;
+  thumbnail: () => Promise<AsyncIterator<String>>;
+  modified: () => Promise<AsyncIterator<String>>;
+  name: () => Promise<AsyncIterator<String>>;
+  description: () => Promise<AsyncIterator<String>>;
+  urls: () => Promise<AsyncIterator<Json>>;
+  comics: <T = Promise<AsyncIterator<ComicSubscription>>>(
+    args?: {
+      where?: ComicWhereInput;
+      orderBy?: ComicOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  series: <T = Promise<AsyncIterator<SeriesSubscription>>>(
+    args?: {
+      where?: SeriesWhereInput;
+      orderBy?: SeriesOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  events: <T = Promise<AsyncIterator<EventSubscription>>>(
+    args?: {
+      where?: EventWhereInput;
+      orderBy?: EventOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  stories: <T = Promise<AsyncIterator<StorySubscription>>>(
+    args?: {
+      where?: StoryWhereInput;
+      orderBy?: StoryOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+}
+
+export interface SeriesEdge {
+  node: Series;
+  cursor: String;
+}
+
+export interface SeriesEdgePromise extends Promise<SeriesEdge>, Fragmentable {
+  node: <T = SeriesPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface SeriesEdgeSubscription
+  extends Promise<AsyncIterator<SeriesEdge>>,
+    Fragmentable {
+  node: <T = SeriesSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface StoryEdge {
+  node: Story;
+  cursor: String;
+}
+
+export interface StoryEdgePromise extends Promise<StoryEdge>, Fragmentable {
+  node: <T = StoryPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface StoryEdgeSubscription
+  extends Promise<AsyncIterator<StoryEdge>>,
+    Fragmentable {
+  node: <T = StorySubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface EventPreviousValues {
+  id: ID_Output;
+  marvelId: String;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  title?: String;
+  description?: String;
+  urls?: Json;
+  start?: DateTimeOutput;
+  end?: DateTimeOutput;
+}
+
+export interface EventPreviousValuesPromise
+  extends Promise<EventPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  marvelId: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  resourceURI: () => Promise<String>;
+  thumbnail: () => Promise<String>;
+  modified: () => Promise<String>;
+  title: () => Promise<String>;
+  description: () => Promise<String>;
+  urls: () => Promise<Json>;
+  start: () => Promise<DateTimeOutput>;
+  end: () => Promise<DateTimeOutput>;
+}
+
+export interface EventPreviousValuesSubscription
+  extends Promise<AsyncIterator<EventPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  marvelId: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  resourceURI: () => Promise<AsyncIterator<String>>;
+  thumbnail: () => Promise<AsyncIterator<String>>;
+  modified: () => Promise<AsyncIterator<String>>;
+  title: () => Promise<AsyncIterator<String>>;
+  description: () => Promise<AsyncIterator<String>>;
+  urls: () => Promise<AsyncIterator<Json>>;
+  start: () => Promise<AsyncIterator<DateTimeOutput>>;
+  end: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface AggregateSeries {
+  count: Int;
+}
+
+export interface AggregateSeriesPromise
+  extends Promise<AggregateSeries>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateSeriesSubscription
+  extends Promise<AsyncIterator<AggregateSeries>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface BatchPayload {
+  count: Long;
+}
+
+export interface BatchPayloadPromise
+  extends Promise<BatchPayload>,
+    Fragmentable {
+  count: () => Promise<Long>;
+}
+
+export interface BatchPayloadSubscription
+  extends Promise<AsyncIterator<BatchPayload>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Long>>;
+}
+
+export interface SeriesConnection {
+  pageInfo: PageInfo;
+  edges: SeriesEdge[];
+}
+
+export interface SeriesConnectionPromise
+  extends Promise<SeriesConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<SeriesEdge>>() => T;
+  aggregate: <T = AggregateSeriesPromise>() => T;
+}
+
+export interface SeriesConnectionSubscription
+  extends Promise<AsyncIterator<SeriesConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<SeriesEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateSeriesSubscription>() => T;
+}
+
+export interface EventEdge {
+  node: Event;
+  cursor: String;
+}
+
+export interface EventEdgePromise extends Promise<EventEdge>, Fragmentable {
+  node: <T = EventPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface EventEdgeSubscription
+  extends Promise<AsyncIterator<EventEdge>>,
+    Fragmentable {
+  node: <T = EventSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface SeriesPreviousValues {
+  id: ID_Output;
+  marvelId: String;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  title?: String;
+  description?: String;
+  urls?: Json;
+  startYear?: Int;
+  endYear?: Int;
+  rating?: String;
+  type?: String;
+}
+
+export interface SeriesPreviousValuesPromise
+  extends Promise<SeriesPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  marvelId: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  resourceURI: () => Promise<String>;
+  thumbnail: () => Promise<String>;
+  modified: () => Promise<String>;
+  title: () => Promise<String>;
+  description: () => Promise<String>;
+  urls: () => Promise<Json>;
+  startYear: () => Promise<Int>;
+  endYear: () => Promise<Int>;
+  rating: () => Promise<String>;
+  type: () => Promise<String>;
+}
+
+export interface SeriesPreviousValuesSubscription
+  extends Promise<AsyncIterator<SeriesPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  marvelId: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  resourceURI: () => Promise<AsyncIterator<String>>;
+  thumbnail: () => Promise<AsyncIterator<String>>;
+  modified: () => Promise<AsyncIterator<String>>;
+  title: () => Promise<AsyncIterator<String>>;
+  description: () => Promise<AsyncIterator<String>>;
+  urls: () => Promise<AsyncIterator<Json>>;
+  startYear: () => Promise<AsyncIterator<Int>>;
+  endYear: () => Promise<AsyncIterator<Int>>;
+  rating: () => Promise<AsyncIterator<String>>;
+  type: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateCreator {
+  count: Int;
+}
+
+export interface AggregateCreatorPromise
+  extends Promise<AggregateCreator>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateCreatorSubscription
+  extends Promise<AsyncIterator<AggregateCreator>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface CharacterSubscriptionPayload {
+  mutation: MutationType;
+  node: Character;
+  updatedFields: String[];
+  previousValues: CharacterPreviousValues;
+}
+
+export interface CharacterSubscriptionPayloadPromise
+  extends Promise<CharacterSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = CharacterPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = CharacterPreviousValuesPromise>() => T;
+}
+
+export interface CharacterSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<CharacterSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = CharacterSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = CharacterPreviousValuesSubscription>() => T;
+}
+
+export interface CreatorConnection {
+  pageInfo: PageInfo;
+  edges: CreatorEdge[];
+}
+
+export interface CreatorConnectionPromise
+  extends Promise<CreatorConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<CreatorEdge>>() => T;
+  aggregate: <T = AggregateCreatorPromise>() => T;
+}
+
+export interface CreatorConnectionSubscription
+  extends Promise<AsyncIterator<CreatorConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<CreatorEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateCreatorSubscription>() => T;
+}
+
+export interface CharacterPreviousValues {
+  id: ID_Output;
+  marvelId: String;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  name?: String;
+  description?: String;
+  urls?: Json;
+}
+
+export interface CharacterPreviousValuesPromise
+  extends Promise<CharacterPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  marvelId: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  resourceURI: () => Promise<String>;
+  thumbnail: () => Promise<String>;
+  modified: () => Promise<String>;
+  name: () => Promise<String>;
+  description: () => Promise<String>;
+  urls: () => Promise<Json>;
+}
+
+export interface CharacterPreviousValuesSubscription
+  extends Promise<AsyncIterator<CharacterPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  marvelId: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  resourceURI: () => Promise<AsyncIterator<String>>;
+  thumbnail: () => Promise<AsyncIterator<String>>;
+  modified: () => Promise<AsyncIterator<String>>;
+  name: () => Promise<AsyncIterator<String>>;
+  description: () => Promise<AsyncIterator<String>>;
+  urls: () => Promise<AsyncIterator<Json>>;
+}
+
+export interface ComicEdge {
+  node: Comic;
+  cursor: String;
+}
+
+export interface ComicEdgePromise extends Promise<ComicEdge>, Fragmentable {
+  node: <T = ComicPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface ComicEdgeSubscription
+  extends Promise<AsyncIterator<ComicEdge>>,
+    Fragmentable {
+  node: <T = ComicSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface Story {
+  id: ID_Output;
+  marvelId: String;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  title?: String;
+  description?: String;
+  type?: String;
+  _originalIssue?: Json;
+}
+
+export interface StoryPromise extends Promise<Story>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  marvelId: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  resourceURI: () => Promise<String>;
+  thumbnail: () => Promise<String>;
+  modified: () => Promise<String>;
+  title: () => Promise<String>;
+  description: () => Promise<String>;
+  type: () => Promise<String>;
+  comics: <T = FragmentableArray<Comic>>(
+    args?: {
+      where?: ComicWhereInput;
+      orderBy?: ComicOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  events: <T = FragmentableArray<Event>>(
+    args?: {
+      where?: EventWhereInput;
+      orderBy?: EventOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  characters: <T = FragmentableArray<Character>>(
+    args?: {
+      where?: CharacterWhereInput;
+      orderBy?: CharacterOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  creators: <T = FragmentableArray<Creator>>(
+    args?: {
+      where?: CreatorWhereInput;
+      orderBy?: CreatorOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  series: <T = FragmentableArray<Series>>(
+    args?: {
+      where?: SeriesWhereInput;
+      orderBy?: SeriesOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  _originalIssue: () => Promise<Json>;
+}
+
+export interface StorySubscription
+  extends Promise<AsyncIterator<Story>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  marvelId: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  resourceURI: () => Promise<AsyncIterator<String>>;
+  thumbnail: () => Promise<AsyncIterator<String>>;
+  modified: () => Promise<AsyncIterator<String>>;
+  title: () => Promise<AsyncIterator<String>>;
+  description: () => Promise<AsyncIterator<String>>;
+  type: () => Promise<AsyncIterator<String>>;
+  comics: <T = Promise<AsyncIterator<ComicSubscription>>>(
+    args?: {
+      where?: ComicWhereInput;
+      orderBy?: ComicOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  events: <T = Promise<AsyncIterator<EventSubscription>>>(
+    args?: {
+      where?: EventWhereInput;
+      orderBy?: EventOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  characters: <T = Promise<AsyncIterator<CharacterSubscription>>>(
+    args?: {
+      where?: CharacterWhereInput;
+      orderBy?: CharacterOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  creators: <T = Promise<AsyncIterator<CreatorSubscription>>>(
+    args?: {
+      where?: CreatorWhereInput;
+      orderBy?: CreatorOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  series: <T = Promise<AsyncIterator<SeriesSubscription>>>(
+    args?: {
+      where?: SeriesWhereInput;
+      orderBy?: SeriesOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  _originalIssue: () => Promise<AsyncIterator<Json>>;
+}
+
+export interface AggregateCharacter {
+  count: Int;
+}
+
+export interface AggregateCharacterPromise
+  extends Promise<AggregateCharacter>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateCharacterSubscription
+  extends Promise<AsyncIterator<AggregateCharacter>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface ComicSubscriptionPayload {
+  mutation: MutationType;
+  node: Comic;
+  updatedFields: String[];
+  previousValues: ComicPreviousValues;
+}
+
+export interface ComicSubscriptionPayloadPromise
+  extends Promise<ComicSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = ComicPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = ComicPreviousValuesPromise>() => T;
+}
+
+export interface ComicSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<ComicSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = ComicSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = ComicPreviousValuesSubscription>() => T;
+}
+
+export interface StorySubscriptionPayload {
+  mutation: MutationType;
+  node: Story;
+  updatedFields: String[];
+  previousValues: StoryPreviousValues;
+}
+
+export interface StorySubscriptionPayloadPromise
+  extends Promise<StorySubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = StoryPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = StoryPreviousValuesPromise>() => T;
+}
+
+export interface StorySubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<StorySubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = StorySubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = StoryPreviousValuesSubscription>() => T;
+}
+
+export interface ComicPreviousValues {
+  id: ID_Output;
+  marvelId: String;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  digitalId?: Int;
+  title?: String;
+  issueNumber?: Int;
+  variantDescription?: String;
+  description?: String;
+  isbn?: String;
+  upc?: String;
+  diamondCode?: String;
+  ean?: String;
+  issn?: String;
+  format?: String;
+  textObjects?: Json;
+  urls?: Json;
+  dates?: Json;
+  prices?: Json;
+  images?: Json;
+}
+
+export interface ComicPreviousValuesPromise
+  extends Promise<ComicPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  marvelId: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  resourceURI: () => Promise<String>;
+  thumbnail: () => Promise<String>;
+  modified: () => Promise<String>;
+  digitalId: () => Promise<Int>;
+  title: () => Promise<String>;
+  issueNumber: () => Promise<Int>;
+  variantDescription: () => Promise<String>;
+  description: () => Promise<String>;
+  isbn: () => Promise<String>;
+  upc: () => Promise<String>;
+  diamondCode: () => Promise<String>;
+  ean: () => Promise<String>;
+  issn: () => Promise<String>;
+  format: () => Promise<String>;
+  textObjects: () => Promise<Json>;
+  urls: () => Promise<Json>;
+  dates: () => Promise<Json>;
+  prices: () => Promise<Json>;
+  images: () => Promise<Json>;
+}
+
+export interface ComicPreviousValuesSubscription
+  extends Promise<AsyncIterator<ComicPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  marvelId: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  resourceURI: () => Promise<AsyncIterator<String>>;
+  thumbnail: () => Promise<AsyncIterator<String>>;
+  modified: () => Promise<AsyncIterator<String>>;
+  digitalId: () => Promise<AsyncIterator<Int>>;
+  title: () => Promise<AsyncIterator<String>>;
+  issueNumber: () => Promise<AsyncIterator<Int>>;
+  variantDescription: () => Promise<AsyncIterator<String>>;
+  description: () => Promise<AsyncIterator<String>>;
+  isbn: () => Promise<AsyncIterator<String>>;
+  upc: () => Promise<AsyncIterator<String>>;
+  diamondCode: () => Promise<AsyncIterator<String>>;
+  ean: () => Promise<AsyncIterator<String>>;
+  issn: () => Promise<AsyncIterator<String>>;
+  format: () => Promise<AsyncIterator<String>>;
+  textObjects: () => Promise<AsyncIterator<Json>>;
+  urls: () => Promise<AsyncIterator<Json>>;
+  dates: () => Promise<AsyncIterator<Json>>;
+  prices: () => Promise<AsyncIterator<Json>>;
+  images: () => Promise<AsyncIterator<Json>>;
+}
+
+export interface AggregateEvent {
+  count: Int;
+}
+
+export interface AggregateEventPromise
+  extends Promise<AggregateEvent>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateEventSubscription
+  extends Promise<AsyncIterator<AggregateEvent>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface SeriesSubscriptionPayload {
+  mutation: MutationType;
+  node: Series;
+  updatedFields: String[];
+  previousValues: SeriesPreviousValues;
+}
+
+export interface SeriesSubscriptionPayloadPromise
+  extends Promise<SeriesSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = SeriesPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = SeriesPreviousValuesPromise>() => T;
+}
+
+export interface SeriesSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<SeriesSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = SeriesSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = SeriesPreviousValuesSubscription>() => T;
+}
+
+export interface CreatorEdge {
+  node: Creator;
+  cursor: String;
+}
+
+export interface CreatorEdgePromise extends Promise<CreatorEdge>, Fragmentable {
+  node: <T = CreatorPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface CreatorEdgeSubscription
+  extends Promise<AsyncIterator<CreatorEdge>>,
+    Fragmentable {
+  node: <T = CreatorSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface ComicConnection {
+  pageInfo: PageInfo;
+  edges: ComicEdge[];
+}
+
+export interface ComicConnectionPromise
+  extends Promise<ComicConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<ComicEdge>>() => T;
+  aggregate: <T = AggregateComicPromise>() => T;
+}
+
+export interface ComicConnectionSubscription
+  extends Promise<AsyncIterator<ComicConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<ComicEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateComicSubscription>() => T;
+}
+
+export interface EventSubscriptionPayload {
+  mutation: MutationType;
+  node: Event;
+  updatedFields: String[];
+  previousValues: EventPreviousValues;
+}
+
+export interface EventSubscriptionPayloadPromise
+  extends Promise<EventSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = EventPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = EventPreviousValuesPromise>() => T;
+}
+
+export interface EventSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<EventSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = EventSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = EventPreviousValuesSubscription>() => T;
+}
+
+export interface Series {
+  id: ID_Output;
+  marvelId: String;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  title?: String;
+  description?: String;
+  urls?: Json;
+  startYear?: Int;
+  endYear?: Int;
+  rating?: String;
+  type?: String;
+}
+
+export interface SeriesPromise extends Promise<Series>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  marvelId: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  resourceURI: () => Promise<String>;
+  thumbnail: () => Promise<String>;
+  modified: () => Promise<String>;
+  title: () => Promise<String>;
+  description: () => Promise<String>;
+  urls: () => Promise<Json>;
+  startYear: () => Promise<Int>;
+  endYear: () => Promise<Int>;
+  rating: () => Promise<String>;
+  type: () => Promise<String>;
+  comics: <T = FragmentableArray<Comic>>(
+    args?: {
+      where?: ComicWhereInput;
+      orderBy?: ComicOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  stories: <T = FragmentableArray<Story>>(
+    args?: {
+      where?: StoryWhereInput;
+      orderBy?: StoryOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  events: <T = FragmentableArray<Event>>(
+    args?: {
+      where?: EventWhereInput;
+      orderBy?: EventOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  characters: <T = FragmentableArray<Character>>(
+    args?: {
+      where?: CharacterWhereInput;
+      orderBy?: CharacterOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  creators: <T = FragmentableArray<Creator>>(
+    args?: {
+      where?: CreatorWhereInput;
+      orderBy?: CreatorOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  next: <T = SeriesPromise>() => T;
+  previous: <T = SeriesPromise>() => T;
+}
+
+export interface SeriesSubscription
+  extends Promise<AsyncIterator<Series>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  marvelId: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  resourceURI: () => Promise<AsyncIterator<String>>;
+  thumbnail: () => Promise<AsyncIterator<String>>;
+  modified: () => Promise<AsyncIterator<String>>;
+  title: () => Promise<AsyncIterator<String>>;
+  description: () => Promise<AsyncIterator<String>>;
+  urls: () => Promise<AsyncIterator<Json>>;
+  startYear: () => Promise<AsyncIterator<Int>>;
+  endYear: () => Promise<AsyncIterator<Int>>;
+  rating: () => Promise<AsyncIterator<String>>;
+  type: () => Promise<AsyncIterator<String>>;
+  comics: <T = Promise<AsyncIterator<ComicSubscription>>>(
+    args?: {
+      where?: ComicWhereInput;
+      orderBy?: ComicOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  stories: <T = Promise<AsyncIterator<StorySubscription>>>(
+    args?: {
+      where?: StoryWhereInput;
+      orderBy?: StoryOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  events: <T = Promise<AsyncIterator<EventSubscription>>>(
+    args?: {
+      where?: EventWhereInput;
+      orderBy?: EventOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  characters: <T = Promise<AsyncIterator<CharacterSubscription>>>(
+    args?: {
+      where?: CharacterWhereInput;
+      orderBy?: CharacterOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  creators: <T = Promise<AsyncIterator<CreatorSubscription>>>(
+    args?: {
+      where?: CreatorWhereInput;
+      orderBy?: CreatorOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  next: <T = SeriesSubscription>() => T;
+  previous: <T = SeriesSubscription>() => T;
+}
+
+export interface CreatorPreviousValues {
+  id: ID_Output;
+  marvelId: String;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  firstName?: String;
+  middleName?: String;
+  lastName?: String;
+  suffix?: String;
+  fullName?: String;
+  urls?: Json;
+}
+
+export interface CreatorPreviousValuesPromise
+  extends Promise<CreatorPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  marvelId: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  resourceURI: () => Promise<String>;
+  thumbnail: () => Promise<String>;
+  modified: () => Promise<String>;
+  firstName: () => Promise<String>;
+  middleName: () => Promise<String>;
+  lastName: () => Promise<String>;
+  suffix: () => Promise<String>;
+  fullName: () => Promise<String>;
+  urls: () => Promise<Json>;
+}
+
+export interface CreatorPreviousValuesSubscription
+  extends Promise<AsyncIterator<CreatorPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  marvelId: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  resourceURI: () => Promise<AsyncIterator<String>>;
+  thumbnail: () => Promise<AsyncIterator<String>>;
+  modified: () => Promise<AsyncIterator<String>>;
+  firstName: () => Promise<AsyncIterator<String>>;
+  middleName: () => Promise<AsyncIterator<String>>;
+  lastName: () => Promise<AsyncIterator<String>>;
+  suffix: () => Promise<AsyncIterator<String>>;
+  fullName: () => Promise<AsyncIterator<String>>;
+  urls: () => Promise<AsyncIterator<Json>>;
+}
+
+export interface CreatorSubscriptionPayload {
+  mutation: MutationType;
+  node: Creator;
+  updatedFields: String[];
+  previousValues: CreatorPreviousValues;
+}
+
+export interface CreatorSubscriptionPayloadPromise
+  extends Promise<CreatorSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = CreatorPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = CreatorPreviousValuesPromise>() => T;
+}
+
+export interface CreatorSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<CreatorSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = CreatorSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = CreatorPreviousValuesSubscription>() => T;
+}
+
+export interface CharacterEdge {
+  node: Character;
+  cursor: String;
+}
+
+export interface CharacterEdgePromise
+  extends Promise<CharacterEdge>,
+    Fragmentable {
+  node: <T = CharacterPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface CharacterEdgeSubscription
+  extends Promise<AsyncIterator<CharacterEdge>>,
+    Fragmentable {
+  node: <T = CharacterSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateComic {
+  count: Int;
+}
+
+export interface AggregateComicPromise
+  extends Promise<AggregateComic>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateComicSubscription
+  extends Promise<AsyncIterator<AggregateComic>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface EventConnection {
+  pageInfo: PageInfo;
+  edges: EventEdge[];
+}
+
+export interface EventConnectionPromise
+  extends Promise<EventConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<EventEdge>>() => T;
+  aggregate: <T = AggregateEventPromise>() => T;
+}
+
+export interface EventConnectionSubscription
+  extends Promise<AsyncIterator<EventConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<EventEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateEventSubscription>() => T;
+}
+
+export interface Event {
+  id: ID_Output;
+  marvelId: String;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+  resourceURI?: String;
+  thumbnail?: String;
+  modified?: String;
+  title?: String;
+  description?: String;
+  urls?: Json;
+  start?: DateTimeOutput;
+  end?: DateTimeOutput;
+}
+
+export interface EventPromise extends Promise<Event>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  marvelId: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  resourceURI: () => Promise<String>;
+  thumbnail: () => Promise<String>;
+  modified: () => Promise<String>;
+  title: () => Promise<String>;
+  description: () => Promise<String>;
+  urls: () => Promise<Json>;
+  start: () => Promise<DateTimeOutput>;
+  end: () => Promise<DateTimeOutput>;
+  series: <T = FragmentableArray<Series>>(
+    args?: {
+      where?: SeriesWhereInput;
+      orderBy?: SeriesOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  stories: <T = FragmentableArray<Story>>(
+    args?: {
+      where?: StoryWhereInput;
+      orderBy?: StoryOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  comics: <T = FragmentableArray<Comic>>(
+    args?: {
+      where?: ComicWhereInput;
+      orderBy?: ComicOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  characters: <T = FragmentableArray<Character>>(
+    args?: {
+      where?: CharacterWhereInput;
+      orderBy?: CharacterOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  creators: <T = FragmentableArray<Creator>>(
+    args?: {
+      where?: CreatorWhereInput;
+      orderBy?: CreatorOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  next: <T = EventPromise>() => T;
+  previous: <T = EventPromise>() => T;
+}
+
+export interface EventSubscription
+  extends Promise<AsyncIterator<Event>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  marvelId: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  resourceURI: () => Promise<AsyncIterator<String>>;
+  thumbnail: () => Promise<AsyncIterator<String>>;
+  modified: () => Promise<AsyncIterator<String>>;
+  title: () => Promise<AsyncIterator<String>>;
+  description: () => Promise<AsyncIterator<String>>;
+  urls: () => Promise<AsyncIterator<Json>>;
+  start: () => Promise<AsyncIterator<DateTimeOutput>>;
+  end: () => Promise<AsyncIterator<DateTimeOutput>>;
+  series: <T = Promise<AsyncIterator<SeriesSubscription>>>(
+    args?: {
+      where?: SeriesWhereInput;
+      orderBy?: SeriesOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  stories: <T = Promise<AsyncIterator<StorySubscription>>>(
+    args?: {
+      where?: StoryWhereInput;
+      orderBy?: StoryOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  comics: <T = Promise<AsyncIterator<ComicSubscription>>>(
+    args?: {
+      where?: ComicWhereInput;
+      orderBy?: ComicOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  characters: <T = Promise<AsyncIterator<CharacterSubscription>>>(
+    args?: {
+      where?: CharacterWhereInput;
+      orderBy?: CharacterOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  creators: <T = Promise<AsyncIterator<CreatorSubscription>>>(
+    args?: {
+      where?: CreatorWhereInput;
+      orderBy?: CreatorOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  next: <T = EventSubscription>() => T;
+  previous: <T = EventSubscription>() => T;
+}
+
 /*
 The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.
 */
 export type String = string;
-
-export type Long = string;
-
-/*
-The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `"4"`) or integer (such as `4`) input value will be accepted as an ID.
-*/
-export type ID_Input = string | number;
-export type ID_Output = string;
 
 /*
 The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1. 
@@ -357,13 +7026,53 @@ The `Boolean` scalar type represents `true` or `false`.
 */
 export type Boolean = boolean;
 
+/*
+The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `"4"`) or integer (such as `4`) input value will be accepted as an ID.
+*/
+export type ID_Input = string | number;
+export type ID_Output = string;
+
+export type Long = string;
+
+/*
+DateTime scalar input type, allowing Date
+*/
+export type DateTimeInput = Date | string;
+
+/*
+DateTime scalar output type, which is always a string
+*/
+export type DateTimeOutput = string;
+
+export type Json = any;
+
 /**
  * Model Metadata
  */
 
 export const models: Model[] = [
   {
-    name: "User",
+    name: "Character",
+    embedded: false
+  },
+  {
+    name: "Comic",
+    embedded: false
+  },
+  {
+    name: "Creator",
+    embedded: false
+  },
+  {
+    name: "Event",
+    embedded: false
+  },
+  {
+    name: "Series",
+    embedded: false
+  },
+  {
+    name: "Story",
     embedded: false
   }
 ];

@@ -2,7 +2,27 @@
   // Please don't change this file manually but run `prisma generate` to update it.
   // For more information, please read the docs: https://www.prisma.io/docs/prisma-client/
 
-export const typeDefs = /* GraphQL */ `type AggregateUser {
+export const typeDefs = /* GraphQL */ `type AggregateCharacter {
+  count: Int!
+}
+
+type AggregateComic {
+  count: Int!
+}
+
+type AggregateCreator {
+  count: Int!
+}
+
+type AggregateEvent {
+  count: Int!
+}
+
+type AggregateSeries {
+  count: Int!
+}
+
+type AggregateStory {
   count: Int!
 }
 
@@ -10,15 +30,3419 @@ type BatchPayload {
   count: Long!
 }
 
+type Character {
+  id: ID!
+  marvelId: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  name: String
+  description: String
+  urls: Json
+  comics(where: ComicWhereInput, orderBy: ComicOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Comic!]
+  series(where: SeriesWhereInput, orderBy: SeriesOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Series!]
+  events(where: EventWhereInput, orderBy: EventOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Event!]
+  stories(where: StoryWhereInput, orderBy: StoryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Story!]
+}
+
+type CharacterConnection {
+  pageInfo: PageInfo!
+  edges: [CharacterEdge]!
+  aggregate: AggregateCharacter!
+}
+
+input CharacterCreateInput {
+  marvelId: String!
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  name: String
+  description: String
+  urls: Json
+  comics: ComicCreateManyWithoutCharactersInput
+  series: SeriesCreateManyWithoutCharactersInput
+  events: EventCreateManyWithoutCharactersInput
+  stories: StoryCreateManyWithoutCharactersInput
+}
+
+input CharacterCreateManyWithoutComicsInput {
+  create: [CharacterCreateWithoutComicsInput!]
+  connect: [CharacterWhereUniqueInput!]
+}
+
+input CharacterCreateManyWithoutEventsInput {
+  create: [CharacterCreateWithoutEventsInput!]
+  connect: [CharacterWhereUniqueInput!]
+}
+
+input CharacterCreateManyWithoutSeriesInput {
+  create: [CharacterCreateWithoutSeriesInput!]
+  connect: [CharacterWhereUniqueInput!]
+}
+
+input CharacterCreateManyWithoutStoriesInput {
+  create: [CharacterCreateWithoutStoriesInput!]
+  connect: [CharacterWhereUniqueInput!]
+}
+
+input CharacterCreateWithoutComicsInput {
+  marvelId: String!
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  name: String
+  description: String
+  urls: Json
+  series: SeriesCreateManyWithoutCharactersInput
+  events: EventCreateManyWithoutCharactersInput
+  stories: StoryCreateManyWithoutCharactersInput
+}
+
+input CharacterCreateWithoutEventsInput {
+  marvelId: String!
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  name: String
+  description: String
+  urls: Json
+  comics: ComicCreateManyWithoutCharactersInput
+  series: SeriesCreateManyWithoutCharactersInput
+  stories: StoryCreateManyWithoutCharactersInput
+}
+
+input CharacterCreateWithoutSeriesInput {
+  marvelId: String!
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  name: String
+  description: String
+  urls: Json
+  comics: ComicCreateManyWithoutCharactersInput
+  events: EventCreateManyWithoutCharactersInput
+  stories: StoryCreateManyWithoutCharactersInput
+}
+
+input CharacterCreateWithoutStoriesInput {
+  marvelId: String!
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  name: String
+  description: String
+  urls: Json
+  comics: ComicCreateManyWithoutCharactersInput
+  series: SeriesCreateManyWithoutCharactersInput
+  events: EventCreateManyWithoutCharactersInput
+}
+
+type CharacterEdge {
+  node: Character!
+  cursor: String!
+}
+
+enum CharacterOrderByInput {
+  id_ASC
+  id_DESC
+  marvelId_ASC
+  marvelId_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  resourceURI_ASC
+  resourceURI_DESC
+  thumbnail_ASC
+  thumbnail_DESC
+  modified_ASC
+  modified_DESC
+  name_ASC
+  name_DESC
+  description_ASC
+  description_DESC
+  urls_ASC
+  urls_DESC
+}
+
+type CharacterPreviousValues {
+  id: ID!
+  marvelId: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  name: String
+  description: String
+  urls: Json
+}
+
+input CharacterScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  marvelId: String
+  marvelId_not: String
+  marvelId_in: [String!]
+  marvelId_not_in: [String!]
+  marvelId_lt: String
+  marvelId_lte: String
+  marvelId_gt: String
+  marvelId_gte: String
+  marvelId_contains: String
+  marvelId_not_contains: String
+  marvelId_starts_with: String
+  marvelId_not_starts_with: String
+  marvelId_ends_with: String
+  marvelId_not_ends_with: String
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  resourceURI: String
+  resourceURI_not: String
+  resourceURI_in: [String!]
+  resourceURI_not_in: [String!]
+  resourceURI_lt: String
+  resourceURI_lte: String
+  resourceURI_gt: String
+  resourceURI_gte: String
+  resourceURI_contains: String
+  resourceURI_not_contains: String
+  resourceURI_starts_with: String
+  resourceURI_not_starts_with: String
+  resourceURI_ends_with: String
+  resourceURI_not_ends_with: String
+  thumbnail: String
+  thumbnail_not: String
+  thumbnail_in: [String!]
+  thumbnail_not_in: [String!]
+  thumbnail_lt: String
+  thumbnail_lte: String
+  thumbnail_gt: String
+  thumbnail_gte: String
+  thumbnail_contains: String
+  thumbnail_not_contains: String
+  thumbnail_starts_with: String
+  thumbnail_not_starts_with: String
+  thumbnail_ends_with: String
+  thumbnail_not_ends_with: String
+  modified: String
+  modified_not: String
+  modified_in: [String!]
+  modified_not_in: [String!]
+  modified_lt: String
+  modified_lte: String
+  modified_gt: String
+  modified_gte: String
+  modified_contains: String
+  modified_not_contains: String
+  modified_starts_with: String
+  modified_not_starts_with: String
+  modified_ends_with: String
+  modified_not_ends_with: String
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  description: String
+  description_not: String
+  description_in: [String!]
+  description_not_in: [String!]
+  description_lt: String
+  description_lte: String
+  description_gt: String
+  description_gte: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  AND: [CharacterScalarWhereInput!]
+  OR: [CharacterScalarWhereInput!]
+  NOT: [CharacterScalarWhereInput!]
+}
+
+type CharacterSubscriptionPayload {
+  mutation: MutationType!
+  node: Character
+  updatedFields: [String!]
+  previousValues: CharacterPreviousValues
+}
+
+input CharacterSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: CharacterWhereInput
+  AND: [CharacterSubscriptionWhereInput!]
+  OR: [CharacterSubscriptionWhereInput!]
+  NOT: [CharacterSubscriptionWhereInput!]
+}
+
+input CharacterUpdateInput {
+  marvelId: String
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  name: String
+  description: String
+  urls: Json
+  comics: ComicUpdateManyWithoutCharactersInput
+  series: SeriesUpdateManyWithoutCharactersInput
+  events: EventUpdateManyWithoutCharactersInput
+  stories: StoryUpdateManyWithoutCharactersInput
+}
+
+input CharacterUpdateManyDataInput {
+  marvelId: String
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  name: String
+  description: String
+  urls: Json
+}
+
+input CharacterUpdateManyMutationInput {
+  marvelId: String
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  name: String
+  description: String
+  urls: Json
+}
+
+input CharacterUpdateManyWithoutComicsInput {
+  create: [CharacterCreateWithoutComicsInput!]
+  delete: [CharacterWhereUniqueInput!]
+  connect: [CharacterWhereUniqueInput!]
+  set: [CharacterWhereUniqueInput!]
+  disconnect: [CharacterWhereUniqueInput!]
+  update: [CharacterUpdateWithWhereUniqueWithoutComicsInput!]
+  upsert: [CharacterUpsertWithWhereUniqueWithoutComicsInput!]
+  deleteMany: [CharacterScalarWhereInput!]
+  updateMany: [CharacterUpdateManyWithWhereNestedInput!]
+}
+
+input CharacterUpdateManyWithoutEventsInput {
+  create: [CharacterCreateWithoutEventsInput!]
+  delete: [CharacterWhereUniqueInput!]
+  connect: [CharacterWhereUniqueInput!]
+  set: [CharacterWhereUniqueInput!]
+  disconnect: [CharacterWhereUniqueInput!]
+  update: [CharacterUpdateWithWhereUniqueWithoutEventsInput!]
+  upsert: [CharacterUpsertWithWhereUniqueWithoutEventsInput!]
+  deleteMany: [CharacterScalarWhereInput!]
+  updateMany: [CharacterUpdateManyWithWhereNestedInput!]
+}
+
+input CharacterUpdateManyWithoutSeriesInput {
+  create: [CharacterCreateWithoutSeriesInput!]
+  delete: [CharacterWhereUniqueInput!]
+  connect: [CharacterWhereUniqueInput!]
+  set: [CharacterWhereUniqueInput!]
+  disconnect: [CharacterWhereUniqueInput!]
+  update: [CharacterUpdateWithWhereUniqueWithoutSeriesInput!]
+  upsert: [CharacterUpsertWithWhereUniqueWithoutSeriesInput!]
+  deleteMany: [CharacterScalarWhereInput!]
+  updateMany: [CharacterUpdateManyWithWhereNestedInput!]
+}
+
+input CharacterUpdateManyWithoutStoriesInput {
+  create: [CharacterCreateWithoutStoriesInput!]
+  delete: [CharacterWhereUniqueInput!]
+  connect: [CharacterWhereUniqueInput!]
+  set: [CharacterWhereUniqueInput!]
+  disconnect: [CharacterWhereUniqueInput!]
+  update: [CharacterUpdateWithWhereUniqueWithoutStoriesInput!]
+  upsert: [CharacterUpsertWithWhereUniqueWithoutStoriesInput!]
+  deleteMany: [CharacterScalarWhereInput!]
+  updateMany: [CharacterUpdateManyWithWhereNestedInput!]
+}
+
+input CharacterUpdateManyWithWhereNestedInput {
+  where: CharacterScalarWhereInput!
+  data: CharacterUpdateManyDataInput!
+}
+
+input CharacterUpdateWithoutComicsDataInput {
+  marvelId: String
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  name: String
+  description: String
+  urls: Json
+  series: SeriesUpdateManyWithoutCharactersInput
+  events: EventUpdateManyWithoutCharactersInput
+  stories: StoryUpdateManyWithoutCharactersInput
+}
+
+input CharacterUpdateWithoutEventsDataInput {
+  marvelId: String
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  name: String
+  description: String
+  urls: Json
+  comics: ComicUpdateManyWithoutCharactersInput
+  series: SeriesUpdateManyWithoutCharactersInput
+  stories: StoryUpdateManyWithoutCharactersInput
+}
+
+input CharacterUpdateWithoutSeriesDataInput {
+  marvelId: String
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  name: String
+  description: String
+  urls: Json
+  comics: ComicUpdateManyWithoutCharactersInput
+  events: EventUpdateManyWithoutCharactersInput
+  stories: StoryUpdateManyWithoutCharactersInput
+}
+
+input CharacterUpdateWithoutStoriesDataInput {
+  marvelId: String
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  name: String
+  description: String
+  urls: Json
+  comics: ComicUpdateManyWithoutCharactersInput
+  series: SeriesUpdateManyWithoutCharactersInput
+  events: EventUpdateManyWithoutCharactersInput
+}
+
+input CharacterUpdateWithWhereUniqueWithoutComicsInput {
+  where: CharacterWhereUniqueInput!
+  data: CharacterUpdateWithoutComicsDataInput!
+}
+
+input CharacterUpdateWithWhereUniqueWithoutEventsInput {
+  where: CharacterWhereUniqueInput!
+  data: CharacterUpdateWithoutEventsDataInput!
+}
+
+input CharacterUpdateWithWhereUniqueWithoutSeriesInput {
+  where: CharacterWhereUniqueInput!
+  data: CharacterUpdateWithoutSeriesDataInput!
+}
+
+input CharacterUpdateWithWhereUniqueWithoutStoriesInput {
+  where: CharacterWhereUniqueInput!
+  data: CharacterUpdateWithoutStoriesDataInput!
+}
+
+input CharacterUpsertWithWhereUniqueWithoutComicsInput {
+  where: CharacterWhereUniqueInput!
+  update: CharacterUpdateWithoutComicsDataInput!
+  create: CharacterCreateWithoutComicsInput!
+}
+
+input CharacterUpsertWithWhereUniqueWithoutEventsInput {
+  where: CharacterWhereUniqueInput!
+  update: CharacterUpdateWithoutEventsDataInput!
+  create: CharacterCreateWithoutEventsInput!
+}
+
+input CharacterUpsertWithWhereUniqueWithoutSeriesInput {
+  where: CharacterWhereUniqueInput!
+  update: CharacterUpdateWithoutSeriesDataInput!
+  create: CharacterCreateWithoutSeriesInput!
+}
+
+input CharacterUpsertWithWhereUniqueWithoutStoriesInput {
+  where: CharacterWhereUniqueInput!
+  update: CharacterUpdateWithoutStoriesDataInput!
+  create: CharacterCreateWithoutStoriesInput!
+}
+
+input CharacterWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  marvelId: String
+  marvelId_not: String
+  marvelId_in: [String!]
+  marvelId_not_in: [String!]
+  marvelId_lt: String
+  marvelId_lte: String
+  marvelId_gt: String
+  marvelId_gte: String
+  marvelId_contains: String
+  marvelId_not_contains: String
+  marvelId_starts_with: String
+  marvelId_not_starts_with: String
+  marvelId_ends_with: String
+  marvelId_not_ends_with: String
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  resourceURI: String
+  resourceURI_not: String
+  resourceURI_in: [String!]
+  resourceURI_not_in: [String!]
+  resourceURI_lt: String
+  resourceURI_lte: String
+  resourceURI_gt: String
+  resourceURI_gte: String
+  resourceURI_contains: String
+  resourceURI_not_contains: String
+  resourceURI_starts_with: String
+  resourceURI_not_starts_with: String
+  resourceURI_ends_with: String
+  resourceURI_not_ends_with: String
+  thumbnail: String
+  thumbnail_not: String
+  thumbnail_in: [String!]
+  thumbnail_not_in: [String!]
+  thumbnail_lt: String
+  thumbnail_lte: String
+  thumbnail_gt: String
+  thumbnail_gte: String
+  thumbnail_contains: String
+  thumbnail_not_contains: String
+  thumbnail_starts_with: String
+  thumbnail_not_starts_with: String
+  thumbnail_ends_with: String
+  thumbnail_not_ends_with: String
+  modified: String
+  modified_not: String
+  modified_in: [String!]
+  modified_not_in: [String!]
+  modified_lt: String
+  modified_lte: String
+  modified_gt: String
+  modified_gte: String
+  modified_contains: String
+  modified_not_contains: String
+  modified_starts_with: String
+  modified_not_starts_with: String
+  modified_ends_with: String
+  modified_not_ends_with: String
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  description: String
+  description_not: String
+  description_in: [String!]
+  description_not_in: [String!]
+  description_lt: String
+  description_lte: String
+  description_gt: String
+  description_gte: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  comics_every: ComicWhereInput
+  comics_some: ComicWhereInput
+  comics_none: ComicWhereInput
+  series_every: SeriesWhereInput
+  series_some: SeriesWhereInput
+  series_none: SeriesWhereInput
+  events_every: EventWhereInput
+  events_some: EventWhereInput
+  events_none: EventWhereInput
+  stories_every: StoryWhereInput
+  stories_some: StoryWhereInput
+  stories_none: StoryWhereInput
+  AND: [CharacterWhereInput!]
+  OR: [CharacterWhereInput!]
+  NOT: [CharacterWhereInput!]
+}
+
+input CharacterWhereUniqueInput {
+  id: ID
+  marvelId: String
+}
+
+type Comic {
+  id: ID!
+  marvelId: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  digitalId: Int
+  title: String
+  issueNumber: Int
+  variantDescription: String
+  description: String
+  isbn: String
+  upc: String
+  diamondCode: String
+  ean: String
+  issn: String
+  format: String
+  textObjects: Json
+  urls: Json
+  dates: Json
+  prices: Json
+  images: Json
+  characters(where: CharacterWhereInput, orderBy: CharacterOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Character!]
+  events(where: EventWhereInput, orderBy: EventOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Event!]
+  stories(where: StoryWhereInput, orderBy: StoryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Story!]
+  creators(where: CreatorWhereInput, orderBy: CreatorOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Creator!]
+  series: Series
+}
+
+type ComicConnection {
+  pageInfo: PageInfo!
+  edges: [ComicEdge]!
+  aggregate: AggregateComic!
+}
+
+input ComicCreateInput {
+  marvelId: String!
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  digitalId: Int
+  title: String
+  issueNumber: Int
+  variantDescription: String
+  description: String
+  isbn: String
+  upc: String
+  diamondCode: String
+  ean: String
+  issn: String
+  format: String
+  textObjects: Json
+  urls: Json
+  dates: Json
+  prices: Json
+  images: Json
+  characters: CharacterCreateManyWithoutComicsInput
+  events: EventCreateManyWithoutComicsInput
+  stories: StoryCreateManyWithoutComicsInput
+  creators: CreatorCreateManyWithoutComicsInput
+  series: SeriesCreateOneWithoutComicsInput
+}
+
+input ComicCreateManyWithoutCharactersInput {
+  create: [ComicCreateWithoutCharactersInput!]
+  connect: [ComicWhereUniqueInput!]
+}
+
+input ComicCreateManyWithoutCreatorsInput {
+  create: [ComicCreateWithoutCreatorsInput!]
+  connect: [ComicWhereUniqueInput!]
+}
+
+input ComicCreateManyWithoutEventsInput {
+  create: [ComicCreateWithoutEventsInput!]
+  connect: [ComicWhereUniqueInput!]
+}
+
+input ComicCreateManyWithoutSeriesInput {
+  create: [ComicCreateWithoutSeriesInput!]
+  connect: [ComicWhereUniqueInput!]
+}
+
+input ComicCreateManyWithoutStoriesInput {
+  create: [ComicCreateWithoutStoriesInput!]
+  connect: [ComicWhereUniqueInput!]
+}
+
+input ComicCreateWithoutCharactersInput {
+  marvelId: String!
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  digitalId: Int
+  title: String
+  issueNumber: Int
+  variantDescription: String
+  description: String
+  isbn: String
+  upc: String
+  diamondCode: String
+  ean: String
+  issn: String
+  format: String
+  textObjects: Json
+  urls: Json
+  dates: Json
+  prices: Json
+  images: Json
+  events: EventCreateManyWithoutComicsInput
+  stories: StoryCreateManyWithoutComicsInput
+  creators: CreatorCreateManyWithoutComicsInput
+  series: SeriesCreateOneWithoutComicsInput
+}
+
+input ComicCreateWithoutCreatorsInput {
+  marvelId: String!
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  digitalId: Int
+  title: String
+  issueNumber: Int
+  variantDescription: String
+  description: String
+  isbn: String
+  upc: String
+  diamondCode: String
+  ean: String
+  issn: String
+  format: String
+  textObjects: Json
+  urls: Json
+  dates: Json
+  prices: Json
+  images: Json
+  characters: CharacterCreateManyWithoutComicsInput
+  events: EventCreateManyWithoutComicsInput
+  stories: StoryCreateManyWithoutComicsInput
+  series: SeriesCreateOneWithoutComicsInput
+}
+
+input ComicCreateWithoutEventsInput {
+  marvelId: String!
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  digitalId: Int
+  title: String
+  issueNumber: Int
+  variantDescription: String
+  description: String
+  isbn: String
+  upc: String
+  diamondCode: String
+  ean: String
+  issn: String
+  format: String
+  textObjects: Json
+  urls: Json
+  dates: Json
+  prices: Json
+  images: Json
+  characters: CharacterCreateManyWithoutComicsInput
+  stories: StoryCreateManyWithoutComicsInput
+  creators: CreatorCreateManyWithoutComicsInput
+  series: SeriesCreateOneWithoutComicsInput
+}
+
+input ComicCreateWithoutSeriesInput {
+  marvelId: String!
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  digitalId: Int
+  title: String
+  issueNumber: Int
+  variantDescription: String
+  description: String
+  isbn: String
+  upc: String
+  diamondCode: String
+  ean: String
+  issn: String
+  format: String
+  textObjects: Json
+  urls: Json
+  dates: Json
+  prices: Json
+  images: Json
+  characters: CharacterCreateManyWithoutComicsInput
+  events: EventCreateManyWithoutComicsInput
+  stories: StoryCreateManyWithoutComicsInput
+  creators: CreatorCreateManyWithoutComicsInput
+}
+
+input ComicCreateWithoutStoriesInput {
+  marvelId: String!
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  digitalId: Int
+  title: String
+  issueNumber: Int
+  variantDescription: String
+  description: String
+  isbn: String
+  upc: String
+  diamondCode: String
+  ean: String
+  issn: String
+  format: String
+  textObjects: Json
+  urls: Json
+  dates: Json
+  prices: Json
+  images: Json
+  characters: CharacterCreateManyWithoutComicsInput
+  events: EventCreateManyWithoutComicsInput
+  creators: CreatorCreateManyWithoutComicsInput
+  series: SeriesCreateOneWithoutComicsInput
+}
+
+type ComicEdge {
+  node: Comic!
+  cursor: String!
+}
+
+enum ComicOrderByInput {
+  id_ASC
+  id_DESC
+  marvelId_ASC
+  marvelId_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  resourceURI_ASC
+  resourceURI_DESC
+  thumbnail_ASC
+  thumbnail_DESC
+  modified_ASC
+  modified_DESC
+  digitalId_ASC
+  digitalId_DESC
+  title_ASC
+  title_DESC
+  issueNumber_ASC
+  issueNumber_DESC
+  variantDescription_ASC
+  variantDescription_DESC
+  description_ASC
+  description_DESC
+  isbn_ASC
+  isbn_DESC
+  upc_ASC
+  upc_DESC
+  diamondCode_ASC
+  diamondCode_DESC
+  ean_ASC
+  ean_DESC
+  issn_ASC
+  issn_DESC
+  format_ASC
+  format_DESC
+  textObjects_ASC
+  textObjects_DESC
+  urls_ASC
+  urls_DESC
+  dates_ASC
+  dates_DESC
+  prices_ASC
+  prices_DESC
+  images_ASC
+  images_DESC
+}
+
+type ComicPreviousValues {
+  id: ID!
+  marvelId: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  digitalId: Int
+  title: String
+  issueNumber: Int
+  variantDescription: String
+  description: String
+  isbn: String
+  upc: String
+  diamondCode: String
+  ean: String
+  issn: String
+  format: String
+  textObjects: Json
+  urls: Json
+  dates: Json
+  prices: Json
+  images: Json
+}
+
+input ComicScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  marvelId: String
+  marvelId_not: String
+  marvelId_in: [String!]
+  marvelId_not_in: [String!]
+  marvelId_lt: String
+  marvelId_lte: String
+  marvelId_gt: String
+  marvelId_gte: String
+  marvelId_contains: String
+  marvelId_not_contains: String
+  marvelId_starts_with: String
+  marvelId_not_starts_with: String
+  marvelId_ends_with: String
+  marvelId_not_ends_with: String
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  resourceURI: String
+  resourceURI_not: String
+  resourceURI_in: [String!]
+  resourceURI_not_in: [String!]
+  resourceURI_lt: String
+  resourceURI_lte: String
+  resourceURI_gt: String
+  resourceURI_gte: String
+  resourceURI_contains: String
+  resourceURI_not_contains: String
+  resourceURI_starts_with: String
+  resourceURI_not_starts_with: String
+  resourceURI_ends_with: String
+  resourceURI_not_ends_with: String
+  thumbnail: String
+  thumbnail_not: String
+  thumbnail_in: [String!]
+  thumbnail_not_in: [String!]
+  thumbnail_lt: String
+  thumbnail_lte: String
+  thumbnail_gt: String
+  thumbnail_gte: String
+  thumbnail_contains: String
+  thumbnail_not_contains: String
+  thumbnail_starts_with: String
+  thumbnail_not_starts_with: String
+  thumbnail_ends_with: String
+  thumbnail_not_ends_with: String
+  modified: String
+  modified_not: String
+  modified_in: [String!]
+  modified_not_in: [String!]
+  modified_lt: String
+  modified_lte: String
+  modified_gt: String
+  modified_gte: String
+  modified_contains: String
+  modified_not_contains: String
+  modified_starts_with: String
+  modified_not_starts_with: String
+  modified_ends_with: String
+  modified_not_ends_with: String
+  digitalId: Int
+  digitalId_not: Int
+  digitalId_in: [Int!]
+  digitalId_not_in: [Int!]
+  digitalId_lt: Int
+  digitalId_lte: Int
+  digitalId_gt: Int
+  digitalId_gte: Int
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
+  issueNumber: Int
+  issueNumber_not: Int
+  issueNumber_in: [Int!]
+  issueNumber_not_in: [Int!]
+  issueNumber_lt: Int
+  issueNumber_lte: Int
+  issueNumber_gt: Int
+  issueNumber_gte: Int
+  variantDescription: String
+  variantDescription_not: String
+  variantDescription_in: [String!]
+  variantDescription_not_in: [String!]
+  variantDescription_lt: String
+  variantDescription_lte: String
+  variantDescription_gt: String
+  variantDescription_gte: String
+  variantDescription_contains: String
+  variantDescription_not_contains: String
+  variantDescription_starts_with: String
+  variantDescription_not_starts_with: String
+  variantDescription_ends_with: String
+  variantDescription_not_ends_with: String
+  description: String
+  description_not: String
+  description_in: [String!]
+  description_not_in: [String!]
+  description_lt: String
+  description_lte: String
+  description_gt: String
+  description_gte: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  isbn: String
+  isbn_not: String
+  isbn_in: [String!]
+  isbn_not_in: [String!]
+  isbn_lt: String
+  isbn_lte: String
+  isbn_gt: String
+  isbn_gte: String
+  isbn_contains: String
+  isbn_not_contains: String
+  isbn_starts_with: String
+  isbn_not_starts_with: String
+  isbn_ends_with: String
+  isbn_not_ends_with: String
+  upc: String
+  upc_not: String
+  upc_in: [String!]
+  upc_not_in: [String!]
+  upc_lt: String
+  upc_lte: String
+  upc_gt: String
+  upc_gte: String
+  upc_contains: String
+  upc_not_contains: String
+  upc_starts_with: String
+  upc_not_starts_with: String
+  upc_ends_with: String
+  upc_not_ends_with: String
+  diamondCode: String
+  diamondCode_not: String
+  diamondCode_in: [String!]
+  diamondCode_not_in: [String!]
+  diamondCode_lt: String
+  diamondCode_lte: String
+  diamondCode_gt: String
+  diamondCode_gte: String
+  diamondCode_contains: String
+  diamondCode_not_contains: String
+  diamondCode_starts_with: String
+  diamondCode_not_starts_with: String
+  diamondCode_ends_with: String
+  diamondCode_not_ends_with: String
+  ean: String
+  ean_not: String
+  ean_in: [String!]
+  ean_not_in: [String!]
+  ean_lt: String
+  ean_lte: String
+  ean_gt: String
+  ean_gte: String
+  ean_contains: String
+  ean_not_contains: String
+  ean_starts_with: String
+  ean_not_starts_with: String
+  ean_ends_with: String
+  ean_not_ends_with: String
+  issn: String
+  issn_not: String
+  issn_in: [String!]
+  issn_not_in: [String!]
+  issn_lt: String
+  issn_lte: String
+  issn_gt: String
+  issn_gte: String
+  issn_contains: String
+  issn_not_contains: String
+  issn_starts_with: String
+  issn_not_starts_with: String
+  issn_ends_with: String
+  issn_not_ends_with: String
+  format: String
+  format_not: String
+  format_in: [String!]
+  format_not_in: [String!]
+  format_lt: String
+  format_lte: String
+  format_gt: String
+  format_gte: String
+  format_contains: String
+  format_not_contains: String
+  format_starts_with: String
+  format_not_starts_with: String
+  format_ends_with: String
+  format_not_ends_with: String
+  AND: [ComicScalarWhereInput!]
+  OR: [ComicScalarWhereInput!]
+  NOT: [ComicScalarWhereInput!]
+}
+
+type ComicSubscriptionPayload {
+  mutation: MutationType!
+  node: Comic
+  updatedFields: [String!]
+  previousValues: ComicPreviousValues
+}
+
+input ComicSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: ComicWhereInput
+  AND: [ComicSubscriptionWhereInput!]
+  OR: [ComicSubscriptionWhereInput!]
+  NOT: [ComicSubscriptionWhereInput!]
+}
+
+input ComicUpdateInput {
+  marvelId: String
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  digitalId: Int
+  title: String
+  issueNumber: Int
+  variantDescription: String
+  description: String
+  isbn: String
+  upc: String
+  diamondCode: String
+  ean: String
+  issn: String
+  format: String
+  textObjects: Json
+  urls: Json
+  dates: Json
+  prices: Json
+  images: Json
+  characters: CharacterUpdateManyWithoutComicsInput
+  events: EventUpdateManyWithoutComicsInput
+  stories: StoryUpdateManyWithoutComicsInput
+  creators: CreatorUpdateManyWithoutComicsInput
+  series: SeriesUpdateOneWithoutComicsInput
+}
+
+input ComicUpdateManyDataInput {
+  marvelId: String
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  digitalId: Int
+  title: String
+  issueNumber: Int
+  variantDescription: String
+  description: String
+  isbn: String
+  upc: String
+  diamondCode: String
+  ean: String
+  issn: String
+  format: String
+  textObjects: Json
+  urls: Json
+  dates: Json
+  prices: Json
+  images: Json
+}
+
+input ComicUpdateManyMutationInput {
+  marvelId: String
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  digitalId: Int
+  title: String
+  issueNumber: Int
+  variantDescription: String
+  description: String
+  isbn: String
+  upc: String
+  diamondCode: String
+  ean: String
+  issn: String
+  format: String
+  textObjects: Json
+  urls: Json
+  dates: Json
+  prices: Json
+  images: Json
+}
+
+input ComicUpdateManyWithoutCharactersInput {
+  create: [ComicCreateWithoutCharactersInput!]
+  delete: [ComicWhereUniqueInput!]
+  connect: [ComicWhereUniqueInput!]
+  set: [ComicWhereUniqueInput!]
+  disconnect: [ComicWhereUniqueInput!]
+  update: [ComicUpdateWithWhereUniqueWithoutCharactersInput!]
+  upsert: [ComicUpsertWithWhereUniqueWithoutCharactersInput!]
+  deleteMany: [ComicScalarWhereInput!]
+  updateMany: [ComicUpdateManyWithWhereNestedInput!]
+}
+
+input ComicUpdateManyWithoutCreatorsInput {
+  create: [ComicCreateWithoutCreatorsInput!]
+  delete: [ComicWhereUniqueInput!]
+  connect: [ComicWhereUniqueInput!]
+  set: [ComicWhereUniqueInput!]
+  disconnect: [ComicWhereUniqueInput!]
+  update: [ComicUpdateWithWhereUniqueWithoutCreatorsInput!]
+  upsert: [ComicUpsertWithWhereUniqueWithoutCreatorsInput!]
+  deleteMany: [ComicScalarWhereInput!]
+  updateMany: [ComicUpdateManyWithWhereNestedInput!]
+}
+
+input ComicUpdateManyWithoutEventsInput {
+  create: [ComicCreateWithoutEventsInput!]
+  delete: [ComicWhereUniqueInput!]
+  connect: [ComicWhereUniqueInput!]
+  set: [ComicWhereUniqueInput!]
+  disconnect: [ComicWhereUniqueInput!]
+  update: [ComicUpdateWithWhereUniqueWithoutEventsInput!]
+  upsert: [ComicUpsertWithWhereUniqueWithoutEventsInput!]
+  deleteMany: [ComicScalarWhereInput!]
+  updateMany: [ComicUpdateManyWithWhereNestedInput!]
+}
+
+input ComicUpdateManyWithoutSeriesInput {
+  create: [ComicCreateWithoutSeriesInput!]
+  delete: [ComicWhereUniqueInput!]
+  connect: [ComicWhereUniqueInput!]
+  set: [ComicWhereUniqueInput!]
+  disconnect: [ComicWhereUniqueInput!]
+  update: [ComicUpdateWithWhereUniqueWithoutSeriesInput!]
+  upsert: [ComicUpsertWithWhereUniqueWithoutSeriesInput!]
+  deleteMany: [ComicScalarWhereInput!]
+  updateMany: [ComicUpdateManyWithWhereNestedInput!]
+}
+
+input ComicUpdateManyWithoutStoriesInput {
+  create: [ComicCreateWithoutStoriesInput!]
+  delete: [ComicWhereUniqueInput!]
+  connect: [ComicWhereUniqueInput!]
+  set: [ComicWhereUniqueInput!]
+  disconnect: [ComicWhereUniqueInput!]
+  update: [ComicUpdateWithWhereUniqueWithoutStoriesInput!]
+  upsert: [ComicUpsertWithWhereUniqueWithoutStoriesInput!]
+  deleteMany: [ComicScalarWhereInput!]
+  updateMany: [ComicUpdateManyWithWhereNestedInput!]
+}
+
+input ComicUpdateManyWithWhereNestedInput {
+  where: ComicScalarWhereInput!
+  data: ComicUpdateManyDataInput!
+}
+
+input ComicUpdateWithoutCharactersDataInput {
+  marvelId: String
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  digitalId: Int
+  title: String
+  issueNumber: Int
+  variantDescription: String
+  description: String
+  isbn: String
+  upc: String
+  diamondCode: String
+  ean: String
+  issn: String
+  format: String
+  textObjects: Json
+  urls: Json
+  dates: Json
+  prices: Json
+  images: Json
+  events: EventUpdateManyWithoutComicsInput
+  stories: StoryUpdateManyWithoutComicsInput
+  creators: CreatorUpdateManyWithoutComicsInput
+  series: SeriesUpdateOneWithoutComicsInput
+}
+
+input ComicUpdateWithoutCreatorsDataInput {
+  marvelId: String
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  digitalId: Int
+  title: String
+  issueNumber: Int
+  variantDescription: String
+  description: String
+  isbn: String
+  upc: String
+  diamondCode: String
+  ean: String
+  issn: String
+  format: String
+  textObjects: Json
+  urls: Json
+  dates: Json
+  prices: Json
+  images: Json
+  characters: CharacterUpdateManyWithoutComicsInput
+  events: EventUpdateManyWithoutComicsInput
+  stories: StoryUpdateManyWithoutComicsInput
+  series: SeriesUpdateOneWithoutComicsInput
+}
+
+input ComicUpdateWithoutEventsDataInput {
+  marvelId: String
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  digitalId: Int
+  title: String
+  issueNumber: Int
+  variantDescription: String
+  description: String
+  isbn: String
+  upc: String
+  diamondCode: String
+  ean: String
+  issn: String
+  format: String
+  textObjects: Json
+  urls: Json
+  dates: Json
+  prices: Json
+  images: Json
+  characters: CharacterUpdateManyWithoutComicsInput
+  stories: StoryUpdateManyWithoutComicsInput
+  creators: CreatorUpdateManyWithoutComicsInput
+  series: SeriesUpdateOneWithoutComicsInput
+}
+
+input ComicUpdateWithoutSeriesDataInput {
+  marvelId: String
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  digitalId: Int
+  title: String
+  issueNumber: Int
+  variantDescription: String
+  description: String
+  isbn: String
+  upc: String
+  diamondCode: String
+  ean: String
+  issn: String
+  format: String
+  textObjects: Json
+  urls: Json
+  dates: Json
+  prices: Json
+  images: Json
+  characters: CharacterUpdateManyWithoutComicsInput
+  events: EventUpdateManyWithoutComicsInput
+  stories: StoryUpdateManyWithoutComicsInput
+  creators: CreatorUpdateManyWithoutComicsInput
+}
+
+input ComicUpdateWithoutStoriesDataInput {
+  marvelId: String
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  digitalId: Int
+  title: String
+  issueNumber: Int
+  variantDescription: String
+  description: String
+  isbn: String
+  upc: String
+  diamondCode: String
+  ean: String
+  issn: String
+  format: String
+  textObjects: Json
+  urls: Json
+  dates: Json
+  prices: Json
+  images: Json
+  characters: CharacterUpdateManyWithoutComicsInput
+  events: EventUpdateManyWithoutComicsInput
+  creators: CreatorUpdateManyWithoutComicsInput
+  series: SeriesUpdateOneWithoutComicsInput
+}
+
+input ComicUpdateWithWhereUniqueWithoutCharactersInput {
+  where: ComicWhereUniqueInput!
+  data: ComicUpdateWithoutCharactersDataInput!
+}
+
+input ComicUpdateWithWhereUniqueWithoutCreatorsInput {
+  where: ComicWhereUniqueInput!
+  data: ComicUpdateWithoutCreatorsDataInput!
+}
+
+input ComicUpdateWithWhereUniqueWithoutEventsInput {
+  where: ComicWhereUniqueInput!
+  data: ComicUpdateWithoutEventsDataInput!
+}
+
+input ComicUpdateWithWhereUniqueWithoutSeriesInput {
+  where: ComicWhereUniqueInput!
+  data: ComicUpdateWithoutSeriesDataInput!
+}
+
+input ComicUpdateWithWhereUniqueWithoutStoriesInput {
+  where: ComicWhereUniqueInput!
+  data: ComicUpdateWithoutStoriesDataInput!
+}
+
+input ComicUpsertWithWhereUniqueWithoutCharactersInput {
+  where: ComicWhereUniqueInput!
+  update: ComicUpdateWithoutCharactersDataInput!
+  create: ComicCreateWithoutCharactersInput!
+}
+
+input ComicUpsertWithWhereUniqueWithoutCreatorsInput {
+  where: ComicWhereUniqueInput!
+  update: ComicUpdateWithoutCreatorsDataInput!
+  create: ComicCreateWithoutCreatorsInput!
+}
+
+input ComicUpsertWithWhereUniqueWithoutEventsInput {
+  where: ComicWhereUniqueInput!
+  update: ComicUpdateWithoutEventsDataInput!
+  create: ComicCreateWithoutEventsInput!
+}
+
+input ComicUpsertWithWhereUniqueWithoutSeriesInput {
+  where: ComicWhereUniqueInput!
+  update: ComicUpdateWithoutSeriesDataInput!
+  create: ComicCreateWithoutSeriesInput!
+}
+
+input ComicUpsertWithWhereUniqueWithoutStoriesInput {
+  where: ComicWhereUniqueInput!
+  update: ComicUpdateWithoutStoriesDataInput!
+  create: ComicCreateWithoutStoriesInput!
+}
+
+input ComicWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  marvelId: String
+  marvelId_not: String
+  marvelId_in: [String!]
+  marvelId_not_in: [String!]
+  marvelId_lt: String
+  marvelId_lte: String
+  marvelId_gt: String
+  marvelId_gte: String
+  marvelId_contains: String
+  marvelId_not_contains: String
+  marvelId_starts_with: String
+  marvelId_not_starts_with: String
+  marvelId_ends_with: String
+  marvelId_not_ends_with: String
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  resourceURI: String
+  resourceURI_not: String
+  resourceURI_in: [String!]
+  resourceURI_not_in: [String!]
+  resourceURI_lt: String
+  resourceURI_lte: String
+  resourceURI_gt: String
+  resourceURI_gte: String
+  resourceURI_contains: String
+  resourceURI_not_contains: String
+  resourceURI_starts_with: String
+  resourceURI_not_starts_with: String
+  resourceURI_ends_with: String
+  resourceURI_not_ends_with: String
+  thumbnail: String
+  thumbnail_not: String
+  thumbnail_in: [String!]
+  thumbnail_not_in: [String!]
+  thumbnail_lt: String
+  thumbnail_lte: String
+  thumbnail_gt: String
+  thumbnail_gte: String
+  thumbnail_contains: String
+  thumbnail_not_contains: String
+  thumbnail_starts_with: String
+  thumbnail_not_starts_with: String
+  thumbnail_ends_with: String
+  thumbnail_not_ends_with: String
+  modified: String
+  modified_not: String
+  modified_in: [String!]
+  modified_not_in: [String!]
+  modified_lt: String
+  modified_lte: String
+  modified_gt: String
+  modified_gte: String
+  modified_contains: String
+  modified_not_contains: String
+  modified_starts_with: String
+  modified_not_starts_with: String
+  modified_ends_with: String
+  modified_not_ends_with: String
+  digitalId: Int
+  digitalId_not: Int
+  digitalId_in: [Int!]
+  digitalId_not_in: [Int!]
+  digitalId_lt: Int
+  digitalId_lte: Int
+  digitalId_gt: Int
+  digitalId_gte: Int
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
+  issueNumber: Int
+  issueNumber_not: Int
+  issueNumber_in: [Int!]
+  issueNumber_not_in: [Int!]
+  issueNumber_lt: Int
+  issueNumber_lte: Int
+  issueNumber_gt: Int
+  issueNumber_gte: Int
+  variantDescription: String
+  variantDescription_not: String
+  variantDescription_in: [String!]
+  variantDescription_not_in: [String!]
+  variantDescription_lt: String
+  variantDescription_lte: String
+  variantDescription_gt: String
+  variantDescription_gte: String
+  variantDescription_contains: String
+  variantDescription_not_contains: String
+  variantDescription_starts_with: String
+  variantDescription_not_starts_with: String
+  variantDescription_ends_with: String
+  variantDescription_not_ends_with: String
+  description: String
+  description_not: String
+  description_in: [String!]
+  description_not_in: [String!]
+  description_lt: String
+  description_lte: String
+  description_gt: String
+  description_gte: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  isbn: String
+  isbn_not: String
+  isbn_in: [String!]
+  isbn_not_in: [String!]
+  isbn_lt: String
+  isbn_lte: String
+  isbn_gt: String
+  isbn_gte: String
+  isbn_contains: String
+  isbn_not_contains: String
+  isbn_starts_with: String
+  isbn_not_starts_with: String
+  isbn_ends_with: String
+  isbn_not_ends_with: String
+  upc: String
+  upc_not: String
+  upc_in: [String!]
+  upc_not_in: [String!]
+  upc_lt: String
+  upc_lte: String
+  upc_gt: String
+  upc_gte: String
+  upc_contains: String
+  upc_not_contains: String
+  upc_starts_with: String
+  upc_not_starts_with: String
+  upc_ends_with: String
+  upc_not_ends_with: String
+  diamondCode: String
+  diamondCode_not: String
+  diamondCode_in: [String!]
+  diamondCode_not_in: [String!]
+  diamondCode_lt: String
+  diamondCode_lte: String
+  diamondCode_gt: String
+  diamondCode_gte: String
+  diamondCode_contains: String
+  diamondCode_not_contains: String
+  diamondCode_starts_with: String
+  diamondCode_not_starts_with: String
+  diamondCode_ends_with: String
+  diamondCode_not_ends_with: String
+  ean: String
+  ean_not: String
+  ean_in: [String!]
+  ean_not_in: [String!]
+  ean_lt: String
+  ean_lte: String
+  ean_gt: String
+  ean_gte: String
+  ean_contains: String
+  ean_not_contains: String
+  ean_starts_with: String
+  ean_not_starts_with: String
+  ean_ends_with: String
+  ean_not_ends_with: String
+  issn: String
+  issn_not: String
+  issn_in: [String!]
+  issn_not_in: [String!]
+  issn_lt: String
+  issn_lte: String
+  issn_gt: String
+  issn_gte: String
+  issn_contains: String
+  issn_not_contains: String
+  issn_starts_with: String
+  issn_not_starts_with: String
+  issn_ends_with: String
+  issn_not_ends_with: String
+  format: String
+  format_not: String
+  format_in: [String!]
+  format_not_in: [String!]
+  format_lt: String
+  format_lte: String
+  format_gt: String
+  format_gte: String
+  format_contains: String
+  format_not_contains: String
+  format_starts_with: String
+  format_not_starts_with: String
+  format_ends_with: String
+  format_not_ends_with: String
+  characters_every: CharacterWhereInput
+  characters_some: CharacterWhereInput
+  characters_none: CharacterWhereInput
+  events_every: EventWhereInput
+  events_some: EventWhereInput
+  events_none: EventWhereInput
+  stories_every: StoryWhereInput
+  stories_some: StoryWhereInput
+  stories_none: StoryWhereInput
+  creators_every: CreatorWhereInput
+  creators_some: CreatorWhereInput
+  creators_none: CreatorWhereInput
+  series: SeriesWhereInput
+  AND: [ComicWhereInput!]
+  OR: [ComicWhereInput!]
+  NOT: [ComicWhereInput!]
+}
+
+input ComicWhereUniqueInput {
+  id: ID
+  marvelId: String
+}
+
+type Creator {
+  id: ID!
+  marvelId: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  firstName: String
+  middleName: String
+  lastName: String
+  suffix: String
+  fullName: String
+  urls: Json
+  series(where: SeriesWhereInput, orderBy: SeriesOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Series!]
+  stories(where: StoryWhereInput, orderBy: StoryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Story!]
+  comics(where: ComicWhereInput, orderBy: ComicOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Comic!]
+  events(where: EventWhereInput, orderBy: EventOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Event!]
+}
+
+type CreatorConnection {
+  pageInfo: PageInfo!
+  edges: [CreatorEdge]!
+  aggregate: AggregateCreator!
+}
+
+input CreatorCreateInput {
+  marvelId: String!
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  firstName: String
+  middleName: String
+  lastName: String
+  suffix: String
+  fullName: String
+  urls: Json
+  series: SeriesCreateManyWithoutCreatorsInput
+  stories: StoryCreateManyWithoutCreatorsInput
+  comics: ComicCreateManyWithoutCreatorsInput
+  events: EventCreateManyWithoutCreatorsInput
+}
+
+input CreatorCreateManyWithoutComicsInput {
+  create: [CreatorCreateWithoutComicsInput!]
+  connect: [CreatorWhereUniqueInput!]
+}
+
+input CreatorCreateManyWithoutEventsInput {
+  create: [CreatorCreateWithoutEventsInput!]
+  connect: [CreatorWhereUniqueInput!]
+}
+
+input CreatorCreateManyWithoutSeriesInput {
+  create: [CreatorCreateWithoutSeriesInput!]
+  connect: [CreatorWhereUniqueInput!]
+}
+
+input CreatorCreateManyWithoutStoriesInput {
+  create: [CreatorCreateWithoutStoriesInput!]
+  connect: [CreatorWhereUniqueInput!]
+}
+
+input CreatorCreateWithoutComicsInput {
+  marvelId: String!
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  firstName: String
+  middleName: String
+  lastName: String
+  suffix: String
+  fullName: String
+  urls: Json
+  series: SeriesCreateManyWithoutCreatorsInput
+  stories: StoryCreateManyWithoutCreatorsInput
+  events: EventCreateManyWithoutCreatorsInput
+}
+
+input CreatorCreateWithoutEventsInput {
+  marvelId: String!
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  firstName: String
+  middleName: String
+  lastName: String
+  suffix: String
+  fullName: String
+  urls: Json
+  series: SeriesCreateManyWithoutCreatorsInput
+  stories: StoryCreateManyWithoutCreatorsInput
+  comics: ComicCreateManyWithoutCreatorsInput
+}
+
+input CreatorCreateWithoutSeriesInput {
+  marvelId: String!
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  firstName: String
+  middleName: String
+  lastName: String
+  suffix: String
+  fullName: String
+  urls: Json
+  stories: StoryCreateManyWithoutCreatorsInput
+  comics: ComicCreateManyWithoutCreatorsInput
+  events: EventCreateManyWithoutCreatorsInput
+}
+
+input CreatorCreateWithoutStoriesInput {
+  marvelId: String!
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  firstName: String
+  middleName: String
+  lastName: String
+  suffix: String
+  fullName: String
+  urls: Json
+  series: SeriesCreateManyWithoutCreatorsInput
+  comics: ComicCreateManyWithoutCreatorsInput
+  events: EventCreateManyWithoutCreatorsInput
+}
+
+type CreatorEdge {
+  node: Creator!
+  cursor: String!
+}
+
+enum CreatorOrderByInput {
+  id_ASC
+  id_DESC
+  marvelId_ASC
+  marvelId_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  resourceURI_ASC
+  resourceURI_DESC
+  thumbnail_ASC
+  thumbnail_DESC
+  modified_ASC
+  modified_DESC
+  firstName_ASC
+  firstName_DESC
+  middleName_ASC
+  middleName_DESC
+  lastName_ASC
+  lastName_DESC
+  suffix_ASC
+  suffix_DESC
+  fullName_ASC
+  fullName_DESC
+  urls_ASC
+  urls_DESC
+}
+
+type CreatorPreviousValues {
+  id: ID!
+  marvelId: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  firstName: String
+  middleName: String
+  lastName: String
+  suffix: String
+  fullName: String
+  urls: Json
+}
+
+input CreatorScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  marvelId: String
+  marvelId_not: String
+  marvelId_in: [String!]
+  marvelId_not_in: [String!]
+  marvelId_lt: String
+  marvelId_lte: String
+  marvelId_gt: String
+  marvelId_gte: String
+  marvelId_contains: String
+  marvelId_not_contains: String
+  marvelId_starts_with: String
+  marvelId_not_starts_with: String
+  marvelId_ends_with: String
+  marvelId_not_ends_with: String
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  resourceURI: String
+  resourceURI_not: String
+  resourceURI_in: [String!]
+  resourceURI_not_in: [String!]
+  resourceURI_lt: String
+  resourceURI_lte: String
+  resourceURI_gt: String
+  resourceURI_gte: String
+  resourceURI_contains: String
+  resourceURI_not_contains: String
+  resourceURI_starts_with: String
+  resourceURI_not_starts_with: String
+  resourceURI_ends_with: String
+  resourceURI_not_ends_with: String
+  thumbnail: String
+  thumbnail_not: String
+  thumbnail_in: [String!]
+  thumbnail_not_in: [String!]
+  thumbnail_lt: String
+  thumbnail_lte: String
+  thumbnail_gt: String
+  thumbnail_gte: String
+  thumbnail_contains: String
+  thumbnail_not_contains: String
+  thumbnail_starts_with: String
+  thumbnail_not_starts_with: String
+  thumbnail_ends_with: String
+  thumbnail_not_ends_with: String
+  modified: String
+  modified_not: String
+  modified_in: [String!]
+  modified_not_in: [String!]
+  modified_lt: String
+  modified_lte: String
+  modified_gt: String
+  modified_gte: String
+  modified_contains: String
+  modified_not_contains: String
+  modified_starts_with: String
+  modified_not_starts_with: String
+  modified_ends_with: String
+  modified_not_ends_with: String
+  firstName: String
+  firstName_not: String
+  firstName_in: [String!]
+  firstName_not_in: [String!]
+  firstName_lt: String
+  firstName_lte: String
+  firstName_gt: String
+  firstName_gte: String
+  firstName_contains: String
+  firstName_not_contains: String
+  firstName_starts_with: String
+  firstName_not_starts_with: String
+  firstName_ends_with: String
+  firstName_not_ends_with: String
+  middleName: String
+  middleName_not: String
+  middleName_in: [String!]
+  middleName_not_in: [String!]
+  middleName_lt: String
+  middleName_lte: String
+  middleName_gt: String
+  middleName_gte: String
+  middleName_contains: String
+  middleName_not_contains: String
+  middleName_starts_with: String
+  middleName_not_starts_with: String
+  middleName_ends_with: String
+  middleName_not_ends_with: String
+  lastName: String
+  lastName_not: String
+  lastName_in: [String!]
+  lastName_not_in: [String!]
+  lastName_lt: String
+  lastName_lte: String
+  lastName_gt: String
+  lastName_gte: String
+  lastName_contains: String
+  lastName_not_contains: String
+  lastName_starts_with: String
+  lastName_not_starts_with: String
+  lastName_ends_with: String
+  lastName_not_ends_with: String
+  suffix: String
+  suffix_not: String
+  suffix_in: [String!]
+  suffix_not_in: [String!]
+  suffix_lt: String
+  suffix_lte: String
+  suffix_gt: String
+  suffix_gte: String
+  suffix_contains: String
+  suffix_not_contains: String
+  suffix_starts_with: String
+  suffix_not_starts_with: String
+  suffix_ends_with: String
+  suffix_not_ends_with: String
+  fullName: String
+  fullName_not: String
+  fullName_in: [String!]
+  fullName_not_in: [String!]
+  fullName_lt: String
+  fullName_lte: String
+  fullName_gt: String
+  fullName_gte: String
+  fullName_contains: String
+  fullName_not_contains: String
+  fullName_starts_with: String
+  fullName_not_starts_with: String
+  fullName_ends_with: String
+  fullName_not_ends_with: String
+  AND: [CreatorScalarWhereInput!]
+  OR: [CreatorScalarWhereInput!]
+  NOT: [CreatorScalarWhereInput!]
+}
+
+type CreatorSubscriptionPayload {
+  mutation: MutationType!
+  node: Creator
+  updatedFields: [String!]
+  previousValues: CreatorPreviousValues
+}
+
+input CreatorSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: CreatorWhereInput
+  AND: [CreatorSubscriptionWhereInput!]
+  OR: [CreatorSubscriptionWhereInput!]
+  NOT: [CreatorSubscriptionWhereInput!]
+}
+
+input CreatorUpdateInput {
+  marvelId: String
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  firstName: String
+  middleName: String
+  lastName: String
+  suffix: String
+  fullName: String
+  urls: Json
+  series: SeriesUpdateManyWithoutCreatorsInput
+  stories: StoryUpdateManyWithoutCreatorsInput
+  comics: ComicUpdateManyWithoutCreatorsInput
+  events: EventUpdateManyWithoutCreatorsInput
+}
+
+input CreatorUpdateManyDataInput {
+  marvelId: String
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  firstName: String
+  middleName: String
+  lastName: String
+  suffix: String
+  fullName: String
+  urls: Json
+}
+
+input CreatorUpdateManyMutationInput {
+  marvelId: String
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  firstName: String
+  middleName: String
+  lastName: String
+  suffix: String
+  fullName: String
+  urls: Json
+}
+
+input CreatorUpdateManyWithoutComicsInput {
+  create: [CreatorCreateWithoutComicsInput!]
+  delete: [CreatorWhereUniqueInput!]
+  connect: [CreatorWhereUniqueInput!]
+  set: [CreatorWhereUniqueInput!]
+  disconnect: [CreatorWhereUniqueInput!]
+  update: [CreatorUpdateWithWhereUniqueWithoutComicsInput!]
+  upsert: [CreatorUpsertWithWhereUniqueWithoutComicsInput!]
+  deleteMany: [CreatorScalarWhereInput!]
+  updateMany: [CreatorUpdateManyWithWhereNestedInput!]
+}
+
+input CreatorUpdateManyWithoutEventsInput {
+  create: [CreatorCreateWithoutEventsInput!]
+  delete: [CreatorWhereUniqueInput!]
+  connect: [CreatorWhereUniqueInput!]
+  set: [CreatorWhereUniqueInput!]
+  disconnect: [CreatorWhereUniqueInput!]
+  update: [CreatorUpdateWithWhereUniqueWithoutEventsInput!]
+  upsert: [CreatorUpsertWithWhereUniqueWithoutEventsInput!]
+  deleteMany: [CreatorScalarWhereInput!]
+  updateMany: [CreatorUpdateManyWithWhereNestedInput!]
+}
+
+input CreatorUpdateManyWithoutSeriesInput {
+  create: [CreatorCreateWithoutSeriesInput!]
+  delete: [CreatorWhereUniqueInput!]
+  connect: [CreatorWhereUniqueInput!]
+  set: [CreatorWhereUniqueInput!]
+  disconnect: [CreatorWhereUniqueInput!]
+  update: [CreatorUpdateWithWhereUniqueWithoutSeriesInput!]
+  upsert: [CreatorUpsertWithWhereUniqueWithoutSeriesInput!]
+  deleteMany: [CreatorScalarWhereInput!]
+  updateMany: [CreatorUpdateManyWithWhereNestedInput!]
+}
+
+input CreatorUpdateManyWithoutStoriesInput {
+  create: [CreatorCreateWithoutStoriesInput!]
+  delete: [CreatorWhereUniqueInput!]
+  connect: [CreatorWhereUniqueInput!]
+  set: [CreatorWhereUniqueInput!]
+  disconnect: [CreatorWhereUniqueInput!]
+  update: [CreatorUpdateWithWhereUniqueWithoutStoriesInput!]
+  upsert: [CreatorUpsertWithWhereUniqueWithoutStoriesInput!]
+  deleteMany: [CreatorScalarWhereInput!]
+  updateMany: [CreatorUpdateManyWithWhereNestedInput!]
+}
+
+input CreatorUpdateManyWithWhereNestedInput {
+  where: CreatorScalarWhereInput!
+  data: CreatorUpdateManyDataInput!
+}
+
+input CreatorUpdateWithoutComicsDataInput {
+  marvelId: String
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  firstName: String
+  middleName: String
+  lastName: String
+  suffix: String
+  fullName: String
+  urls: Json
+  series: SeriesUpdateManyWithoutCreatorsInput
+  stories: StoryUpdateManyWithoutCreatorsInput
+  events: EventUpdateManyWithoutCreatorsInput
+}
+
+input CreatorUpdateWithoutEventsDataInput {
+  marvelId: String
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  firstName: String
+  middleName: String
+  lastName: String
+  suffix: String
+  fullName: String
+  urls: Json
+  series: SeriesUpdateManyWithoutCreatorsInput
+  stories: StoryUpdateManyWithoutCreatorsInput
+  comics: ComicUpdateManyWithoutCreatorsInput
+}
+
+input CreatorUpdateWithoutSeriesDataInput {
+  marvelId: String
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  firstName: String
+  middleName: String
+  lastName: String
+  suffix: String
+  fullName: String
+  urls: Json
+  stories: StoryUpdateManyWithoutCreatorsInput
+  comics: ComicUpdateManyWithoutCreatorsInput
+  events: EventUpdateManyWithoutCreatorsInput
+}
+
+input CreatorUpdateWithoutStoriesDataInput {
+  marvelId: String
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  firstName: String
+  middleName: String
+  lastName: String
+  suffix: String
+  fullName: String
+  urls: Json
+  series: SeriesUpdateManyWithoutCreatorsInput
+  comics: ComicUpdateManyWithoutCreatorsInput
+  events: EventUpdateManyWithoutCreatorsInput
+}
+
+input CreatorUpdateWithWhereUniqueWithoutComicsInput {
+  where: CreatorWhereUniqueInput!
+  data: CreatorUpdateWithoutComicsDataInput!
+}
+
+input CreatorUpdateWithWhereUniqueWithoutEventsInput {
+  where: CreatorWhereUniqueInput!
+  data: CreatorUpdateWithoutEventsDataInput!
+}
+
+input CreatorUpdateWithWhereUniqueWithoutSeriesInput {
+  where: CreatorWhereUniqueInput!
+  data: CreatorUpdateWithoutSeriesDataInput!
+}
+
+input CreatorUpdateWithWhereUniqueWithoutStoriesInput {
+  where: CreatorWhereUniqueInput!
+  data: CreatorUpdateWithoutStoriesDataInput!
+}
+
+input CreatorUpsertWithWhereUniqueWithoutComicsInput {
+  where: CreatorWhereUniqueInput!
+  update: CreatorUpdateWithoutComicsDataInput!
+  create: CreatorCreateWithoutComicsInput!
+}
+
+input CreatorUpsertWithWhereUniqueWithoutEventsInput {
+  where: CreatorWhereUniqueInput!
+  update: CreatorUpdateWithoutEventsDataInput!
+  create: CreatorCreateWithoutEventsInput!
+}
+
+input CreatorUpsertWithWhereUniqueWithoutSeriesInput {
+  where: CreatorWhereUniqueInput!
+  update: CreatorUpdateWithoutSeriesDataInput!
+  create: CreatorCreateWithoutSeriesInput!
+}
+
+input CreatorUpsertWithWhereUniqueWithoutStoriesInput {
+  where: CreatorWhereUniqueInput!
+  update: CreatorUpdateWithoutStoriesDataInput!
+  create: CreatorCreateWithoutStoriesInput!
+}
+
+input CreatorWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  marvelId: String
+  marvelId_not: String
+  marvelId_in: [String!]
+  marvelId_not_in: [String!]
+  marvelId_lt: String
+  marvelId_lte: String
+  marvelId_gt: String
+  marvelId_gte: String
+  marvelId_contains: String
+  marvelId_not_contains: String
+  marvelId_starts_with: String
+  marvelId_not_starts_with: String
+  marvelId_ends_with: String
+  marvelId_not_ends_with: String
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  resourceURI: String
+  resourceURI_not: String
+  resourceURI_in: [String!]
+  resourceURI_not_in: [String!]
+  resourceURI_lt: String
+  resourceURI_lte: String
+  resourceURI_gt: String
+  resourceURI_gte: String
+  resourceURI_contains: String
+  resourceURI_not_contains: String
+  resourceURI_starts_with: String
+  resourceURI_not_starts_with: String
+  resourceURI_ends_with: String
+  resourceURI_not_ends_with: String
+  thumbnail: String
+  thumbnail_not: String
+  thumbnail_in: [String!]
+  thumbnail_not_in: [String!]
+  thumbnail_lt: String
+  thumbnail_lte: String
+  thumbnail_gt: String
+  thumbnail_gte: String
+  thumbnail_contains: String
+  thumbnail_not_contains: String
+  thumbnail_starts_with: String
+  thumbnail_not_starts_with: String
+  thumbnail_ends_with: String
+  thumbnail_not_ends_with: String
+  modified: String
+  modified_not: String
+  modified_in: [String!]
+  modified_not_in: [String!]
+  modified_lt: String
+  modified_lte: String
+  modified_gt: String
+  modified_gte: String
+  modified_contains: String
+  modified_not_contains: String
+  modified_starts_with: String
+  modified_not_starts_with: String
+  modified_ends_with: String
+  modified_not_ends_with: String
+  firstName: String
+  firstName_not: String
+  firstName_in: [String!]
+  firstName_not_in: [String!]
+  firstName_lt: String
+  firstName_lte: String
+  firstName_gt: String
+  firstName_gte: String
+  firstName_contains: String
+  firstName_not_contains: String
+  firstName_starts_with: String
+  firstName_not_starts_with: String
+  firstName_ends_with: String
+  firstName_not_ends_with: String
+  middleName: String
+  middleName_not: String
+  middleName_in: [String!]
+  middleName_not_in: [String!]
+  middleName_lt: String
+  middleName_lte: String
+  middleName_gt: String
+  middleName_gte: String
+  middleName_contains: String
+  middleName_not_contains: String
+  middleName_starts_with: String
+  middleName_not_starts_with: String
+  middleName_ends_with: String
+  middleName_not_ends_with: String
+  lastName: String
+  lastName_not: String
+  lastName_in: [String!]
+  lastName_not_in: [String!]
+  lastName_lt: String
+  lastName_lte: String
+  lastName_gt: String
+  lastName_gte: String
+  lastName_contains: String
+  lastName_not_contains: String
+  lastName_starts_with: String
+  lastName_not_starts_with: String
+  lastName_ends_with: String
+  lastName_not_ends_with: String
+  suffix: String
+  suffix_not: String
+  suffix_in: [String!]
+  suffix_not_in: [String!]
+  suffix_lt: String
+  suffix_lte: String
+  suffix_gt: String
+  suffix_gte: String
+  suffix_contains: String
+  suffix_not_contains: String
+  suffix_starts_with: String
+  suffix_not_starts_with: String
+  suffix_ends_with: String
+  suffix_not_ends_with: String
+  fullName: String
+  fullName_not: String
+  fullName_in: [String!]
+  fullName_not_in: [String!]
+  fullName_lt: String
+  fullName_lte: String
+  fullName_gt: String
+  fullName_gte: String
+  fullName_contains: String
+  fullName_not_contains: String
+  fullName_starts_with: String
+  fullName_not_starts_with: String
+  fullName_ends_with: String
+  fullName_not_ends_with: String
+  series_every: SeriesWhereInput
+  series_some: SeriesWhereInput
+  series_none: SeriesWhereInput
+  stories_every: StoryWhereInput
+  stories_some: StoryWhereInput
+  stories_none: StoryWhereInput
+  comics_every: ComicWhereInput
+  comics_some: ComicWhereInput
+  comics_none: ComicWhereInput
+  events_every: EventWhereInput
+  events_some: EventWhereInput
+  events_none: EventWhereInput
+  AND: [CreatorWhereInput!]
+  OR: [CreatorWhereInput!]
+  NOT: [CreatorWhereInput!]
+}
+
+input CreatorWhereUniqueInput {
+  id: ID
+  marvelId: String
+}
+
+scalar DateTime
+
+type Event {
+  id: ID!
+  marvelId: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  title: String
+  description: String
+  urls: Json
+  start: DateTime
+  end: DateTime
+  series(where: SeriesWhereInput, orderBy: SeriesOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Series!]
+  stories(where: StoryWhereInput, orderBy: StoryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Story!]
+  comics(where: ComicWhereInput, orderBy: ComicOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Comic!]
+  characters(where: CharacterWhereInput, orderBy: CharacterOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Character!]
+  creators(where: CreatorWhereInput, orderBy: CreatorOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Creator!]
+  next: Event
+  previous: Event
+}
+
+type EventConnection {
+  pageInfo: PageInfo!
+  edges: [EventEdge]!
+  aggregate: AggregateEvent!
+}
+
+input EventCreateInput {
+  marvelId: String!
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  title: String
+  description: String
+  urls: Json
+  start: DateTime
+  end: DateTime
+  series: SeriesCreateManyWithoutEventsInput
+  stories: StoryCreateManyWithoutEventsInput
+  comics: ComicCreateManyWithoutEventsInput
+  characters: CharacterCreateManyWithoutEventsInput
+  creators: CreatorCreateManyWithoutEventsInput
+  next: EventCreateOneWithoutPreviousInput
+  previous: EventCreateOneWithoutNextInput
+}
+
+input EventCreateManyWithoutCharactersInput {
+  create: [EventCreateWithoutCharactersInput!]
+  connect: [EventWhereUniqueInput!]
+}
+
+input EventCreateManyWithoutComicsInput {
+  create: [EventCreateWithoutComicsInput!]
+  connect: [EventWhereUniqueInput!]
+}
+
+input EventCreateManyWithoutCreatorsInput {
+  create: [EventCreateWithoutCreatorsInput!]
+  connect: [EventWhereUniqueInput!]
+}
+
+input EventCreateManyWithoutSeriesInput {
+  create: [EventCreateWithoutSeriesInput!]
+  connect: [EventWhereUniqueInput!]
+}
+
+input EventCreateManyWithoutStoriesInput {
+  create: [EventCreateWithoutStoriesInput!]
+  connect: [EventWhereUniqueInput!]
+}
+
+input EventCreateOneWithoutNextInput {
+  create: EventCreateWithoutNextInput
+  connect: EventWhereUniqueInput
+}
+
+input EventCreateOneWithoutPreviousInput {
+  create: EventCreateWithoutPreviousInput
+  connect: EventWhereUniqueInput
+}
+
+input EventCreateWithoutCharactersInput {
+  marvelId: String!
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  title: String
+  description: String
+  urls: Json
+  start: DateTime
+  end: DateTime
+  series: SeriesCreateManyWithoutEventsInput
+  stories: StoryCreateManyWithoutEventsInput
+  comics: ComicCreateManyWithoutEventsInput
+  creators: CreatorCreateManyWithoutEventsInput
+  next: EventCreateOneWithoutPreviousInput
+  previous: EventCreateOneWithoutNextInput
+}
+
+input EventCreateWithoutComicsInput {
+  marvelId: String!
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  title: String
+  description: String
+  urls: Json
+  start: DateTime
+  end: DateTime
+  series: SeriesCreateManyWithoutEventsInput
+  stories: StoryCreateManyWithoutEventsInput
+  characters: CharacterCreateManyWithoutEventsInput
+  creators: CreatorCreateManyWithoutEventsInput
+  next: EventCreateOneWithoutPreviousInput
+  previous: EventCreateOneWithoutNextInput
+}
+
+input EventCreateWithoutCreatorsInput {
+  marvelId: String!
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  title: String
+  description: String
+  urls: Json
+  start: DateTime
+  end: DateTime
+  series: SeriesCreateManyWithoutEventsInput
+  stories: StoryCreateManyWithoutEventsInput
+  comics: ComicCreateManyWithoutEventsInput
+  characters: CharacterCreateManyWithoutEventsInput
+  next: EventCreateOneWithoutPreviousInput
+  previous: EventCreateOneWithoutNextInput
+}
+
+input EventCreateWithoutNextInput {
+  marvelId: String!
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  title: String
+  description: String
+  urls: Json
+  start: DateTime
+  end: DateTime
+  series: SeriesCreateManyWithoutEventsInput
+  stories: StoryCreateManyWithoutEventsInput
+  comics: ComicCreateManyWithoutEventsInput
+  characters: CharacterCreateManyWithoutEventsInput
+  creators: CreatorCreateManyWithoutEventsInput
+  previous: EventCreateOneWithoutNextInput
+}
+
+input EventCreateWithoutPreviousInput {
+  marvelId: String!
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  title: String
+  description: String
+  urls: Json
+  start: DateTime
+  end: DateTime
+  series: SeriesCreateManyWithoutEventsInput
+  stories: StoryCreateManyWithoutEventsInput
+  comics: ComicCreateManyWithoutEventsInput
+  characters: CharacterCreateManyWithoutEventsInput
+  creators: CreatorCreateManyWithoutEventsInput
+  next: EventCreateOneWithoutPreviousInput
+}
+
+input EventCreateWithoutSeriesInput {
+  marvelId: String!
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  title: String
+  description: String
+  urls: Json
+  start: DateTime
+  end: DateTime
+  stories: StoryCreateManyWithoutEventsInput
+  comics: ComicCreateManyWithoutEventsInput
+  characters: CharacterCreateManyWithoutEventsInput
+  creators: CreatorCreateManyWithoutEventsInput
+  next: EventCreateOneWithoutPreviousInput
+  previous: EventCreateOneWithoutNextInput
+}
+
+input EventCreateWithoutStoriesInput {
+  marvelId: String!
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  title: String
+  description: String
+  urls: Json
+  start: DateTime
+  end: DateTime
+  series: SeriesCreateManyWithoutEventsInput
+  comics: ComicCreateManyWithoutEventsInput
+  characters: CharacterCreateManyWithoutEventsInput
+  creators: CreatorCreateManyWithoutEventsInput
+  next: EventCreateOneWithoutPreviousInput
+  previous: EventCreateOneWithoutNextInput
+}
+
+type EventEdge {
+  node: Event!
+  cursor: String!
+}
+
+enum EventOrderByInput {
+  id_ASC
+  id_DESC
+  marvelId_ASC
+  marvelId_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  resourceURI_ASC
+  resourceURI_DESC
+  thumbnail_ASC
+  thumbnail_DESC
+  modified_ASC
+  modified_DESC
+  title_ASC
+  title_DESC
+  description_ASC
+  description_DESC
+  urls_ASC
+  urls_DESC
+  start_ASC
+  start_DESC
+  end_ASC
+  end_DESC
+}
+
+type EventPreviousValues {
+  id: ID!
+  marvelId: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  title: String
+  description: String
+  urls: Json
+  start: DateTime
+  end: DateTime
+}
+
+input EventScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  marvelId: String
+  marvelId_not: String
+  marvelId_in: [String!]
+  marvelId_not_in: [String!]
+  marvelId_lt: String
+  marvelId_lte: String
+  marvelId_gt: String
+  marvelId_gte: String
+  marvelId_contains: String
+  marvelId_not_contains: String
+  marvelId_starts_with: String
+  marvelId_not_starts_with: String
+  marvelId_ends_with: String
+  marvelId_not_ends_with: String
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  resourceURI: String
+  resourceURI_not: String
+  resourceURI_in: [String!]
+  resourceURI_not_in: [String!]
+  resourceURI_lt: String
+  resourceURI_lte: String
+  resourceURI_gt: String
+  resourceURI_gte: String
+  resourceURI_contains: String
+  resourceURI_not_contains: String
+  resourceURI_starts_with: String
+  resourceURI_not_starts_with: String
+  resourceURI_ends_with: String
+  resourceURI_not_ends_with: String
+  thumbnail: String
+  thumbnail_not: String
+  thumbnail_in: [String!]
+  thumbnail_not_in: [String!]
+  thumbnail_lt: String
+  thumbnail_lte: String
+  thumbnail_gt: String
+  thumbnail_gte: String
+  thumbnail_contains: String
+  thumbnail_not_contains: String
+  thumbnail_starts_with: String
+  thumbnail_not_starts_with: String
+  thumbnail_ends_with: String
+  thumbnail_not_ends_with: String
+  modified: String
+  modified_not: String
+  modified_in: [String!]
+  modified_not_in: [String!]
+  modified_lt: String
+  modified_lte: String
+  modified_gt: String
+  modified_gte: String
+  modified_contains: String
+  modified_not_contains: String
+  modified_starts_with: String
+  modified_not_starts_with: String
+  modified_ends_with: String
+  modified_not_ends_with: String
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
+  description: String
+  description_not: String
+  description_in: [String!]
+  description_not_in: [String!]
+  description_lt: String
+  description_lte: String
+  description_gt: String
+  description_gte: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  start: DateTime
+  start_not: DateTime
+  start_in: [DateTime!]
+  start_not_in: [DateTime!]
+  start_lt: DateTime
+  start_lte: DateTime
+  start_gt: DateTime
+  start_gte: DateTime
+  end: DateTime
+  end_not: DateTime
+  end_in: [DateTime!]
+  end_not_in: [DateTime!]
+  end_lt: DateTime
+  end_lte: DateTime
+  end_gt: DateTime
+  end_gte: DateTime
+  AND: [EventScalarWhereInput!]
+  OR: [EventScalarWhereInput!]
+  NOT: [EventScalarWhereInput!]
+}
+
+type EventSubscriptionPayload {
+  mutation: MutationType!
+  node: Event
+  updatedFields: [String!]
+  previousValues: EventPreviousValues
+}
+
+input EventSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: EventWhereInput
+  AND: [EventSubscriptionWhereInput!]
+  OR: [EventSubscriptionWhereInput!]
+  NOT: [EventSubscriptionWhereInput!]
+}
+
+input EventUpdateInput {
+  marvelId: String
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  title: String
+  description: String
+  urls: Json
+  start: DateTime
+  end: DateTime
+  series: SeriesUpdateManyWithoutEventsInput
+  stories: StoryUpdateManyWithoutEventsInput
+  comics: ComicUpdateManyWithoutEventsInput
+  characters: CharacterUpdateManyWithoutEventsInput
+  creators: CreatorUpdateManyWithoutEventsInput
+  next: EventUpdateOneWithoutPreviousInput
+  previous: EventUpdateOneWithoutNextInput
+}
+
+input EventUpdateManyDataInput {
+  marvelId: String
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  title: String
+  description: String
+  urls: Json
+  start: DateTime
+  end: DateTime
+}
+
+input EventUpdateManyMutationInput {
+  marvelId: String
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  title: String
+  description: String
+  urls: Json
+  start: DateTime
+  end: DateTime
+}
+
+input EventUpdateManyWithoutCharactersInput {
+  create: [EventCreateWithoutCharactersInput!]
+  delete: [EventWhereUniqueInput!]
+  connect: [EventWhereUniqueInput!]
+  set: [EventWhereUniqueInput!]
+  disconnect: [EventWhereUniqueInput!]
+  update: [EventUpdateWithWhereUniqueWithoutCharactersInput!]
+  upsert: [EventUpsertWithWhereUniqueWithoutCharactersInput!]
+  deleteMany: [EventScalarWhereInput!]
+  updateMany: [EventUpdateManyWithWhereNestedInput!]
+}
+
+input EventUpdateManyWithoutComicsInput {
+  create: [EventCreateWithoutComicsInput!]
+  delete: [EventWhereUniqueInput!]
+  connect: [EventWhereUniqueInput!]
+  set: [EventWhereUniqueInput!]
+  disconnect: [EventWhereUniqueInput!]
+  update: [EventUpdateWithWhereUniqueWithoutComicsInput!]
+  upsert: [EventUpsertWithWhereUniqueWithoutComicsInput!]
+  deleteMany: [EventScalarWhereInput!]
+  updateMany: [EventUpdateManyWithWhereNestedInput!]
+}
+
+input EventUpdateManyWithoutCreatorsInput {
+  create: [EventCreateWithoutCreatorsInput!]
+  delete: [EventWhereUniqueInput!]
+  connect: [EventWhereUniqueInput!]
+  set: [EventWhereUniqueInput!]
+  disconnect: [EventWhereUniqueInput!]
+  update: [EventUpdateWithWhereUniqueWithoutCreatorsInput!]
+  upsert: [EventUpsertWithWhereUniqueWithoutCreatorsInput!]
+  deleteMany: [EventScalarWhereInput!]
+  updateMany: [EventUpdateManyWithWhereNestedInput!]
+}
+
+input EventUpdateManyWithoutSeriesInput {
+  create: [EventCreateWithoutSeriesInput!]
+  delete: [EventWhereUniqueInput!]
+  connect: [EventWhereUniqueInput!]
+  set: [EventWhereUniqueInput!]
+  disconnect: [EventWhereUniqueInput!]
+  update: [EventUpdateWithWhereUniqueWithoutSeriesInput!]
+  upsert: [EventUpsertWithWhereUniqueWithoutSeriesInput!]
+  deleteMany: [EventScalarWhereInput!]
+  updateMany: [EventUpdateManyWithWhereNestedInput!]
+}
+
+input EventUpdateManyWithoutStoriesInput {
+  create: [EventCreateWithoutStoriesInput!]
+  delete: [EventWhereUniqueInput!]
+  connect: [EventWhereUniqueInput!]
+  set: [EventWhereUniqueInput!]
+  disconnect: [EventWhereUniqueInput!]
+  update: [EventUpdateWithWhereUniqueWithoutStoriesInput!]
+  upsert: [EventUpsertWithWhereUniqueWithoutStoriesInput!]
+  deleteMany: [EventScalarWhereInput!]
+  updateMany: [EventUpdateManyWithWhereNestedInput!]
+}
+
+input EventUpdateManyWithWhereNestedInput {
+  where: EventScalarWhereInput!
+  data: EventUpdateManyDataInput!
+}
+
+input EventUpdateOneWithoutNextInput {
+  create: EventCreateWithoutNextInput
+  update: EventUpdateWithoutNextDataInput
+  upsert: EventUpsertWithoutNextInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: EventWhereUniqueInput
+}
+
+input EventUpdateOneWithoutPreviousInput {
+  create: EventCreateWithoutPreviousInput
+  update: EventUpdateWithoutPreviousDataInput
+  upsert: EventUpsertWithoutPreviousInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: EventWhereUniqueInput
+}
+
+input EventUpdateWithoutCharactersDataInput {
+  marvelId: String
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  title: String
+  description: String
+  urls: Json
+  start: DateTime
+  end: DateTime
+  series: SeriesUpdateManyWithoutEventsInput
+  stories: StoryUpdateManyWithoutEventsInput
+  comics: ComicUpdateManyWithoutEventsInput
+  creators: CreatorUpdateManyWithoutEventsInput
+  next: EventUpdateOneWithoutPreviousInput
+  previous: EventUpdateOneWithoutNextInput
+}
+
+input EventUpdateWithoutComicsDataInput {
+  marvelId: String
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  title: String
+  description: String
+  urls: Json
+  start: DateTime
+  end: DateTime
+  series: SeriesUpdateManyWithoutEventsInput
+  stories: StoryUpdateManyWithoutEventsInput
+  characters: CharacterUpdateManyWithoutEventsInput
+  creators: CreatorUpdateManyWithoutEventsInput
+  next: EventUpdateOneWithoutPreviousInput
+  previous: EventUpdateOneWithoutNextInput
+}
+
+input EventUpdateWithoutCreatorsDataInput {
+  marvelId: String
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  title: String
+  description: String
+  urls: Json
+  start: DateTime
+  end: DateTime
+  series: SeriesUpdateManyWithoutEventsInput
+  stories: StoryUpdateManyWithoutEventsInput
+  comics: ComicUpdateManyWithoutEventsInput
+  characters: CharacterUpdateManyWithoutEventsInput
+  next: EventUpdateOneWithoutPreviousInput
+  previous: EventUpdateOneWithoutNextInput
+}
+
+input EventUpdateWithoutNextDataInput {
+  marvelId: String
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  title: String
+  description: String
+  urls: Json
+  start: DateTime
+  end: DateTime
+  series: SeriesUpdateManyWithoutEventsInput
+  stories: StoryUpdateManyWithoutEventsInput
+  comics: ComicUpdateManyWithoutEventsInput
+  characters: CharacterUpdateManyWithoutEventsInput
+  creators: CreatorUpdateManyWithoutEventsInput
+  previous: EventUpdateOneWithoutNextInput
+}
+
+input EventUpdateWithoutPreviousDataInput {
+  marvelId: String
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  title: String
+  description: String
+  urls: Json
+  start: DateTime
+  end: DateTime
+  series: SeriesUpdateManyWithoutEventsInput
+  stories: StoryUpdateManyWithoutEventsInput
+  comics: ComicUpdateManyWithoutEventsInput
+  characters: CharacterUpdateManyWithoutEventsInput
+  creators: CreatorUpdateManyWithoutEventsInput
+  next: EventUpdateOneWithoutPreviousInput
+}
+
+input EventUpdateWithoutSeriesDataInput {
+  marvelId: String
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  title: String
+  description: String
+  urls: Json
+  start: DateTime
+  end: DateTime
+  stories: StoryUpdateManyWithoutEventsInput
+  comics: ComicUpdateManyWithoutEventsInput
+  characters: CharacterUpdateManyWithoutEventsInput
+  creators: CreatorUpdateManyWithoutEventsInput
+  next: EventUpdateOneWithoutPreviousInput
+  previous: EventUpdateOneWithoutNextInput
+}
+
+input EventUpdateWithoutStoriesDataInput {
+  marvelId: String
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  title: String
+  description: String
+  urls: Json
+  start: DateTime
+  end: DateTime
+  series: SeriesUpdateManyWithoutEventsInput
+  comics: ComicUpdateManyWithoutEventsInput
+  characters: CharacterUpdateManyWithoutEventsInput
+  creators: CreatorUpdateManyWithoutEventsInput
+  next: EventUpdateOneWithoutPreviousInput
+  previous: EventUpdateOneWithoutNextInput
+}
+
+input EventUpdateWithWhereUniqueWithoutCharactersInput {
+  where: EventWhereUniqueInput!
+  data: EventUpdateWithoutCharactersDataInput!
+}
+
+input EventUpdateWithWhereUniqueWithoutComicsInput {
+  where: EventWhereUniqueInput!
+  data: EventUpdateWithoutComicsDataInput!
+}
+
+input EventUpdateWithWhereUniqueWithoutCreatorsInput {
+  where: EventWhereUniqueInput!
+  data: EventUpdateWithoutCreatorsDataInput!
+}
+
+input EventUpdateWithWhereUniqueWithoutSeriesInput {
+  where: EventWhereUniqueInput!
+  data: EventUpdateWithoutSeriesDataInput!
+}
+
+input EventUpdateWithWhereUniqueWithoutStoriesInput {
+  where: EventWhereUniqueInput!
+  data: EventUpdateWithoutStoriesDataInput!
+}
+
+input EventUpsertWithoutNextInput {
+  update: EventUpdateWithoutNextDataInput!
+  create: EventCreateWithoutNextInput!
+}
+
+input EventUpsertWithoutPreviousInput {
+  update: EventUpdateWithoutPreviousDataInput!
+  create: EventCreateWithoutPreviousInput!
+}
+
+input EventUpsertWithWhereUniqueWithoutCharactersInput {
+  where: EventWhereUniqueInput!
+  update: EventUpdateWithoutCharactersDataInput!
+  create: EventCreateWithoutCharactersInput!
+}
+
+input EventUpsertWithWhereUniqueWithoutComicsInput {
+  where: EventWhereUniqueInput!
+  update: EventUpdateWithoutComicsDataInput!
+  create: EventCreateWithoutComicsInput!
+}
+
+input EventUpsertWithWhereUniqueWithoutCreatorsInput {
+  where: EventWhereUniqueInput!
+  update: EventUpdateWithoutCreatorsDataInput!
+  create: EventCreateWithoutCreatorsInput!
+}
+
+input EventUpsertWithWhereUniqueWithoutSeriesInput {
+  where: EventWhereUniqueInput!
+  update: EventUpdateWithoutSeriesDataInput!
+  create: EventCreateWithoutSeriesInput!
+}
+
+input EventUpsertWithWhereUniqueWithoutStoriesInput {
+  where: EventWhereUniqueInput!
+  update: EventUpdateWithoutStoriesDataInput!
+  create: EventCreateWithoutStoriesInput!
+}
+
+input EventWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  marvelId: String
+  marvelId_not: String
+  marvelId_in: [String!]
+  marvelId_not_in: [String!]
+  marvelId_lt: String
+  marvelId_lte: String
+  marvelId_gt: String
+  marvelId_gte: String
+  marvelId_contains: String
+  marvelId_not_contains: String
+  marvelId_starts_with: String
+  marvelId_not_starts_with: String
+  marvelId_ends_with: String
+  marvelId_not_ends_with: String
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  resourceURI: String
+  resourceURI_not: String
+  resourceURI_in: [String!]
+  resourceURI_not_in: [String!]
+  resourceURI_lt: String
+  resourceURI_lte: String
+  resourceURI_gt: String
+  resourceURI_gte: String
+  resourceURI_contains: String
+  resourceURI_not_contains: String
+  resourceURI_starts_with: String
+  resourceURI_not_starts_with: String
+  resourceURI_ends_with: String
+  resourceURI_not_ends_with: String
+  thumbnail: String
+  thumbnail_not: String
+  thumbnail_in: [String!]
+  thumbnail_not_in: [String!]
+  thumbnail_lt: String
+  thumbnail_lte: String
+  thumbnail_gt: String
+  thumbnail_gte: String
+  thumbnail_contains: String
+  thumbnail_not_contains: String
+  thumbnail_starts_with: String
+  thumbnail_not_starts_with: String
+  thumbnail_ends_with: String
+  thumbnail_not_ends_with: String
+  modified: String
+  modified_not: String
+  modified_in: [String!]
+  modified_not_in: [String!]
+  modified_lt: String
+  modified_lte: String
+  modified_gt: String
+  modified_gte: String
+  modified_contains: String
+  modified_not_contains: String
+  modified_starts_with: String
+  modified_not_starts_with: String
+  modified_ends_with: String
+  modified_not_ends_with: String
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
+  description: String
+  description_not: String
+  description_in: [String!]
+  description_not_in: [String!]
+  description_lt: String
+  description_lte: String
+  description_gt: String
+  description_gte: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  start: DateTime
+  start_not: DateTime
+  start_in: [DateTime!]
+  start_not_in: [DateTime!]
+  start_lt: DateTime
+  start_lte: DateTime
+  start_gt: DateTime
+  start_gte: DateTime
+  end: DateTime
+  end_not: DateTime
+  end_in: [DateTime!]
+  end_not_in: [DateTime!]
+  end_lt: DateTime
+  end_lte: DateTime
+  end_gt: DateTime
+  end_gte: DateTime
+  series_every: SeriesWhereInput
+  series_some: SeriesWhereInput
+  series_none: SeriesWhereInput
+  stories_every: StoryWhereInput
+  stories_some: StoryWhereInput
+  stories_none: StoryWhereInput
+  comics_every: ComicWhereInput
+  comics_some: ComicWhereInput
+  comics_none: ComicWhereInput
+  characters_every: CharacterWhereInput
+  characters_some: CharacterWhereInput
+  characters_none: CharacterWhereInput
+  creators_every: CreatorWhereInput
+  creators_some: CreatorWhereInput
+  creators_none: CreatorWhereInput
+  next: EventWhereInput
+  previous: EventWhereInput
+  AND: [EventWhereInput!]
+  OR: [EventWhereInput!]
+  NOT: [EventWhereInput!]
+}
+
+input EventWhereUniqueInput {
+  id: ID
+  marvelId: String
+}
+
+scalar Json
+
 scalar Long
 
 type Mutation {
-  createUser(data: UserCreateInput!): User!
-  updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
-  updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
-  upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
-  deleteUser(where: UserWhereUniqueInput!): User
-  deleteManyUsers(where: UserWhereInput): BatchPayload!
+  createCharacter(data: CharacterCreateInput!): Character!
+  updateCharacter(data: CharacterUpdateInput!, where: CharacterWhereUniqueInput!): Character
+  updateManyCharacters(data: CharacterUpdateManyMutationInput!, where: CharacterWhereInput): BatchPayload!
+  upsertCharacter(where: CharacterWhereUniqueInput!, create: CharacterCreateInput!, update: CharacterUpdateInput!): Character!
+  deleteCharacter(where: CharacterWhereUniqueInput!): Character
+  deleteManyCharacters(where: CharacterWhereInput): BatchPayload!
+  createComic(data: ComicCreateInput!): Comic!
+  updateComic(data: ComicUpdateInput!, where: ComicWhereUniqueInput!): Comic
+  updateManyComics(data: ComicUpdateManyMutationInput!, where: ComicWhereInput): BatchPayload!
+  upsertComic(where: ComicWhereUniqueInput!, create: ComicCreateInput!, update: ComicUpdateInput!): Comic!
+  deleteComic(where: ComicWhereUniqueInput!): Comic
+  deleteManyComics(where: ComicWhereInput): BatchPayload!
+  createCreator(data: CreatorCreateInput!): Creator!
+  updateCreator(data: CreatorUpdateInput!, where: CreatorWhereUniqueInput!): Creator
+  updateManyCreators(data: CreatorUpdateManyMutationInput!, where: CreatorWhereInput): BatchPayload!
+  upsertCreator(where: CreatorWhereUniqueInput!, create: CreatorCreateInput!, update: CreatorUpdateInput!): Creator!
+  deleteCreator(where: CreatorWhereUniqueInput!): Creator
+  deleteManyCreators(where: CreatorWhereInput): BatchPayload!
+  createEvent(data: EventCreateInput!): Event!
+  updateEvent(data: EventUpdateInput!, where: EventWhereUniqueInput!): Event
+  updateManyEvents(data: EventUpdateManyMutationInput!, where: EventWhereInput): BatchPayload!
+  upsertEvent(where: EventWhereUniqueInput!, create: EventCreateInput!, update: EventUpdateInput!): Event!
+  deleteEvent(where: EventWhereUniqueInput!): Event
+  deleteManyEvents(where: EventWhereInput): BatchPayload!
+  createSeries(data: SeriesCreateInput!): Series!
+  updateSeries(data: SeriesUpdateInput!, where: SeriesWhereUniqueInput!): Series
+  updateManySerieses(data: SeriesUpdateManyMutationInput!, where: SeriesWhereInput): BatchPayload!
+  upsertSeries(where: SeriesWhereUniqueInput!, create: SeriesCreateInput!, update: SeriesUpdateInput!): Series!
+  deleteSeries(where: SeriesWhereUniqueInput!): Series
+  deleteManySerieses(where: SeriesWhereInput): BatchPayload!
+  createStory(data: StoryCreateInput!): Story!
+  updateStory(data: StoryUpdateInput!, where: StoryWhereUniqueInput!): Story
+  updateManyStories(data: StoryUpdateManyMutationInput!, where: StoryWhereInput): BatchPayload!
+  upsertStory(where: StoryWhereUniqueInput!, create: StoryCreateInput!, update: StoryUpdateInput!): Story!
+  deleteStory(where: StoryWhereUniqueInput!): Story
+  deleteManyStories(where: StoryWhereInput): BatchPayload!
 }
 
 enum MutationType {
@@ -39,79 +3463,307 @@ type PageInfo {
 }
 
 type Query {
-  user(where: UserWhereUniqueInput!): User
-  users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
-  usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
+  character(where: CharacterWhereUniqueInput!): Character
+  characters(where: CharacterWhereInput, orderBy: CharacterOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Character]!
+  charactersConnection(where: CharacterWhereInput, orderBy: CharacterOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): CharacterConnection!
+  comic(where: ComicWhereUniqueInput!): Comic
+  comics(where: ComicWhereInput, orderBy: ComicOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Comic]!
+  comicsConnection(where: ComicWhereInput, orderBy: ComicOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ComicConnection!
+  creator(where: CreatorWhereUniqueInput!): Creator
+  creators(where: CreatorWhereInput, orderBy: CreatorOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Creator]!
+  creatorsConnection(where: CreatorWhereInput, orderBy: CreatorOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): CreatorConnection!
+  event(where: EventWhereUniqueInput!): Event
+  events(where: EventWhereInput, orderBy: EventOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Event]!
+  eventsConnection(where: EventWhereInput, orderBy: EventOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): EventConnection!
+  series(where: SeriesWhereUniqueInput!): Series
+  serieses(where: SeriesWhereInput, orderBy: SeriesOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Series]!
+  seriesesConnection(where: SeriesWhereInput, orderBy: SeriesOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): SeriesConnection!
+  story(where: StoryWhereUniqueInput!): Story
+  stories(where: StoryWhereInput, orderBy: StoryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Story]!
+  storiesConnection(where: StoryWhereInput, orderBy: StoryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): StoryConnection!
   node(id: ID!): Node
 }
 
-type Subscription {
-  user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
-}
-
-type User {
+type Series {
   id: ID!
-  name: String!
+  marvelId: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  title: String
+  description: String
+  urls: Json
+  startYear: Int
+  endYear: Int
+  rating: String
+  type: String
+  comics(where: ComicWhereInput, orderBy: ComicOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Comic!]
+  stories(where: StoryWhereInput, orderBy: StoryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Story!]
+  events(where: EventWhereInput, orderBy: EventOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Event!]
+  characters(where: CharacterWhereInput, orderBy: CharacterOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Character!]
+  creators(where: CreatorWhereInput, orderBy: CreatorOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Creator!]
+  next: Series
+  previous: Series
 }
 
-type UserConnection {
+type SeriesConnection {
   pageInfo: PageInfo!
-  edges: [UserEdge]!
-  aggregate: AggregateUser!
+  edges: [SeriesEdge]!
+  aggregate: AggregateSeries!
 }
 
-input UserCreateInput {
-  name: String!
+input SeriesCreateInput {
+  marvelId: String!
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  title: String
+  description: String
+  urls: Json
+  startYear: Int
+  endYear: Int
+  rating: String
+  type: String
+  comics: ComicCreateManyWithoutSeriesInput
+  stories: StoryCreateManyWithoutSeriesInput
+  events: EventCreateManyWithoutSeriesInput
+  characters: CharacterCreateManyWithoutSeriesInput
+  creators: CreatorCreateManyWithoutSeriesInput
+  next: SeriesCreateOneWithoutPreviousInput
+  previous: SeriesCreateOneWithoutNextInput
 }
 
-type UserEdge {
-  node: User!
+input SeriesCreateManyWithoutCharactersInput {
+  create: [SeriesCreateWithoutCharactersInput!]
+  connect: [SeriesWhereUniqueInput!]
+}
+
+input SeriesCreateManyWithoutCreatorsInput {
+  create: [SeriesCreateWithoutCreatorsInput!]
+  connect: [SeriesWhereUniqueInput!]
+}
+
+input SeriesCreateManyWithoutEventsInput {
+  create: [SeriesCreateWithoutEventsInput!]
+  connect: [SeriesWhereUniqueInput!]
+}
+
+input SeriesCreateManyWithoutStoriesInput {
+  create: [SeriesCreateWithoutStoriesInput!]
+  connect: [SeriesWhereUniqueInput!]
+}
+
+input SeriesCreateOneWithoutComicsInput {
+  create: SeriesCreateWithoutComicsInput
+  connect: SeriesWhereUniqueInput
+}
+
+input SeriesCreateOneWithoutNextInput {
+  create: SeriesCreateWithoutNextInput
+  connect: SeriesWhereUniqueInput
+}
+
+input SeriesCreateOneWithoutPreviousInput {
+  create: SeriesCreateWithoutPreviousInput
+  connect: SeriesWhereUniqueInput
+}
+
+input SeriesCreateWithoutCharactersInput {
+  marvelId: String!
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  title: String
+  description: String
+  urls: Json
+  startYear: Int
+  endYear: Int
+  rating: String
+  type: String
+  comics: ComicCreateManyWithoutSeriesInput
+  stories: StoryCreateManyWithoutSeriesInput
+  events: EventCreateManyWithoutSeriesInput
+  creators: CreatorCreateManyWithoutSeriesInput
+  next: SeriesCreateOneWithoutPreviousInput
+  previous: SeriesCreateOneWithoutNextInput
+}
+
+input SeriesCreateWithoutComicsInput {
+  marvelId: String!
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  title: String
+  description: String
+  urls: Json
+  startYear: Int
+  endYear: Int
+  rating: String
+  type: String
+  stories: StoryCreateManyWithoutSeriesInput
+  events: EventCreateManyWithoutSeriesInput
+  characters: CharacterCreateManyWithoutSeriesInput
+  creators: CreatorCreateManyWithoutSeriesInput
+  next: SeriesCreateOneWithoutPreviousInput
+  previous: SeriesCreateOneWithoutNextInput
+}
+
+input SeriesCreateWithoutCreatorsInput {
+  marvelId: String!
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  title: String
+  description: String
+  urls: Json
+  startYear: Int
+  endYear: Int
+  rating: String
+  type: String
+  comics: ComicCreateManyWithoutSeriesInput
+  stories: StoryCreateManyWithoutSeriesInput
+  events: EventCreateManyWithoutSeriesInput
+  characters: CharacterCreateManyWithoutSeriesInput
+  next: SeriesCreateOneWithoutPreviousInput
+  previous: SeriesCreateOneWithoutNextInput
+}
+
+input SeriesCreateWithoutEventsInput {
+  marvelId: String!
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  title: String
+  description: String
+  urls: Json
+  startYear: Int
+  endYear: Int
+  rating: String
+  type: String
+  comics: ComicCreateManyWithoutSeriesInput
+  stories: StoryCreateManyWithoutSeriesInput
+  characters: CharacterCreateManyWithoutSeriesInput
+  creators: CreatorCreateManyWithoutSeriesInput
+  next: SeriesCreateOneWithoutPreviousInput
+  previous: SeriesCreateOneWithoutNextInput
+}
+
+input SeriesCreateWithoutNextInput {
+  marvelId: String!
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  title: String
+  description: String
+  urls: Json
+  startYear: Int
+  endYear: Int
+  rating: String
+  type: String
+  comics: ComicCreateManyWithoutSeriesInput
+  stories: StoryCreateManyWithoutSeriesInput
+  events: EventCreateManyWithoutSeriesInput
+  characters: CharacterCreateManyWithoutSeriesInput
+  creators: CreatorCreateManyWithoutSeriesInput
+  previous: SeriesCreateOneWithoutNextInput
+}
+
+input SeriesCreateWithoutPreviousInput {
+  marvelId: String!
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  title: String
+  description: String
+  urls: Json
+  startYear: Int
+  endYear: Int
+  rating: String
+  type: String
+  comics: ComicCreateManyWithoutSeriesInput
+  stories: StoryCreateManyWithoutSeriesInput
+  events: EventCreateManyWithoutSeriesInput
+  characters: CharacterCreateManyWithoutSeriesInput
+  creators: CreatorCreateManyWithoutSeriesInput
+  next: SeriesCreateOneWithoutPreviousInput
+}
+
+input SeriesCreateWithoutStoriesInput {
+  marvelId: String!
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  title: String
+  description: String
+  urls: Json
+  startYear: Int
+  endYear: Int
+  rating: String
+  type: String
+  comics: ComicCreateManyWithoutSeriesInput
+  events: EventCreateManyWithoutSeriesInput
+  characters: CharacterCreateManyWithoutSeriesInput
+  creators: CreatorCreateManyWithoutSeriesInput
+  next: SeriesCreateOneWithoutPreviousInput
+  previous: SeriesCreateOneWithoutNextInput
+}
+
+type SeriesEdge {
+  node: Series!
   cursor: String!
 }
 
-enum UserOrderByInput {
+enum SeriesOrderByInput {
   id_ASC
   id_DESC
-  name_ASC
-  name_DESC
+  marvelId_ASC
+  marvelId_DESC
   createdAt_ASC
   createdAt_DESC
   updatedAt_ASC
   updatedAt_DESC
+  resourceURI_ASC
+  resourceURI_DESC
+  thumbnail_ASC
+  thumbnail_DESC
+  modified_ASC
+  modified_DESC
+  title_ASC
+  title_DESC
+  description_ASC
+  description_DESC
+  urls_ASC
+  urls_DESC
+  startYear_ASC
+  startYear_DESC
+  endYear_ASC
+  endYear_DESC
+  rating_ASC
+  rating_DESC
+  type_ASC
+  type_DESC
 }
 
-type UserPreviousValues {
+type SeriesPreviousValues {
   id: ID!
-  name: String!
+  marvelId: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  title: String
+  description: String
+  urls: Json
+  startYear: Int
+  endYear: Int
+  rating: String
+  type: String
 }
 
-type UserSubscriptionPayload {
-  mutation: MutationType!
-  node: User
-  updatedFields: [String!]
-  previousValues: UserPreviousValues
-}
-
-input UserSubscriptionWhereInput {
-  mutation_in: [MutationType!]
-  updatedFields_contains: String
-  updatedFields_contains_every: [String!]
-  updatedFields_contains_some: [String!]
-  node: UserWhereInput
-  AND: [UserSubscriptionWhereInput!]
-  OR: [UserSubscriptionWhereInput!]
-  NOT: [UserSubscriptionWhereInput!]
-}
-
-input UserUpdateInput {
-  name: String
-}
-
-input UserUpdateManyMutationInput {
-  name: String
-}
-
-input UserWhereInput {
+input SeriesScalarWhereInput {
   id: ID
   id_not: ID
   id_in: [ID!]
@@ -126,26 +3778,1417 @@ input UserWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
-  name: String
-  name_not: String
-  name_in: [String!]
-  name_not_in: [String!]
-  name_lt: String
-  name_lte: String
-  name_gt: String
-  name_gte: String
-  name_contains: String
-  name_not_contains: String
-  name_starts_with: String
-  name_not_starts_with: String
-  name_ends_with: String
-  name_not_ends_with: String
-  AND: [UserWhereInput!]
-  OR: [UserWhereInput!]
-  NOT: [UserWhereInput!]
+  marvelId: String
+  marvelId_not: String
+  marvelId_in: [String!]
+  marvelId_not_in: [String!]
+  marvelId_lt: String
+  marvelId_lte: String
+  marvelId_gt: String
+  marvelId_gte: String
+  marvelId_contains: String
+  marvelId_not_contains: String
+  marvelId_starts_with: String
+  marvelId_not_starts_with: String
+  marvelId_ends_with: String
+  marvelId_not_ends_with: String
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  resourceURI: String
+  resourceURI_not: String
+  resourceURI_in: [String!]
+  resourceURI_not_in: [String!]
+  resourceURI_lt: String
+  resourceURI_lte: String
+  resourceURI_gt: String
+  resourceURI_gte: String
+  resourceURI_contains: String
+  resourceURI_not_contains: String
+  resourceURI_starts_with: String
+  resourceURI_not_starts_with: String
+  resourceURI_ends_with: String
+  resourceURI_not_ends_with: String
+  thumbnail: String
+  thumbnail_not: String
+  thumbnail_in: [String!]
+  thumbnail_not_in: [String!]
+  thumbnail_lt: String
+  thumbnail_lte: String
+  thumbnail_gt: String
+  thumbnail_gte: String
+  thumbnail_contains: String
+  thumbnail_not_contains: String
+  thumbnail_starts_with: String
+  thumbnail_not_starts_with: String
+  thumbnail_ends_with: String
+  thumbnail_not_ends_with: String
+  modified: String
+  modified_not: String
+  modified_in: [String!]
+  modified_not_in: [String!]
+  modified_lt: String
+  modified_lte: String
+  modified_gt: String
+  modified_gte: String
+  modified_contains: String
+  modified_not_contains: String
+  modified_starts_with: String
+  modified_not_starts_with: String
+  modified_ends_with: String
+  modified_not_ends_with: String
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
+  description: String
+  description_not: String
+  description_in: [String!]
+  description_not_in: [String!]
+  description_lt: String
+  description_lte: String
+  description_gt: String
+  description_gte: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  startYear: Int
+  startYear_not: Int
+  startYear_in: [Int!]
+  startYear_not_in: [Int!]
+  startYear_lt: Int
+  startYear_lte: Int
+  startYear_gt: Int
+  startYear_gte: Int
+  endYear: Int
+  endYear_not: Int
+  endYear_in: [Int!]
+  endYear_not_in: [Int!]
+  endYear_lt: Int
+  endYear_lte: Int
+  endYear_gt: Int
+  endYear_gte: Int
+  rating: String
+  rating_not: String
+  rating_in: [String!]
+  rating_not_in: [String!]
+  rating_lt: String
+  rating_lte: String
+  rating_gt: String
+  rating_gte: String
+  rating_contains: String
+  rating_not_contains: String
+  rating_starts_with: String
+  rating_not_starts_with: String
+  rating_ends_with: String
+  rating_not_ends_with: String
+  type: String
+  type_not: String
+  type_in: [String!]
+  type_not_in: [String!]
+  type_lt: String
+  type_lte: String
+  type_gt: String
+  type_gte: String
+  type_contains: String
+  type_not_contains: String
+  type_starts_with: String
+  type_not_starts_with: String
+  type_ends_with: String
+  type_not_ends_with: String
+  AND: [SeriesScalarWhereInput!]
+  OR: [SeriesScalarWhereInput!]
+  NOT: [SeriesScalarWhereInput!]
 }
 
-input UserWhereUniqueInput {
+type SeriesSubscriptionPayload {
+  mutation: MutationType!
+  node: Series
+  updatedFields: [String!]
+  previousValues: SeriesPreviousValues
+}
+
+input SeriesSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: SeriesWhereInput
+  AND: [SeriesSubscriptionWhereInput!]
+  OR: [SeriesSubscriptionWhereInput!]
+  NOT: [SeriesSubscriptionWhereInput!]
+}
+
+input SeriesUpdateInput {
+  marvelId: String
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  title: String
+  description: String
+  urls: Json
+  startYear: Int
+  endYear: Int
+  rating: String
+  type: String
+  comics: ComicUpdateManyWithoutSeriesInput
+  stories: StoryUpdateManyWithoutSeriesInput
+  events: EventUpdateManyWithoutSeriesInput
+  characters: CharacterUpdateManyWithoutSeriesInput
+  creators: CreatorUpdateManyWithoutSeriesInput
+  next: SeriesUpdateOneWithoutPreviousInput
+  previous: SeriesUpdateOneWithoutNextInput
+}
+
+input SeriesUpdateManyDataInput {
+  marvelId: String
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  title: String
+  description: String
+  urls: Json
+  startYear: Int
+  endYear: Int
+  rating: String
+  type: String
+}
+
+input SeriesUpdateManyMutationInput {
+  marvelId: String
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  title: String
+  description: String
+  urls: Json
+  startYear: Int
+  endYear: Int
+  rating: String
+  type: String
+}
+
+input SeriesUpdateManyWithoutCharactersInput {
+  create: [SeriesCreateWithoutCharactersInput!]
+  delete: [SeriesWhereUniqueInput!]
+  connect: [SeriesWhereUniqueInput!]
+  set: [SeriesWhereUniqueInput!]
+  disconnect: [SeriesWhereUniqueInput!]
+  update: [SeriesUpdateWithWhereUniqueWithoutCharactersInput!]
+  upsert: [SeriesUpsertWithWhereUniqueWithoutCharactersInput!]
+  deleteMany: [SeriesScalarWhereInput!]
+  updateMany: [SeriesUpdateManyWithWhereNestedInput!]
+}
+
+input SeriesUpdateManyWithoutCreatorsInput {
+  create: [SeriesCreateWithoutCreatorsInput!]
+  delete: [SeriesWhereUniqueInput!]
+  connect: [SeriesWhereUniqueInput!]
+  set: [SeriesWhereUniqueInput!]
+  disconnect: [SeriesWhereUniqueInput!]
+  update: [SeriesUpdateWithWhereUniqueWithoutCreatorsInput!]
+  upsert: [SeriesUpsertWithWhereUniqueWithoutCreatorsInput!]
+  deleteMany: [SeriesScalarWhereInput!]
+  updateMany: [SeriesUpdateManyWithWhereNestedInput!]
+}
+
+input SeriesUpdateManyWithoutEventsInput {
+  create: [SeriesCreateWithoutEventsInput!]
+  delete: [SeriesWhereUniqueInput!]
+  connect: [SeriesWhereUniqueInput!]
+  set: [SeriesWhereUniqueInput!]
+  disconnect: [SeriesWhereUniqueInput!]
+  update: [SeriesUpdateWithWhereUniqueWithoutEventsInput!]
+  upsert: [SeriesUpsertWithWhereUniqueWithoutEventsInput!]
+  deleteMany: [SeriesScalarWhereInput!]
+  updateMany: [SeriesUpdateManyWithWhereNestedInput!]
+}
+
+input SeriesUpdateManyWithoutStoriesInput {
+  create: [SeriesCreateWithoutStoriesInput!]
+  delete: [SeriesWhereUniqueInput!]
+  connect: [SeriesWhereUniqueInput!]
+  set: [SeriesWhereUniqueInput!]
+  disconnect: [SeriesWhereUniqueInput!]
+  update: [SeriesUpdateWithWhereUniqueWithoutStoriesInput!]
+  upsert: [SeriesUpsertWithWhereUniqueWithoutStoriesInput!]
+  deleteMany: [SeriesScalarWhereInput!]
+  updateMany: [SeriesUpdateManyWithWhereNestedInput!]
+}
+
+input SeriesUpdateManyWithWhereNestedInput {
+  where: SeriesScalarWhereInput!
+  data: SeriesUpdateManyDataInput!
+}
+
+input SeriesUpdateOneWithoutComicsInput {
+  create: SeriesCreateWithoutComicsInput
+  update: SeriesUpdateWithoutComicsDataInput
+  upsert: SeriesUpsertWithoutComicsInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: SeriesWhereUniqueInput
+}
+
+input SeriesUpdateOneWithoutNextInput {
+  create: SeriesCreateWithoutNextInput
+  update: SeriesUpdateWithoutNextDataInput
+  upsert: SeriesUpsertWithoutNextInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: SeriesWhereUniqueInput
+}
+
+input SeriesUpdateOneWithoutPreviousInput {
+  create: SeriesCreateWithoutPreviousInput
+  update: SeriesUpdateWithoutPreviousDataInput
+  upsert: SeriesUpsertWithoutPreviousInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: SeriesWhereUniqueInput
+}
+
+input SeriesUpdateWithoutCharactersDataInput {
+  marvelId: String
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  title: String
+  description: String
+  urls: Json
+  startYear: Int
+  endYear: Int
+  rating: String
+  type: String
+  comics: ComicUpdateManyWithoutSeriesInput
+  stories: StoryUpdateManyWithoutSeriesInput
+  events: EventUpdateManyWithoutSeriesInput
+  creators: CreatorUpdateManyWithoutSeriesInput
+  next: SeriesUpdateOneWithoutPreviousInput
+  previous: SeriesUpdateOneWithoutNextInput
+}
+
+input SeriesUpdateWithoutComicsDataInput {
+  marvelId: String
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  title: String
+  description: String
+  urls: Json
+  startYear: Int
+  endYear: Int
+  rating: String
+  type: String
+  stories: StoryUpdateManyWithoutSeriesInput
+  events: EventUpdateManyWithoutSeriesInput
+  characters: CharacterUpdateManyWithoutSeriesInput
+  creators: CreatorUpdateManyWithoutSeriesInput
+  next: SeriesUpdateOneWithoutPreviousInput
+  previous: SeriesUpdateOneWithoutNextInput
+}
+
+input SeriesUpdateWithoutCreatorsDataInput {
+  marvelId: String
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  title: String
+  description: String
+  urls: Json
+  startYear: Int
+  endYear: Int
+  rating: String
+  type: String
+  comics: ComicUpdateManyWithoutSeriesInput
+  stories: StoryUpdateManyWithoutSeriesInput
+  events: EventUpdateManyWithoutSeriesInput
+  characters: CharacterUpdateManyWithoutSeriesInput
+  next: SeriesUpdateOneWithoutPreviousInput
+  previous: SeriesUpdateOneWithoutNextInput
+}
+
+input SeriesUpdateWithoutEventsDataInput {
+  marvelId: String
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  title: String
+  description: String
+  urls: Json
+  startYear: Int
+  endYear: Int
+  rating: String
+  type: String
+  comics: ComicUpdateManyWithoutSeriesInput
+  stories: StoryUpdateManyWithoutSeriesInput
+  characters: CharacterUpdateManyWithoutSeriesInput
+  creators: CreatorUpdateManyWithoutSeriesInput
+  next: SeriesUpdateOneWithoutPreviousInput
+  previous: SeriesUpdateOneWithoutNextInput
+}
+
+input SeriesUpdateWithoutNextDataInput {
+  marvelId: String
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  title: String
+  description: String
+  urls: Json
+  startYear: Int
+  endYear: Int
+  rating: String
+  type: String
+  comics: ComicUpdateManyWithoutSeriesInput
+  stories: StoryUpdateManyWithoutSeriesInput
+  events: EventUpdateManyWithoutSeriesInput
+  characters: CharacterUpdateManyWithoutSeriesInput
+  creators: CreatorUpdateManyWithoutSeriesInput
+  previous: SeriesUpdateOneWithoutNextInput
+}
+
+input SeriesUpdateWithoutPreviousDataInput {
+  marvelId: String
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  title: String
+  description: String
+  urls: Json
+  startYear: Int
+  endYear: Int
+  rating: String
+  type: String
+  comics: ComicUpdateManyWithoutSeriesInput
+  stories: StoryUpdateManyWithoutSeriesInput
+  events: EventUpdateManyWithoutSeriesInput
+  characters: CharacterUpdateManyWithoutSeriesInput
+  creators: CreatorUpdateManyWithoutSeriesInput
+  next: SeriesUpdateOneWithoutPreviousInput
+}
+
+input SeriesUpdateWithoutStoriesDataInput {
+  marvelId: String
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  title: String
+  description: String
+  urls: Json
+  startYear: Int
+  endYear: Int
+  rating: String
+  type: String
+  comics: ComicUpdateManyWithoutSeriesInput
+  events: EventUpdateManyWithoutSeriesInput
+  characters: CharacterUpdateManyWithoutSeriesInput
+  creators: CreatorUpdateManyWithoutSeriesInput
+  next: SeriesUpdateOneWithoutPreviousInput
+  previous: SeriesUpdateOneWithoutNextInput
+}
+
+input SeriesUpdateWithWhereUniqueWithoutCharactersInput {
+  where: SeriesWhereUniqueInput!
+  data: SeriesUpdateWithoutCharactersDataInput!
+}
+
+input SeriesUpdateWithWhereUniqueWithoutCreatorsInput {
+  where: SeriesWhereUniqueInput!
+  data: SeriesUpdateWithoutCreatorsDataInput!
+}
+
+input SeriesUpdateWithWhereUniqueWithoutEventsInput {
+  where: SeriesWhereUniqueInput!
+  data: SeriesUpdateWithoutEventsDataInput!
+}
+
+input SeriesUpdateWithWhereUniqueWithoutStoriesInput {
+  where: SeriesWhereUniqueInput!
+  data: SeriesUpdateWithoutStoriesDataInput!
+}
+
+input SeriesUpsertWithoutComicsInput {
+  update: SeriesUpdateWithoutComicsDataInput!
+  create: SeriesCreateWithoutComicsInput!
+}
+
+input SeriesUpsertWithoutNextInput {
+  update: SeriesUpdateWithoutNextDataInput!
+  create: SeriesCreateWithoutNextInput!
+}
+
+input SeriesUpsertWithoutPreviousInput {
+  update: SeriesUpdateWithoutPreviousDataInput!
+  create: SeriesCreateWithoutPreviousInput!
+}
+
+input SeriesUpsertWithWhereUniqueWithoutCharactersInput {
+  where: SeriesWhereUniqueInput!
+  update: SeriesUpdateWithoutCharactersDataInput!
+  create: SeriesCreateWithoutCharactersInput!
+}
+
+input SeriesUpsertWithWhereUniqueWithoutCreatorsInput {
+  where: SeriesWhereUniqueInput!
+  update: SeriesUpdateWithoutCreatorsDataInput!
+  create: SeriesCreateWithoutCreatorsInput!
+}
+
+input SeriesUpsertWithWhereUniqueWithoutEventsInput {
+  where: SeriesWhereUniqueInput!
+  update: SeriesUpdateWithoutEventsDataInput!
+  create: SeriesCreateWithoutEventsInput!
+}
+
+input SeriesUpsertWithWhereUniqueWithoutStoriesInput {
+  where: SeriesWhereUniqueInput!
+  update: SeriesUpdateWithoutStoriesDataInput!
+  create: SeriesCreateWithoutStoriesInput!
+}
+
+input SeriesWhereInput {
   id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  marvelId: String
+  marvelId_not: String
+  marvelId_in: [String!]
+  marvelId_not_in: [String!]
+  marvelId_lt: String
+  marvelId_lte: String
+  marvelId_gt: String
+  marvelId_gte: String
+  marvelId_contains: String
+  marvelId_not_contains: String
+  marvelId_starts_with: String
+  marvelId_not_starts_with: String
+  marvelId_ends_with: String
+  marvelId_not_ends_with: String
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  resourceURI: String
+  resourceURI_not: String
+  resourceURI_in: [String!]
+  resourceURI_not_in: [String!]
+  resourceURI_lt: String
+  resourceURI_lte: String
+  resourceURI_gt: String
+  resourceURI_gte: String
+  resourceURI_contains: String
+  resourceURI_not_contains: String
+  resourceURI_starts_with: String
+  resourceURI_not_starts_with: String
+  resourceURI_ends_with: String
+  resourceURI_not_ends_with: String
+  thumbnail: String
+  thumbnail_not: String
+  thumbnail_in: [String!]
+  thumbnail_not_in: [String!]
+  thumbnail_lt: String
+  thumbnail_lte: String
+  thumbnail_gt: String
+  thumbnail_gte: String
+  thumbnail_contains: String
+  thumbnail_not_contains: String
+  thumbnail_starts_with: String
+  thumbnail_not_starts_with: String
+  thumbnail_ends_with: String
+  thumbnail_not_ends_with: String
+  modified: String
+  modified_not: String
+  modified_in: [String!]
+  modified_not_in: [String!]
+  modified_lt: String
+  modified_lte: String
+  modified_gt: String
+  modified_gte: String
+  modified_contains: String
+  modified_not_contains: String
+  modified_starts_with: String
+  modified_not_starts_with: String
+  modified_ends_with: String
+  modified_not_ends_with: String
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
+  description: String
+  description_not: String
+  description_in: [String!]
+  description_not_in: [String!]
+  description_lt: String
+  description_lte: String
+  description_gt: String
+  description_gte: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  startYear: Int
+  startYear_not: Int
+  startYear_in: [Int!]
+  startYear_not_in: [Int!]
+  startYear_lt: Int
+  startYear_lte: Int
+  startYear_gt: Int
+  startYear_gte: Int
+  endYear: Int
+  endYear_not: Int
+  endYear_in: [Int!]
+  endYear_not_in: [Int!]
+  endYear_lt: Int
+  endYear_lte: Int
+  endYear_gt: Int
+  endYear_gte: Int
+  rating: String
+  rating_not: String
+  rating_in: [String!]
+  rating_not_in: [String!]
+  rating_lt: String
+  rating_lte: String
+  rating_gt: String
+  rating_gte: String
+  rating_contains: String
+  rating_not_contains: String
+  rating_starts_with: String
+  rating_not_starts_with: String
+  rating_ends_with: String
+  rating_not_ends_with: String
+  type: String
+  type_not: String
+  type_in: [String!]
+  type_not_in: [String!]
+  type_lt: String
+  type_lte: String
+  type_gt: String
+  type_gte: String
+  type_contains: String
+  type_not_contains: String
+  type_starts_with: String
+  type_not_starts_with: String
+  type_ends_with: String
+  type_not_ends_with: String
+  comics_every: ComicWhereInput
+  comics_some: ComicWhereInput
+  comics_none: ComicWhereInput
+  stories_every: StoryWhereInput
+  stories_some: StoryWhereInput
+  stories_none: StoryWhereInput
+  events_every: EventWhereInput
+  events_some: EventWhereInput
+  events_none: EventWhereInput
+  characters_every: CharacterWhereInput
+  characters_some: CharacterWhereInput
+  characters_none: CharacterWhereInput
+  creators_every: CreatorWhereInput
+  creators_some: CreatorWhereInput
+  creators_none: CreatorWhereInput
+  next: SeriesWhereInput
+  previous: SeriesWhereInput
+  AND: [SeriesWhereInput!]
+  OR: [SeriesWhereInput!]
+  NOT: [SeriesWhereInput!]
+}
+
+input SeriesWhereUniqueInput {
+  id: ID
+  marvelId: String
+}
+
+type Story {
+  id: ID!
+  marvelId: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  title: String
+  description: String
+  type: String
+  comics(where: ComicWhereInput, orderBy: ComicOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Comic!]
+  events(where: EventWhereInput, orderBy: EventOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Event!]
+  characters(where: CharacterWhereInput, orderBy: CharacterOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Character!]
+  creators(where: CreatorWhereInput, orderBy: CreatorOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Creator!]
+  series(where: SeriesWhereInput, orderBy: SeriesOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Series!]
+  _originalIssue: Json
+}
+
+type StoryConnection {
+  pageInfo: PageInfo!
+  edges: [StoryEdge]!
+  aggregate: AggregateStory!
+}
+
+input StoryCreateInput {
+  marvelId: String!
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  title: String
+  description: String
+  type: String
+  comics: ComicCreateManyWithoutStoriesInput
+  events: EventCreateManyWithoutStoriesInput
+  characters: CharacterCreateManyWithoutStoriesInput
+  creators: CreatorCreateManyWithoutStoriesInput
+  series: SeriesCreateManyWithoutStoriesInput
+  _originalIssue: Json
+}
+
+input StoryCreateManyWithoutCharactersInput {
+  create: [StoryCreateWithoutCharactersInput!]
+  connect: [StoryWhereUniqueInput!]
+}
+
+input StoryCreateManyWithoutComicsInput {
+  create: [StoryCreateWithoutComicsInput!]
+  connect: [StoryWhereUniqueInput!]
+}
+
+input StoryCreateManyWithoutCreatorsInput {
+  create: [StoryCreateWithoutCreatorsInput!]
+  connect: [StoryWhereUniqueInput!]
+}
+
+input StoryCreateManyWithoutEventsInput {
+  create: [StoryCreateWithoutEventsInput!]
+  connect: [StoryWhereUniqueInput!]
+}
+
+input StoryCreateManyWithoutSeriesInput {
+  create: [StoryCreateWithoutSeriesInput!]
+  connect: [StoryWhereUniqueInput!]
+}
+
+input StoryCreateWithoutCharactersInput {
+  marvelId: String!
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  title: String
+  description: String
+  type: String
+  comics: ComicCreateManyWithoutStoriesInput
+  events: EventCreateManyWithoutStoriesInput
+  creators: CreatorCreateManyWithoutStoriesInput
+  series: SeriesCreateManyWithoutStoriesInput
+  _originalIssue: Json
+}
+
+input StoryCreateWithoutComicsInput {
+  marvelId: String!
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  title: String
+  description: String
+  type: String
+  events: EventCreateManyWithoutStoriesInput
+  characters: CharacterCreateManyWithoutStoriesInput
+  creators: CreatorCreateManyWithoutStoriesInput
+  series: SeriesCreateManyWithoutStoriesInput
+  _originalIssue: Json
+}
+
+input StoryCreateWithoutCreatorsInput {
+  marvelId: String!
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  title: String
+  description: String
+  type: String
+  comics: ComicCreateManyWithoutStoriesInput
+  events: EventCreateManyWithoutStoriesInput
+  characters: CharacterCreateManyWithoutStoriesInput
+  series: SeriesCreateManyWithoutStoriesInput
+  _originalIssue: Json
+}
+
+input StoryCreateWithoutEventsInput {
+  marvelId: String!
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  title: String
+  description: String
+  type: String
+  comics: ComicCreateManyWithoutStoriesInput
+  characters: CharacterCreateManyWithoutStoriesInput
+  creators: CreatorCreateManyWithoutStoriesInput
+  series: SeriesCreateManyWithoutStoriesInput
+  _originalIssue: Json
+}
+
+input StoryCreateWithoutSeriesInput {
+  marvelId: String!
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  title: String
+  description: String
+  type: String
+  comics: ComicCreateManyWithoutStoriesInput
+  events: EventCreateManyWithoutStoriesInput
+  characters: CharacterCreateManyWithoutStoriesInput
+  creators: CreatorCreateManyWithoutStoriesInput
+  _originalIssue: Json
+}
+
+type StoryEdge {
+  node: Story!
+  cursor: String!
+}
+
+enum StoryOrderByInput {
+  id_ASC
+  id_DESC
+  marvelId_ASC
+  marvelId_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  resourceURI_ASC
+  resourceURI_DESC
+  thumbnail_ASC
+  thumbnail_DESC
+  modified_ASC
+  modified_DESC
+  title_ASC
+  title_DESC
+  description_ASC
+  description_DESC
+  type_ASC
+  type_DESC
+  _originalIssue_ASC
+  _originalIssue_DESC
+}
+
+type StoryPreviousValues {
+  id: ID!
+  marvelId: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  title: String
+  description: String
+  type: String
+  _originalIssue: Json
+}
+
+input StoryScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  marvelId: String
+  marvelId_not: String
+  marvelId_in: [String!]
+  marvelId_not_in: [String!]
+  marvelId_lt: String
+  marvelId_lte: String
+  marvelId_gt: String
+  marvelId_gte: String
+  marvelId_contains: String
+  marvelId_not_contains: String
+  marvelId_starts_with: String
+  marvelId_not_starts_with: String
+  marvelId_ends_with: String
+  marvelId_not_ends_with: String
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  resourceURI: String
+  resourceURI_not: String
+  resourceURI_in: [String!]
+  resourceURI_not_in: [String!]
+  resourceURI_lt: String
+  resourceURI_lte: String
+  resourceURI_gt: String
+  resourceURI_gte: String
+  resourceURI_contains: String
+  resourceURI_not_contains: String
+  resourceURI_starts_with: String
+  resourceURI_not_starts_with: String
+  resourceURI_ends_with: String
+  resourceURI_not_ends_with: String
+  thumbnail: String
+  thumbnail_not: String
+  thumbnail_in: [String!]
+  thumbnail_not_in: [String!]
+  thumbnail_lt: String
+  thumbnail_lte: String
+  thumbnail_gt: String
+  thumbnail_gte: String
+  thumbnail_contains: String
+  thumbnail_not_contains: String
+  thumbnail_starts_with: String
+  thumbnail_not_starts_with: String
+  thumbnail_ends_with: String
+  thumbnail_not_ends_with: String
+  modified: String
+  modified_not: String
+  modified_in: [String!]
+  modified_not_in: [String!]
+  modified_lt: String
+  modified_lte: String
+  modified_gt: String
+  modified_gte: String
+  modified_contains: String
+  modified_not_contains: String
+  modified_starts_with: String
+  modified_not_starts_with: String
+  modified_ends_with: String
+  modified_not_ends_with: String
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
+  description: String
+  description_not: String
+  description_in: [String!]
+  description_not_in: [String!]
+  description_lt: String
+  description_lte: String
+  description_gt: String
+  description_gte: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  type: String
+  type_not: String
+  type_in: [String!]
+  type_not_in: [String!]
+  type_lt: String
+  type_lte: String
+  type_gt: String
+  type_gte: String
+  type_contains: String
+  type_not_contains: String
+  type_starts_with: String
+  type_not_starts_with: String
+  type_ends_with: String
+  type_not_ends_with: String
+  AND: [StoryScalarWhereInput!]
+  OR: [StoryScalarWhereInput!]
+  NOT: [StoryScalarWhereInput!]
+}
+
+type StorySubscriptionPayload {
+  mutation: MutationType!
+  node: Story
+  updatedFields: [String!]
+  previousValues: StoryPreviousValues
+}
+
+input StorySubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: StoryWhereInput
+  AND: [StorySubscriptionWhereInput!]
+  OR: [StorySubscriptionWhereInput!]
+  NOT: [StorySubscriptionWhereInput!]
+}
+
+input StoryUpdateInput {
+  marvelId: String
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  title: String
+  description: String
+  type: String
+  comics: ComicUpdateManyWithoutStoriesInput
+  events: EventUpdateManyWithoutStoriesInput
+  characters: CharacterUpdateManyWithoutStoriesInput
+  creators: CreatorUpdateManyWithoutStoriesInput
+  series: SeriesUpdateManyWithoutStoriesInput
+  _originalIssue: Json
+}
+
+input StoryUpdateManyDataInput {
+  marvelId: String
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  title: String
+  description: String
+  type: String
+  _originalIssue: Json
+}
+
+input StoryUpdateManyMutationInput {
+  marvelId: String
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  title: String
+  description: String
+  type: String
+  _originalIssue: Json
+}
+
+input StoryUpdateManyWithoutCharactersInput {
+  create: [StoryCreateWithoutCharactersInput!]
+  delete: [StoryWhereUniqueInput!]
+  connect: [StoryWhereUniqueInput!]
+  set: [StoryWhereUniqueInput!]
+  disconnect: [StoryWhereUniqueInput!]
+  update: [StoryUpdateWithWhereUniqueWithoutCharactersInput!]
+  upsert: [StoryUpsertWithWhereUniqueWithoutCharactersInput!]
+  deleteMany: [StoryScalarWhereInput!]
+  updateMany: [StoryUpdateManyWithWhereNestedInput!]
+}
+
+input StoryUpdateManyWithoutComicsInput {
+  create: [StoryCreateWithoutComicsInput!]
+  delete: [StoryWhereUniqueInput!]
+  connect: [StoryWhereUniqueInput!]
+  set: [StoryWhereUniqueInput!]
+  disconnect: [StoryWhereUniqueInput!]
+  update: [StoryUpdateWithWhereUniqueWithoutComicsInput!]
+  upsert: [StoryUpsertWithWhereUniqueWithoutComicsInput!]
+  deleteMany: [StoryScalarWhereInput!]
+  updateMany: [StoryUpdateManyWithWhereNestedInput!]
+}
+
+input StoryUpdateManyWithoutCreatorsInput {
+  create: [StoryCreateWithoutCreatorsInput!]
+  delete: [StoryWhereUniqueInput!]
+  connect: [StoryWhereUniqueInput!]
+  set: [StoryWhereUniqueInput!]
+  disconnect: [StoryWhereUniqueInput!]
+  update: [StoryUpdateWithWhereUniqueWithoutCreatorsInput!]
+  upsert: [StoryUpsertWithWhereUniqueWithoutCreatorsInput!]
+  deleteMany: [StoryScalarWhereInput!]
+  updateMany: [StoryUpdateManyWithWhereNestedInput!]
+}
+
+input StoryUpdateManyWithoutEventsInput {
+  create: [StoryCreateWithoutEventsInput!]
+  delete: [StoryWhereUniqueInput!]
+  connect: [StoryWhereUniqueInput!]
+  set: [StoryWhereUniqueInput!]
+  disconnect: [StoryWhereUniqueInput!]
+  update: [StoryUpdateWithWhereUniqueWithoutEventsInput!]
+  upsert: [StoryUpsertWithWhereUniqueWithoutEventsInput!]
+  deleteMany: [StoryScalarWhereInput!]
+  updateMany: [StoryUpdateManyWithWhereNestedInput!]
+}
+
+input StoryUpdateManyWithoutSeriesInput {
+  create: [StoryCreateWithoutSeriesInput!]
+  delete: [StoryWhereUniqueInput!]
+  connect: [StoryWhereUniqueInput!]
+  set: [StoryWhereUniqueInput!]
+  disconnect: [StoryWhereUniqueInput!]
+  update: [StoryUpdateWithWhereUniqueWithoutSeriesInput!]
+  upsert: [StoryUpsertWithWhereUniqueWithoutSeriesInput!]
+  deleteMany: [StoryScalarWhereInput!]
+  updateMany: [StoryUpdateManyWithWhereNestedInput!]
+}
+
+input StoryUpdateManyWithWhereNestedInput {
+  where: StoryScalarWhereInput!
+  data: StoryUpdateManyDataInput!
+}
+
+input StoryUpdateWithoutCharactersDataInput {
+  marvelId: String
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  title: String
+  description: String
+  type: String
+  comics: ComicUpdateManyWithoutStoriesInput
+  events: EventUpdateManyWithoutStoriesInput
+  creators: CreatorUpdateManyWithoutStoriesInput
+  series: SeriesUpdateManyWithoutStoriesInput
+  _originalIssue: Json
+}
+
+input StoryUpdateWithoutComicsDataInput {
+  marvelId: String
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  title: String
+  description: String
+  type: String
+  events: EventUpdateManyWithoutStoriesInput
+  characters: CharacterUpdateManyWithoutStoriesInput
+  creators: CreatorUpdateManyWithoutStoriesInput
+  series: SeriesUpdateManyWithoutStoriesInput
+  _originalIssue: Json
+}
+
+input StoryUpdateWithoutCreatorsDataInput {
+  marvelId: String
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  title: String
+  description: String
+  type: String
+  comics: ComicUpdateManyWithoutStoriesInput
+  events: EventUpdateManyWithoutStoriesInput
+  characters: CharacterUpdateManyWithoutStoriesInput
+  series: SeriesUpdateManyWithoutStoriesInput
+  _originalIssue: Json
+}
+
+input StoryUpdateWithoutEventsDataInput {
+  marvelId: String
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  title: String
+  description: String
+  type: String
+  comics: ComicUpdateManyWithoutStoriesInput
+  characters: CharacterUpdateManyWithoutStoriesInput
+  creators: CreatorUpdateManyWithoutStoriesInput
+  series: SeriesUpdateManyWithoutStoriesInput
+  _originalIssue: Json
+}
+
+input StoryUpdateWithoutSeriesDataInput {
+  marvelId: String
+  resourceURI: String
+  thumbnail: String
+  modified: String
+  title: String
+  description: String
+  type: String
+  comics: ComicUpdateManyWithoutStoriesInput
+  events: EventUpdateManyWithoutStoriesInput
+  characters: CharacterUpdateManyWithoutStoriesInput
+  creators: CreatorUpdateManyWithoutStoriesInput
+  _originalIssue: Json
+}
+
+input StoryUpdateWithWhereUniqueWithoutCharactersInput {
+  where: StoryWhereUniqueInput!
+  data: StoryUpdateWithoutCharactersDataInput!
+}
+
+input StoryUpdateWithWhereUniqueWithoutComicsInput {
+  where: StoryWhereUniqueInput!
+  data: StoryUpdateWithoutComicsDataInput!
+}
+
+input StoryUpdateWithWhereUniqueWithoutCreatorsInput {
+  where: StoryWhereUniqueInput!
+  data: StoryUpdateWithoutCreatorsDataInput!
+}
+
+input StoryUpdateWithWhereUniqueWithoutEventsInput {
+  where: StoryWhereUniqueInput!
+  data: StoryUpdateWithoutEventsDataInput!
+}
+
+input StoryUpdateWithWhereUniqueWithoutSeriesInput {
+  where: StoryWhereUniqueInput!
+  data: StoryUpdateWithoutSeriesDataInput!
+}
+
+input StoryUpsertWithWhereUniqueWithoutCharactersInput {
+  where: StoryWhereUniqueInput!
+  update: StoryUpdateWithoutCharactersDataInput!
+  create: StoryCreateWithoutCharactersInput!
+}
+
+input StoryUpsertWithWhereUniqueWithoutComicsInput {
+  where: StoryWhereUniqueInput!
+  update: StoryUpdateWithoutComicsDataInput!
+  create: StoryCreateWithoutComicsInput!
+}
+
+input StoryUpsertWithWhereUniqueWithoutCreatorsInput {
+  where: StoryWhereUniqueInput!
+  update: StoryUpdateWithoutCreatorsDataInput!
+  create: StoryCreateWithoutCreatorsInput!
+}
+
+input StoryUpsertWithWhereUniqueWithoutEventsInput {
+  where: StoryWhereUniqueInput!
+  update: StoryUpdateWithoutEventsDataInput!
+  create: StoryCreateWithoutEventsInput!
+}
+
+input StoryUpsertWithWhereUniqueWithoutSeriesInput {
+  where: StoryWhereUniqueInput!
+  update: StoryUpdateWithoutSeriesDataInput!
+  create: StoryCreateWithoutSeriesInput!
+}
+
+input StoryWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  marvelId: String
+  marvelId_not: String
+  marvelId_in: [String!]
+  marvelId_not_in: [String!]
+  marvelId_lt: String
+  marvelId_lte: String
+  marvelId_gt: String
+  marvelId_gte: String
+  marvelId_contains: String
+  marvelId_not_contains: String
+  marvelId_starts_with: String
+  marvelId_not_starts_with: String
+  marvelId_ends_with: String
+  marvelId_not_ends_with: String
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  resourceURI: String
+  resourceURI_not: String
+  resourceURI_in: [String!]
+  resourceURI_not_in: [String!]
+  resourceURI_lt: String
+  resourceURI_lte: String
+  resourceURI_gt: String
+  resourceURI_gte: String
+  resourceURI_contains: String
+  resourceURI_not_contains: String
+  resourceURI_starts_with: String
+  resourceURI_not_starts_with: String
+  resourceURI_ends_with: String
+  resourceURI_not_ends_with: String
+  thumbnail: String
+  thumbnail_not: String
+  thumbnail_in: [String!]
+  thumbnail_not_in: [String!]
+  thumbnail_lt: String
+  thumbnail_lte: String
+  thumbnail_gt: String
+  thumbnail_gte: String
+  thumbnail_contains: String
+  thumbnail_not_contains: String
+  thumbnail_starts_with: String
+  thumbnail_not_starts_with: String
+  thumbnail_ends_with: String
+  thumbnail_not_ends_with: String
+  modified: String
+  modified_not: String
+  modified_in: [String!]
+  modified_not_in: [String!]
+  modified_lt: String
+  modified_lte: String
+  modified_gt: String
+  modified_gte: String
+  modified_contains: String
+  modified_not_contains: String
+  modified_starts_with: String
+  modified_not_starts_with: String
+  modified_ends_with: String
+  modified_not_ends_with: String
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
+  description: String
+  description_not: String
+  description_in: [String!]
+  description_not_in: [String!]
+  description_lt: String
+  description_lte: String
+  description_gt: String
+  description_gte: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  type: String
+  type_not: String
+  type_in: [String!]
+  type_not_in: [String!]
+  type_lt: String
+  type_lte: String
+  type_gt: String
+  type_gte: String
+  type_contains: String
+  type_not_contains: String
+  type_starts_with: String
+  type_not_starts_with: String
+  type_ends_with: String
+  type_not_ends_with: String
+  comics_every: ComicWhereInput
+  comics_some: ComicWhereInput
+  comics_none: ComicWhereInput
+  events_every: EventWhereInput
+  events_some: EventWhereInput
+  events_none: EventWhereInput
+  characters_every: CharacterWhereInput
+  characters_some: CharacterWhereInput
+  characters_none: CharacterWhereInput
+  creators_every: CreatorWhereInput
+  creators_some: CreatorWhereInput
+  creators_none: CreatorWhereInput
+  series_every: SeriesWhereInput
+  series_some: SeriesWhereInput
+  series_none: SeriesWhereInput
+  AND: [StoryWhereInput!]
+  OR: [StoryWhereInput!]
+  NOT: [StoryWhereInput!]
+}
+
+input StoryWhereUniqueInput {
+  id: ID
+  marvelId: String
+}
+
+type Subscription {
+  character(where: CharacterSubscriptionWhereInput): CharacterSubscriptionPayload
+  comic(where: ComicSubscriptionWhereInput): ComicSubscriptionPayload
+  creator(where: CreatorSubscriptionWhereInput): CreatorSubscriptionPayload
+  event(where: EventSubscriptionWhereInput): EventSubscriptionPayload
+  series(where: SeriesSubscriptionWhereInput): SeriesSubscriptionPayload
+  story(where: StorySubscriptionWhereInput): StorySubscriptionPayload
 }
 `

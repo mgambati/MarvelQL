@@ -5,7 +5,7 @@ export const Event = objectType({
         t.implements("MarvelNode");
         t.string("title", {
             nullable: true,
-            description: 'The title of the event.',
+            description: 'The title of the event.'
         });
         t.string("description", {
             nullable: true,
@@ -25,39 +25,85 @@ export const Event = objectType({
             description: 'The date of publication of the last issue in this event.',
         });
         t.list.field("series", {
-            type: "Summary",
+            type: "Series",
             nullable: true,
-            description: 'A list of series (Summary Types) related to this event',
+            description: 'A list of series (Series Types) related to this event',
+            async resolve(parent: any, args, ctx) {
+                return ctx.eventsModel.getConnection({
+                    connectionName: "series",
+                    data: parent
+                })
+            }
         });
         t.list.field("stories", {
-            type: "Summary",
+            type: "Story",
             nullable: true,
-            description: 'A list of stories (Summary Types) related to this event',
+            description: 'A list of stories (Story Types) related to this event',
+            async resolve(parent: any, args, ctx) {
+                return ctx.eventsModel.getConnection({
+                    connectionName: "stories",
+                    data: parent
+                })
+            }
         });
         t.list.field("comics", {
-            type: "Summary",
+            type: "Comic",
             nullable: true,
-            description: 'A list of comics (Summary Types) related to this event',
+            description: 'A list of comics (Comic Types) related to this event',
+            async resolve(parent: any, args, ctx) {
+                return ctx.eventsModel.getConnection({
+                    connectionName: "comics",
+                    data: parent
+                })
+            }
         });
         t.list.field("characters", {
-            type: "Summary",
+            type: "Character",
             nullable: true,
-            description: 'A list of characters (Summary Types) related to this event',
+            description: 'A list of characters (Character Types) related to this event',
+            async resolve(parent: any, args, ctx) {
+                return ctx.eventsModel.getConnection({
+                    connectionName: "characters",
+                    data: parent
+                })
+            }
         });
         t.list.field("creators", {
-            type: "Summary",
+            type: "Creator",
             nullable: true,
-            description: 'A list of creators (Summary Types) related to this event',
+            description: 'A list of creators (Creator Types) related to this event',
+            async resolve(parent: any, args, ctx) {
+                return ctx.eventsModel.getConnection({
+                    connectionName: "creators",
+                    data: parent
+                })
+            }
         });
         t.field("next", {
-            type: "Summary",
+            type: "Event",
             nullable: true,
-            description: 'The next event (Summary Type) in relation to this event',
+            description: 'The next event (Event Type) in relation to this event',
+            async resolve(parent: any, args, ctx) {
+                return ctx.eventsModel.getConnection({
+                    connectionName: "next",
+                    connectionType: "events",
+                    cardinality: "one-one",
+                    data: parent
+                })
+            }
         });
         t.field("previous", {
-            type: "Summary",
+            type: "Event",
             nullable: true,
-            description: 'The previous event (Summary Type) in relation to this event',
+            description: 'The previous event (Event Type) in relation to this event',
+            async resolve(parent: any, args, ctx) {
+                return ctx.eventsModel.getConnection({
+                    connectionName: "previous",
+                    connectionType: "events",
+                    cardinality: "one-one",
+                    data: parent
+                })
+            }
         });
     }
 });

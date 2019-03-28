@@ -29,39 +29,86 @@ export const Series = objectType({
             description: 'The age-appropriateness rating for the series.',
         });
         t.list.field("comics", {
-            type: "Summary",
+            type: "Comic",
             nullable: true,
-            description: 'A list of comics (Summary Types) related to this series',
+            description: 'A list of comics (Comic Types) related to this series',
+            async resolve(parent: any, args, ctx) {
+                return ctx.seriesModel.getConnection({
+                    connectionName: "comics",
+                    cardinality: "many-one",
+                    data: parent
+                })
+            }
         });
         t.list.field("stories", {
-            type: "Summary",
+            type: "Story",
             nullable: true,
-            description: 'A list of stories (Summary Types) related to this series',
+            description: 'A list of stories (Story Types) related to this series',
+            async resolve(parent: any, args, ctx) {
+                return ctx.seriesModel.getConnection({
+                    connectionName: "stories",
+                    data: parent
+                })
+            }
         });
         t.list.field("events", {
-            type: "Summary",
+            type: "Event",
             nullable: true,
-            description: 'A list of events (Summary Types) related to this series',
+            description: 'A list of events (Event Types) related to this series',
+            async resolve(parent: any, args, ctx) {
+                return ctx.seriesModel.getConnection({
+                    connectionName: "events",
+                    data: parent
+                })
+            }
         });
         t.list.field("characters", {
-            type: "Summary",
+            type: "Character",
             nullable: true,
-            description: 'A list of characters (Summary Types) related to this series',
+            description: 'A list of characters (Character Types) related to this series',
+            async resolve(parent: any, args, ctx) {
+                return ctx.seriesModel.getConnection({
+                    connectionName: "characters",
+                    data: parent
+                })
+            }
         });
         t.list.field("creators", {
-            type: "Summary",
+            type: "Creator",
             nullable: true,
-            description: 'A list of creators (Summary Types) related to this series',
+            description: 'A list of creators (Creator Types) related to this series',
+            async resolve(parent: any, args, ctx) {
+                return ctx.seriesModel.getConnection({
+                    connectionName: "creators",
+                    data: parent
+                })
+            }
         });
         t.field("next", {
-            type: "Summary",
+            type: "Series",
             nullable: true,
-            description: 'A list of previous series (Summary Types) in relation to this series',
+            description: 'A list of previous series (Series Types) in relation to this series',
+            async resolve(parent: any, args, ctx) {
+                return ctx.seriesModel.getConnection({
+                    connectionName: "next",
+                    connectionType: "series",
+                    cardinality: "one-one",
+                    data: parent
+                })
+            }
         });
         t.field("previous", {
-            type: "Summary",
+            type: "Series",
             nullable: true,
-            description: 'A list of previous series (Summary Types) in relation to this series',
+            description: 'A list of previous series (Series Types) in relation to this series',
+            async resolve(parent: any, args, ctx) {
+                return ctx.seriesModel.getConnection({
+                    connectionName: "previous",
+                    connectionType: "series",
+                    cardinality: "one-one",
+                    data: parent
+                })
+            }
         });
     }
 });
