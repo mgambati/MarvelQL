@@ -1,0 +1,2934 @@
+[
+  {
+    "superheroId": "1",
+    "name": "A-Bomb"
+  },
+  {
+    "superheroId": "2",
+    "name": "Abe Sapien"
+  },
+  {
+    "superheroId": "3",
+    "name": "Abin Sur"
+  },
+  {
+    "superheroId": "4",
+    "name": "Abomination"
+  },
+  {
+    "superheroId": "5",
+    "name": "Abraxas"
+  },
+  {
+    "superheroId": "6",
+    "name": "Absorbing Man"
+  },
+  {
+    "superheroId": "7",
+    "name": "Adam Monroe"
+  },
+  {
+    "superheroId": "8",
+    "name": "Adam Strange"
+  },
+  {
+    "superheroId": "9",
+    "name": "Agent 13"
+  },
+  {
+    "superheroId": "10",
+    "name": "Agent Bob"
+  },
+  {
+    "superheroId": "11",
+    "name": "Agent Zero"
+  },
+  {
+    "superheroId": "12",
+    "name": "Air-Walker"
+  },
+  {
+    "superheroId": "13",
+    "name": "Ajax"
+  },
+  {
+    "superheroId": "14",
+    "name": "Alan Scott"
+  },
+  {
+    "superheroId": "15",
+    "name": "Alex Mercer"
+  },
+  {
+    "superheroId": "16",
+    "name": "Alex Woolsly"
+  },
+  {
+    "superheroId": "17",
+    "name": "Alfred Pennyworth"
+  },
+  {
+    "superheroId": "18",
+    "name": "Alien"
+  },
+  {
+    "superheroId": "19",
+    "name": "Allan Quatermain"
+  },
+  {
+    "superheroId": "20",
+    "name": "Amazo"
+  },
+  {
+    "superheroId": "21",
+    "name": "Ammo"
+  },
+  {
+    "superheroId": "22",
+    "name": "Ando Masahashi"
+  },
+  {
+    "superheroId": "23",
+    "name": "Angel"
+  },
+  {
+    "superheroId": "24",
+    "name": "Angel"
+  },
+  {
+    "superheroId": "25",
+    "name": "Angel Dust"
+  },
+  {
+    "superheroId": "26",
+    "name": "Angel Salvadore"
+  },
+  {
+    "superheroId": "27",
+    "name": "Angela"
+  },
+  {
+    "superheroId": "28",
+    "name": "Animal Man"
+  },
+  {
+    "superheroId": "29",
+    "name": "Annihilus"
+  },
+  {
+    "superheroId": "30",
+    "name": "Ant-Man"
+  },
+  {
+    "superheroId": "31",
+    "name": "Ant-Man II"
+  },
+  {
+    "superheroId": "32",
+    "name": "Anti-Monitor"
+  },
+  {
+    "superheroId": "33",
+    "name": "Anti-Spawn"
+  },
+  {
+    "superheroId": "34",
+    "name": "Anti-Venom"
+  },
+  {
+    "superheroId": "35",
+    "name": "Apocalypse"
+  },
+  {
+    "superheroId": "36",
+    "name": "Aquababy"
+  },
+  {
+    "superheroId": "37",
+    "name": "Aqualad"
+  },
+  {
+    "superheroId": "38",
+    "name": "Aquaman"
+  },
+  {
+    "superheroId": "39",
+    "name": "Arachne"
+  },
+  {
+    "superheroId": "40",
+    "name": "Archangel"
+  },
+  {
+    "superheroId": "41",
+    "name": "Arclight"
+  },
+  {
+    "superheroId": "42",
+    "name": "Ardina"
+  },
+  {
+    "superheroId": "43",
+    "name": "Ares"
+  },
+  {
+    "superheroId": "44",
+    "name": "Ariel"
+  },
+  {
+    "superheroId": "45",
+    "name": "Armor"
+  },
+  {
+    "superheroId": "46",
+    "name": "Arsenal"
+  },
+  {
+    "superheroId": "47",
+    "name": "Astro Boy"
+  },
+  {
+    "superheroId": "48",
+    "name": "Atlas"
+  },
+  {
+    "superheroId": "49",
+    "name": "Atlas"
+  },
+  {
+    "superheroId": "50",
+    "name": "Atom"
+  },
+  {
+    "superheroId": "51",
+    "name": "Atom"
+  },
+  {
+    "superheroId": "52",
+    "name": "Atom Girl"
+  },
+  {
+    "superheroId": "53",
+    "name": "Atom II"
+  },
+  {
+    "superheroId": "54",
+    "name": "Atom III"
+  },
+  {
+    "superheroId": "55",
+    "name": "Atom IV"
+  },
+  {
+    "superheroId": "56",
+    "name": "Aurora"
+  },
+  {
+    "superheroId": "57",
+    "name": "Azazel"
+  },
+  {
+    "superheroId": "58",
+    "name": "Azrael"
+  },
+  {
+    "superheroId": "59",
+    "name": "Aztar"
+  },
+  {
+    "superheroId": "60",
+    "name": "Bane"
+  },
+  {
+    "superheroId": "61",
+    "name": "Banshee"
+  },
+  {
+    "superheroId": "62",
+    "name": "Bantam"
+  },
+  {
+    "superheroId": "63",
+    "name": "Batgirl"
+  },
+  {
+    "superheroId": "64",
+    "name": "Batgirl"
+  },
+  {
+    "superheroId": "65",
+    "name": "Batgirl III"
+  },
+  {
+    "superheroId": "66",
+    "name": "Batgirl IV"
+  },
+  {
+    "superheroId": "67",
+    "name": "Batgirl V"
+  },
+  {
+    "superheroId": "68",
+    "name": "Batgirl VI"
+  },
+  {
+    "superheroId": "69",
+    "name": "Batman"
+  },
+  {
+    "superheroId": "70",
+    "name": "Batman"
+  },
+  {
+    "superheroId": "71",
+    "name": "Batman II"
+  },
+  {
+    "superheroId": "72",
+    "name": "Battlestar"
+  },
+  {
+    "superheroId": "73",
+    "name": "Batwoman V"
+  },
+  {
+    "superheroId": "74",
+    "name": "Beak"
+  },
+  {
+    "superheroId": "75",
+    "name": "Beast"
+  },
+  {
+    "superheroId": "76",
+    "name": "Beast Boy"
+  },
+  {
+    "superheroId": "77",
+    "name": "Beetle"
+  },
+  {
+    "superheroId": "78",
+    "name": "Ben 10"
+  },
+  {
+    "superheroId": "79",
+    "name": "Beta Ray Bill"
+  },
+  {
+    "superheroId": "80",
+    "name": "Beyonder"
+  },
+  {
+    "superheroId": "81",
+    "name": "Big Barda"
+  },
+  {
+    "superheroId": "82",
+    "name": "Big Daddy"
+  },
+  {
+    "superheroId": "83",
+    "name": "Big Man"
+  },
+  {
+    "superheroId": "84",
+    "name": "Bill Harken"
+  },
+  {
+    "superheroId": "85",
+    "name": "Billy Kincaid"
+  },
+  {
+    "superheroId": "86",
+    "name": "Binary"
+  },
+  {
+    "superheroId": "87",
+    "name": "Bionic Woman"
+  },
+  {
+    "superheroId": "88",
+    "name": "Bird-Brain"
+  },
+  {
+    "superheroId": "89",
+    "name": "Bird-Man"
+  },
+  {
+    "superheroId": "90",
+    "name": "Bird-Man II"
+  },
+  {
+    "superheroId": "91",
+    "name": "Birdman"
+  },
+  {
+    "superheroId": "92",
+    "name": "Bishop"
+  },
+  {
+    "superheroId": "93",
+    "name": "Bizarro"
+  },
+  {
+    "superheroId": "94",
+    "name": "Black Abbott"
+  },
+  {
+    "superheroId": "95",
+    "name": "Black Adam"
+  },
+  {
+    "superheroId": "96",
+    "name": "Black Bolt"
+  },
+  {
+    "superheroId": "97",
+    "name": "Black Canary"
+  },
+  {
+    "superheroId": "98",
+    "name": "Black Canary"
+  },
+  {
+    "superheroId": "99",
+    "name": "Black Cat"
+  },
+  {
+    "superheroId": "100",
+    "name": "Black Flash"
+  },
+  {
+    "superheroId": "101",
+    "name": "Black Goliath"
+  },
+  {
+    "superheroId": "102",
+    "name": "Black Knight III"
+  },
+  {
+    "superheroId": "103",
+    "name": "Black Lightning"
+  },
+  {
+    "superheroId": "104",
+    "name": "Black Mamba"
+  },
+  {
+    "superheroId": "105",
+    "name": "Black Manta"
+  },
+  {
+    "superheroId": "106",
+    "name": "Black Panther"
+  },
+  {
+    "superheroId": "107",
+    "name": "Black Widow"
+  },
+  {
+    "superheroId": "108",
+    "name": "Black Widow II"
+  },
+  {
+    "superheroId": "109",
+    "name": "Blackout"
+  },
+  {
+    "superheroId": "110",
+    "name": "Blackwing"
+  },
+  {
+    "superheroId": "111",
+    "name": "Blackwulf"
+  },
+  {
+    "superheroId": "112",
+    "name": "Blade"
+  },
+  {
+    "superheroId": "113",
+    "name": "Blaquesmith"
+  },
+  {
+    "superheroId": "114",
+    "name": "Bling!"
+  },
+  {
+    "superheroId": "115",
+    "name": "Blink"
+  },
+  {
+    "superheroId": "116",
+    "name": "Blizzard"
+  },
+  {
+    "superheroId": "117",
+    "name": "Blizzard"
+  },
+  {
+    "superheroId": "118",
+    "name": "Blizzard II"
+  },
+  {
+    "superheroId": "119",
+    "name": "Blob"
+  },
+  {
+    "superheroId": "120",
+    "name": "Bloodaxe"
+  },
+  {
+    "superheroId": "121",
+    "name": "Bloodhawk"
+  },
+  {
+    "superheroId": "122",
+    "name": "Bloodwraith"
+  },
+  {
+    "superheroId": "123",
+    "name": "Blue Beetle"
+  },
+  {
+    "superheroId": "124",
+    "name": "Blue Beetle"
+  },
+  {
+    "superheroId": "125",
+    "name": "Blue Beetle II"
+  },
+  {
+    "superheroId": "126",
+    "name": "Blue Beetle III"
+  },
+  {
+    "superheroId": "127",
+    "name": "Boba Fett"
+  },
+  {
+    "superheroId": "128",
+    "name": "Bolt"
+  },
+  {
+    "superheroId": "129",
+    "name": "Bomb Queen"
+  },
+  {
+    "superheroId": "130",
+    "name": "Boom-Boom"
+  },
+  {
+    "superheroId": "131",
+    "name": "Boomer"
+  },
+  {
+    "superheroId": "132",
+    "name": "Booster Gold"
+  },
+  {
+    "superheroId": "133",
+    "name": "Box"
+  },
+  {
+    "superheroId": "134",
+    "name": "Box III"
+  },
+  {
+    "superheroId": "135",
+    "name": "Box IV"
+  },
+  {
+    "superheroId": "136",
+    "name": "Brainiac"
+  },
+  {
+    "superheroId": "137",
+    "name": "Brainiac 5"
+  },
+  {
+    "superheroId": "138",
+    "name": "Brother Voodoo"
+  },
+  {
+    "superheroId": "139",
+    "name": "Brundlefly"
+  },
+  {
+    "superheroId": "140",
+    "name": "Buffy"
+  },
+  {
+    "superheroId": "141",
+    "name": "Bullseye"
+  },
+  {
+    "superheroId": "142",
+    "name": "Bumblebee"
+  },
+  {
+    "superheroId": "143",
+    "name": "Bumbleboy"
+  },
+  {
+    "superheroId": "144",
+    "name": "Bushido"
+  },
+  {
+    "superheroId": "145",
+    "name": "Cable"
+  },
+  {
+    "superheroId": "146",
+    "name": "Callisto"
+  },
+  {
+    "superheroId": "147",
+    "name": "Cameron Hicks"
+  },
+  {
+    "superheroId": "148",
+    "name": "Cannonball"
+  },
+  {
+    "superheroId": "149",
+    "name": "Captain America"
+  },
+  {
+    "superheroId": "150",
+    "name": "Captain Atom"
+  },
+  {
+    "superheroId": "151",
+    "name": "Captain Britain"
+  },
+  {
+    "superheroId": "152",
+    "name": "Captain Cold"
+  },
+  {
+    "superheroId": "153",
+    "name": "Captain Epic"
+  },
+  {
+    "superheroId": "154",
+    "name": "Captain Hindsight"
+  },
+  {
+    "superheroId": "155",
+    "name": "Captain Mar-vell"
+  },
+  {
+    "superheroId": "156",
+    "name": "Captain Marvel"
+  },
+  {
+    "superheroId": "157",
+    "name": "Captain Marvel"
+  },
+  {
+    "superheroId": "158",
+    "name": "Captain Marvel II"
+  },
+  {
+    "superheroId": "159",
+    "name": "Captain Midnight"
+  },
+  {
+    "superheroId": "160",
+    "name": "Captain Planet"
+  },
+  {
+    "superheroId": "161",
+    "name": "Captain Universe"
+  },
+  {
+    "superheroId": "162",
+    "name": "Carnage"
+  },
+  {
+    "superheroId": "163",
+    "name": "Cat"
+  },
+  {
+    "superheroId": "164",
+    "name": "Cat II"
+  },
+  {
+    "superheroId": "165",
+    "name": "Catwoman"
+  },
+  {
+    "superheroId": "166",
+    "name": "Cecilia Reyes"
+  },
+  {
+    "superheroId": "167",
+    "name": "Century"
+  },
+  {
+    "superheroId": "168",
+    "name": "Cerebra"
+  },
+  {
+    "superheroId": "169",
+    "name": "Chamber"
+  },
+  {
+    "superheroId": "170",
+    "name": "Chameleon"
+  },
+  {
+    "superheroId": "171",
+    "name": "Changeling"
+  },
+  {
+    "superheroId": "172",
+    "name": "Cheetah"
+  },
+  {
+    "superheroId": "173",
+    "name": "Cheetah II"
+  },
+  {
+    "superheroId": "174",
+    "name": "Cheetah III"
+  },
+  {
+    "superheroId": "175",
+    "name": "Chromos"
+  },
+  {
+    "superheroId": "176",
+    "name": "Chuck Norris"
+  },
+  {
+    "superheroId": "177",
+    "name": "Citizen Steel"
+  },
+  {
+    "superheroId": "178",
+    "name": "Claire Bennet"
+  },
+  {
+    "superheroId": "179",
+    "name": "Clea"
+  },
+  {
+    "superheroId": "180",
+    "name": "Cloak"
+  },
+  {
+    "superheroId": "181",
+    "name": "Clock King"
+  },
+  {
+    "superheroId": "182",
+    "name": "Cogliostro"
+  },
+  {
+    "superheroId": "183",
+    "name": "Colin Wagner"
+  },
+  {
+    "superheroId": "184",
+    "name": "Colossal Boy"
+  },
+  {
+    "superheroId": "185",
+    "name": "Colossus"
+  },
+  {
+    "superheroId": "186",
+    "name": "Copycat"
+  },
+  {
+    "superheroId": "187",
+    "name": "Corsair"
+  },
+  {
+    "superheroId": "188",
+    "name": "Cottonmouth"
+  },
+  {
+    "superheroId": "189",
+    "name": "Crimson Crusader"
+  },
+  {
+    "superheroId": "190",
+    "name": "Crimson Dynamo"
+  },
+  {
+    "superheroId": "191",
+    "name": "Crystal"
+  },
+  {
+    "superheroId": "192",
+    "name": "Curse"
+  },
+  {
+    "superheroId": "193",
+    "name": "Cy-Gor"
+  },
+  {
+    "superheroId": "194",
+    "name": "Cyborg"
+  },
+  {
+    "superheroId": "195",
+    "name": "Cyborg Superman"
+  },
+  {
+    "superheroId": "196",
+    "name": "Cyclops"
+  },
+  {
+    "superheroId": "197",
+    "name": "Cypher"
+  },
+  {
+    "superheroId": "198",
+    "name": "Dagger"
+  },
+  {
+    "superheroId": "199",
+    "name": "Danny Cooper"
+  },
+  {
+    "superheroId": "200",
+    "name": "Daphne Powell"
+  },
+  {
+    "superheroId": "201",
+    "name": "Daredevil"
+  },
+  {
+    "superheroId": "202",
+    "name": "Darkhawk"
+  },
+  {
+    "superheroId": "203",
+    "name": "Darkman"
+  },
+  {
+    "superheroId": "204",
+    "name": "Darkseid"
+  },
+  {
+    "superheroId": "205",
+    "name": "Darkside"
+  },
+  {
+    "superheroId": "206",
+    "name": "Darkstar"
+  },
+  {
+    "superheroId": "207",
+    "name": "Darth Maul"
+  },
+  {
+    "superheroId": "208",
+    "name": "Darth Vader"
+  },
+  {
+    "superheroId": "209",
+    "name": "Dash"
+  },
+  {
+    "superheroId": "210",
+    "name": "Data"
+  },
+  {
+    "superheroId": "211",
+    "name": "Dazzler"
+  },
+  {
+    "superheroId": "212",
+    "name": "Deadman"
+  },
+  {
+    "superheroId": "213",
+    "name": "Deadpool"
+  },
+  {
+    "superheroId": "214",
+    "name": "Deadshot"
+  },
+  {
+    "superheroId": "215",
+    "name": "Deathlok"
+  },
+  {
+    "superheroId": "216",
+    "name": "Deathstroke"
+  },
+  {
+    "superheroId": "217",
+    "name": "Demogoblin"
+  },
+  {
+    "superheroId": "218",
+    "name": "Destroyer"
+  },
+  {
+    "superheroId": "219",
+    "name": "Diamondback"
+  },
+  {
+    "superheroId": "220",
+    "name": "DL Hawkins"
+  },
+  {
+    "superheroId": "221",
+    "name": "Doc Samson"
+  },
+  {
+    "superheroId": "222",
+    "name": "Doctor Doom"
+  },
+  {
+    "superheroId": "223",
+    "name": "Doctor Doom II"
+  },
+  {
+    "superheroId": "224",
+    "name": "Doctor Fate"
+  },
+  {
+    "superheroId": "225",
+    "name": "Doctor Octopus"
+  },
+  {
+    "superheroId": "226",
+    "name": "Doctor Strange"
+  },
+  {
+    "superheroId": "227",
+    "name": "Domino"
+  },
+  {
+    "superheroId": "228",
+    "name": "Donatello"
+  },
+  {
+    "superheroId": "229",
+    "name": "Donna Troy"
+  },
+  {
+    "superheroId": "230",
+    "name": "Doomsday"
+  },
+  {
+    "superheroId": "231",
+    "name": "Doppelganger"
+  },
+  {
+    "superheroId": "232",
+    "name": "Dormammu"
+  },
+  {
+    "superheroId": "233",
+    "name": "Dr Manhattan"
+  },
+  {
+    "superheroId": "234",
+    "name": "Drax the Destroyer"
+  },
+  {
+    "superheroId": "235",
+    "name": "Ego"
+  },
+  {
+    "superheroId": "236",
+    "name": "Elastigirl"
+  },
+  {
+    "superheroId": "237",
+    "name": "Electro"
+  },
+  {
+    "superheroId": "238",
+    "name": "Elektra"
+  },
+  {
+    "superheroId": "239",
+    "name": "Elle Bishop"
+  },
+  {
+    "superheroId": "240",
+    "name": "Elongated Man"
+  },
+  {
+    "superheroId": "241",
+    "name": "Emma Frost"
+  },
+  {
+    "superheroId": "242",
+    "name": "Enchantress"
+  },
+  {
+    "superheroId": "243",
+    "name": "Energy"
+  },
+  {
+    "superheroId": "244",
+    "name": "ERG-1"
+  },
+  {
+    "superheroId": "#ID",
+    "name": "Chracter Name"
+  },
+  {
+    "superheroId": "245",
+    "name": "Ethan Hunt"
+  },
+  {
+    "superheroId": "246",
+    "name": "Etrigan"
+  },
+  {
+    "superheroId": "247",
+    "name": "Evil Deadpool"
+  },
+  {
+    "superheroId": "248",
+    "name": "Evilhawk"
+  },
+  {
+    "superheroId": "249",
+    "name": "Exodus"
+  },
+  {
+    "superheroId": "250",
+    "name": "Fabian Cortez"
+  },
+  {
+    "superheroId": "251",
+    "name": "Falcon"
+  },
+  {
+    "superheroId": "252",
+    "name": "Fallen One II"
+  },
+  {
+    "superheroId": "253",
+    "name": "Faora"
+  },
+  {
+    "superheroId": "254",
+    "name": "Feral"
+  },
+  {
+    "superheroId": "255",
+    "name": "Fighting Spirit"
+  },
+  {
+    "superheroId": "256",
+    "name": "Fin Fang Foom"
+  },
+  {
+    "superheroId": "257",
+    "name": "Firebird"
+  },
+  {
+    "superheroId": "258",
+    "name": "Firelord"
+  },
+  {
+    "superheroId": "259",
+    "name": "Firestar"
+  },
+  {
+    "superheroId": "260",
+    "name": "Firestorm"
+  },
+  {
+    "superheroId": "261",
+    "name": "Firestorm"
+  },
+  {
+    "superheroId": "262",
+    "name": "Fixer"
+  },
+  {
+    "superheroId": "263",
+    "name": "Flash"
+  },
+  {
+    "superheroId": "264",
+    "name": "Flash Gordon"
+  },
+  {
+    "superheroId": "265",
+    "name": "Flash II"
+  },
+  {
+    "superheroId": "266",
+    "name": "Flash III"
+  },
+  {
+    "superheroId": "267",
+    "name": "Flash IV"
+  },
+  {
+    "superheroId": "268",
+    "name": "Forge"
+  },
+  {
+    "superheroId": "269",
+    "name": "Franklin Richards"
+  },
+  {
+    "superheroId": "270",
+    "name": "Franklin Storm"
+  },
+  {
+    "superheroId": "271",
+    "name": "Frenzy"
+  },
+  {
+    "superheroId": "272",
+    "name": "Frigga"
+  },
+  {
+    "superheroId": "273",
+    "name": "Galactus"
+  },
+  {
+    "superheroId": "274",
+    "name": "Gambit"
+  },
+  {
+    "superheroId": "275",
+    "name": "Gamora"
+  },
+  {
+    "superheroId": "276",
+    "name": "Garbage Man"
+  },
+  {
+    "superheroId": "277",
+    "name": "Gary Bell"
+  },
+  {
+    "superheroId": "278",
+    "name": "General Zod"
+  },
+  {
+    "superheroId": "279",
+    "name": "Genesis"
+  },
+  {
+    "superheroId": "280",
+    "name": "Ghost Rider"
+  },
+  {
+    "superheroId": "281",
+    "name": "Ghost Rider II"
+  },
+  {
+    "superheroId": "282",
+    "name": "Giant-Man"
+  },
+  {
+    "superheroId": "283",
+    "name": "Giant-Man II"
+  },
+  {
+    "superheroId": "284",
+    "name": "Giganta"
+  },
+  {
+    "superheroId": "285",
+    "name": "Gladiator"
+  },
+  {
+    "superheroId": "286",
+    "name": "Goblin Queen"
+  },
+  {
+    "superheroId": "287",
+    "name": "Godzilla"
+  },
+  {
+    "superheroId": "288",
+    "name": "Gog"
+  },
+  {
+    "superheroId": "289",
+    "name": "Goku"
+  },
+  {
+    "superheroId": "290",
+    "name": "Goliath"
+  },
+  {
+    "superheroId": "291",
+    "name": "Goliath"
+  },
+  {
+    "superheroId": "292",
+    "name": "Goliath"
+  },
+  {
+    "superheroId": "293",
+    "name": "Goliath IV"
+  },
+  {
+    "superheroId": "294",
+    "name": "Gorilla Grodd"
+  },
+  {
+    "superheroId": "295",
+    "name": "Granny Goodness"
+  },
+  {
+    "superheroId": "296",
+    "name": "Gravity"
+  },
+  {
+    "superheroId": "297",
+    "name": "Greedo"
+  },
+  {
+    "superheroId": "298",
+    "name": "Green Arrow"
+  },
+  {
+    "superheroId": "299",
+    "name": "Green Goblin"
+  },
+  {
+    "superheroId": "300",
+    "name": "Green Goblin II"
+  },
+  {
+    "superheroId": "301",
+    "name": "Green Goblin III"
+  },
+  {
+    "superheroId": "302",
+    "name": "Green Goblin IV"
+  },
+  {
+    "superheroId": "303",
+    "name": "Groot"
+  },
+  {
+    "superheroId": "304",
+    "name": "Guardian"
+  },
+  {
+    "superheroId": "305",
+    "name": "Guy Gardner"
+  },
+  {
+    "superheroId": "306",
+    "name": "Hal Jordan"
+  },
+  {
+    "superheroId": "307",
+    "name": "Han Solo"
+  },
+  {
+    "superheroId": "308",
+    "name": "Hancock"
+  },
+  {
+    "superheroId": "309",
+    "name": "Harley Quinn"
+  },
+  {
+    "superheroId": "310",
+    "name": "Harry Potter"
+  },
+  {
+    "superheroId": "311",
+    "name": "Havok"
+  },
+  {
+    "superheroId": "312",
+    "name": "Hawk"
+  },
+  {
+    "superheroId": "313",
+    "name": "Hawkeye"
+  },
+  {
+    "superheroId": "314",
+    "name": "Hawkeye II"
+  },
+  {
+    "superheroId": "315",
+    "name": "Hawkgirl"
+  },
+  {
+    "superheroId": "316",
+    "name": "Hawkman"
+  },
+  {
+    "superheroId": "317",
+    "name": "Hawkwoman"
+  },
+  {
+    "superheroId": "318",
+    "name": "Hawkwoman II"
+  },
+  {
+    "superheroId": "319",
+    "name": "Hawkwoman III"
+  },
+  {
+    "superheroId": "320",
+    "name": "Heat Wave"
+  },
+  {
+    "superheroId": "321",
+    "name": "Hela"
+  },
+  {
+    "superheroId": "322",
+    "name": "Hellboy"
+  },
+  {
+    "superheroId": "323",
+    "name": "Hellcat"
+  },
+  {
+    "superheroId": "324",
+    "name": "Hellstorm"
+  },
+  {
+    "superheroId": "325",
+    "name": "Hercules"
+  },
+  {
+    "superheroId": "326",
+    "name": "Hiro Nakamura"
+  },
+  {
+    "superheroId": "327",
+    "name": "Hit-Girl"
+  },
+  {
+    "superheroId": "328",
+    "name": "Hobgoblin"
+  },
+  {
+    "superheroId": "329",
+    "name": "Hollow"
+  },
+  {
+    "superheroId": "330",
+    "name": "Hope Summers"
+  },
+  {
+    "superheroId": "331",
+    "name": "Howard the Duck"
+  },
+  {
+    "superheroId": "332",
+    "name": "Hulk"
+  },
+  {
+    "superheroId": "333",
+    "name": "Human Torch"
+  },
+  {
+    "superheroId": "334",
+    "name": "Huntress"
+  },
+  {
+    "superheroId": "335",
+    "name": "Husk"
+  },
+  {
+    "superheroId": "336",
+    "name": "Hybrid"
+  },
+  {
+    "superheroId": "337",
+    "name": "Hydro-Man"
+  },
+  {
+    "superheroId": "338",
+    "name": "Hyperion"
+  },
+  {
+    "superheroId": "339",
+    "name": "Iceman"
+  },
+  {
+    "superheroId": "340",
+    "name": "Impulse"
+  },
+  {
+    "superheroId": "341",
+    "name": "Indiana Jones"
+  },
+  {
+    "superheroId": "342",
+    "name": "Indigo"
+  },
+  {
+    "superheroId": "343",
+    "name": "Ink"
+  },
+  {
+    "superheroId": "344",
+    "name": "Invisible Woman"
+  },
+  {
+    "superheroId": "345",
+    "name": "Iron Fist"
+  },
+  {
+    "superheroId": "346",
+    "name": "Iron Man"
+  },
+  {
+    "superheroId": "347",
+    "name": "Iron Monger"
+  },
+  {
+    "superheroId": "348",
+    "name": "Isis"
+  },
+  {
+    "superheroId": "349",
+    "name": "Jack Bauer"
+  },
+  {
+    "superheroId": "350",
+    "name": "Jack of Hearts"
+  },
+  {
+    "superheroId": "351",
+    "name": "Jack-Jack"
+  },
+  {
+    "superheroId": "352",
+    "name": "James Bond"
+  },
+  {
+    "superheroId": "353",
+    "name": "James T. Kirk"
+  },
+  {
+    "superheroId": "354",
+    "name": "Jar Jar Binks"
+  },
+  {
+    "superheroId": "355",
+    "name": "Jason Bourne"
+  },
+  {
+    "superheroId": "356",
+    "name": "Jean Grey"
+  },
+  {
+    "superheroId": "357",
+    "name": "Jean-Luc Picard"
+  },
+  {
+    "superheroId": "358",
+    "name": "Jennifer Kale"
+  },
+  {
+    "superheroId": "359",
+    "name": "Jesse Quick"
+  },
+  {
+    "superheroId": "360",
+    "name": "Jessica Cruz"
+  },
+  {
+    "superheroId": "361",
+    "name": "Jessica Jones"
+  },
+  {
+    "superheroId": "362",
+    "name": "Jessica Sanders"
+  },
+  {
+    "superheroId": "363",
+    "name": "Jigsaw"
+  },
+  {
+    "superheroId": "364",
+    "name": "Jim Powell"
+  },
+  {
+    "superheroId": "365",
+    "name": "JJ Powell"
+  },
+  {
+    "superheroId": "366",
+    "name": "Johann Krauss"
+  },
+  {
+    "superheroId": "367",
+    "name": "John Constantine"
+  },
+  {
+    "superheroId": "368",
+    "name": "John Stewart"
+  },
+  {
+    "superheroId": "369",
+    "name": "John Wraith"
+  },
+  {
+    "superheroId": "370",
+    "name": "Joker"
+  },
+  {
+    "superheroId": "371",
+    "name": "Jolt"
+  },
+  {
+    "superheroId": "372",
+    "name": "Jubilee"
+  },
+  {
+    "superheroId": "373",
+    "name": "Judge Dredd"
+  },
+  {
+    "superheroId": "374",
+    "name": "Juggernaut"
+  },
+  {
+    "superheroId": "375",
+    "name": "Junkpile"
+  },
+  {
+    "superheroId": "376",
+    "name": "Justice"
+  },
+  {
+    "superheroId": "377",
+    "name": "Jyn Erso"
+  },
+  {
+    "superheroId": "378",
+    "name": "K-2SO"
+  },
+  {
+    "superheroId": "379",
+    "name": "Kang"
+  },
+  {
+    "superheroId": "380",
+    "name": "Kathryn Janeway"
+  },
+  {
+    "superheroId": "381",
+    "name": "Katniss Everdeen"
+  },
+  {
+    "superheroId": "382",
+    "name": "Kevin 11"
+  },
+  {
+    "superheroId": "383",
+    "name": "Kick-Ass"
+  },
+  {
+    "superheroId": "384",
+    "name": "Kid Flash"
+  },
+  {
+    "superheroId": "385",
+    "name": "Kid Flash II"
+  },
+  {
+    "superheroId": "386",
+    "name": "Killer Croc"
+  },
+  {
+    "superheroId": "387",
+    "name": "Killer Frost"
+  },
+  {
+    "superheroId": "388",
+    "name": "Kilowog"
+  },
+  {
+    "superheroId": "389",
+    "name": "King Kong"
+  },
+  {
+    "superheroId": "390",
+    "name": "King Shark"
+  },
+  {
+    "superheroId": "391",
+    "name": "Kingpin"
+  },
+  {
+    "superheroId": "392",
+    "name": "Klaw"
+  },
+  {
+    "superheroId": "393",
+    "name": "Kool-Aid Man"
+  },
+  {
+    "superheroId": "394",
+    "name": "Kraven II"
+  },
+  {
+    "superheroId": "395",
+    "name": "Kraven the Hunter"
+  },
+  {
+    "superheroId": "396",
+    "name": "Krypto"
+  },
+  {
+    "superheroId": "397",
+    "name": "Kyle Rayner"
+  },
+  {
+    "superheroId": "398",
+    "name": "Kylo Ren"
+  },
+  {
+    "superheroId": "399",
+    "name": "Lady Bullseye"
+  },
+  {
+    "superheroId": "400",
+    "name": "Lady Deathstrike"
+  },
+  {
+    "superheroId": "401",
+    "name": "Leader"
+  },
+  {
+    "superheroId": "402",
+    "name": "Leech"
+  },
+  {
+    "superheroId": "403",
+    "name": "Legion"
+  },
+  {
+    "superheroId": "404",
+    "name": "Leonardo"
+  },
+  {
+    "superheroId": "405",
+    "name": "Lex Luthor"
+  },
+  {
+    "superheroId": "406",
+    "name": "Light Lass"
+  },
+  {
+    "superheroId": "407",
+    "name": "Lightning Lad"
+  },
+  {
+    "superheroId": "408",
+    "name": "Lightning Lord"
+  },
+  {
+    "superheroId": "409",
+    "name": "Living Brain"
+  },
+  {
+    "superheroId": "410",
+    "name": "Living Tribunal"
+  },
+  {
+    "superheroId": "411",
+    "name": "Liz Sherman"
+  },
+  {
+    "superheroId": "412",
+    "name": "Lizard"
+  },
+  {
+    "superheroId": "413",
+    "name": "Lobo"
+  },
+  {
+    "superheroId": "414",
+    "name": "Loki"
+  },
+  {
+    "superheroId": "415",
+    "name": "Longshot"
+  },
+  {
+    "superheroId": "416",
+    "name": "Luke Cage"
+  },
+  {
+    "superheroId": "417",
+    "name": "Luke Campbell"
+  },
+  {
+    "superheroId": "418",
+    "name": "Luke Skywalker"
+  },
+  {
+    "superheroId": "419",
+    "name": "Luna"
+  },
+  {
+    "superheroId": "420",
+    "name": "Lyja"
+  },
+  {
+    "superheroId": "421",
+    "name": "Mach-IV"
+  },
+  {
+    "superheroId": "422",
+    "name": "Machine Man"
+  },
+  {
+    "superheroId": "423",
+    "name": "Magneto"
+  },
+  {
+    "superheroId": "424",
+    "name": "Magog"
+  },
+  {
+    "superheroId": "425",
+    "name": "Magus"
+  },
+  {
+    "superheroId": "426",
+    "name": "Man of Miracles"
+  },
+  {
+    "superheroId": "427",
+    "name": "Man-Bat"
+  },
+  {
+    "superheroId": "428",
+    "name": "Man-Thing"
+  },
+  {
+    "superheroId": "429",
+    "name": "Man-Wolf"
+  },
+  {
+    "superheroId": "430",
+    "name": "Mandarin"
+  },
+  {
+    "superheroId": "431",
+    "name": "Mantis"
+  },
+  {
+    "superheroId": "432",
+    "name": "Martian Manhunter"
+  },
+  {
+    "superheroId": "433",
+    "name": "Marvel Girl"
+  },
+  {
+    "superheroId": "434",
+    "name": "Master Brood"
+  },
+  {
+    "superheroId": "435",
+    "name": "Master Chief"
+  },
+  {
+    "superheroId": "436",
+    "name": "Match"
+  },
+  {
+    "superheroId": "437",
+    "name": "Matt Parkman"
+  },
+  {
+    "superheroId": "438",
+    "name": "Maverick"
+  },
+  {
+    "superheroId": "439",
+    "name": "Maxima"
+  },
+  {
+    "superheroId": "440",
+    "name": "Maya Herrera"
+  },
+  {
+    "superheroId": "441",
+    "name": "Medusa"
+  },
+  {
+    "superheroId": "442",
+    "name": "Meltdown"
+  },
+  {
+    "superheroId": "443",
+    "name": "Mephisto"
+  },
+  {
+    "superheroId": "444",
+    "name": "Mera"
+  },
+  {
+    "superheroId": "445",
+    "name": "Metallo"
+  },
+  {
+    "superheroId": "446",
+    "name": "Metamorpho"
+  },
+  {
+    "superheroId": "447",
+    "name": "Meteorite"
+  },
+  {
+    "superheroId": "448",
+    "name": "Metron"
+  },
+  {
+    "superheroId": "449",
+    "name": "Micah Sanders"
+  },
+  {
+    "superheroId": "450",
+    "name": "Michelangelo"
+  },
+  {
+    "superheroId": "451",
+    "name": "Micro Lad"
+  },
+  {
+    "superheroId": "452",
+    "name": "Mimic"
+  },
+  {
+    "superheroId": "453",
+    "name": "Minna Murray"
+  },
+  {
+    "superheroId": "454",
+    "name": "Misfit"
+  },
+  {
+    "superheroId": "455",
+    "name": "Miss Martian"
+  },
+  {
+    "superheroId": "456",
+    "name": "Mister Fantastic"
+  },
+  {
+    "superheroId": "457",
+    "name": "Mister Freeze"
+  },
+  {
+    "superheroId": "458",
+    "name": "Mister Knife"
+  },
+  {
+    "superheroId": "459",
+    "name": "Mister Mxyzptlk"
+  },
+  {
+    "superheroId": "460",
+    "name": "Mister Sinister"
+  },
+  {
+    "superheroId": "461",
+    "name": "Mister Zsasz"
+  },
+  {
+    "superheroId": "462",
+    "name": "Mockingbird"
+  },
+  {
+    "superheroId": "463",
+    "name": "MODOK"
+  },
+  {
+    "superheroId": "464",
+    "name": "Mogo"
+  },
+  {
+    "superheroId": "465",
+    "name": "Mohinder Suresh"
+  },
+  {
+    "superheroId": "466",
+    "name": "Moloch"
+  },
+  {
+    "superheroId": "467",
+    "name": "Molten Man"
+  },
+  {
+    "superheroId": "468",
+    "name": "Monarch"
+  },
+  {
+    "superheroId": "469",
+    "name": "Monica Dawson"
+  },
+  {
+    "superheroId": "470",
+    "name": "Moon Knight"
+  },
+  {
+    "superheroId": "471",
+    "name": "Moonstone"
+  },
+  {
+    "superheroId": "472",
+    "name": "Morlun"
+  },
+  {
+    "superheroId": "473",
+    "name": "Morph"
+  },
+  {
+    "superheroId": "474",
+    "name": "Moses Magnum"
+  },
+  {
+    "superheroId": "475",
+    "name": "Mr Immortal"
+  },
+  {
+    "superheroId": "476",
+    "name": "Mr Incredible"
+  },
+  {
+    "superheroId": "477",
+    "name": "Ms Marvel II"
+  },
+  {
+    "superheroId": "478",
+    "name": "Multiple Man"
+  },
+  {
+    "superheroId": "479",
+    "name": "Mysterio"
+  },
+  {
+    "superheroId": "480",
+    "name": "Mystique"
+  },
+  {
+    "superheroId": "481",
+    "name": "Namor"
+  },
+  {
+    "superheroId": "482",
+    "name": "Namor"
+  },
+  {
+    "superheroId": "483",
+    "name": "Namora"
+  },
+  {
+    "superheroId": "484",
+    "name": "Namorita"
+  },
+  {
+    "superheroId": "485",
+    "name": "Naruto Uzumaki"
+  },
+  {
+    "superheroId": "486",
+    "name": "Nathan Petrelli"
+  },
+  {
+    "superheroId": "487",
+    "name": "Nebula"
+  },
+  {
+    "superheroId": "488",
+    "name": "Negasonic Teenage Warhead"
+  },
+  {
+    "superheroId": "#ID",
+    "name": "Chracter Name"
+  },
+  {
+    "superheroId": "489",
+    "name": "Nick Fury"
+  },
+  {
+    "superheroId": "490",
+    "name": "Nightcrawler"
+  },
+  {
+    "superheroId": "491",
+    "name": "Nightwing"
+  },
+  {
+    "superheroId": "492",
+    "name": "Niki Sanders"
+  },
+  {
+    "superheroId": "493",
+    "name": "Nina Theroux"
+  },
+  {
+    "superheroId": "494",
+    "name": "Nite Owl II"
+  },
+  {
+    "superheroId": "495",
+    "name": "Northstar"
+  },
+  {
+    "superheroId": "496",
+    "name": "Nova"
+  },
+  {
+    "superheroId": "497",
+    "name": "Nova"
+  },
+  {
+    "superheroId": "498",
+    "name": "Odin"
+  },
+  {
+    "superheroId": "499",
+    "name": "Offspring"
+  },
+  {
+    "superheroId": "500",
+    "name": "Omega Red"
+  },
+  {
+    "superheroId": "501",
+    "name": "Omniscient"
+  },
+  {
+    "superheroId": "502",
+    "name": "One Punch Man"
+  },
+  {
+    "superheroId": "503",
+    "name": "One-Above-All"
+  },
+  {
+    "superheroId": "504",
+    "name": "Onslaught"
+  },
+  {
+    "superheroId": "505",
+    "name": "Oracle"
+  },
+  {
+    "superheroId": "506",
+    "name": "Osiris"
+  },
+  {
+    "superheroId": "507",
+    "name": "Overtkill"
+  },
+  {
+    "superheroId": "508",
+    "name": "Ozymandias"
+  },
+  {
+    "superheroId": "509",
+    "name": "Parademon"
+  },
+  {
+    "superheroId": "510",
+    "name": "Paul Blart"
+  },
+  {
+    "superheroId": "511",
+    "name": "Penance"
+  },
+  {
+    "superheroId": "512",
+    "name": "Penance I"
+  },
+  {
+    "superheroId": "513",
+    "name": "Penance II"
+  },
+  {
+    "superheroId": "514",
+    "name": "Penguin"
+  },
+  {
+    "superheroId": "515",
+    "name": "Phantom"
+  },
+  {
+    "superheroId": "516",
+    "name": "Phantom Girl"
+  },
+  {
+    "superheroId": "517",
+    "name": "Phoenix"
+  },
+  {
+    "superheroId": "518",
+    "name": "Plantman"
+  },
+  {
+    "superheroId": "519",
+    "name": "Plastic Lad"
+  },
+  {
+    "superheroId": "520",
+    "name": "Plastic Man"
+  },
+  {
+    "superheroId": "521",
+    "name": "Plastique"
+  },
+  {
+    "superheroId": "522",
+    "name": "Poison Ivy"
+  },
+  {
+    "superheroId": "523",
+    "name": "Polaris"
+  },
+  {
+    "superheroId": "524",
+    "name": "Power Girl"
+  },
+  {
+    "superheroId": "525",
+    "name": "Power Man"
+  },
+  {
+    "superheroId": "526",
+    "name": "Predator"
+  },
+  {
+    "superheroId": "527",
+    "name": "Professor X"
+  },
+  {
+    "superheroId": "528",
+    "name": "Professor Zoom"
+  },
+  {
+    "superheroId": "529",
+    "name": "Psylocke"
+  },
+  {
+    "superheroId": "530",
+    "name": "Punisher"
+  },
+  {
+    "superheroId": "531",
+    "name": "Purple Man"
+  },
+  {
+    "superheroId": "532",
+    "name": "Pyro"
+  },
+  {
+    "superheroId": "533",
+    "name": "Q"
+  },
+  {
+    "superheroId": "534",
+    "name": "Quantum"
+  },
+  {
+    "superheroId": "535",
+    "name": "Question"
+  },
+  {
+    "superheroId": "536",
+    "name": "Quicksilver"
+  },
+  {
+    "superheroId": "537",
+    "name": "Quill"
+  },
+  {
+    "superheroId": "538",
+    "name": "Ra's Al Ghul"
+  },
+  {
+    "superheroId": "539",
+    "name": "Rachel Pirzad"
+  },
+  {
+    "superheroId": "540",
+    "name": "Rambo"
+  },
+  {
+    "superheroId": "541",
+    "name": "Raphael"
+  },
+  {
+    "superheroId": "542",
+    "name": "Raven"
+  },
+  {
+    "superheroId": "543",
+    "name": "Ray"
+  },
+  {
+    "superheroId": "544",
+    "name": "Razor-Fist II"
+  },
+  {
+    "superheroId": "545",
+    "name": "Red Arrow"
+  },
+  {
+    "superheroId": "546",
+    "name": "Red Hood"
+  },
+  {
+    "superheroId": "547",
+    "name": "Red Hulk"
+  },
+  {
+    "superheroId": "548",
+    "name": "Red Mist"
+  },
+  {
+    "superheroId": "549",
+    "name": "Red Robin"
+  },
+  {
+    "superheroId": "550",
+    "name": "Red Skull"
+  },
+  {
+    "superheroId": "551",
+    "name": "Red Tornado"
+  },
+  {
+    "superheroId": "552",
+    "name": "Redeemer II"
+  },
+  {
+    "superheroId": "553",
+    "name": "Redeemer III"
+  },
+  {
+    "superheroId": "554",
+    "name": "Renata Soliz"
+  },
+  {
+    "superheroId": "555",
+    "name": "Rey"
+  },
+  {
+    "superheroId": "556",
+    "name": "Rhino"
+  },
+  {
+    "superheroId": "557",
+    "name": "Rick Flag"
+  },
+  {
+    "superheroId": "558",
+    "name": "Riddler"
+  },
+  {
+    "superheroId": "559",
+    "name": "Rip Hunter"
+  },
+  {
+    "superheroId": "560",
+    "name": "Ripcord"
+  },
+  {
+    "superheroId": "561",
+    "name": "Robin"
+  },
+  {
+    "superheroId": "562",
+    "name": "Robin II"
+  },
+  {
+    "superheroId": "563",
+    "name": "Robin III"
+  },
+  {
+    "superheroId": "564",
+    "name": "Robin V"
+  },
+  {
+    "superheroId": "565",
+    "name": "Robin VI"
+  },
+  {
+    "superheroId": "566",
+    "name": "Rocket Raccoon"
+  },
+  {
+    "superheroId": "567",
+    "name": "Rogue"
+  },
+  {
+    "superheroId": "568",
+    "name": "Ronin"
+  },
+  {
+    "superheroId": "569",
+    "name": "Rorschach"
+  },
+  {
+    "superheroId": "570",
+    "name": "Sabretooth"
+  },
+  {
+    "superheroId": "571",
+    "name": "Sage"
+  },
+  {
+    "superheroId": "572",
+    "name": "Sandman"
+  },
+  {
+    "superheroId": "573",
+    "name": "Sasquatch"
+  },
+  {
+    "superheroId": "574",
+    "name": "Sauron"
+  },
+  {
+    "superheroId": "575",
+    "name": "Savage Dragon"
+  },
+  {
+    "superheroId": "576",
+    "name": "Scarecrow"
+  },
+  {
+    "superheroId": "577",
+    "name": "Scarlet Spider"
+  },
+  {
+    "superheroId": "578",
+    "name": "Scarlet Spider II"
+  },
+  {
+    "superheroId": "579",
+    "name": "Scarlet Witch"
+  },
+  {
+    "superheroId": "580",
+    "name": "Scorpia"
+  },
+  {
+    "superheroId": "581",
+    "name": "Scorpion"
+  },
+  {
+    "superheroId": "582",
+    "name": "Sebastian Shaw"
+  },
+  {
+    "superheroId": "583",
+    "name": "Sentry"
+  },
+  {
+    "superheroId": "584",
+    "name": "Shadow King"
+  },
+  {
+    "superheroId": "585",
+    "name": "Shadow Lass"
+  },
+  {
+    "superheroId": "586",
+    "name": "Shadowcat"
+  },
+  {
+    "superheroId": "587",
+    "name": "Shang-Chi"
+  },
+  {
+    "superheroId": "588",
+    "name": "Shatterstar"
+  },
+  {
+    "superheroId": "589",
+    "name": "She-Hulk"
+  },
+  {
+    "superheroId": "590",
+    "name": "She-Thing"
+  },
+  {
+    "superheroId": "591",
+    "name": "Shocker"
+  },
+  {
+    "superheroId": "592",
+    "name": "Shriek"
+  },
+  {
+    "superheroId": "593",
+    "name": "Shrinking Violet"
+  },
+  {
+    "superheroId": "594",
+    "name": "Sif"
+  },
+  {
+    "superheroId": "595",
+    "name": "Silk"
+  },
+  {
+    "superheroId": "596",
+    "name": "Silk Spectre"
+  },
+  {
+    "superheroId": "597",
+    "name": "Silk Spectre II"
+  },
+  {
+    "superheroId": "598",
+    "name": "Silver Surfer"
+  },
+  {
+    "superheroId": "599",
+    "name": "Silverclaw"
+  },
+  {
+    "superheroId": "600",
+    "name": "Simon Baz"
+  },
+  {
+    "superheroId": "601",
+    "name": "Sinestro"
+  },
+  {
+    "superheroId": "602",
+    "name": "Siren"
+  },
+  {
+    "superheroId": "603",
+    "name": "Siren II"
+  },
+  {
+    "superheroId": "604",
+    "name": "Siryn"
+  },
+  {
+    "superheroId": "605",
+    "name": "Skaar"
+  },
+  {
+    "superheroId": "606",
+    "name": "Snake-Eyes"
+  },
+  {
+    "superheroId": "607",
+    "name": "Snowbird"
+  },
+  {
+    "superheroId": "608",
+    "name": "Sobek"
+  },
+  {
+    "superheroId": "609",
+    "name": "Solomon Grundy"
+  },
+  {
+    "superheroId": "610",
+    "name": "Songbird"
+  },
+  {
+    "superheroId": "611",
+    "name": "Space Ghost"
+  },
+  {
+    "superheroId": "612",
+    "name": "Spawn"
+  },
+  {
+    "superheroId": "613",
+    "name": "Spectre"
+  },
+  {
+    "superheroId": "614",
+    "name": "Speedball"
+  },
+  {
+    "superheroId": "615",
+    "name": "Speedy"
+  },
+  {
+    "superheroId": "616",
+    "name": "Speedy"
+  },
+  {
+    "superheroId": "617",
+    "name": "Spider-Carnage"
+  },
+  {
+    "superheroId": "618",
+    "name": "Spider-Girl"
+  },
+  {
+    "superheroId": "619",
+    "name": "Spider-Gwen"
+  },
+  {
+    "superheroId": "620",
+    "name": "Spider-Man"
+  },
+  {
+    "superheroId": "621",
+    "name": "Spider-Man"
+  },
+  {
+    "superheroId": "622",
+    "name": "Spider-Man"
+  },
+  {
+    "superheroId": "623",
+    "name": "Spider-Woman"
+  },
+  {
+    "superheroId": "624",
+    "name": "Spider-Woman II"
+  },
+  {
+    "superheroId": "625",
+    "name": "Spider-Woman III"
+  },
+  {
+    "superheroId": "626",
+    "name": "Spider-Woman IV"
+  },
+  {
+    "superheroId": "627",
+    "name": "Spock"
+  },
+  {
+    "superheroId": "628",
+    "name": "Spyke"
+  },
+  {
+    "superheroId": "629",
+    "name": "Stacy X"
+  },
+  {
+    "superheroId": "630",
+    "name": "Star-Lord"
+  },
+  {
+    "superheroId": "631",
+    "name": "Stardust"
+  },
+  {
+    "superheroId": "632",
+    "name": "Starfire"
+  },
+  {
+    "superheroId": "633",
+    "name": "Stargirl"
+  },
+  {
+    "superheroId": "634",
+    "name": "Static"
+  },
+  {
+    "superheroId": "635",
+    "name": "Steel"
+  },
+  {
+    "superheroId": "636",
+    "name": "Stephanie Powell"
+  },
+  {
+    "superheroId": "637",
+    "name": "Steppenwolf"
+  },
+  {
+    "superheroId": "638",
+    "name": "Storm"
+  },
+  {
+    "superheroId": "639",
+    "name": "Stormtrooper"
+  },
+  {
+    "superheroId": "640",
+    "name": "Sunspot"
+  },
+  {
+    "superheroId": "641",
+    "name": "Superboy"
+  },
+  {
+    "superheroId": "642",
+    "name": "Superboy-Prime"
+  },
+  {
+    "superheroId": "643",
+    "name": "Supergirl"
+  },
+  {
+    "superheroId": "644",
+    "name": "Superman"
+  },
+  {
+    "superheroId": "645",
+    "name": "Swamp Thing"
+  },
+  {
+    "superheroId": "646",
+    "name": "Swarm"
+  },
+  {
+    "superheroId": "647",
+    "name": "Sylar"
+  },
+  {
+    "superheroId": "648",
+    "name": "Synch"
+  },
+  {
+    "superheroId": "649",
+    "name": "T-1000"
+  },
+  {
+    "superheroId": "650",
+    "name": "T-800"
+  },
+  {
+    "superheroId": "651",
+    "name": "T-850"
+  },
+  {
+    "superheroId": "652",
+    "name": "T-X"
+  },
+  {
+    "superheroId": "653",
+    "name": "Taskmaster"
+  },
+  {
+    "superheroId": "654",
+    "name": "Tempest"
+  },
+  {
+    "superheroId": "655",
+    "name": "Thanos"
+  },
+  {
+    "superheroId": "656",
+    "name": "The Cape"
+  },
+  {
+    "superheroId": "657",
+    "name": "The Comedian"
+  },
+  {
+    "superheroId": "658",
+    "name": "Thing"
+  },
+  {
+    "superheroId": "659",
+    "name": "Thor"
+  },
+  {
+    "superheroId": "660",
+    "name": "Thor Girl"
+  },
+  {
+    "superheroId": "661",
+    "name": "Thunderbird"
+  },
+  {
+    "superheroId": "662",
+    "name": "Thunderbird II"
+  },
+  {
+    "superheroId": "663",
+    "name": "Thunderbird III"
+  },
+  {
+    "superheroId": "664",
+    "name": "Thunderstrike"
+  },
+  {
+    "superheroId": "665",
+    "name": "Thundra"
+  },
+  {
+    "superheroId": "666",
+    "name": "Tiger Shark"
+  },
+  {
+    "superheroId": "667",
+    "name": "Tigra"
+  },
+  {
+    "superheroId": "668",
+    "name": "Tinkerer"
+  },
+  {
+    "superheroId": "669",
+    "name": "Titan"
+  },
+  {
+    "superheroId": "670",
+    "name": "Toad"
+  },
+  {
+    "superheroId": "671",
+    "name": "Toxin"
+  },
+  {
+    "superheroId": "672",
+    "name": "Toxin"
+  },
+  {
+    "superheroId": "673",
+    "name": "Tracy Strauss"
+  },
+  {
+    "superheroId": "674",
+    "name": "Trickster"
+  },
+  {
+    "superheroId": "675",
+    "name": "Trigon"
+  },
+  {
+    "superheroId": "676",
+    "name": "Triplicate Girl"
+  },
+  {
+    "superheroId": "677",
+    "name": "Triton"
+  },
+  {
+    "superheroId": "678",
+    "name": "Two-Face"
+  },
+  {
+    "superheroId": "679",
+    "name": "Ultragirl"
+  },
+  {
+    "superheroId": "680",
+    "name": "Ultron"
+  },
+  {
+    "superheroId": "681",
+    "name": "Utgard-Loki"
+  },
+  {
+    "superheroId": "682",
+    "name": "Vagabond"
+  },
+  {
+    "superheroId": "683",
+    "name": "Valerie Hart"
+  },
+  {
+    "superheroId": "684",
+    "name": "Valkyrie"
+  },
+  {
+    "superheroId": "685",
+    "name": "Vanisher"
+  },
+  {
+    "superheroId": "686",
+    "name": "Vegeta"
+  },
+  {
+    "superheroId": "687",
+    "name": "Venom"
+  },
+  {
+    "superheroId": "688",
+    "name": "Venom II"
+  },
+  {
+    "superheroId": "689",
+    "name": "Venom III"
+  },
+  {
+    "superheroId": "690",
+    "name": "Venompool"
+  },
+  {
+    "superheroId": "691",
+    "name": "Vertigo II"
+  },
+  {
+    "superheroId": "692",
+    "name": "Vibe"
+  },
+  {
+    "superheroId": "693",
+    "name": "Vindicator"
+  },
+  {
+    "superheroId": "694",
+    "name": "Vindicator"
+  },
+  {
+    "superheroId": "695",
+    "name": "Violator"
+  },
+  {
+    "superheroId": "696",
+    "name": "Violet Parr"
+  },
+  {
+    "superheroId": "697",
+    "name": "Vision"
+  },
+  {
+    "superheroId": "698",
+    "name": "Vision II"
+  },
+  {
+    "superheroId": "699",
+    "name": "Vixen"
+  },
+  {
+    "superheroId": "700",
+    "name": "Vulcan"
+  },
+  {
+    "superheroId": "701",
+    "name": "Vulture"
+  },
+  {
+    "superheroId": "702",
+    "name": "Walrus"
+  },
+  {
+    "superheroId": "703",
+    "name": "War Machine"
+  },
+  {
+    "superheroId": "704",
+    "name": "Warbird"
+  },
+  {
+    "superheroId": "705",
+    "name": "Warlock"
+  },
+  {
+    "superheroId": "706",
+    "name": "Warp"
+  },
+  {
+    "superheroId": "707",
+    "name": "Warpath"
+  },
+  {
+    "superheroId": "708",
+    "name": "Wasp"
+  },
+  {
+    "superheroId": "709",
+    "name": "Watcher"
+  },
+  {
+    "superheroId": "710",
+    "name": "Weapon XI"
+  },
+  {
+    "superheroId": "711",
+    "name": "White Canary"
+  },
+  {
+    "superheroId": "712",
+    "name": "White Queen"
+  },
+  {
+    "superheroId": "713",
+    "name": "Wildfire"
+  },
+  {
+    "superheroId": "714",
+    "name": "Winter Soldier"
+  },
+  {
+    "superheroId": "715",
+    "name": "Wiz Kid"
+  },
+  {
+    "superheroId": "716",
+    "name": "Wolfsbane"
+  },
+  {
+    "superheroId": "717",
+    "name": "Wolverine"
+  },
+  {
+    "superheroId": "718",
+    "name": "Wonder Girl"
+  },
+  {
+    "superheroId": "719",
+    "name": "Wonder Man"
+  },
+  {
+    "superheroId": "720",
+    "name": "Wonder Woman"
+  },
+  {
+    "superheroId": "721",
+    "name": "Wondra"
+  },
+  {
+    "superheroId": "722",
+    "name": "Wyatt Wingfoot"
+  },
+  {
+    "superheroId": "723",
+    "name": "X-23"
+  },
+  {
+    "superheroId": "724",
+    "name": "X-Man"
+  },
+  {
+    "superheroId": "725",
+    "name": "Yellow Claw"
+  },
+  {
+    "superheroId": "726",
+    "name": "Yellowjacket"
+  },
+  {
+    "superheroId": "727",
+    "name": "Yellowjacket II"
+  },
+  {
+    "superheroId": "728",
+    "name": "Ymir"
+  },
+  {
+    "superheroId": "729",
+    "name": "Yoda"
+  },
+  {
+    "superheroId": "730",
+    "name": "Zatanna"
+  },
+  {
+    "superheroId": "731",
+    "name": "Zoom"
+  }
+]
