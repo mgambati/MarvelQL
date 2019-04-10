@@ -3,11 +3,11 @@
   "limit": 5,
   "stories": {
     "total": 96577,
-    "cursor": 79000
+    "cursor": 84000
   },
   "comics": {
-    "total": 96577,
-    "cursor": 43506
+    "total": 43904,
+    "cursor": 43904
   },
   "characters": {
     "total": 1491,
