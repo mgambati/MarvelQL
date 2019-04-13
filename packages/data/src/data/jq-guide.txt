@@ -34,23 +34,9 @@ nested ids
 
 
 //! Series to CSV
-["id", "title", "description","resourceURI","urls","startYear","endYear","rating","modified","thumbnail","comics","stories","events","characters","creators"], (to_entries | .[] | [(.value | .id, .title, .description, (.resourceURI | capture("http://gateway.marvel.com/v1/public/series/(?<id>[0-9]+)")), ([(.value.urls | .[] | .url)] | [join(", ")] | @csv ), .startYear, .endYear, .rating, .modified, ("\(.thumbnail.path)/\(.thumbnail.extension)"), ([((.comics | .items | .[] | (.resourceURI | capture("http://gateway.marvel.com/v1/public/comics/(?<id>[0-9]+)") | .id)))] | @csv), ([((.value.stories | .items | .[] | (.resourceURI | capture("http://gateway.marvel.com/v1/public/stories/(?<id>[0-9]+)") | .id)))] | @csv), ([((value.events | .items | .[] | (.resourceURI | capture("http://gateway.marvel.com/v1/public/events/(?<id>[0-9]+)") | .id)))] | @csv), ([((value.characters | .items | .[] | (.resourceURI | capture("http://gateway.marvel.com/v1/public/characters/(?<id>[0-9]+)") | .id)))] | @csv), (.creators | .items | .[] | (.resourceURI | capture("http://gateway.marvel.com/v1/public/creators/(?<id>[0-9]+)") | .id))))] | @csv
+["id", "title", "description","resourceURI","urls","startYear","endYear","rating", "type", "modified","thumbnail","comics","stories","events","characters","creators"], (to_entries | .[] | [.value.id, .value.title, (.value.description // ""), (.value.resourceURI | capture("http://gateway.marvel.com/v1/public/series/(?<id>[0-9]+)")| .id), ([(.value.urls | .[] | .url)] | @csv ), .value.startYear, .value.endYear, .value.rating, .value.type, .value.modified, ("\(.value.thumbnail.path)/\(.value.thumbnail.extension)"), ([((.value.comics | .items | .[] | (.resourceURI | capture("http://gateway.marvel.com/v1/public/comics/(?<id>[0-9]+)") | .id)))] | @csv), ([((.value.stories | .items | .[] | (.resourceURI | capture("http://gateway.marvel.com/v1/public/stories/(?<id>[0-9]+)") | .id)))?] | @csv), ([((.value.events | .items | .[] | (.resourceURI | capture("http://gateway.marvel.com/v1/public/events/(?<id>[0-9]+)") | .id)))?] | @csv), ([((.value.characters | .items | .[] | (.resourceURI | capture("http://gateway.marvel.com/v1/public/characters/(?<id>[0-9]+)") | .id)))] | @csv), ([(.value.creators | .items | .[] | (.resourceURI | capture("http://gateway.marvel.com/v1/public/creators/(?<id>[0-9]+)") | .id))] | @csv)]) | @csv
 
 
 
-["id", "title", "description","resourceURI","urls","startYear","endYear","rating","modified","thumbnail","creators", "characters", "stories", "comics", "events"], (to_entries | .[] | [(.value.id, .value.title, .value.description, (.resourceURI | capture("http://gateway.marvel.com/v1/public/series/(?<id>[0-9]+)")), ([(.value.urls | .[] | .url)] | [join(", ")] | @csv ), .value.startYear, .value.endYear, .value.rating, .value.modified, ("\(.value.thumbnail.path)/\(.value.thumbnail.extension)"),  ([((.value.creators | .items | .[] | (.resourceURI | capture("http://gateway.marvel.com/v1/public/creators/(?<id>[0-9]+)") | .id)))] | @csv),  ([((.value.characters | .items | .[] | (.resourceURI | capture("http://gateway.marvel.com/v1/public/characters/(?<id>[0-9]+)") | .id)))] | @csv),  ([((.stories | .items | .[] | (.resourceURI | capture("http://gateway.marvel.com/v1/public/stories/(?<id>[0-9]+)") | .id)))] | @csv),  ([((.value.comics | .items | .[] | (.resourceURI | capture("http://gateway.marvel.com/v1/public/comics/(?<id>[0-9]+)") | .id)))] | @csv),  ([((.value.events | .items | .[] | (.resourceURI | capture("http://gateway.marvel.com/v1/public/events/(?<id>[0-9]+)") | .id)))] | @csv))]) | @csv
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//! Series to CSV
+["id", "title", "description","resourceURI","urls","startYear","endYear","rating", "type", "modified","thumbnail","comics","stories","events","characters","creators"], (to_entries | .[] | [.value.id, .value.title, (.value.description // ""), (.value.resourceURI | capture("http://gateway.marvel.com/v1/public/series/(?<id>[0-9]+)")| .id), ([(.value.urls | .[] | .url)] | @csv ), .value.startYear, .value.endYear, .value.rating, .value.type, .value.modified, ("\(.value.thumbnail.path)/\(.value.thumbnail.extension)"), ([((.value.comics | .items | .[] | (.resourceURI | capture("http://gateway.marvel.com/v1/public/comics/(?<id>[0-9]+)") | .id)))] | @csv), ([((.value.stories | .items | .[] | (.resourceURI | capture("http://gateway.marvel.com/v1/public/stories/(?<id>[0-9]+)") | .id)))?] | @csv), ([((.value.events | .items | .[] | (.resourceURI | capture("http://gateway.marvel.com/v1/public/events/(?<id>[0-9]+)") | .id)))?] | @csv), ([((.value.characters | .items | .[] | (.resourceURI | capture("http://gateway.marvel.com/v1/public/characters/(?<id>[0-9]+)") | .id)))] | @csv), ([(.value.creators | .items | .[] | (.resourceURI | capture("http://gateway.marvel.com/v1/public/creators/(?<id>[0-9]+)") | .id))] | @csv)]) | @csv
