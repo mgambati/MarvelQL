@@ -8,5 +8,5 @@ yarn-error.log
 !.env.dev
 secrets.yml
 
-packages/src/data/stories/stories.json
-packages/src/data/comics/comics.json
+packages/data/src/data/stories/stories.json
+packages/data/src/data/comics/comics.json
