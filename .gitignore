@@ -7,3 +7,6 @@ yarn-error.log
 .env*
 !.env.dev
 secrets.yml
+
+packages/src/data/stories/stories.json
+packages/src/data/comics/comics.json
