@@ -1,16 +1,3 @@
-{
-  "count": 1000,
-  "limit": 5,
-  "stories": {
-    "total": 96577,
-    "cursor": 96577
-  },
-  "comics": {
-    "total": 43904,
-    "cursor": 43904
-  },
-  "characters": {
-    "total": 1491,
-    "cursor": 1491
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:7c82430e43e46aa9ead4188465f7a0e5838df4391e49459ca45443b973ca35a8
+size 213
