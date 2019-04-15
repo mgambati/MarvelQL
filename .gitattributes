@@ -187,4 +187,6 @@ packages/src/data/events/events.csv filter=lfs diff=lfs merge=lfs -text
 packages/src/data/series/series.csv filter=lfs diff=lfs merge=lfs -text
 packages/src/data/stories/stories.csv filter=lfs diff=lfs merge=lfs -text
 packages/src/data/superheroIds/ids.csv filter=lfs diff=lfs merge=lfs -text
+packages/data/src/data/stories/stories.json filter=lfs diff=lfs merge=lfs -text
+packages/data/src/data/comics/comics.json filter=lfs diff=lfs merge=lfs -text
 *.json filter=lfs diff=lfs merge=lfs -text
