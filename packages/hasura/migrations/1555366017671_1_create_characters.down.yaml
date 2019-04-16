@@ -1,0 +1,8 @@
+- type: untrack_table
+  args:
+    schema: public
+    name: characters
+- type: run_sql
+  args:
+    sql: |
+      DROP TABLE "public"."characters"
