@@ -7,6 +7,7 @@ yarn-error.log
 .env*
 !.env.dev
 secrets.yml
+/packages/hasura/credentials.json
 
 # packages/data/src/data/stories/stories.json
 # packages/data/src/data/comics/comics.json
