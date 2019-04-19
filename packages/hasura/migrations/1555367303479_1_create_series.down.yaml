@@ -1,8 +1,0 @@
-- type: untrack_table
-  args:
-    schema: public
-    name: series
-- type: run_sql
-  args:
-    sql: |
-      DROP TABLE "public"."series"

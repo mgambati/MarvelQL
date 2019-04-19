@@ -1,3 +1,5 @@
+import { connect } from 'tls';
+
 // import { writeFileSync } from 'fs';
 // import DataLoader from 'dataloader';
 
@@ -59,17 +61,19 @@ function createConnection(
   }
   for (let i = 0; i < data.length - 1; i++) {
     const currObj = data[i];
-    currObj[typeName] &&
-      currObj[typeName].items.map(c => {
-        const connection = {
-          id: currObj.id,
-        };
-        connection[`${typeName}Id`] = c.resourceURI.replace(
+
+    const connection = {
+      id: currObj.id,
+    };
+    connection[`${typeName}Ids`] =
+      currObj[typeName] &&
+      currObj[typeName].items.map(c =>
+        c.resourceURI.replace(
           `http://gateway.marvel.com/v1/public/${typeName}/`,
           '',
-        );
-        return conn.push(connection);
-      });
+        ),
+      );
+    conn.push(connection);
   }
   console.log(conn);
   return conn;

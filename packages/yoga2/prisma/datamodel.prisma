@@ -1,0 +1,143 @@
+type User {
+  id: ID! @id
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  username: String! @unique
+  name: String!
+}
+
+type Character {
+  id: ID! @id
+  marvelId: Int! @unique
+  superheroId: Int @unique
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  thumbnail: String
+  modified: DateTime
+  name: String! @unique
+  description: String
+  urls: Json
+  comics: [Comic!]
+  series: [Series!]!
+  events: [Event!]!
+  stories: [Story!]!
+}
+
+type Comic {
+  id: ID! @id
+  marvelId: String! @unique
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  resourceURI: String
+  thumbnail: String
+  modified: DateTime
+  digitalId: Int
+  title: String
+  issueNumber: Int
+  variantDescription: String
+  description: String
+  isbn: String
+  upc: String
+  diamondCode: String
+  ean: String
+  issn: String
+  format: String
+  textObjects: Json
+  urls: Json
+  dates: Json
+  prices: Json
+  images: Json
+  characters: [Character!]!
+  events: [Event!]!
+  stories: [Story!]!
+  creators: [Creator!]!
+  series: Series
+  # _variants: Json
+  # collections: Json
+  # collectedIssues: Json
+}
+
+type Creator {
+  id: ID! @id
+  marvelId: String! @unique
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  resourceURI: String
+  thumbnail: String
+  modified: DateTime
+  firstName: String
+  middleName: String
+  lastName: String
+  suffix: String
+  fullName: String
+  urls: Json
+  series: [Series!]!
+  stories: [Story!]!
+  comics: [Comic!]!
+  events: [Event!]!
+}
+
+type Event {
+  id: ID! @id
+  marvelId: String! @unique
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  resourceURI: String
+  thumbnail: String
+  modified: DateTime
+  title: String
+  description: String
+  urls: Json
+  start: DateTime
+  end: DateTime
+  series: [Series!]!
+  stories: [Story!]!
+  comics: [Comic!]!
+  characters: [Character!]!
+  creators: [Creator!]!
+  next: Event @relation(name: "EventRelation")
+  previous: Event @relation(name: "EventRelation", link: INLINE)
+}
+
+type Series {
+  id: ID! @id
+  marvelId: String! @unique
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  resourceURI: String
+  thumbnail: String
+  modified: DateTime
+  title: String
+  description: String
+  urls: Json
+  startYear: Int
+  endYear: Int
+  rating: String
+  type: String
+  comics: [Comic!]!
+  stories: [Story!]!
+  events: [Event!]!
+  characters: [Character!]!
+  creators: [Creator!]!
+  next: Series @relation(name: "SeriesRelation")
+  previous: Series @relation(name: "SeriesRelation", link: INLINE)
+}
+
+type Story {
+  id: ID! @id
+  marvelId: String! @unique
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  resourceURI: String
+  thumbnail: String
+  modified: DateTime
+  title: String
+  description: String
+  type: String
+  comics: [Comic!]!
+  events: [Event!]!
+  characters: [Character!]!
+  creators: [Creator!]!
+  series: [Series!]!
+  _originalIssue: Json
+}
