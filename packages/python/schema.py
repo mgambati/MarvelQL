@@ -1,4 +1,4 @@
-from graphene import ObjectType, String, Boolean, ID, List, Field, Int, InputObjectType, Argument, AbstractType, Date
+from graphene import ObjectType, String, Boolean, ID, List, Field, Int, InputObjectType, Argument, AbstractType, Date, Enum
 import marvelous
 import json
 import os
@@ -24,9 +24,8 @@ def json2obj(data):
 def accessData(name):
     if(name == "characters"):
         characters = m.call(['characters'],
-                            {'limit': 10})
+                            {'limit': 2})
         return characters['data']['results']
-
     elif(name == "comics"):
         comics = m.call(['comics'], {'limit': 10})
         return comics['data']['results']
@@ -37,19 +36,37 @@ def accessData(name):
         events = m.call(['events'], {'limit': 10})
         return events['data']['results']
     elif(name == "series"):
-        events = m.call(['series'], {'limit': 10})
-        return events['data']['results']
+        series = m.call(['series'], {'limit': 10})
+        return series['data']['results']
+    elif(name == "stories"):
+        stories = m.call(['stories'], {'limit': 10})
+        return stories['data']['results']
 
 
-def getCharacter(name):
-    character = m.call(['characters'], {'nameStartsWith': name})
+def getCharacter(**kwargs):
+    
+    # returns character matching specific name
+     character = m.call(['characters'], {'name': kwargs['name'], 'nameStartsWith': kwargs['nameStartsWith'],
+        'modifiedSince': kwargs['modifiedSince'], 'comics': kwargs['comics'], 'series': kwargs['series'],
+        'events': kwargs['events'], 'stories': kwargs['stories']})
+     
+     return(character['data']['results'])
+    
 
 
-def getComic(title):
-    comic = m.call(['comics'], {'titleStartsWith': title})
-    for i in range(len(comic['data']['results'])):
-        if(title.lower() in comic['data']['results'][i]['title'].lower()):
-            return(comic['data']['results'][i])
+def getComic(**kwargs):
+    comic = m.call(['comics'], {'title': kwargs['title'], 'titleStartsWith': kwargs['titleStartsWith'],
+        'diamondCode': kwargs['diamondCode'], 'upc': kwargs['upc'], 'isbn': kwargs['isbn'],
+        'ean' : kwargs['ean'], 'issn': kwargs['issn'], 'modifiedSince': kwargs['modifiedSince'],
+        'hasDigitalIssue': kwargs['hasDigitalIssue'], 'startYear':kwargs['startYear'],
+        'creators':kwargs['creators'], 'characters':kwargs['characters'],
+        'series': kwargs['series'], 'events':kwargs['events'], 'stories': kwargs['stories'],
+        'sharedAppearences': kwargs['sharedApperances'], 'collaborators': kwargs['collaborators'],
+        'format': kwargs['format'], 'formatType': kwargs['formatType']
+
+    })
+    
+    return(comic['data']['results'])
 
 
 def getCreator(name):
@@ -71,6 +88,13 @@ def getSeries(title):
     for i in range(len(series['data']['results'])):
         if(title.lower() in series['data']['results'][i]['title'].lower()):
             return(series['data']['results'][i])
+
+
+def getStory(modifiedDate):
+    stories = m.call(['stories'], {'modifiedSince': modifiedDate})
+    for i in range(len(stories['data']['results'])):
+        if(modifiedDate in stories['data']['results'][i]['modified']):
+            return(stories['data']['results'][i])
 
 
 class MarvelUrl(ObjectType):
@@ -166,6 +190,7 @@ class Character(ObjectType):
     picture_url = String()
     smart_name = String()
     thumbnail_url = String()
+    modified = Date()
 
 
 class Creator(ObjectType):
@@ -222,12 +247,55 @@ class Series(ObjectType):
     previous = Field(Summary)
 
 
+class Story(ObjectType):
+    id = ID()
+    title = String()
+    description = String()
+    resourceURI = String()
+    type = String()
+    modified = Date()
+    thumbnail = Field(Image)
+    comics = Field(AllList)
+    series = Field(AllList)
+    events = Field(AllList)
+    characters = Field(AllList)
+    creators = Field(AllList)
+    originalissue = Field(Summary)
+
+
+class Format(Enum):
+    COMIC = "comic"
+    MAGAZINE = "magazine"
+    TRADE_PAPERBACK = "trade paperback"
+    HARDCOVER = "hardcover"
+    DIGEST = "digest"
+    GRAPHIC_NOVEL = "graphic novel"
+    DIGITAL_COMIC = "digital comic"
+    INFINITE_COMIC = "infinite comic"
+
+class FormatType(Enum):
+    COMIC = 'comic'
+    COLLECTION = 'collection'
+    
+
 class Query(ObjectType):
     characters = List(Character)
-    getCharacter = Field(Character, name=String(required=True))
+    getCharacter = List(Character, name=String(required=False),
+                        nameStartsWith=String(required=False),
+                        modifiedSince=String(required=False),
+                        comics=List(ID),
+                        series=List(ID),
+                        events=List(ID),
+                        stories=List(ID))
 
     comics = List(Comic)
-    getComic = Field(Comic, title=String(required=True))
+    getComic = List(Comic, title=String(required=False), titleStartsWith=String(required=False),
+    startYear=Int(required=False),issueNumber=Int(required=False),diamondCode=String(required=False),
+    digitalId=Int(required=False),upc=String(required=False), isbn=String(required=False),
+    ean=String(required=False),issn=String(required=False),hasDigitalIssue=Boolean(required=False),
+    modifiedSince=String(required=False),creators=List(ID), characters=List(ID),
+    series=List(ID), events=List(ID), stories=List(ID),sharedAppearances=List(ID),
+    collaborators=List(ID), format= Format(required=False), formatType = FormatType(required=False))
 
     creators = List(Creator)
     getCreator = Field(Creator, name=String(required=True))
@@ -238,21 +306,57 @@ class Query(ObjectType):
     series = List(Series)
     getSeries = Field(Series, title=String(required=True))
 
+    stories = List(Story)
+    getStory = Field(Series, modifiedDate=String(required=False))
+
     def resolve_characters(self, info):
         characters = accessData('characters')
         return json2obj(json.dumps(characters))
 
-    def resolve_getCharacter(_, info, name):
-        character = getCharacter(name)
+    def resolve_getCharacter(_, info, **kwargs):
+        name = nameStartsWith = modifiedSince = comics = series = events = stories = None
+
+        parameters = [name, nameStartsWith, modifiedSince, comics, series, events, stories]
+        stringParameters = ['name', 'nameStartsWith','modifiedSince', 'comics', 'series', 'events', 'stories']
+    
+        for p in range(len(stringParameters)):
+            if(stringParameters[p] in kwargs):
+                parameters[p] = kwargs[stringParameters[p]]
+
+        character = getCharacter(name=parameters[0], nameStartsWith=parameters[1], modifiedSince=parameters[2],
+        comics =parameters[3], series=parameters[4], events=parameters[5], stories=parameters[6])
         return json2obj(json.dumps(character))
 
     def resolve_comics(self, info):
         comics = accessData('comics')
         return json2obj(json.dumps(comics))
 
-    def resolve_getComic(_, info, title):
-        comic = getComic(title)
-        return json2obj(json.dumps(comic))
+    def resolve_getComic(_, info, **kwargs):
+        title = titleStartsWith = startYear = issueNumber = diamondCode = upc = isbn = ean = issn = hasDigitalIssue = None
+        modifiedSince = creators = stories = sharedAppearances = collaborators = format = formatType = None
+
+        parameters = [title, titleStartsWith, startYear, issueNumber, 
+            diamondCode, upc, isbn, ean, issn, hasDigitalIssue, modifiedSince, creators, stories, 
+            sharedAppearances,collaborators, format, formatType ]
+
+        stringParameters = ['title', 'titleStartsWith', 'startYear', 'issueNumber', 
+                'diamondCode', 'upc', 'isbn', 'ean', 'issn', 'hasDigitalIssue', 'modifiedSince'
+                ,'creators', 'stories', 'sharedAppearances','collaborators', 'format', 'formatType' ]
+
+        
+        for p in range(len(stringParameters)):
+            if(stringParameters[p] in kwargs):
+                parameters[p] = kwargs[stringParameters[p]]
+        
+        comics = getCharacter(title=parameters[0], titleStartsWith=parameters[1], startYear=parameters[2],
+            issueNumber =parameters[3], diamondCode=parameters[4], upc=parameters[5], isbn=parameters[6],
+            ean = parameters[7],issn=parameters[8], hasDigitalIssue=parameters[9],modifiedSince=parameters[10],
+            creators=parameters[11], stories=parameters[12], sharedAppearances = parameters[13],
+            collaborators=parameters[14], format = parameters[15], formatType = parameters[16])
+
+        print(comics)
+        return json2obj(json.dumps(comics))
+        
 
     def resolve_creators(self, info):
         creators = accessData('creators')
@@ -277,3 +381,11 @@ class Query(ObjectType):
     def resolve_getSeries(_, info, title):
         series = getSeries(title)
         return json2obj(json.dumps(series))
+
+    def resolve_stories(self, info):
+        stories = accessData('stories')
+        return json2obj(json.dumps(stories))
+
+    def resolve_getStory(_, info, modifiedDate):
+        story = getStory(modifiedDate)
+        return json2obj(json.dumps(story))
