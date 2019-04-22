@@ -61,7 +61,7 @@ def getComic(**kwargs):
         'hasDigitalIssue': kwargs['hasDigitalIssue'], 'startYear':kwargs['startYear'],
         'creators':kwargs['creators'], 'characters':kwargs['characters'],
         'series': kwargs['series'], 'events':kwargs['events'], 'stories': kwargs['stories'],
-        'sharedAppearences': kwargs['sharedApperances'], 'collaborators': kwargs['collaborators'],
+        'sharedAppearances': kwargs['sharedAppearances'], 'collaborators': kwargs['collaborators'],
         'format': kwargs['format'], 'formatType': kwargs['formatType']
 
     })
@@ -69,18 +69,22 @@ def getComic(**kwargs):
     return(comic['data']['results'])
 
 
-def getCreator(name):
-    creator = m.call(['creators'], {'nameStartsWith': name})
-    for i in range(len(creator['data']['results'])):
-        if(name.lower() in creator['data']['results'][i]['fullName'].lower()):
-            return(creator['data']['results'][i])
+def getCreator(**kwargs):
+    creator = m.call(['creators'],{'firstName': kwargs['firstName'],'middleName': kwargs['middleName'],
+    'lastName': kwargs['lastName'], 'suffix': kwargs['suffix'], 'nameStartsWith': kwargs['nameStartsWith'],
+    'firstNameStartsWith': kwargs['firstNameStartsWith'], 'middleNameStartsWith': kwargs['middleNameStartsWith'],
+    'lastNameStartsWith': kwargs['lastNameStartsWith'], 'modifiedSince': kwargs['modifiedSince'],
+    'comics':kwargs['comics'], 'series': kwargs['series'], 'events': kwargs['events'], 'stories': kwargs['stories']})
+
+    return(creator['data']['results'])
 
 
-def getEvent(name):
-    event = m.call(['events'], {'nameStartsWith': name})
-    for i in range(len(event['data']['results'])):
-        if(name.lower() in event['data']['results'][i]['title'].lower()):
-            return(event['data']['results'][i])
+def getEvent(**kwargs):
+    event = m.call(['events'],{'name':kwargs['name'], 'nameStartsWith': kwargs['nameStartsWith'], 
+    'modifiedSince': kwargs['modifiedSince'], 'creators':kwargs['creators'], 'characters':kwargs['characters'],
+    'series':kwargs['series'], 'comics':kwargs['comics'], 'stories':kwargs['stories'], })
+    
+    return(event(['data']['results']))
 
 
 def getSeries(title):
@@ -298,7 +302,11 @@ class Query(ObjectType):
     collaborators=List(ID), format= Format(required=False), formatType = FormatType(required=False))
 
     creators = List(Creator)
-    getCreator = Field(Creator, name=String(required=True))
+    getCreator = List(Creator, firstName=String(required=False),middleName=String(required=False), lastName=String(required=False),
+    suffix=String(required=False), nameStartsWith=String(required=False), firstNameStartsWith=String(required=False),
+    middleNameStartsWith=String(required=False),lastNameStartsWith=String(required=False), modifiedSince=String(required=False),
+    comics=String(required=False),series=String(required=False),events=String(required=False),stories=String(required=False),
+    )
 
     events = List(Event)
     getEvent = Field(Event, name=String(required=True))
@@ -333,28 +341,28 @@ class Query(ObjectType):
 
     def resolve_getComic(_, info, **kwargs):
         title = titleStartsWith = startYear = issueNumber = diamondCode = upc = isbn = ean = issn = hasDigitalIssue = None
-        modifiedSince = creators = stories = sharedAppearances = collaborators = format = formatType = None
+        modifiedSince = characters = series = events = creators = stories = sharedAppearances = collaborators = format = formatType = None
 
         parameters = [title, titleStartsWith, startYear, issueNumber, 
-            diamondCode, upc, isbn, ean, issn, hasDigitalIssue, modifiedSince, creators, stories, 
+            diamondCode, upc, isbn, ean, issn, hasDigitalIssue, modifiedSince, creators, characters,series, events,stories, 
             sharedAppearances,collaborators, format, formatType ]
 
         stringParameters = ['title', 'titleStartsWith', 'startYear', 'issueNumber', 
                 'diamondCode', 'upc', 'isbn', 'ean', 'issn', 'hasDigitalIssue', 'modifiedSince'
-                ,'creators', 'stories', 'sharedAppearances','collaborators', 'format', 'formatType' ]
+                ,'creators', 'characters','series','events','stories', 'sharedAppearances','collaborators', 'format', 'formatType' ]
 
         
         for p in range(len(stringParameters)):
             if(stringParameters[p] in kwargs):
                 parameters[p] = kwargs[stringParameters[p]]
         
-        comics = getCharacter(title=parameters[0], titleStartsWith=parameters[1], startYear=parameters[2],
+        comics = getComic(title=parameters[0], titleStartsWith=parameters[1], startYear=parameters[2],
             issueNumber =parameters[3], diamondCode=parameters[4], upc=parameters[5], isbn=parameters[6],
             ean = parameters[7],issn=parameters[8], hasDigitalIssue=parameters[9],modifiedSince=parameters[10],
-            creators=parameters[11], stories=parameters[12], sharedAppearances = parameters[13],
-            collaborators=parameters[14], format = parameters[15], formatType = parameters[16])
+            creators=parameters[11], characters=parameters[12],series=parameters[13],
+            events=parameters[14],stories=parameters[15], sharedAppearances = parameters[16],
+            collaborators=parameters[17], format = parameters[18], formatType = parameters[19])
 
-        print(comics)
         return json2obj(json.dumps(comics))
         
 
@@ -362,16 +370,46 @@ class Query(ObjectType):
         creators = accessData('creators')
         return json2obj(json.dumps(creators))
 
-    def resolve_getCreator(_, info, name):
-        creator = getCreator(name)
+    def resolve_getCreator(_, info, **kwargs):
+        firstName = middleName = lastName = suffix = nameStartsWith = firstNameStartsWith = middleNameStartsWith = None
+        lastNameStartsWith = modifiedSince = comics = series = events = stories = None
+
+        parameters = [firstName, middleName, lastName, suffix, nameStartsWith, firstNameStartsWith, middleNameStartsWith,
+        lastNameStartsWith, modifiedSince, comics, series, events, stories ]
+
+        stringParameters =  ['firstName', 'middleName', 'lastName', 'suffix', 'nameStartsWith', 'firstNameStartsWith', 'middleNameStartsWith',
+        'lastNameStartsWith', 'modifiedSince', 'comics', 'series', 'events', 'stories' ]
+        
+        for p in range(len(stringParameters)):
+            if(stringParameters[p] in kwargs):
+                parameters[p] = kwargs[stringParameters[p]]
+        
+        creator = getCreator(firstName=parameters[0], middleName=parameters[1], lastName=parameters[2],
+            suffix =parameters[3], nameStartsWith=parameters[4], firstNameStartsWith=parameters[5], middleNameStartsWith=parameters[6],
+            lastNameStartsWith = parameters[7],modifiedSince=parameters[8], comics=parameters[9],series=parameters[10],
+            events=parameters[11],stories=parameters[12])
+
         return json2obj(json.dumps(creator))
 
     def resolve_events(self, info):
         events = accessData('events')
         return json2obj(json.dumps(events))
 
-    def resolve_getEvent(_, info, name):
-        event = getEvent(name)
+    def resolve_getEvent(_, info, **kwargs):
+        name = nameStartsWith = modifiedSince = creators = characters = series = comics = stories = None
+
+        parameters = [name, nameStartsWith, modifiedSince, creators, characters, series, comics, stories]
+
+        stringParameters = ['name','nameStartsWith', 'modifiedSince', 'creators', 'characters', 'series', 'comics', 'stories']
+
+        for p in range(len(stringParameters)):
+            if(stringParameters[p] in kwargs):
+                parameters[p] = kwargs[stringParameters[p]]
+        
+        
+        event = getEvent(name=parameters[0], nameStartsWith=parameters[1], modifiedSince=parameters[2],
+            creators =parameters[3], characters=parameters[4], comics =parameters[5], stories=parameters[6])
+
         return json2obj(json.dumps(event))
 
     def resolve_series(self, info):
