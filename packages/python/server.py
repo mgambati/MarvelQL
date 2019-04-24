@@ -16,7 +16,7 @@ app.debug = True
 
 @app.route('/')
 def index():
-    return '<p> Hello World</p>'
+    return '<h1> Hi, Go to http://127.0.0.1:5000/graphql to type queries</h1>'
 
 
 if __name__ == '__main__':
