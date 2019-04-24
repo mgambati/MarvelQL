@@ -4,7 +4,7 @@
 </p>
 
 <p align="center">
-  Query the Marvel API using Python.</br>
+  <h1>Query the Marvel API using Python.</br> </h1>
 </p>
 
 
