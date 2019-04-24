@@ -1,7 +1,12 @@
 
-Query the Marvel API using Python.</br>
+<p align="center">
+  <img width="460" height="300" src="https://github.com/Novvum/MarvelQL/blob/python-example/packages/assets/pythonMarvel.png">
+</p>
 
-![Alt text](https://github.com/Novvum/MarvelQL/blob/python-example/packages/assets/pythonMarvel.png)
+<p align="center">
+  Query the Marvel API using Python.</br>
+</p>
+
 
 ### Description
 
