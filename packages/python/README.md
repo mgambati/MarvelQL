@@ -1,7 +1,7 @@
-<div align="center"><img src="https://github.com/Novvum/MarvelQL/tree/python-example/packages/assetspythonMarvel.png"  width="100%"></br></br>
+<div align="center"><img src="https://github.com/Novvum/MarvelQL/tree/python-example/packages/assets/pythonMarvel.png"  width="100%"></br></br>
 Query the Marvel API using Python.</br>
 
-<img src="https://github.com/Novvum/MarvelQL/tree/python-example/packages/assetspythonMarvel.png" width="100%"/>
+<img src="https://github.com/Novvum/MarvelQL/tree/python-example/packages/assets/pythonMarvel.png" width="100%"/>
 </div>
 
 ### Description
@@ -26,7 +26,8 @@ You need install Flask, Graphene, flask-graphene, and marvelous using pip
 3. pip install Flask-GraphQL
 4. pip install marvelous
 
-###Files
+### Files
+
 There are 4 files that interact with each other.
 
 1)getData.py - Retrieves the data from the Marvel API using marvelous
