@@ -11,8 +11,7 @@ m = marvelous.api(
 
 def accessData(name):
     if(name == "characters"):
-        characters = m.call(['characters'],
-                            {'limit': 2})
+        characters = m.call(['characters'], {'limit': 10})
         return characters['data']['results']
     elif(name == "comics"):
         comics = m.call(['comics'], {'limit': 10})
