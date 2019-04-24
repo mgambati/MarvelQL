@@ -1,7 +1,7 @@
 <div align="center"><img src="https://github.com/Novvum/MarvelQL/tree/python-example/packages/assets/pythonMarvel.png"  width="100%"></br></br>
 Query the Marvel API using Python.</br>
 
-![Image description]"https://github.com/Novvum/MarvelQL/tree/python-example/packages/assets/pythonMarvel.png"
+![Image description](https://github.com/Novvum/MarvelQL/tree/python-example/packages/assets/pythonMarvel.png)
 
 ### Description
 
