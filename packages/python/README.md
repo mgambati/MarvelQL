@@ -3,9 +3,9 @@
   <img width="460" height="300" src="https://github.com/Novvum/MarvelQL/blob/python-example/packages/assets/pythonMarvel.png">
 </p>
 
-<p align="center">
-  <h1>Query the Marvel API using Python.</br> </h1>
-</p>
+<h1 align="center">
+  Query the Marvel API using Python.</br> 
+</h1>
 
 
 ### Description
