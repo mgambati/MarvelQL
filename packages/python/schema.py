@@ -104,7 +104,8 @@ def getSeries(**kwargs):
 
 def getStory(**kwargs):
     stories = m.call(['stories'], {'modifiedSince': kwargs['modifiedSince'], 'comics':kwargs['comics'],'series':kwargs['series'],
-    'events':kwargs['events'], 'creators':kwargs['creators'], 'characters':kwargs['characters']})
+    'events':kwargs['events'], 'creators':kwargs['creators'], 'characters':kwargs['characters'],
+    'orderBy':kwargs['orderBy'], 'limit':kwargs['limit'], 'offset':kwargs['offset']})
     
     return(stories['data']['results'])
 
@@ -327,8 +328,11 @@ class SeriesOrderBy(Enum):
     STARTYEAR = "startYear"
     DESCENDINGTITLE = "-title"
 
-
-
+class StoryOrderBy(Enum):
+    ID = "id"
+    MODIFIED = "modified"
+    DESCENDINGID = "-id"
+    DESCENDINGMODIFIED = "-modified"
 
 class Query(ObjectType):
     characters = List(Character)
@@ -366,7 +370,8 @@ class Query(ObjectType):
 
     stories = List(Story)
     getStory = List(Series, modifiedSince=String(required=False),comics= List(ID), series=List(ID), events=List(ID),
-    creators=List(ID), characters=List(ID))
+    creators=List(ID), characters=List(ID), orderBy = List(StoryOrderBy), limit=Int(required=False),
+    offset=Int(required=False))
 
     def resolve_characters(self, info):
         characters = accessData('characters')
@@ -500,10 +505,11 @@ class Query(ObjectType):
         return json2obj(json.dumps(stories))
 
     def resolve_getStory(_, info, **kwargs):
-        modifiedSince = comics = series = events = creators = characters = None
+        modifiedSince = comics = series = events = creators = characters = orderBy = limit = offset = None
 
-        parameters = [modifiedSince,comics, series, events, creators, characters]
-        stringParameters =  ['modifiedSince','comics', 'series', 'events', 'creators', 'characters']
+        parameters = [modifiedSince,comics, series, events, creators, characters, orderBy, limit, offset]
+        stringParameters =  ['modifiedSince','comics', 'series', 'events', 'creators', 'characters',
+        'orderBy', 'limit', 'offset']
 
         for p in range(len(stringParameters)):
             if(stringParameters[p] in kwargs):
@@ -511,6 +517,6 @@ class Query(ObjectType):
 
         
         story = getStory(modifiedSince=parameters[0], comics=parameters[1], series=parameters[2], events=parameters[3],
-        creators=parameters[4],characters=parameters[5])
+        creators=parameters[4],characters=parameters[5], orderBy=parameters[6], limit=parameters[7], offset=parameters[8])
 
         return json2obj(json.dumps(story))
