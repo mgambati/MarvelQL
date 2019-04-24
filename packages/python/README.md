@@ -34,10 +34,10 @@ You need install Flask, Graphene, flask-graphene, and marvelous using pip
 
 There are 4 files that interact with each other.
 
-1)getData.py - Retrieves the data from the Marvel API using marvelous
-2)marvelTypes.py - Has all the types being used for queries
-3)schema.py - Has the root query that creates the queries and resolvers
-4)server.py - Has the flask code needed to run the graphql interface to type queries
+1. getData.py - Retrieves the data from the Marvel API using marvelous
+2. marvelTypes.py - Has all the types being used for queries
+3. schema.py - Has the root query that creates the queries and resolvers
+4. server.py - Has the flask code needed to run the graphql interface to type queries
 
 ### Usage
 
