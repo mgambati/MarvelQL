@@ -102,7 +102,7 @@ class Creator(ObjectType):
     firstName = String()
     middleName = String()
     lastName = String()
-    suffic = String()
+    suffix = String()
     fullName = String()
     resourceURI = String()
     urls = List(MarvelUrl)
