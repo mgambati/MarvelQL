@@ -1,18 +1,18 @@
 
 <div align="center">
-  <img width="460" height="300" src="../assets/pythonMarvel.png">
-<h1>
- PyMarvelQL
-</h1>
-  An open source GraphQL API using Python to wrap the Marvel REST API </br></br>
-  <img src="../assets/graphiql-query.gif" width="85%"/>
- </br> 
+  <img width="100%" src="../assets/PyMarvelQL.png">
+  <h1> PyMarvelQL </h1>
+  An open source GraphQL API using Python to wrap the Marvel REST API 
 </div>
-
 
 ### Description
 
 PyMarvelQL allows you to send GraphQL queries to Marvel’s REST API to get information about characters, comic series, stories, creators and much more. This project uses Flask and Graphene and it is a Python implemenation of [MarvelQL](https://github.com/Novvum/MarvelQL). Use this project as an example to guide any Python projects that need to query the Marvel API.
+<br />
+<div align="center">
+  <img src="../assets/graphiql-query.gif" width="85%"/>
+</div>
+
 
 ### Features
 * Query information from Marvel REST endpoints. Here’s a full list of endpoints that can be queried: https://developer.marvel.com/docs
