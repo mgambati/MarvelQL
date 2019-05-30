@@ -67,6 +67,17 @@ Explore the docs and try out different queries. <br/>
 
 <div align="center"><img src="docs/assets/docs.gif" width="85%"/></div>
 
+#### Elm Client Generation
+
+Follow [these installation instructions](https://github.com/dillonkearns/elm-graphql#setup) to add [elm-graphql](https://github.com/dillonkearns/elm-graphql) to your Elm project. To generate your client code, run the following command:
+
+```
+elm-graphql https://api.marvelql.com/ --base Marvelql --output src/generated
+```
+In step 3 of the [installation instructions](https://github.com/dillonkearns/elm-graphql#setup), you can replace the example `api` script with the `Marvelql` command above.
+
+If you need assistance using the generated client code, refer to [elm-graphql](https://github.com/dillonkearns/elm-graphql) for examples.
+
 ### Roadmap
 
 We have plans to keep improving MarvelQL. Here's what is next:
