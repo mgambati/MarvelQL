@@ -26,7 +26,7 @@ jobs:
             - node_modules
           key: v1-dependencies-13.1.2
       - run: yarn deploy
-  
+
   staging:
     docker:
       - image: circleci/node:8.10.0
@@ -47,7 +47,7 @@ jobs:
             - node_modules
           key: v1-dependencies-13.1.2
       - run: yarn deploy
-  
+
   publish-apollo:
     docker:
       # specify the version you desire here
@@ -67,8 +67,8 @@ jobs:
       - run: sleep 5
       # When running on the 'master' branch, push the latest version
       # of the schema to Apollo Engine.
-      - run: |
-          yarn apollo service:push --tag="${CIRCLE_BRANCH}"
+      # - run: |
+      #     yarn apollo service:push --tag="${CIRCLE_BRANCH}"
 
 workflows:
   version: 2
